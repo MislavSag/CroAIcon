@@ -41,3 +41,6 @@ Thumbs.db
 /.quarto/
 
 **/*.quarto_ipynb
+
+# Local-only research scratch (full DB schema incl. non-GFI tables)
+_local/

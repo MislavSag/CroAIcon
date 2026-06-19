@@ -1,0 +1,291 @@
+﻿SIFARNIK,AOP,column_name,metric_label_hr,metric_label_en,metric_label_de,VRSTA,exists_in_db_afs
+61,1,b001,POTRAŽIVANJA ZA UPISANI A NEUPLAĆENI KAPITAL,SUBSCRIBED CAPITAL UNPAID,FORDERUNGEN AN AUSSTEHENDE EINLAGE AUF DAS GEZEICHNETE KAPITAL,00,1
+61,2,b002,DUGOTRAJNA IMOVINA (AOP 003+010+020+031+036),FIXED ASSETS (EDV 003 + 010 + 020 + 031 + 036),ANLAGEVERMÖGEN (EDP 003 + 010 + 020 + 031 + 036),00,1
+61,3,b003,NEMATERIJALNA IMOVINA (AOP 004 do 009),INTANGIBLE ASSETS (EDV 004 to 009),IMMATERIELLE ANLAGEVERMÖGEN (EDP 004 bis 009),00,1
+61,4,b004,Izdaci za razvoj,Development expenses,Entwicklungskosten,00,1
+61,5,b005,"Koncesije, patenti, licencije, robne i uslužne marke, softver i ostala prava","Concessions, patents, licences, goods and service brands, software and other rights","Konzessionen, Patente, Lizenzen, Waren - und Dienstmarken, Software und andere Rechte",00,1
+61,6,b006,Goodwill,Goodwill,Firmenwert,00,1
+61,7,b007,Predujmovi za nabavu nematerijalne imovine,Prepayments for intangible assets,Vorschüsse für die Anschaffungen von immateriellen Anlagevermögen,00,1
+61,8,b008,Nematerijalna imovina u pripremi,Intangible assets in course of construction,Immaterielle Anlagevermögen im Bau,00,1
+61,9,b009,Ostala nematerijalna imovina,Other intangible assets,Sonstige immaterielle Anlagevermögen,00,1
+61,10,b010,MATERIJALNA IMOVINA (AOP 011 do 019),TANGIBLE ASSETS (EDV 011 to 019),SACHANLAGEN (EDP 011 bis 019),00,1
+61,11,b011,Zemljište,Land,Grundstück,00,1
+61,12,b012,Građevinski objekti,Buildings,Bauobjekte,00,1
+61,13,b013,Postrojenja i oprema,Plants and equipment,Anlagen und Ausstattung,00,1
+61,14,b014,"Alati, pogonski inventar i transportna imovina","Tools, factory equipment and transport vehicles","Werkzeuge, Betriebsausstattung und Transportvermögen",00,1
+61,15,b015,Biološka imovina,Biological assets,Biologisches Vermögen,00,1
+61,16,b016,Predujmovi za materijalnu imovinu,Prepayments for tangible assets,Vorschüsse für die Sachanlagen,00,1
+61,17,b017,Materijalna imovina u pripremi,Tangible assets in course of construction,Sachanlage im Bau,00,1
+61,18,b018,Ostala materijalna imovina,Other tangible assets,Sonstige Sachanlagen,00,1
+61,19,b019,Ulaganje u nekretnine,Property investment,Immobilienanlage,00,1
+61,20,b020,DUGOTRAJNA FINANCIJSKA IMOVINA (AOP 021 do 030),FIXED FINANCIAL ASSETS (EDV 021 to 030),LANGFRISTIGE FINANZANLAGE (EDP 021 bis 030),00,1
+61,21,b021,Ulaganja u udjele (dionice) poduzetnika unutar grupe,Investment in shares (stocks) of entities within a group,Investitionen in Anteile (Aktien) verbundener Unternehmen,00,1
+61,22,b022,Ulaganja u ostale vrijednosne papire poduzetnika unutar grupe,Investment in other securities of entities within a group,Investitionen in sonstige Wertpapiere verbundener Unternehmen,00,1
+61,23,b023,"Dani zajmovi, depoziti i slično poduzetnicima unutar grupe","Loans, deposits etc. granted to entities within a group","Gewährte Darlehen, Einlagen und dergleichen an verbundene Unternehmen",00,1
+61,24,b024,Ulaganja u udjele (dionice) društava povezanih sudjelujućim interesom,Investment in shares (stocks) of companies linked by virtue of participating interest,"Investitionen in Anteile (Aktien) von Gesellschaften, mit denen ein Beteiligungsverhältnis besteht",00,1
+61,25,b025,Ulaganja u ostale vrijednosne papire društava povezanih sudjelujućim interesom,Investment in other securities of companies linked by virtue of participating interest,"Investitionen in sonstige Wertpapiere von Gesellschaften, mit denen ein Beteiligungsverhältnis besteht",00,1
+61,26,b026,"Dani zajmovi, depoziti i slično društvima povezanim sudjelujućim interesom","Loans, deposits etc. granted to companies linked by virtue of participating interest","Gewährte Darlehen, Einlagen und dgl. an Gesellschaften, mit denen ein Beteiligungsverhältnis besteht",00,1
+61,27,b027,Ulaganja u vrijednosne papire,Investments in securities,Wertpapiere des Anlagevermögens,00,1
+61,28,b028,"Dani zajmovi, depoziti i slično","Loans granted, deposits and similar","Gewährte Darlehen, Depositen und Ähnliches",00,1
+61,29,b029,Ostala ulaganja koja se obračunavaju metodom udjela,Other investments accounted for using the equity method,Sonstige nach der Equity - Methode abgerechnete Anlagen,00,1
+61,30,b030,Ostala dugotrajna financijska imovina,Other fixed financial assets,Sonstiges langfristiges Finanzvermögen,00,1
+61,31,b031,POTRAŽIVANJA (AOP 032 do 035),RECEIVABLES (EDV 032 to 035),FORDERUNGEN (EDP 032 bis 035),00,1
+61,32,b032,Potraživanja od poduzetnika unutar grupe,Receivables of entities within a group,Forderungen gegenüber verbundenen Unternehmen,00,1
+61,33,b033,Potraživanja od društava povezanih sudjelujućim interesom,Receivables of companies linked by virtue of participating interest,"Forderungen gegenüber Gesellschaften, mit denen ein Beteiligungsverhältnis besteht",00,1
+61,34,b034,Potraživanja od kupaca,Receivables from customers,Forderungen gegenüber Kunden,00,1
+61,35,b035,Ostala potraživanja,Other receivables,Sonstige Forderungen,00,1
+61,36,b036,ODGOĐENA POREZNA IMOVINA,DEFERRED TAX ASSET,LATENTES STEUERVERMÖGEN,00,1
+61,37,b037,KRATKOTRAJNA IMOVINA (AOP 038+046+053+063),CURRENT ASSETS (EDV 038 + 046 + 053 + 063),UMLAUFVERMÖGEN (EDP 038 + 046 + 053 + 063),00,1
+61,38,b038,ZALIHE (AOP 039 do 045),INVENTORIES (EDV 039 to 045),VORRÄTE (EDP 039 bis 045),00,1
+61,39,b039,Sirovine i materijal,Raw materials and materials,Rohstoffe und Material,00,1
+61,40,b040,Proizvodnja u tijeku,Work in progress,Unfertige Erzeugnisse,00,1
+61,41,b041,Gotovi proizvodi,Finished products,Fertige Erzeugnisse,00,1
+61,42,b042,Trgovačka roba,Commodities,Handelsgut,00,1
+61,43,b043,Predujmovi za zalihe,Prepayments for inventory,Vorschüsse für Vorräte,00,1
+61,44,b044,Dugotrajna imovina namijenjena prodaji,Non - current assets intended for sale,Zum Verkauf stehendes Anlagevermögen,00,1
+61,45,b045,Biološka imovina,Biological assets,Biologisches Vermögen,00,1
+61,46,b046,POTRAŽIVANJA (AOP 047 do 052),RECEIVABLES (EDV 047 to 052),FORDERUNGEN (EDP 047 bis 052),00,1
+61,47,b047,Potraživanja od poduzetnika unutar grupe,Receivables of entities within a group,Forderungen gegenüber verbundenen Unternehmen,00,1
+61,48,b048,Potraživanja od društava povezanih sudjelujućim interesom,Receivables of companies linked by virtue of participating interest,"Forderungen gegenüber Gesellschaften, mit denen ein Beteiligungsverhältnis besteht",00,1
+61,49,b049,Potraživanja od kupaca,Receivables from customers,Forderungen gegenüber Kunden,00,1
+61,50,b050,Potraživanja od zaposlenika i članova poduzetnika,Receivables from entrepreneur employees and members,Forderung gegenüber Mitarbeitern und Unternehmern - Mitgliedern,00,1
+61,51,b051,Potraživanja od države i drugih institucija,Receivables from government and other institutions,Forderung gegenüber dem Staat und anderenen Institutionen,00,1
+61,52,b052,Ostala potraživanja,Other receivables,Sonstige Forderungen,00,1
+61,53,b053,KRATKOTRAJNA FINANCIJSKA IMOVINA (AOP 054 do 062),CURRENT FINANCIAL ASSETS (EDV 054 to 062),FINANZUMLAUFVERMÖGEN (EDP 054 bis 062),00,1
+61,54,b054,Ulaganja u udjele (dionice) poduzetnika unutar grupe,Investment in shares (stocks) of entities within a group,Investitionen in Anteile (Aktien) verbundener Unternehmen,00,1
+61,55,b055,Ulaganja u ostale vrijednosne papire poduzetnika unutar grupe,Investment in other securities of entities within a group,Investitionen in sonstige Wertpapiere verbundener Unternehmen,00,1
+61,56,b056,"Dani zajmovi, depoziti i slično poduzetnicima unutar grupe","Loans, deposits etc. granted to entities within a group","Gewährte Darlehen, Einlagen und dgl. an verbundene Unternehmen",00,1
+61,57,b057,Ulaganja u udjele (dionice) društava povezanih sudjelujućim interesom,Investment in shares (stocks) of companies linked by virtue of participating interest,"Investitionen in Anteile (Aktien) von Gesellschaften, mit denen ein Beteiligungsverhältnis besteht",00,1
+61,58,b058,Ulaganja u ostale vrijednosne papire društava povezanih sudjelujućim interesom,Investment in other securities of companies linked by virtue of participating interest,"Investitionen in sonstige Wertpapiere von Gesellschaften, mit denen ein Beteiligungsverhältnis besteht",00,1
+61,59,b059,"Dani zajmovi, depoziti i slično društvima povezanim sudjelujućim interesom","Loans, deposits etc. granted to companies linked by virtue of participating interest","Gewährte Darlehen, Einlagen und dgl. an Gesellschaften, mit denen ein Beteiligungsverhältnis besteht",00,1
+61,60,b060,Ulaganja u vrijednosne papire,Investments in securities,Wertpapiere des Anlagevermögens,00,1
+61,61,b061,"Dani zajmovi, depoziti i slično",Loans and deposits given and similar,"Gewährte Darlehen, Depositen und Ähnliches",00,1
+61,62,b062,Ostala financijska imovina,Other financial assets,Sonstiges Finanzvermögen,00,1
+61,63,b063,NOVAC U BANCI I BLAGAJNI,CASH IN THE BANK AND PETTY CASH,BANK - UND KASSENBESTAND,00,1
+61,64,b064,PLAĆENI TROŠKOVI BUDUĆEG RAZDOBLJA I OBRAČUNATI PRIHODI,FUTURE PERIOD PREPAID EXPENSES AND ACCRUED INCOME,BEZAHLTE KOSTEN DER ZUKÜNFUGEN PERIODE UND ABGERECHNETE ERTRÄGE,00,1
+61,65,b065,UKUPNO AKTIVA (AOP 001+002+037+064),TOTAL ASSETS (EDV 001 + 002 + 037 + 064),SUMME DER AKTIVA (EDP 001 + 002 + 037 + 064),00,1
+61,66,b066,IZVANBILANČNI ZAPISI,OFF - BALANCE ENTRIES,AUßERBILANZIELLER POSTEN,00,1
+61,67,b067,KAPITAL I REZERVE (AOP 068 do 070+076+077+081+084+087),CAPITAL AND RESERVES (EDV 068 to 070 + 076 + 077 + 081 + 084 + 087),KAPITAL UND RÜCKLAGEN (EDP 068 bis 070 + 076 + 077 + 081 + 084 + 087),00,1
+61,68,b068,TEMELJNI (UPISANI) KAPITAL,BASE (SUBSCRIBED) CAPITAL,KERN - (GEZEICHNETES) KAPITAL,00,1
+61,69,b069,KAPITALNE REZERVE,CAPITAL RESERVES,KAPITALRÜCKLAGEN,00,1
+61,70,b070,REZERVE IZ DOBITI (AOP 071+072-073+074+075),REVENUE RESERVES (EDV 071 + 072 - 073 + 074 + 075),GEWINNRÜCKLAGEN (EDP 071 + 072 - 073 + 074 + 075),00,1
+61,71,b071,Zakonske rezerve,Statutory reserves,Gesetzliche Rücklagen,00,1
+61,72,b072,Rezerve za vlastite dionice,Reserves for own shares,Rücklagen für eigene Aktien oder Anteile,00,1
+61,73,b073,Vlastite dionice i udjeli (odbitna stavka),Own shares and stock (deductible item),Eigene Aktien und Anteile (Abzugsposten),00,1
+61,74,b074,Statutarne rezerve,Statutory reserves,Satzungsmässige Rücklagen,00,1
+61,75,b075,Ostale rezerve,Other reserves,Sonstige Rücklagen,00,1
+61,76,b076,REVALORIZACIJSKE REZERVE,REVALUATION RESERVES,AUFWERTUNGSRÜCKLAGEN,00,1
+61,77,b077,REZERVE FER VRIJEDNOSTI (AOP 078 do 080),FAIR VALUE RESERVES (EDP 078 to 080),RÜCKSTELLUNGEN ZUR FAIR VALUE (EDV 078 bis 080),00,1
+61,78,b078,Fer vrijednost financijske imovine raspoložive za prodaju,Fair value of financial assets available for sale,Fair Value verkäuflicher Finanzanlagen,00,1
+61,79,b079,Učinkoviti dio zaštite novčanih tokova,Effective portion of the cash flow hedge,Wirksamer Teil des Cashflow - Schutzes,00,1
+61,80,b080,Učinkoviti dio zaštite neto ulaganja u inozemstvu,Effective portion of a hedge of a net investment in a foreign operation,Wirksamer Teil des Schutzes von Netto - Auslandsinvestitionen,00,1
+61,81,b081,ZADRŽANA DOBIT ILI PRENESENI GUBITAK (AOP 082-083),PROFIT RETAINED OR LOSS CARRIED FORWARD (EDV082 - 083),EINBEHALTENER GEWINN ODER VERLUSTVORTRAG (EDP 082 - 083),00,1
+61,82,b082,Zadržana dobit,Retained profit,Ergebnisvortrag,00,1
+61,83,b083,Preneseni gubitak,Accumulated loss brougth forward,Verlustübertrag,00,1
+61,84,b084,DOBIT ILI GUBITAK POSLOVNE GODINE (AOP 085-086),PROFIT OR LOSS OF THE BUSINESS YEAR (EDV 085 - 086),GEWINN ODER VERLUST DES GESHÄFTSJAHRES (EDP085 - 086),00,1
+61,85,b085,Dobit poslovne godine,Business year profit,GEWINN DES GESCHÄFTSJAHRES,00,1
+61,86,b086,Gubitak poslovne godine,Business year loss,VERLUST DES GESCHÄFTSJAHRES,00,1
+61,87,b087,MANJINSKI (NEKONTROLIRAJUĆI) INTERES,MINORITY INTEREST,ANTEILE ANDERER GESELLSCHAFTER,00,1
+61,88,b088,REZERVIRANJA (AOP 089 do 094),PROVISIONS (EDV 089 to 094),RÜCKSTELLUNGEN (EDP 089 bis 094),00,1
+61,89,b089,"Rezerviranja za mirovine, otpremnine i slične obveze","Provisions for pensions, severance pays and similar liabilities","Rückstellungen für Pensionen, Abfindungen und ähnliche Verpflichtungen",00,1
+61,90,b090,Rezerviranja za porezne obveze,Provisions for tax liabilities,Rückstellungen für Steuerverbindlichkeiten,00,1
+61,91,b091,Rezerviranja za započete sudske sporove,Provisions for commenced litigation,Rückstellungen für anhängige Gerichtsverfahren,00,1
+61,92,b092,Rezerviranja za troškove obnavljanja prirodnih bogatstava,Provisions for costs of restoration of natural resources,Rückstellungen für Kosten der Erneuerung von Naturressourcen,00,1
+61,93,b093,Rezerviranja za troškove u jamstvenim rokovima,Provisions for costs within warranty periods,Rückstellungen für Kosten innerhalb der Gewährleistungsfristen,00,1
+61,94,b094,Druga rezerviranja,Other provisions,Sonstige Rückstellungen,00,1
+61,95,b095,DUGOROČNE OBVEZE (AOP 096 do 106),NON - CURRENT LIABILITIES (EDV 096 to 106),LANGFRISTIGE VERBINDLICHKEITEN (EDP 096 bis 106),00,1
+61,96,b096,Obveze prema poduzetnicima unutar grupe,Liabilities towards entities within a group,Verbindlichkeiten gegenüber verbundenen Unternehmen,00,1
+61,97,b097,"Obveze za zajmove, depozite i slično poduzetnika unutar grupe","Loan, deposit etc. liabilities of entities within a group","Verbindlichkeiten für Darlehen, Einlagen und dgl. verbundener Unternehmen",00,1
+61,98,b098,Obveze prema društvima povezanim sudjelujućim interesom,Liabilities towards companies linked by virtue of participating interest,"Verbindlichkeiten gegenüber Gesellschaften, mit denen ein Beteiligungsverhältnis besteht",00,1
+61,99,b099,"Obveze za zajmove, depozite i slično društava povezanih sudjelujućim interesom","Loan, deposit etc. liabilities of companies linked by virtue of participating interest","Verbindlichkeiten für Darlehen, Einlagen und dgl. von Gesellschaften, mit denen ein Beteiligungsverhältnis besteht",00,1
+61,100,b100,"Obveze za zajmove, depozite i slično","Liabilities for loans, deposit and similar","Verbindlichkeit gegenüber Darlehen, Depositen und Ähnlichem",00,1
+61,101,b101,Obveze prema bankama i drugim financijskim institucijama,Liabilities payable to banks and other financial institutions,Verbindlichkeiten gegenüber Banken und anderen Finanzinstitutionen,00,1
+61,102,b102,Obveze za predujmove,Liabilities out of prepayments,Verbindlichkeiten aus Vorschüssen,00,1
+61,103,b103,Obveze prema dobavljačima,Accounts payables,Verbindlichkeiten aus Lieferungen,00,1
+61,104,b104,Obveze po vrijednosnim papirima,Liabilities payable for securities,Verbindlichkeiten aus Wechseln,00,1
+61,105,b105,Ostale dugoročne obveze,Other long - term liabilities,Sonstige langfristige Verbindlichkeiten,00,1
+61,106,b106,Odgođena porezna obveza,Deferred tax liabilities,Latente Steuerpflicht,00,1
+61,107,b107,KRATKOROČNE OBVEZE (AOP 108 do 121),CURRENT LIABILITIES (EDV 108 to 121),KURZFRISTIGE VERBINDLICHKEITEN (EDP 108 to 121),00,1
+61,108,b108,Obveze prema poduzetnicima unutar grupe,Liabilities towards entities within a group,Verbindlichkeiten gegenüber verbundenen Unternehmen,00,1
+61,109,b109,"Obveze za zajmove, depozite i slično poduzetnika unutar grupe","Loan, deposit etc. liabilities of entities within a group","Verbindlichkeiten für Darlehen, Einlagen und dgl. verbundener Unternehmen",00,1
+61,110,b110,Obveze prema društvima povezanim sudjelujućim interesom,Liabilities towards companies linked by virtue of participating interest,"Verbindlichkeiten gegenüber Gesellschaften, mit denen ein Beteiligungsverhältnis besteht",00,1
+61,111,b111,"Obveze za zajmove, depozite i slično društava povezanih sudjelujućim interesom","Loan, deposit etc. liabilities of companies linked by virtue of participating interest","Verbindlichkeiten für Darlehen, Einlagen und dgl. von Gesellschaften, mit denen ein Beteiligungsverhältnis besteht",00,1
+61,112,b112,"Obveze za zajmove, depozite i slično","Liabilities payable for loans, deposit and similar","Verbindlichkeit aus Darlehen, Depositen und Ähnlichem",00,1
+61,113,b113,Obveze prema bankama i drugim financijskim institucijama,Liabilities payable to banks and other financial institutions,Verbindlichkeiten gegenüber Banken und anderen Finanzinstitutionen,00,1
+61,114,b114,Obveze za predujmove,Liabilities out of prepayments,Verbindlichkeiten aus Vorschüssen,00,1
+61,115,b115,Obveze prema dobavljačima,Accounts payables,Verbindlichkeiten aus Lieferungen,00,1
+61,116,b116,Obveze po vrijednosnim papirima,Liabilities payable for securities,Verbindlichkeiten aus Wechseln,00,1
+61,117,b117,Obveze prema zaposlenicima,Liabilities to employees,Verbindlichkeiten gegenüber Mitarbeitern,00,1
+61,118,b118,"Obveze za poreze, doprinose i sličana davanja","Liabilities payable for taxes, contributions and similar duties","Verbindlichkeiten aus Steuern, Beiträgen und ähnlichen Abgaben",00,1
+61,119,b119,Obveze s osnove udjela u rezultatu,Liabilities payable based on share in operating result,Verbindlichkeiten im Zusammenhang mit dem Anteil im Ergebnis,00,1
+61,120,b120,Obveze po osnovi dugotrajne imovine namijenjene prodaji,Liabilities payable based on fixed assets intended for sales,Verbindlichkeiten im Zusammenhang mit zur Veräußerung gehaltenen langfristigen Vermögenswerten,00,1
+61,121,b121,Ostale kratkoročne obveze,Other short - term liabilities,Sonstige kurzfristige Verbindlichkeiten,00,1
+61,122,b122,ODGOĐENO PLAĆANJE TROŠKOVA I PRIHOD BUDUĆEGA RAZDOBLJA,DEFERRED PAYMENT FOR EXPENSES AND FUTURE PERIOD INCOME,LATENTE BEZAHLUNG VON AUFWÄNDEN UND ERTRÄGE IM ZUKÜNFTIGER PERIODE,00,1
+61,123,b123,UKUPNO – PASIVA (AOP 067+088+095+107+122),TOTAL - LIABILITIES (EDV 067 + 088 + 095 + 107 + 122),SUMME DER PASSIVA (EDP 067 + 088 + 095 + 107 + 122),00,1
+61,124,b124,IZVANBILANČNI ZAPISI,OFF - BALANCE ENTRIES,AUßERBILANZIELLER POSTEN,00,1
+61,125,b125,POSLOVNI PRIHODI (AOP 126 do 130),OPERATING INCOME (EDV 126 to 130),BETRIEBSERTRÄGE (EDP 126 bis 130),00,1
+61,126,b126,Prihodi od prodaje s poduzetnicima unutar grupe,Sales proceeds from entities within a group,Umsatzerlöse mit verbundenen Unternehmen,00,1
+61,127,b127,Prihodi od prodaje (izvan grupe),Sales income (outside the group),Umsatzerlöse (außerhalb Gruppen),00,1
+61,128,b128,"Prihodi na temelju upotrebe vlastitih proizvoda, robe i usluga","Income based on use of own products, goods and services","Erträge aus Verwendung eigener Erzeugnisse, Waren und Dienstleistungen",00,1
+61,129,b129,Ostali poslovni prihodi s poduzetnicima unutar grupe,Other business proceeds from entities within a group,Sonstige Geschäftserträge mit verbundenen Unternehmen,00,1
+61,130,b130,Ostali poslovni prihodi (izvan grupe),Other operating income (outside the group),Sonstige Betriebserträge (außerhalb Gruppen),00,1
+61,131,b131,POSLOVNI RASHODI (AOP 132+133+137+141+142+143+146+153),OPERATING EXPENSES (EDV 132 + 133 + 137 + 141 + 142 + 143 + 146 + 153),BETRIEBSAUFWÄNDE (EDP 132 + 133 + 137 + 141 + 142 + 143 + 146 + 153),00,1
+61,132,b132,Promjene vrijednosti zaliha proizvodnje u tijeku i gotovih proizvoda,Changes to value of current production and finished product inventories,"Änderungen des Wertes der Vorräte der Produktion, die im Gange ist, und der Fertigprodukte",00,1
+61,133,b133,Materijalni troškovi (AOP 134 do 136),Material costs (EDV 134 to 136),Materialaufwände (EDP 134 bis 136),00,1
+61,134,b134,Troškovi sirovina i materijala,Cost of raw materials and materials,Rohstoffe und Materialaufwände,00,1
+61,135,b135,Troškovi prodane robe,Cost of sales,Umsatzkosten,00,1
+61,136,b136,Ostali vanjski troškovi,Other external costs,Sonstige Fremdkosten,00,1
+61,137,b137,Troškovi osoblja (AOP 138 do 140),Staff cost (EDV 138 to 140),Personalaufwände (EDP 138 bis 140),00,1
+61,138,b138,Neto plaće i nadnice,Net salaries and wages,Nettogehälter und - Löhne,00,1
+61,139,b139,Troškovi poreza i doprinosa iz plaća,Contributions and taxes from salary,Aufwände von Steuern und Arbeitnehmeranteilen,00,1
+61,140,b140,Doprinosi na plaće,Contributions on salary,Arbeitgeberanteile,00,1
+61,141,b141,Amortizacija,Depreciation,Abschreibung,00,1
+61,142,b142,Ostali troškovi,Other costs,Sonstige Aufwände,00,1
+61,143,b143,Vrijednosna usklađenja (AOP 144+145),Value reconciliation (EDV 144 + 145),Wertberichtigung (EDP 144 + 145),00,1
+61,144,b144,dugotrajne imovine osim financijske imovine,fixed assets (apart from financial assets),von Anlagevermögen (außer Finanzvermögen),00,1
+61,145,b145,kratkotrajne imovine osim financijske imovine,current assets (apart from financial assets),von Umlaufvermögen (außer Finanzvermögen),00,1
+61,146,b146,Rezerviranja (AOP 147 do 152),Provisions (EDV 147 to 152),Rückstellungen (EDP 147 bis 152),00,1
+61,147,b147,"Rezerviranja za mirovine, otpremnine i slične obveze","Provisions for pensions, severance pays and similar liabilities","Rückstellungen für Pensionen, Abfindungen und ähnliche Verpflichtungen",00,1
+61,148,b148,Rezerviranja za porezne obveze,Provisions for tax liabilities,Rückstellungen für Steuerverbindlichkeiten,00,1
+61,149,b149,Rezerviranja za započete sudske sporove,Provisions for commenced litigation,Rückstellungen für anhängige Gerichtsverfahren,00,1
+61,150,b150,Rezerviranja za troškove obnavljanja prirodnih bogatstava,Provisions for costs of restoration of natural resources,Rückstellungen für Kosten der Erneuerung von Naturressourcen,00,1
+61,151,b151,Rezerviranja za troškove u jamstvenim rokovima,Provisions for costs within warranty periods,Rückstellungen für Kosten innerhalb der Gewährleistungsfristen,00,1
+61,152,b152,Druga rezerviranja,Other provisions,Sonstige Rückstellungen,00,1
+61,153,b153,Ostali poslovni rashodi,Other operating expenses,Sonstige Betriebsaufwände,00,1
+61,154,b154,FINANCIJSKI PRIHODI (AOP 155 do 164),FINANCIAL INCOME (EDV 155 to 164),FINANZERTRÄGE (EDP 155 bis 164),00,1
+61,155,b155,Prihodi od ulaganja u udjele (dionice) poduzetnika unutar grupe,Proceeds from investment in shares (stocks) of entities within a group,Erträge aus Investitionen in Anteile (Aktien) verbundener Unternehmen,00,1
+61,156,b156,Prihodi od ulaganja u udjele (dionice) društava povezanih sudjelujućim interesima,Proceeds from investment in shares (stocks) companies linked by virtue of participating interest,"Erträge aus Investitionen in Anteile (Aktien) von Gesellschaften, mit denen ein Beteiligungsverhältnis besteht",00,1
+61,157,b157,Prihodi od ostalih dugotrajnih financijskih ulaganja i zajmova poduzetnicima unutar grupe,"Proceeds from other long - term financial investments and loans
+to entities within a group",Erträge aus sonstigen langfristigen Finanzinvestitionen und Darlehen an verbundene Unternehmen,00,1
+61,158,b158,Ostali prihodi s osnove kamata iz odnosa s poduzetnicima unutar grupe,Other proceeds from interests from relationships with entities within a group,Sonstige Zinserträge aus Beziehungen mit verbundenen Unternehmen,00,1
+61,159,b159,Tečajne razlike i ostali financijski prihodi iz odnosa s poduzetnicima unutar grupe,Foreign exchange differences and other financial proceeds from relationships with entities within a group,Währungskursdifferenzen und sonstige Finanzerträge aus Beziehungen mit verbundenen Unternehmen,00,1
+61,160,b160,Prihodi od ostalih dugotrajnih financijskih ulaganja i zajmova,Proceeds from other long - term financial investments and loans,Erträge aus sonstigen langfristigen Finanzinvestitionen und Darlehen,00,1
+61,161,b161,Ostali prihodi s osnove kamata,Other proceeds from interests,Sonstige Zinserträge,00,1
+61,162,b162,Tečajne razlike i ostali financijski prihodi,Foreign exchange differences and other financial proceeds,Währungskursdifferenzen und sonstige Finanzerträge,00,1
+61,163,b163,Nerealizirani dobici (prihodi) od financijske imovine,Unrealised gain (income),Nicht realisierter Gewinn (Erträge),00,1
+61,164,b164,Ostali financijski prihodi,Other financial income,Sonstiger Finanzerträge,00,1
+61,165,b165,FINANCIJSKI RASHODI (AOP 166 do 172),FINANCIAL EXPENSES (EDV 166 to 172),FINANZAUFWÄNDE (EDP 166 bis 172),00,1
+61,166,b166,Rashodi s osnove kamata i slični rashodi s poduzetnicima unutar grupe,Interest expense and similar expenses from entities within a group,Zinsaufwendungen und ähnliche Aufwendungen mit verbundenen Unternehmen,00,1
+61,167,b167,Tečajne razlike i drugi rashodi s poduzetnicima unutar grupe,Foreign exchange differences and other expenses of entities within a group,Währungskursdifferenzen und sonstige Aufwendungen mit verbundenen Unternehmen,00,1
+61,168,b168,Rashodi s osnove kamata i slični rashodi,Interest expense and similar expenses,Zinsaufwendungen und ähnliche Aufwendungen,00,1
+61,169,b169,Tečajne razlike i drugi rashodi,Foreign exchange differences and other expenses,Währungskursdifferenzen und sonstige Aufwendungen,00,1
+61,170,b170,Nerealizirani gubici (rashodi) od financijske imovine,Unrealised losses (expenses) of financial assets,Nicht realisierter Verlust (Aufwände) des Finanzvermögens,00,1
+61,171,b171,Vrijednosna usklađenja financijske imovine (neto),Value adjustments of financial assets (net),Wertberichtigungen auf Finanzanlagen (netto),00,1
+61,172,b172,Ostali financijski rashodi,Other financial expenses,Sonstige Finanzaufwände,00,1
+61,173,b173,UDIO U DOBITI OD DRUŠTAVA POVEZANIH SUDJELUJUĆIM INTERESOM,SHARE IN PROFIT OF COMPANIES LINKED BY VIRTUE OF PARTICIPATING INTEREST,"GEWINNANTEIL BEI GESELLSCHAFTEN, MIT DENEN EIN BETEILIGUNGSVERHÄLTNIS BESTEHT",00,1
+61,174,b174,UDIO U DOBITI OD ZAJEDNIČKIH POTHVATA,SHARE IN JOINT VENTURES' PROFIT,GEWINNANTEIL BEI JOINT VENTURES,00,1
+61,175,b175,UDIO U GUBITKU OD DRUŠTAVA POVEZANIH SUDJELUJUĆIM INTERESOM,SHARE IN LOSS OF COMPANIES LINKED BY VIRTUE OF PARTICIPATING INTEREST,"VERLUSTANTEIL BEI GESELLSCHAFTEN, MIT DENEN EIN BETEILIGUNGSVERHÄLTNIS BESTEHT",00,1
+61,176,b176,UDIO U GUBITKU OD ZAJEDNIČKIH POTHVATA,SHARE IN JOINT VENTURES LOSS,VERLUSTANTEIL BEI JOINT VENTURES,00,1
+61,177,b177,UKUPNI PRIHODI (AOP 125+154+173 + 174),TOTAL INCOME (EDV 125 + 154 + 173 + 174),GESAMTERTRÄGE (EDP 125 + 154 + 173 + 174),00,1
+61,178,b178,UKUPNI RASHODI (AOP 131+165+175 + 176),TOTAL EXPENSES (EDV 131 + 165 + 175 + 176),GESAMTERTRÄGE (EDP 131 + 165 + 175 + 176),00,1
+61,179,b179,DOBIT ILI GUBITAK PRIJE OPOREZIVANJA (AOP 177-178),PROFIT OR LOSS BEFORE TAXES (EDV 177 - 178),GEWINN ODER VERLUST VOR STEUER (EDP 177 - 178),00,1
+61,180,b180,Dobit prije oporezivanja (AOP 177-178),Profit before taxation (EDV 177 - 178),Gewinn vor abzug der steuern (EDP 177 - 178),00,1
+61,181,b181,Gubitak prije oporezivanja (AOP 178-177),Loss before taxation (EDV 178 - 177),Verlust vor abzug der steuern (EDP 178 - 177),00,1
+61,182,b182,POREZ NA DOBIT,CORPORATE INCOME TAX,GEWINNSTEUER,00,1
+61,183,b183,DOBIT ILI GUBITAK RAZDOBLJA (AOP 179-182),PERIODS PROFIT OR LOSS (EDV 179 - 182),GEWINN ODER VERLUST DES ZEITRAUMS (EDP 179 - 182),00,1
+61,184,b184,Dobit razdoblja (AOP 179-182),WILL PERIOD PROFIT (EDV 179 - 182),GEWINN IM ZEITRAUM (EDP 179 - 182),00,1
+61,185,b185,Gubitak razdoblja (AOP 182-179),Period loss (EDV 182 - 179),VERLUST IM ZEITRAUM (EDP 182 - 179),00,1
+61,186,b186,DOBIT ILI GUBITAK PREKINUTOG POSLOVANJA PRIJE OPOREZIVANJA (AOP 187-188),PROFIT OR LOSS FROM DISCONTINUED OPERATION BEFORE TAXATION (EDP 187 - 188),GEWINN ODER VERLUST VOR STEUERN BEI STILLLEGUNG DES GESCHÄFTSBETRIEBS (EDV 187 - 188),00,1
+61,187,b187,Dobit prekinutog poslovanja prije oporezivanja,Profit from discontinued operation before taxation,Gewinn vor Steuern bei Stilllegung des Geschäftsbetriebs,00,1
+61,188,b188,Gubitak prekinutog poslovanja prije oporezivanja,Loss from discontinued operation before taxation,Verlust vor Steuern bei Stilllegung des Geschäftsbetriebs,00,1
+61,189,b189,POREZ NA DOBIT PREKINUTOG POSLOVANJA,INCOME TAX FOR DISCONTINUED OPERATION,GEWINNSTEUER BEI STILLLEGUNG DES GESCHÄFTSBETRIEBS,00,1
+61,190,b190,Dobit prekinutog poslovanja za razdoblje (AOP 186-189),Profit from discontinued operation for the period (EDP 186 - 189),Jahresmehrbetrag bei Stilllegung des Geschäftsbetriebs (EDV 186 - 189),00,1
+61,191,b191,Gubitak prekinutog poslovanja za razdoblje (AOP 189-186),Loss from discontinued operation for the period (EDP 189 - 186),Jahresfehlbetrag bei Stilllegung des Geschäftsbetriebs (EDV 189 - 186),00,1
+61,192,b192,DOBIT ILI GUBITAK PRIJE OPOREZIVANJA (AOP 179+186),PROFIT OR LOSS BEFORE TAXES (EDV 179 + 186),GEWINN ODER VERLUST VOR STEUER (EDP 179 + 186),00,1
+61,193,b193,Dobit prije oporezivanja (AOP 192),Profit before taxation (EDV 192),Gewinn vor abzug der steuern (EDP 192),00,1
+61,194,b194,Gubitak prije oporezivanja (AOP 192),Loss before taxation (EDV 192),Verlust vor abzug der steuern (EDP 192),00,1
+61,195,b195,POREZ NA DOBIT (AOP 182+189),PROFIT TAX (EDV 182 + 189),GEWINNSTEUER (EDP182 + 189),00,1
+61,196,b196,DOBIT ILI GUBITAK RAZDOBLJA (AOP 192-195),PERIODS PROFIT OR LOSS (EDV 192 - 195),GEWINN ODER VERLUST DES ZEITRAUMS (EDP 192 - 195),00,1
+61,197,b197,Dobit razdoblja (AOP 192-195),WILL PERIOD PROFIT (EDV 192 - 195),GEWINN IM ZEITRAUM (EDP 192 - 195),00,1
+61,198,b198,Gubitak razdoblja (AOP 195-192),PERIOD LOSS (EDV 195 - 192),VERLUST IM ZEITRAUM (EDP 195 - 192),00,1
+61,199,b199,DOBIT ILI GUBITAK RAZDOBLJA (AOP 200+201),PERIODS PROFIT OR LOSS (EDV 200 + 201),GEWINN ODER VERLUST DES ZEITRAUMS (EDP 200 + 201),00,1
+61,200,b200,Pripisana imateljima kapitala matice,Ascribed to parent company capital holders,der den Kapitalinhabern des Mutterunternehmens zusteht,00,1
+61,201,b201,Pripisana manjinskom (nekontrolirajućem) interesu,Attributed to minority interest,der dem Minderheitsinteresse zusteht,00,1
+61,202,b202,DOBIT ILI GUBITAK RAZDOBLJA,PERIOD S PROFIT OR LOSS,GEWINN ODER VERLUST DES ZEITRAUMS,00,1
+61,203,b203,OSTALA SVEOBUHVATNA DOBIT/GUBITAK PRIJE POREZA (AOP 204 do 211),OTHER OVERALL PROFIT/LOSS BEFORE TAXES (EDV 204 to 211),SONSTIGER GESAMTGEWINN/VERLUST VOR STEUER (EDP 204 bis 211),00,1
+61,204,b204,Tečajne razlike iz preračuna inozemnog poslovanja,Exchange rate differences from foreign operations conversion,Währungskursdifferenzen und sonstige Finanzerträge aus Beziehungen mit verbundenen Unternehmen,00,1
+61,205,b205,Promjene revalorizacijskih rezervi dugotrajne materijalne i nematerijalne imovine,Changes to non - current asset revaluation reserve,Änderungen der Neubewertungsrücklagen des materiellen und immateriellen Anlagevermögens,00,1
+61,206,b206,Dobit ili gubitak s osnove naknadnog vrednovanja financijske imovine raspoložive za prodaju,Profit or loss based on revaluation of financial assets,Gewinn oder Verlust auf der Grundlage der Neubewertung des zum Verkauf stehenden Finanzvermögens,00,1
+61,207,b207,Dobit ili gubitak s osnove učinkovite zaštite novčanih tokova,Profit or loss based on efficient cash flow protection,Gewinn oder Verlust auf der Grundlage des effizienten Schutzes des Geldverkehrs,00,1
+61,208,b208,Dobit ili gubitak s osnove učinkovite zaštite neto ulaganja u inozemstvu,Profit or loss based on efficient net foreign investment protection,Gewinn oder Verlust auf der Grundlage des effizienten Schutzes der Netto - Investitionen im Ausland,00,1
+61,209,b209,Udio u ostaloj sveobuhvatnoj dobiti/gubitku društava povezanih sudjelujućim interesom,Share in other affiliates overall profit/loss,Anteil am sonstigen Gesamtgewinn/ - verlust verbundener Unternehmen,00,1
+61,210,b210,Aktuarski dobici/gubici po planovima definiranih primanja,Actuary gain/loss under defined income plans,Versicherungsmathematische Gewinne/Verluste nach Plänen der festgelegten Einnahmen,00,1
+61,211,b211,Ostale nevlasničke promjene kapitala,Other non - owner changes in equity,Andere nicht - Veränderungen des Eigenkapitals,00,1
+61,212,b212,POREZ NA OSTALU SVEOBUHVATNU DOBIT RAZDOBLJA,INCOME TAX FOR DISCONTINUED OPERATION,GEWINNSTEUER BEI STILLLEGUNG DES GESCHÄFTSBETRIEBS,00,1
+61,213,b213,NETO OSTALA SVEOBUHVATNA DOBIT ILI GUBITAK (AOP 203-212),OTHER NET OVERALL PROFIT OR LOSS (EDV 203 - 212),SONSTIGER GESAMTGEWINN ODER - VERLUST DES ZEITRAUMS - NETTO (EDP 203 - 212),00,1
+61,214,b214,SVEOBUHVATNA DOBIT ILI GUBITAK RAZDOBLJA (AOP 202+213),OVERALL PROFIT OR LOSS OF THE PERIOD (EDV 202 + 213),GESAMTGEWINN ODER - VERLUST DES ZEITRAUMS (EDP 202 + 213),00,1
+61,215,b215,SVEOBUHVATNA DOBIT ILI GUBITAK RAZDOBLJA (AOP 216+217),OVERALL PROFIT OR LOSS OF THE PERIOD (EDV 216 + 217),GESAMTGEWINN ODER - VERLUST DES ZEITRAUMS (EDP 216 + 217),00,1
+61,216,b216,Pripisana imateljima kapitala matice,Attributed to parent company capital holders,der den Kapitalinhabern des Mutterunternehmens zusteht,00,1
+61,217,b217,Pripisana manjinskom (nekontrolirajućem) interesu,Attributed to minority interest,der dem Minderheitsinteresse zusteht,00,1
+61,218,b218,"Zalihe energetskih proizvoda (ugljen, nafta, derivati, plin i dr.) - bruto","Stocks of energy products (coal, oil, derivatives, gas etc.) - gross","Rückstellungen von Energieprodukten (Kohl, Erdöl, Derivate, Gas und sonstige) - Brutto",00,1
+61,219,b219,Zajmovi dani kućanstvima i obrtima,Loans to households and trades,Gewährte Darlehen an Haushalte und Einzelunternehmen,00,1
+61,220,b220,Zajmovi dani nefinancijskim poduzećima,Loans to non - financial entities,Gewährte Darlehen an nichtfinanzielle Unternehmen,00,1
+61,221,b221,Zajmovi dani nerezidentima,Loans to non - residents,Gewährte Darlehen an Gebietsfremde,00,1
+61,222,b222,Trgovački krediti i predujmovi dani kućanstvima i obrtima,Trade credits and advances to households and trades,Gewährte Handelskredite und Anzahlungen an Haushalte und Einzelunternehmen,00,1
+61,223,b223,Trgovački krediti i predujmovi dani nefinancijskim poduzećima,Trade credits and advances to non - financial entities,Gewährte Handelskredite und Anzahlungen an nichtfinanzielle Unternehmen,00,1
+61,224,b224,Trgovački krediti i predujmovi dani nerezidentima,Trade credits and advances to non - residents,Gewährte Handelskredite und Anzahlungen an Gebietsfremde,00,1
+61,225,b225,Krediti i zajmovi primljeni od nerezidenata,Loans received from non - residents,Darlehen von Nichtansässigen,00,1
+61,226,b226,Zajmovi primljeni od kućanstva i obrta,Loans from households and trades,Erhaltene Darlehen von Haushalten und Einzelunternehmen,00,1
+61,227,b227,Zajmovi primljeni od nefinancijskih poduzeća,Loans from non - financial entities,Erhaltene Darlehen von nichtfinanziellen Unternehmen,00,1
+61,228,b228,Trgovački krediti i predujmovi primljeni od kućanstva i obrta,Trade credits and advances from households and trades,Erhaltene Handelskredite und Anzahlungen von Haushalten und Einzelunternehmen,00,1
+61,229,b229,Trgovački krediti i predujmovi primljeni od nefinancijskih poduzeća,Trade credits and advances from non - financial entities,Erhaltene Handelskredite und Anzahlungen von nichtfinanziellen Unternehmen,00,1
+61,230,b230,"Prihodi od prodaje s poduzetnicima unutar grupe, rezidentima RH","Sales proceeds from entities within a group, residents of the Republic of Croatia",Umsatzerlöse mit in Kroatien ansässigen verbundenen Unternehmen,00,1
+61,231,b231,Prihod od industrijskih djelatnosti,Revenue from industrial activities,Ertrag von der Industrietätigkeit,00,1
+61,232,b232,Prihod od trgovine (prodaje roba i usluga nabavljenih isključivo za daljnju prodaju i trgovačkih usluga) - ukupni,Goods and service sales revenue (acquired only for reselling) and trade service sales revenue,Ertrag vom Verkauf von Waren und Dienstleistungen (die besorgt sind ausschließlich für den Weiterkauf) und Handelsdienstleistungen,00,1
+61,233,b233,"Prihod od trgovine ostvaren s poduzetnicima unutar grupe, rezidentima RH","Goods and service sales revenue from entities within a group, residents of the Republic of Croatia",Ertrag vom Verkauf mit in Kroatien ansässigen verbundenen Unternehmen,00,1
+61,234,b234,Prihod od posredništva (provizija od posredovanja),Mediation revenue (commission),Ertrag von Vermittlungen (Provision),00,1
+61,235,b235,Prihod od građevinske djelatnosti - radova na zgradama,Construction activity revenue - revenue from works on apartment and business buildings,Ertrag von Bautätigkeiten - Arbeit an Gebäuden,00,1
+61,236,b236,Prihod od građevinske djelatnosti - radova na ostalim građevinama,"Construction activity revenue - revenue from works on other 
+buildings",Ertrag von Bautätigkeiten - Arbeit an sonstigen Bauwerken,00,1
+61,237,b237,Prihod od građevinske djelatnosti kao podugovaratelj (podizvođač),Revenue from construction activities realised as a subcontractor,Ertrag von Bautätigkeiten als Unterlieferant,00,1
+61,238,b238,"Prihod od poljoprivrede, šumarstva i ribarstva","Revenue from agriculture, forestry and fishery","Ertrag von Landwirtschaft, Waldwirtschaft und Fischerei",00,1
+61,239,b239,Prihodi od djelatnosti pružanja smještaja te pripreme i usluživanja hrane i pića,Revenue from hotel and restaurants business,Ertrag vom Hotel - und Gaststättengewerbe,00,1
+61,240,b240,"Prihod od djelatnosti prijevoza i skladištenja, izdavačkih, filmskih, telekomunikacijskih, informacijskih i djelatnosti računalnog programiranja te emitiranja programa","Revenue from transport industry, warehousing and connections","Ertrag von Verkehr, Einlagerung und Verbindungen",00,1
+61,241,b241,"Prihod od ostalih djelatnosti (financija, osiguranja, nekretnina, inženjerstva, znanosti, promidžbe, putničkih agencija, obrazovanja, zdravstva, umjetnosti i dr. prema uputama)",Revenue from other activities (scope according to instructions),Ertrag von sonstigen Tätigkeiten (Umfang nach Anweisungen),00,1
+61,242,b242,Prihodi od prodaje u zemlji,Domestic sales revenues,Erträge vom Inlandsumsatz,00,1
+61,243,b243,Prihodi od prodaje u inozemstvu,Foreign sales revenues,Erträge vom Auslandsumsatz,00,1
+61,244,b244,Kapitalizirana proizvodnja za vlastite potrebe,Capitalized production for own requirements,Kapitalisierte Produktion für den Eigenbedarf,00,1
+61,245,b245,"Ostali poslovni prihodi ostvareni s poduzetnicima unutar grupe, rezidentima RH","Other business proceeds from entities within a group, residents of the Republic of Croatia",Sonstige Geschäftserträge mit in Kroatien ansässigen verbundenen Unternehmen,00,1
+61,246,b246,Prihodi od subvencija ukupno,Total proceeds from subsidies,Erträge aus Subventionen insgesamt,00,1
+61,247,b247,u tome: subvencije na proizvode,including: subsidies on products,davon: Subventionen auf Erzeugnisse,00,1
+61,248,b248,"Prihodi od poslovnog najma nekretnina, opreme i slično",Revenues from business property and equipment leasing etc.,"Erträge von Geschäftsmiete von Immobilien, Ausstattung und Ähnliches",00,1
+61,249,b249,"Prihodi od najma zemljišta i prihodi od tantijema za iskorištavanje nafte, plina i drugih prirodnih dobara","Land lease revenues and income from royalties for utilization of 
+oil, gas and other natural resources","Erträge von der Landmiete und Erträg von Tantiemen für die Ausnutzung vom Erdöl, Gas und anderen Waren",00,1
+61,250,b250,Prihodi od ukidanja dugoročnih rezerviranja,Revenue from termination of long - term provisions,Kapitalisierte Produktion für den Eigenbedarf,00,1
+61,251,b251,"Troškovi prodane robe s poduzetnicima unutar grupe, rezidentima RH","Costs of sold goods to entities within a group, residents of the Republic of Croatia",Wareneinsatz mit in Kroatien ansässigen verbundenen Unternehmen,00,1
+61,252,b252,Troškovi energije,Energy costs,Energiekosten,00,1
+61,253,b253,"Tekući izdaci za odvoz i zbrinjavanje otpada, odvodnju i tretman otpadnih voda te ostali tekući izdaci za zaštitu okoliša",Current expenditures for environmental protection,Laufende Umweltschutz - Ausgaben,00,1
+61,254,b254,"Troškovi robe i usluga nabavljenih za daljnju prodaju, a uključenih u vlastite proizvode i/ili usluge","Cost of goods and services acquired for resale, and included in own products and/or services","Kosten der zum Weiterkauf beschaffener Waren und Dienstleistung, die einbegriffen sind in die eigenen Produkte und/oder Dienstleistungen",00,1
+61,255,b255,Troškovi usluga podugovaratelja za industrijsku robu i usluge,Subcontractor service costs for industrial goods and services,Kosten für Dienstleistungen des Unterlieferanten für Industriewaren und - Dienstleistungen,00,1
+61,256,b256,Troškovi usluga podugovaratelja (podizvođača) za građevinske radove,Subcontractor service costs for construction works,Kosten für Dienstleistungen des Unterlieferanten für Bauarbeiten,00,1
+61,257,b257,Troškovi usluga investicijskog održavanja,Investment maintenance service costs,Kosten für Dienstleistungen der Anlagenerhaltung,00,1
+61,258,b258,Troškovi usluga dugoročnog i operativnog leasinga materijalne imovine,Tangible property long - term and operational leasing service costs,Kosten für Dienstleistungen vom langfristigen und betriebsbereiten Sachanlagen - Leasing,00,1
+61,259,b259,Izdaci za bruto autorske honorare i ugovore o djelu samo za fizičke osobe koje nemaju registriranu djelatnost,Expenses for gross author s fees and contracts of service solely for natural persons who do not have registered businesses,Ausgaben für Brutto - Autorenhonorare und Werkverträge nur für natürliche Personen ohne registrierte Tätigkeit,00,1
+61,260,b260,Izdaci za rad ostvaren preko studentskih i učeničkih servisa,Expenses for work realised through student employment agencies,Ausgaben für die durch Studenten - und Schülerservice realisierte Arbeit,00,1
+61,261,b261,Troškovi agencijskih radnika,Agency workers costs,Kosten für Agenturangestellte,00,1
+61,262,b262,Premije osiguranja (bruto),Insurance premiums (gross),Versicherungsprämien (Brutto),00,1
+61,263,b263,u tome: premije neživotnog osiguranja (bruto),including: non - life insurance premium (gross),davon: Nichtlebensversicherungsprämien (brutto),00,1
+61,264,b264,Porezi koji ne ovise o dobitku i pristojbe,Taxes which do not depend on profit and fees,"Steuern, die vom Gewinn unabhängig sind und Gebühren",00,1
+61,265,b265,Stipendije,Scholarships,Stipendien,00,1
+61,266,b266,Nadoknade članovima uprave,Board members compensations,Vergütung für Vorstandsmitglieder,00,1
+61,267,b267,"Nadoknade troškova, darovi i potpore zaposlenicima i primici u naravi","Reimbursement of costs, gifts and employee support, and benefits in kind","Auslagenvergütungen, Geschenke und Zuwendungen an Mitarbeiter und Sachbezüge",00,1
+61,268,b268,u tome: otpremnine,including: severance pays,davon: Abfertigungen,00,1
+61,269,b269,"Troškovi od najma zemljišta i plaćeni tantijemi za iskorištavanje nafte, plina i drugih prirodnih dobara","Land lease costs and royalties paid for utilization of oil, gas and other natural resources","Erträge von der Landmiete und bezahlte Tantiemen für die Ausnutzung vom Erdöl, Gas und anderen Waren",00,1
+61,270,b270,Vrijednosno usklađivanje zaliha sirovina i materijala,Value adjustment of raw and other materials stock,Wertberichtigung von Rücklagen von Rohstoffen und Materialien,00,1
+61,271,b271,Vrijednosno usklađivanje predujmova za zalihe,Value adjustment of prepayments for inventory,Wertberichtigung von Rücklagen der Vorschüsse für Vorräte,00,1
+61,272,b272,Vrijednosno usklađivanje zaliha trgovačke robe (robe i usluga nabavljenih za daljnju prodaju),Value adjustment of commodities stock (goods and services acquired for further sale),"Wertberichtigung von Rücklagen der Handelsware (Ware und Dienstleistungen, die besorgt sind für den Weiterkauf)",00,1
+61,273,b273,Uvoz u razdoblju,Import for the period,Einfuhr im Zeitraum,00,1
+61,274,b274,Prihodi s osnove kamata,Interest incomes (with affiliated and non - affiliated entrepreneurs and other persons),Zinsenerträge (mit verbunden und nicht verbundenen Unternehmern und anderen Personen),00,1
+61,275,b275,Prihodi od dividendi,Revenues from dividends,Dividendenerträge (mit verbunden und nicht verbundenen Unternehmern und anderen Personen),00,1
+61,276,b276,Prihodi od udjela u dobiti,Revenues from profit shares,Erträge von Gewinnanteilen,00,1
+61,277,b277,Rashodi s osnove kamata,Expense based on interest,Zinsaufwendungen,00,1
+61,278,b278,Bruto investicije u dugotrajnu materijalnu i nematerijalnu imovinu - ukupno (AOP 279 do 282),Gross investments in fixed and intangible assets - total,Investitionen in Sachanlagen und immaterielle Vermögensgegenstände - Gesamt,00,1
+61,279,b279,Bruto investicije u građevine,Gross investment in buildings,Bruttoinvestitionen in Bauwerke,00,1
+61,280,b280,Bruto investicije u strojeve i opremu,Gross investment in machines and equipment,Bruttoinvestitionen in Maschinen und Ausstattung,00,1
+61,281,b281,Bruto investicije u prijevozna sredstva,Gross investment in vehicles,Bruttoinvestitionen in Transportmittel,00,1
+61,282,b282,"Bruto investicije u ostalu materijalnu imovinu i nematerijalnu imovinu (biološka imovina, investicije u istraživanje i razvoj, softver, baze podataka i druga nematerijalna imovina)","Gross investment in other tangible assets and intangible assets (biological assets, investment in research and development, software, data bases and other intangible assets)","Bruttoinvestitionen in sonstige Sachanlagen und immaterielle Vermögensgegenstände (biologische Vermögensgegenstände, Investitionen in Forschung und Entwicklung, Software, Datenbanken und sonstige immaterielle Vermögensgegenstände)",00,1
+61,283,b283,Nabava zemljišta ukupno (građevinskog i negrađevinskog),Total land acquired (for construction and other purposes),Anschaffung von (bebaubaren und nicht bebaubaren) Grundstücken insgesamt,00,1
+61,284,b284,Bruto investicije samo u novu dugotrajnu imovinu,Gross investment only in new long - term assets,Bruttoinvestitionen ausschließlich in neues Anlagevermögen,00,1
+61,285,b285,"Bruto investicije u opremu, tehnologije, pogone i procese povezane sa zaštitom okoliša (za prevenciju, tretman i kontrolu zagađenja)","Gross investment in equipment, technologies, plants and processes related to environmental protection (for pollution prevention, treatment and control)","Brutto - Investitionen in Ausstattung, Technologien, Betriebe und Prozesse im Zusammenhang mit Umweltschutz (zur Vorbeugung, Behandlung und Kontrolle der Umweltverschmutzung)",00,1
+61,286,b286,"Bruto investicije u dugotrajnu materijalnu i nematerijalnu imovinu, stečenu od poduzetnika unutar grupe, rezidenata RH","Gross investment in fixed and intangible assets acquired by the entity within the group, residents of the Republic of Croatia","Bruttoinvestitionen in Sachanlagen und immaterielle Vermögensgegenstände, die von in Kroatien ansässigen verbundenen Unternehmen erworben wurden",00,1
+61,287,b287,"Broj neplaćenih osoba (neplaćeni obiteljski radnici, vlasnici bez ugovora o radu, volonteri, privremeno odsutne osobe kojima naknadu ne osigurava poslodavac i drugi prema uputama)","Number of unpaid persons (unpaid family workers, proprietors without contract of service, volunteers, persons on temporary leave who do not receive compensation from the employer nor others according to the regulations)","Anzahl nicht bezahlter Personen (nicht bezahlte Familienmitglieder, Inhaber ohne Arbeitsvertrag, Volontäre, vorübergehend abwesende Personen, deren Lohnfortzahlung nicht vom Arbeitgeber sichergestellt wird, und andere gemäß Anweisungen)",00,1
