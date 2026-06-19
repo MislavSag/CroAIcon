@@ -45,7 +45,9 @@ website:
   comments:
     giscus:
       repo: MislavSag/CroAIcon
+      repo-id: R_kgDOS_PHDw
       category: Announcements
+      category-id: DIC_kwDOS_PHD84C_eJi
       mapping: pathname
       reactions-enabled: true
       input-position: bottom
