@@ -4,12 +4,52 @@ project:
   render:
     - index.qmd
     - about.qmd
+    - podaci.qmd
+    - 404.qmd
     - posts/**/*.qmd
   preview:
     port: 4200
     browser: false
 
 lang: hr
+
+# Quarto bundles no Croatian locale, so override the visible UI strings.
+language:
+  toc-title-website: "Na ovoj stranici"
+  toc-title-document: "Sadržaj"
+  title-block-author-single: "Autor"
+  title-block-author-plural: "Autori"
+  title-block-published: "Objavljeno"
+  title-block-modified: "Promijenjeno"
+  repo-action-links-edit: "Uredi stranicu"
+  repo-action-links-source: "Izvor"
+  repo-action-links-issue: "Prijavi problem"
+  back-to-top: "Na vrh"
+  toggle-dark-mode: "Promijeni temu"
+  toggle-navigation: "Izbornik"
+  search-label: "Pretraži"
+  search-text-placeholder: "Pretraži"
+  search-no-results-text: "Nema rezultata"
+  search-matching-documents-text: "podudarni dokumenti"
+  search-clear-button-title: "Očisti"
+  search-detached-cancel-button-title: "Odustani"
+  search-submit-button-title: "Pretraži"
+  copy-button-tooltip: "Kopiraj"
+  copy-button-tooltip-success: "Kopirano!"
+  callout-note-title: "Napomena"
+  callout-tip-title: "Savjet"
+  callout-warning-title: "Upozorenje"
+  callout-important-title: "Važno"
+  callout-caution-title: "Oprez"
+  section-title-footnotes: "Bilješke"
+  section-title-references: "Literatura"
+  listing-page-field-categories: "Kategorije"
+  listing-page-category-all: "Sve"
+  listing-page-order-by-default: "Zadano"
+  listing-page-order-by-date-asc: "Najstarije"
+  listing-page-order-by-date-desc: "Najnovije"
+  listing-page-no-matches: "Nema rezultata"
+  draft: "Nacrt"
 
 execute:
   freeze: auto
@@ -18,7 +58,7 @@ execute:
 
 website:
   title: "CroAIcon"
-  description: "AI-potpomognute analize hrvatskog gospodarstva, GFI podataka i Eurostata."
+  description: "hrvatski gospodarski podaci, analize i nacrti"
   site-url: "https://MislavSag.github.io/CroAIcon"
   repo-url: "https://github.com/MislavSag/CroAIcon"
   repo-actions: [source, issue]
@@ -28,20 +68,29 @@ website:
     location: navbar
     type: overlay
   navbar:
+    background: light
     title: "CroAIcon"
     right:
-      - text: "Blog"
+      - text: "Analize"
         href: index.qmd
       - text: "O projektu"
         href: about.qmd
+      - text: "Podaci"
+        href: podaci.qmd
+      - text: "RSS"
+        href: index.xml
       - icon: github
         href: "https://github.com/MislavSag/CroAIcon"
         aria-label: "GitHub"
   page-footer:
     left: "CroAIcon"
+    center: "© 2026 CroAIcon · CC BY 4.0"
     right:
       - text: "RSS"
         href: index.xml
+      - icon: github
+        href: "https://github.com/MislavSag/CroAIcon"
+        aria-label: "GitHub"
   comments:
     giscus:
       repo: MislavSag/CroAIcon
@@ -58,17 +107,28 @@ website:
 format:
   html:
     theme:
-      - cosmo
-      - assets/styles/styles.scss
+      light:
+        - cosmo
+        - assets/styles/styles.scss
+      dark:
+        - cosmo
+        - assets/styles/styles.scss
+        - assets/styles/styles-dark.scss
+    include-in-header:
+      - text: |
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     toc: true
+    toc-location: right
     toc-depth: 3
-    code-fold: true
+    code-fold: false
     code-tools: false
     code-copy: true
-    date-format: "DD.MM.YYYY."
+    date-format: "YYYY.MM.DD"
     smooth-scroll: true
     anchor-sections: true
     link-external-newwindow: true
-    link-external-icon: true
+    link-external-icon: false
     fig-align: center
-    df-print: paged
+    df-print: kable

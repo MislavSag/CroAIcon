@@ -1,57 +1,477 @@
 /*-- scss:defaults --*/
-$body-bg: #fbfbf8;
-$body-color: #1d2329;
-$link-color: #0b6b6f;
-$navbar-bg: #ffffff;
-$navbar-fg: #1d2329;
-$footer-bg: #f0f2f2;
-$font-family-sans-serif: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-$font-family-monospace: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
-$border-radius: 0.375rem;
+
+// =====================================================================
+// CroAIcon — "tihi podatkovni terminal otisnut na papiru"
+// Design tokens (LIGHT). Single source of truth; dark values live in
+// styles-dark.scss. Fonts: Roboto Mono (struktura/labels/kod) +
+// Source Sans 3 (tekst). Loaded via _quarto.yml include-in-header.
+// =====================================================================
+
+// --- Design tokens (light) ---
+// NOTE: !default so the dark layer (styles-dark.scss), which Quarto layers
+// FIRST in the dark bundle, wins. Without !default it would be clobbered.
+$paper:    #F7F7F4 !default;
+$ink:      #18181B !default;
+$muted:    #71717A !default;
+$hairline: #E6E6E1 !default;
+$accent:   #2348E5 !default;
+$surface:  #F1F1EC !default;
+$rise:     #1C8F5A !default;
+$fall:     #D2463A !default;
+$code:     #EFEFEA !default;
+
+// --- Bootstrap / Quarto variable bindings ---
+$body-bg:            $paper !default;
+$body-color:         $ink !default;
+$primary:            $accent !default;
+$link-color:         $accent !default;
+$link-hover-color:   $accent !default;
+$border-color:       $hairline !default;
+$text-muted:         $muted !default;
+
+// Fonts — body Source Sans 3, structure/code Roboto Mono
+$font-family-sans-serif: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif !default;
+$font-family-monospace:  "Roboto Mono", ui-monospace, SFMono-Regular, Consolas, monospace !default;
+$headings-font-family:   "Roboto Mono", ui-monospace, monospace !default;
+$headings-color:         $ink !default;
+$headings-font-weight:   700 !default;
+$body-font-size:         16px !default;
+$line-height-base:       1.72 !default;
+
+$h1-font-size: clamp(28px, 4.4vw, 38px) !default;
+$h2-font-size: 1.4375rem !default;
+$h3-font-size: 1.125rem !default;
+$h4-font-size: 1rem !default;
+
+// Code
+$code-color:             $accent !default;
+$code-bg:                $surface !default;
+$code-block-bg:          $code !default;
+$pre-bg:                 $code !default;
+
+// Navbar (light, flat paper bar)
+$navbar-bg:              $paper !default;
+$navbar-fg:              $muted !default;
+$navbar-hover-color:     $ink !default;
+$navbar-active-color:    $accent !default;
+$navbar-brand-color:     $ink !default;
+
+// Footer
+$footer-bg:              $paper !default;
+$footer-fg:              $muted !default;
+
+// Geometry — small radii, hairline borders
+$border-radius:          3px !default;
+$border-radius-sm:       3px !default;
+$border-radius-lg:       4px !default;
+$border-width:           1px !default;
+
+// Tables — kill cosmo striping/hover so hairlines show
+$table-border-color:     $hairline !default;
+$table-striped-bg:       transparent !default;
+$table-hover-bg:         transparent !default;
+$table-cell-padding-y:   0.55rem !default;
+
+$link-decoration:        none !default;
+
 
 /*-- scss:rules --*/
+
+// =====================================================================
+// 0. Expose tokens as CSS custom properties so bespoke components
+//    (sparklines, chips, callouts, rise/fall) recolor on theme flip.
+//    styles-dark.scss redefines these for dark.
+// =====================================================================
+:root {
+  --paper: #{$paper};   --ink: #{$ink};       --muted: #{$muted};
+  --hairline: #{$hairline}; --accent: #{$accent}; --surface: #{$surface};
+  --rise: #{$rise};     --fall: #{$fall};     --code: #{$code};
+}
+
+::selection { background: var(--accent); color: #fff; }
+
+// Hide an empty title block (used by the title-less 404 page)
+#title-block-header:has(> .quarto-title > h1.title:empty) { display: none; }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  transition: background .45s ease, color .45s ease;
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+main.content, #quarto-document-content { animation: fadeUp .55s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+// =====================================================================
+// 1. Header / navbar
+// =====================================================================
 .navbar {
-  border-bottom: 1px solid #dfe5e8;
+  background: var(--paper) !important;
+  border-bottom: 1px solid var(--hairline);
+  box-shadow: none;
+  padding-top: 0;
+  padding-bottom: 16px;
+}
+// Left-align the wordmark (cosmo centers it with mx-auto)
+.navbar .navbar-brand-container { margin-left: 0 !important; margin-right: auto !important; }
+
+.navbar-brand, .navbar-title {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  color: var(--ink) !important;
+}
+// Subtitle under the wordmark (Quarto navbar has no native subtitle slot)
+.navbar-brand::after {
+  content: "hrvatski gospodarski podaci, analize i nacrti";
+  display: block;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.navbar .nav-link {
+  font-family: "Roboto Mono", monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.085em;
+  text-transform: uppercase;
+  color: var(--muted) !important;
+  transition: color .2s;
+}
+.navbar .nav-link:hover { color: var(--ink) !important; }
+.navbar .nav-link.active { color: var(--accent) !important; }
+
+// Search icon + dark-mode toggle tint
+.navbar .aa-DetachedSearchButton, #quarto-search a,
+.navbar .quarto-color-scheme-toggle, .navbar .nav-link i { color: var(--muted); }
+.navbar .quarto-color-scheme-toggle:hover { color: var(--accent); }
+
+// =====================================================================
+// 2. Index listing rows  (.quarto-listing > .list .quarto-post)
+// =====================================================================
+.quarto-listing { margin-top: clamp(20px, 3vw, 30px); }
+
+.quarto-post {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) auto;
+  column-gap: clamp(16px, 2.5vw, 34px);
+  row-gap: 8px;
+  align-items: baseline;
+  padding: 22px 0;
+  border-top: 1px solid var(--hairline);
+  color: var(--ink);
+  transition: color .25s ease;
+}
+.quarto-post:last-child { border-bottom: 1px solid var(--hairline); }
+.quarto-post:hover .listing-title { color: var(--accent); }
+
+.quarto-post .thumbnail { display: none; }
+.quarto-post .metadata { grid-column: 1; }
+.quarto-post .body { grid-column: 2; min-width: 0; }
+
+.quarto-post .listing-date {
+  grid-column: 1;
+  font-family: "Roboto Mono", monospace;
+  font-size: 13px; color: var(--muted);
+  letter-spacing: 0.01em; padding-top: 3px;
+}
+.quarto-post .listing-title {
+  display: block;
+  font-family: "Roboto Mono", monospace;
+  font-size: clamp(16px, 1.9vw, 18.5px);
+  font-weight: 500; line-height: 1.4;
+  color: inherit; margin: 0;
+}
+.quarto-post .listing-description {
+  display: block;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 14px; color: var(--muted);
+  margin-top: 7px; line-height: 1.55;
+}
+.quarto-post .listing-categories {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-top: 11px;
 }
 
-.quarto-title-banner {
-  background: #f4f6f5;
-  border-bottom: 1px solid #dfe5e8;
+// Listing links must never get the prose border-bottom underline
+.quarto-listing a, .quarto-post a { border-bottom: none !important; }
+
+// Stack the row on small screens: date above the content
+@media (max-width: 575.98px) {
+  .quarto-post { grid-template-columns: 1fr; row-gap: 4px; }
+  .quarto-post .metadata, .quarto-post .listing-date,
+  .quarto-post .body { grid-column: 1; }
+  .quarto-post .listing-date { order: -1; padding-top: 0; }
 }
 
-.listing-description,
-.description {
-  color: #5f6b73;
+// "Najnovije" section divider (raw HTML in index.qmd)
+.cro-divider {
+  font-family: "Roboto Mono", monospace;
+  font-size: 11.5px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted);
+  display: flex; align-items: center; gap: 14px;
+  margin: clamp(28px, 4vw, 44px) 0 clamp(8px, 2vw, 16px);
+}
+.cro-divider .rule { flex: 1; height: 1px; background: var(--hairline); }
+
+// =====================================================================
+// 3. Category / tag chips — bracketed [gfi] style
+// =====================================================================
+.listing-category, .quarto-category,
+.quarto-listing-category .category {
+  font-family: "Roboto Mono", monospace !important;
+  font-size: 11.5px !important;
+  letter-spacing: 0.03em;
+  color: var(--muted) !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  text-transform: lowercase;
+}
+.listing-category::before, .quarto-category::before { content: "["; }
+.listing-category::after,  .quarto-category::after  { content: "]"; }
+.listing-category:hover, .quarto-category:hover,
+.quarto-listing-category .category:hover { color: var(--accent) !important; }
+.quarto-category-count { color: var(--muted); }
+
+// Category filter cloud above the listing
+.quarto-listing-category {
+  display: flex; flex-wrap: wrap; gap: 8px 18px;
+  margin: 4px 0 8px;
 }
 
-.quarto-listing .listing-category {
-  border: 1px solid #cbd5d8;
-  color: #30444b;
-  background: #ffffff;
+// =====================================================================
+// 4. Article prose
+// =====================================================================
+#title-block-header .quarto-title .title,
+.quarto-title-block .title {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 700;
+  font-size: clamp(28px, 4.4vw, 38px);
+  line-height: 1.18; letter-spacing: -0.015em;
+  color: var(--ink); text-wrap: balance;
+}
+.quarto-title .subtitle, p.subtitle {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 17px; color: var(--muted);
+  font-weight: 400; line-height: 1.55; margin-top: 8px;
+}
+.quarto-title-meta, .quarto-title-meta-contents,
+.quarto-title-meta-heading, .quarto-title-meta a {
+  font-family: "Roboto Mono", monospace;
+  font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted);
 }
 
-main.content {
-  line-height: 1.65;
+// Reading measure — scope to prose blocks only (keeps index listing full width)
+main.content > p, main.content > h2, main.content > h3, main.content > h4,
+main.content > ul, main.content > ol, main.content > blockquote {
+  max-width: 720px;
+}
+main.content h2, #quarto-document-content h2 {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 500; font-size: clamp(20px, 2.6vw, 23px);
+  letter-spacing: -0.01em; color: var(--ink);
+  margin: 56px 0 0; scroll-margin-top: 28px;
+}
+main.content h3, #quarto-document-content h3 {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 500; font-size: 18px; color: var(--ink);
+  margin: 32px 0 0;
+}
+main.content p { font-size: 16px; line-height: 1.72; color: var(--ink); }
+
+// Inline links — accent + border-bottom underline
+main.content a:not(.btn):not(.nav-link):not(.cro-btn):not(.cro-btn-outline) {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
 }
 
-blockquote {
-  border-left: 4px solid #0b6b6f;
-  color: #39464d;
-  background: #f4f8f7;
-  padding: 0.75rem 1rem;
+// Inline code pill
+main.content code:not(.sourceCode), code.code, span.code {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.875em;
+  background: var(--surface);
+  color: var(--ink);
+  padding: 1px 5px; border-radius: 3px;
+  border-bottom: none;
 }
 
-table {
-  font-size: 0.95rem;
+// Blockquote / minimal callout — 2px accent rule, no fill
+main.content blockquote, .quarto-content blockquote,
+.callout.callout-style-simple.callout-note, div.callout-note {
+  border-left: 2px solid var(--accent);
+  background: none;
+  padding: 2px 0 2px 20px;
+  margin: 30px 0 0;
+  color: var(--muted);
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 14.5px; line-height: 1.65;
 }
 
-code {
-  color: #7a3e14;
+// Code blocks
+div.sourceCode, pre.sourceCode, pre {
+  background: var(--code) !important;
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  overflow: auto;
+}
+pre code, pre.sourceCode code, code:not(.sourceCode) {
+  font-family: "Roboto Mono", monospace;
+}
+pre code, pre.sourceCode code {
+  font-size: 12px; line-height: 1.7;
+  color: var(--ink);
+  background: none !important;
+}
+// 4-colour syntax mapping (override Quarto highlight with !important)
+pre .fu, pre .kw, pre .cf { color: var(--accent) !important; }
+pre .co                   { color: var(--muted)  !important; }
+pre .st, pre .ch          { color: var(--rise)   !important; }
+pre .dv, pre .fl, pre .cn, pre .va, pre .op { color: var(--ink) !important; }
+
+// Figure captions
+figure figcaption, .figure-caption, .quarto-figure figcaption,
+.cell figcaption {
+  font-family: "Roboto Mono", monospace;
+  font-size: 11.5px; color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-top: 14px; padding-top: 12px;
+  border-top: 1px solid var(--hairline);
 }
 
-.cell-output-display,
-.cell-output {
-  margin-top: 0.75rem;
-  margin-bottom: 1.25rem;
+// Right-rail TOC
+#quarto-margin-sidebar nav, #TOC, .toc-active {
+  font-family: "Roboto Mono", monospace;
+  font-size: 12.5px; line-height: 1.4;
+}
+#quarto-margin-sidebar .nav-link, #TOC a { color: var(--muted); }
+#quarto-margin-sidebar .nav-link.active, #TOC a.active { color: var(--accent) !important; }
+#quarto-margin-sidebar > nav { border-left: 1px solid var(--hairline); padding-left: 16px; }
+
+// =====================================================================
+// 5. Tables — 1.5px ink header rule, hairline rows
+// =====================================================================
+main.content table, .table {
+  width: 100%; border-collapse: collapse;
+  font-family: "Roboto Mono", monospace; font-size: 13px;
+}
+main.content thead tr, .table thead tr { border-bottom: 1.5px solid var(--ink); }
+main.content th, .table th {
+  font-weight: 500; font-size: 10.5px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); padding: 9px 12px 9px 0; text-align: left;
+}
+main.content tbody tr, .table tbody tr { border-bottom: 1px solid var(--hairline); }
+main.content tbody tr:last-child, .table tbody tr:last-child { border-bottom: none; }
+main.content td, .table td { padding: 9px 12px 9px 0; color: var(--ink); }
+.table td.num, td[align="right"], th[align="right"] {
+  font-variant-numeric: tabular-nums; text-align: right;
 }
 
+// Rise / fall directional signals (charts & tables only)
+.rise { color: var(--rise); }
+.fall { color: var(--fall); }
+
+// =====================================================================
+// 6. Footer
+// =====================================================================
+.nav-footer, .footer {
+  border-top: 1px solid var(--hairline);
+  background: var(--paper);
+  font-family: "Roboto Mono", monospace;
+  font-size: 11px; color: var(--muted);
+  letter-spacing: 0.04em;
+  padding: 30px 0 40px;
+}
+.nav-footer a { color: var(--ink); }
+.nav-footer a:hover { color: var(--accent); }
+.nav-footer-left { font-weight: 700; font-size: 15px; color: var(--ink); letter-spacing: 0; }
+
+// =====================================================================
+// 7. Buttons & content helpers
+// =====================================================================
+.btn-primary, .cro-btn {
+  font-family: "Roboto Mono", monospace;
+  font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--paper) !important; background: var(--accent);
+  border: none; padding: 9px 18px; border-radius: 3px;
+  text-decoration: none; display: inline-block;
+}
+.cro-btn:hover { filter: brightness(1.08); color: var(--paper) !important; }
+.cro-btn-outline {
+  color: var(--ink) !important; background: none;
+  border: 1px solid var(--hairline); border-radius: 3px;
+  padding: 9px 18px; font-family: "Roboto Mono", monospace;
+  font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: border-color .2s; text-decoration: none; display: inline-block;
+}
+.cro-btn-outline:hover { border-color: var(--accent); }
+
+// Eyebrow label
+.cro-eyebrow {
+  font-family: "Roboto Mono", monospace;
+  font-size: 11.5px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 18px;
+}
+
+// Numbered step list
+.cro-steps ol, ol.cro-steps { list-style: none; padding-left: 0; counter-reset: step; }
+.cro-steps li { position: relative; padding-left: 34px; margin: 12px 0; }
+.cro-steps li::before {
+  counter-increment: step; content: counter(step, decimal-leading-zero);
+  position: absolute; left: 0; top: 1px;
+  font-family: "Roboto Mono", monospace; font-size: 11.5px;
+  color: var(--accent); letter-spacing: 0.05em;
+}
+
+// Series grid (hairline cells)
+.cro-series-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1px; background: var(--hairline);
+  border: 1px solid var(--hairline); margin: 20px 0;
+}
+.cro-series-grid .cell {
+  background: var(--paper); padding: 16px 18px;
+  font-family: "Source Sans 3", sans-serif; font-size: 14px; color: var(--muted);
+}
+
+// 404 page
+.cro-404 {
+  min-height: 64vh; display: flex; flex-direction: column;
+  justify-content: center; max-width: 640px;
+  margin: 0 auto; padding: 0 clamp(20px, 6vw, 40px);
+}
+.cro-404-num {
+  font-family: "Roboto Mono", monospace; font-weight: 300;
+  font-size: clamp(72px, 16vw, 150px); line-height: 1;
+  color: var(--ink); letter-spacing: -0.03em;
+}
+.cro-404-term {
+  font-family: "Roboto Mono", monospace; font-size: 13px;
+  color: var(--muted); margin: 18px 0 22px;
+}
+.cro-404-term .path { color: var(--ink); }
+.cro-404-term .code { color: var(--fall); }
+.cro-404-term .cursor {
+  display: inline-block; width: 8px; height: 15px;
+  background: var(--accent); margin-left: 4px;
+  vertical-align: text-bottom; animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+.cro-404 p {
+  font-family: "Source Sans 3", sans-serif; font-size: 16px;
+  line-height: 1.7; color: var(--muted); max-width: 480px;
+}
+.cro-404-cta { display: flex; gap: 12px; margin-top: 26px; flex-wrap: wrap; }

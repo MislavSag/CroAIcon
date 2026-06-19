@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{ --paper:#F7F7F4; --ink:#18181B; --muted:#71717A; --hairline:#E6E6E1; --accent:#2348E5; --surface:#F1F1EC; --rise:#1C8F5A; --fall:#D2463A; }
+  html[data-theme="dark"]{ --paper:#0F0F11; --ink:#ECECEC; --muted:#8A8A90; --hairline:#262629; --accent:#5C78FF; --surface:#17171A; --rise:#2BA56B; --fall:#E15B4F; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Source Sans 3',system-ui,sans-serif; -webkit-font-smoothing:antialiased; transition:background .45s ease,color .45s ease; }
+  ::selection{ background:var(--accent); color:#fff; }
+  a{ color:inherit; text-decoration:none; }
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;} }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+</style>
+</helmet>
+
+<div style="min-height:100vh; padding:clamp(24px,5vw,56px) clamp(20px,6vw,96px) 0; max-width:1180px; margin:0 auto;">
+
+  <header style="display:flex; flex-wrap:wrap; gap:24px 40px; align-items:center; justify-content:space-between; padding-bottom:22px; border-bottom:1px solid var(--hairline);">
+    <a href="Home.dc.html" style="font-family:'Roboto Mono',monospace; font-weight:700; font-size:19px; letter-spacing:-0.01em; color:var(--ink);">CroAIcon</a>
+    <nav style="display:flex; flex-wrap:wrap; align-items:center; gap:20px 22px; font-family:'Roboto Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.085em; text-transform:uppercase;">
+      <a href="Home.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">Analize</a>
+      <a href="O projektu.dc.html" style="color:var(--accent);">O&nbsp;projektu</a>
+      <a href="Podaci.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">Podaci</a>
+      <a href="#" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">GitHub</a>
+      <button onClick="{{ toggleTheme }}" aria-label="Promijeni temu" style="width:30px; height:30px; display:grid; place-items:center; background:none; border:1px solid var(--hairline); border-radius:50%; cursor:pointer; color:var(--ink); transition:border-color .2s,color .2s;" style-hover="border-color:var(--accent); color:var(--accent);">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0a7 7 0 100 14A4.6 4.6 0 017 0z"></path></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main style="max-width:680px; padding:clamp(48px,7vw,96px) 0 0; animation:fadeUp .55s ease both;">
+
+    <div style="font-family:'Roboto Mono',monospace; font-size:11.5px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); margin-bottom:20px;">O projektu</div>
+    <h1 style="font-family:'Roboto Mono',monospace; font-weight:700; font-size:clamp(28px,4.4vw,38px); line-height:1.18; letter-spacing:-0.015em; margin:0 0 28px; color:var(--ink); text-wrap:balance;">Tihi podatkovni dnevnik za hrvatsko gospodarstvo</h1>
+
+    <p style="font-size:16px; line-height:1.72; color:var(--ink); margin:0;">CroAIcon je analitički blog posvećen hrvatskim gospodarskim podacima. Objavljuje kratke, potkrijepljene analize oslonjene na službene izvore — Eurostat serije, godišnje financijske izvještaje (GFI) i podatke Državnog zavoda za statistiku. Svaki tekst dolazi uz graf, tablicu i kod kojim se rezultat može ponoviti.</p>
+
+    <h2 style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:23px; letter-spacing:-0.01em; margin:52px 0 0; color:var(--ink);">Urednički fokus</h2>
+    <p style="font-size:16px; line-height:1.72; color:var(--ink); margin:18px 0 0;">Zanima nas ono što se može izmjeriti i provjeriti: inflacija, BDP, tržište rada, vanjska trgovina, profitabilnost poduzeća i javne financije. Ne pišemo prognoze ni komentare dana. Pišemo bilješke koje čitatelju daju čist pogled na seriju i metodu kojom je dobivena.</p>
+
+    <h2 style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:23px; letter-spacing:-0.01em; margin:52px 0 0; color:var(--ink);">Kako nastaje tekst</h2>
+    <p style="font-size:16px; line-height:1.72; color:var(--ink); margin:18px 0 0;">Analiza se radi u R-u unutar Positrona. R dohvaća podatke, čisti ih i crta grafove prema zajedničkoj temi stranice. Python pomaže pri nacrtu teksta — predlaže strukturu i prvu verziju opisa — ali svaku tvrdnju, broj i zaključak provjerava i potpisuje urednik. Objava ide kroz Quarto, što znači da su tekst, kod i rezultat u istom dokumentu.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:1px; margin:36px 0 0; background:var(--hairline); border:1px solid var(--hairline); border-radius:4px; overflow:hidden;">
+      <div style="background:var(--paper); padding:20px;"><div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">Analiza</div><div style="font-family:'Roboto Mono',monospace; font-size:16px; color:var(--ink);">R</div></div>
+      <div style="background:var(--paper); padding:20px;"><div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">Nacrt teksta</div><div style="font-family:'Roboto Mono',monospace; font-size:16px; color:var(--ink);">Python</div></div>
+      <div style="background:var(--paper); padding:20px;"><div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">Objava</div><div style="font-family:'Roboto Mono',monospace; font-size:16px; color:var(--ink);">Quarto</div></div>
+      <div style="background:var(--paper); padding:20px;"><div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">Okruženje</div><div style="font-family:'Roboto Mono',monospace; font-size:16px; color:var(--ink);">Positron</div></div>
+    </div>
+
+    <h2 style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:23px; letter-spacing:-0.01em; margin:52px 0 0; color:var(--ink);">Reproducibilnost</h2>
+    <p style="font-size:16px; line-height:1.72; color:var(--ink); margin:18px 0 0;">Svaka analiza ima poveznicu na izvorni kod. Računati izlazi su „zamrznuti" između renderiranja kako bi objavljeni broj uvijek odgovarao kodu uz njega. Ako pronađete grešku, otvorite issue — ispravak i njegova povijest ostaju javni.</p>
+
+    <div style="margin-top:40px; padding:20px 22px; border:1px solid var(--hairline); border-radius:4px; display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:space-between;">
+      <span style="font-family:'Roboto Mono',monospace; font-size:13px; color:var(--ink);">Pogledaj kako pripremamo podatke →</span>
+      <a href="Podaci.dc.html" style="font-family:'Roboto Mono',monospace; font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--paper); background:var(--accent); padding:9px 18px; border-radius:3px;">Podaci i metoda</a>
+    </div>
+
+  </main>
+
+  <footer style="max-width:680px; margin:clamp(56px,7vw,88px) 0 0; padding:34px 0 46px; border-top:1px solid var(--hairline); display:flex; flex-wrap:wrap; gap:20px 40px; justify-content:space-between; align-items:center; font-family:'Roboto Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:0.04em;">
+    <a href="Home.dc.html" style="font-weight:700; font-size:15px; color:var(--ink); letter-spacing:0;">CroAIcon</a>
+    <div>© 2026 CroAIcon · CC BY 4.0</div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    try{ const t = localStorage.getItem('croaicon-theme'); if(t) document.documentElement.dataset.theme = t; }catch(e){}
+  }
+  renderVals(){
+    return {
+      toggleTheme: () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        try{ localStorage.setItem('croaicon-theme', next); }catch(e){}
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{ --paper:#F7F7F4; --ink:#18181B; --muted:#71717A; --hairline:#E6E6E1; --accent:#2348E5; --surface:#F1F1EC; --rise:#1C8F5A; --fall:#D2463A; }
+  html[data-theme="dark"]{ --paper:#0F0F11; --ink:#ECECEC; --muted:#8A8A90; --hairline:#262629; --accent:#5C78FF; --surface:#17171A; --rise:#2BA56B; --fall:#E15B4F; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Source Sans 3',system-ui,sans-serif; -webkit-font-smoothing:antialiased; transition:background .45s ease,color .45s ease; }
+  ::selection{ background:var(--accent); color:#fff; }
+  a{ color:inherit; text-decoration:none; }
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;} }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+</style>
+</helmet>
+
+<div style="min-height:100vh; padding:clamp(24px,5vw,56px) clamp(20px,6vw,96px) 0; max-width:1180px; margin:0 auto;">
+
+  <header style="display:flex; flex-wrap:wrap; gap:24px 40px; align-items:center; justify-content:space-between; padding-bottom:22px; border-bottom:1px solid var(--hairline);">
+    <a href="Home.dc.html" style="font-family:'Roboto Mono',monospace; font-weight:700; font-size:19px; letter-spacing:-0.01em; color:var(--ink);">CroAIcon</a>
+    <nav style="display:flex; flex-wrap:wrap; align-items:center; gap:20px 22px; font-family:'Roboto Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.085em; text-transform:uppercase;">
+      <a href="Home.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">Analize</a>
+      <a href="O projektu.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">O&nbsp;projektu</a>
+      <a href="Podaci.dc.html" style="color:var(--accent);">Podaci</a>
+      <a href="#" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">GitHub</a>
+      <button onClick="{{ toggleTheme }}" aria-label="Promijeni temu" style="width:30px; height:30px; display:grid; place-items:center; background:none; border:1px solid var(--hairline); border-radius:50%; cursor:pointer; color:var(--ink); transition:border-color .2s,color .2s;" style-hover="border-color:var(--accent); color:var(--accent);">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0a7 7 0 100 14A4.6 4.6 0 017 0z"></path></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main style="padding:clamp(48px,7vw,96px) 0 0; animation:fadeUp .55s ease both;">
+
+    <div style="max-width:680px;">
+      <div style="font-family:'Roboto Mono',monospace; font-size:11.5px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); margin-bottom:20px;">Podaci i metoda</div>
+      <h1 style="font-family:'Roboto Mono',monospace; font-weight:700; font-size:clamp(28px,4.4vw,38px); line-height:1.18; letter-spacing:-0.015em; margin:0 0 24px; color:var(--ink); text-wrap:balance;">Izvori, serije i reproducibilnost</h1>
+      <p style="font-size:16px; line-height:1.72; color:var(--ink); margin:0;">Sve analize oslanjaju se na službene, javno dostupne izvore. Ovdje navodimo koje serije koristimo, odakle dolaze, koliko se često ažuriraju i kako se svaki rezultat može ponoviti.</p>
+    </div>
+
+    <!-- IZVORI -->
+    <section style="margin-top:clamp(48px,6vw,76px);">
+      <h2 style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:23px; letter-spacing:-0.01em; margin:0 0 8px; color:var(--ink);">Izvori</h2>
+      <p style="font-family:'Source Sans 3',sans-serif; font-size:14px; color:var(--muted); margin:0 0 24px; max-width:560px;">Tri primarna izvora. Svaki donosi vlastiti raspored ažuriranja i licencu ponovne uporabe.</p>
+      <div style="overflow-x:auto;">
+      <table style="width:100%; min-width:560px; border-collapse:collapse; font-family:'Roboto Mono',monospace; font-size:13px;">
+        <thead><tr style="border-bottom:1.5px solid var(--ink);">
+          <th style="text-align:left; padding:11px 16px 11px 0; font-weight:500; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Izvor</th>
+          <th style="text-align:left; padding:11px 16px; font-weight:500; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Sadržaj</th>
+          <th style="text-align:left; padding:11px 16px; font-weight:500; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Ažuriranje</th>
+          <th style="text-align:right; padding:11px 0 11px 16px; font-weight:500; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Licenca</th>
+        </tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--hairline);"><td style="padding:13px 16px 13px 0; color:var(--ink); font-weight:500;">Eurostat</td><td style="padding:13px 16px; color:var(--muted); font-family:'Source Sans 3',sans-serif; font-size:13.5px;">HICP, BDP, trgovina, dug, nekretnine</td><td style="padding:13px 16px; color:var(--ink);">mjesečno / kvartalno</td><td style="text-align:right; padding:13px 0 13px 16px; color:var(--muted);">CC BY 4.0</td></tr>
+          <tr style="border-bottom:1px solid var(--hairline);"><td style="padding:13px 16px 13px 0; color:var(--ink); font-weight:500;">FINA / GFI</td><td style="padding:13px 16px; color:var(--muted); font-family:'Source Sans 3',sans-serif; font-size:13.5px;">godišnji financijski izvještaji poduzeća</td><td style="padding:13px 16px; color:var(--ink);">godišnje</td><td style="text-align:right; padding:13px 0 13px 16px; color:var(--muted);">javno</td></tr>
+          <tr><td style="padding:13px 16px 13px 0; color:var(--ink); font-weight:500;">DZS</td><td style="padding:13px 16px; color:var(--muted); font-family:'Source Sans 3',sans-serif; font-size:13.5px;">tržište rada, regionalni pokazatelji</td><td style="padding:13px 16px; color:var(--ink);">mjesečno / godišnje</td><td style="text-align:right; padding:13px 0 13px 16px; color:var(--muted);">javno</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <!-- SERIJE -->
+    <section style="margin-top:clamp(44px,5vw,68px);">
+      <h2 style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:23px; letter-spacing:-0.01em; margin:0 0 24px; color:var(--ink);">Eurostat serije u uporabi</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px,1fr)); gap:1px; background:var(--hairline); border:1px solid var(--hairline); border-radius:4px; overflow:hidden;">
+        <div style="background:var(--paper); padding:18px 20px;"><div style="font-family:'Roboto Mono',monospace; font-size:12px; color:var(--accent);">prc_hicp_midx</div><div style="font-family:'Source Sans 3',sans-serif; font-size:13.5px; color:var(--muted); margin-top:6px;">HICP indeks cijena, 2015=100</div></div>
+        <div style="background:var(--paper); padding:18px 20px;"><div style="font-family:'Roboto Mono',monospace; font-size:12px; color:var(--accent);">namq_10_gdp</div><div style="font-family:'Source Sans 3',sans-serif; font-size:13.5px; color:var(--muted); margin-top:6px;">BDP, kvartalni nacionalni računi</div></div>
+        <div style="background:var(--paper); padding:18px 20px;"><div style="font-family:'Roboto Mono',monospace; font-size:12px; color:var(--accent);">ext_lt_intratrd</div><div style="font-family:'Source Sans 3',sans-serif; font-size:13.5px; color:var(--muted); margin-top:6px;">vanjska trgovina robom</div></div>
+        <div style="background:var(--paper); padding:18px 20px;"><div style="font-family:'Roboto Mono',monospace; font-size:12px; color:var(--accent);">prc_hpi_q</div><div style="font-family:'Source Sans 3',sans-serif; font-size:13.5px; color:var(--muted); margin-top:6px;">indeks cijena nekretnina</div></div>
+        <div style="background:var(--paper); padding:18px 20px;"><div style="font-family:'Roboto Mono',monospace; font-size:12px; color:var(--accent);">gov_10q_ggdebt</div><div style="font-family:'Source Sans 3',sans-serif; font-size:13.5px; color:var(--muted); margin-top:6px;">dug opće države, kvartalno</div></div>
+        <div style="background:var(--paper); padding:18px 20px;"><div style="font-family:'Roboto Mono',monospace; font-size:12px; color:var(--accent);">lfsi_emp_a</div><div style="font-family:'Source Sans 3',sans-serif; font-size:13.5px; color:var(--muted); margin-top:6px;">stopa zaposlenosti, godišnje</div></div>
+      </div>
+    </section>
+
+    <!-- DATA DICTIONARY -->
+    <section style="margin-top:clamp(44px,5vw,68px);">
+      <h2 style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:23px; letter-spacing:-0.01em; margin:0 0 8px; color:var(--ink);">Podatkovni rječnik</h2>
+      <p style="font-family:'Source Sans 3',sans-serif; font-size:14px; color:var(--muted); margin:0 0 24px; max-width:560px;">Imena polja koja se pojavljuju u objavljenim tablicama i isječcima koda.</p>
+      <div style="overflow-x:auto;">
+      <table style="width:100%; min-width:560px; border-collapse:collapse; font-family:'Roboto Mono',monospace; font-size:13px;">
+        <thead><tr style="border-bottom:1.5px solid var(--ink);">
+          <th style="text-align:left; padding:11px 16px 11px 0; font-weight:500; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Polje</th>
+          <th style="text-align:left; padding:11px 16px; font-weight:500; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Tip</th>
+          <th style="text-align:left; padding:11px 0 11px 16px; font-weight:500; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Opis</th>
+        </tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--hairline);"><td style="padding:12px 16px 12px 0; color:var(--accent);">godina</td><td style="padding:12px 16px; color:var(--muted);">int</td><td style="padding:12px 0 12px 16px; color:var(--ink); font-family:'Source Sans 3',sans-serif; font-size:13.5px;">referentna godina, YYYY</td></tr>
+          <tr style="border-bottom:1px solid var(--hairline);"><td style="padding:12px 16px 12px 0; color:var(--accent);">prihodi</td><td style="padding:12px 16px; color:var(--muted);">double</td><td style="padding:12px 0 12px 16px; color:var(--ink); font-family:'Source Sans 3',sans-serif; font-size:13.5px;">ukupni prihodi, mlrd EUR</td></tr>
+          <tr style="border-bottom:1px solid var(--hairline);"><td style="padding:12px 16px 12px 0; color:var(--accent);">neto_dobit</td><td style="padding:12px 16px; color:var(--muted);">double</td><td style="padding:12px 0 12px 16px; color:var(--ink); font-family:'Source Sans 3',sans-serif; font-size:13.5px;">neto dobit razdoblja, mlrd EUR</td></tr>
+          <tr style="border-bottom:1px solid var(--hairline);"><td style="padding:12px 16px 12px 0; color:var(--accent);">neto_marza</td><td style="padding:12px 16px; color:var(--muted);">double</td><td style="padding:12px 0 12px 16px; color:var(--ink); font-family:'Source Sans 3',sans-serif; font-size:13.5px;">neto_dobit / prihodi × 100, %</td></tr>
+          <tr><td style="padding:12px 16px 12px 0; color:var(--accent);">izvor</td><td style="padding:12px 16px; color:var(--muted);">factor</td><td style="padding:12px 0 12px 16px; color:var(--ink); font-family:'Source Sans 3',sans-serif; font-size:13.5px;">{eurostat, fina, dzs}</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <!-- REPRODUKCIJA -->
+    <section style="margin-top:clamp(44px,5vw,68px); max-width:680px;">
+      <h2 style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:23px; letter-spacing:-0.01em; margin:0 0 18px; color:var(--ink);">Kako reproducirati</h2>
+      <ol style="margin:0; padding:0; list-style:none; counter-reset:step; display:flex; flex-direction:column; gap:16px;">
+        <li style="display:flex; gap:16px; align-items:baseline;"><span style="font-family:'Roboto Mono',monospace; font-size:12px; font-weight:500; color:var(--accent); flex:none; width:24px;">01</span><span style="font-size:15.5px; line-height:1.65; color:var(--ink);">Klonirajte repozitorij analize s GitHuba i otvorite ga u Positronu.</span></li>
+        <li style="display:flex; gap:16px; align-items:baseline;"><span style="font-family:'Roboto Mono',monospace; font-size:12px; font-weight:500; color:var(--accent); flex:none; width:24px;">02</span><span style="font-size:15.5px; line-height:1.65; color:var(--ink);">Pokrenite <code style="font-family:'Roboto Mono',monospace; font-size:13.5px; background:var(--surface); padding:1px 6px; border-radius:3px;">renv::restore()</code> za vraćanje točnih verzija paketa.</span></li>
+        <li style="display:flex; gap:16px; align-items:baseline;"><span style="font-family:'Roboto Mono',monospace; font-size:12px; font-weight:500; color:var(--accent); flex:none; width:24px;">03</span><span style="font-size:15.5px; line-height:1.65; color:var(--ink);">Renderirajte s <code style="font-family:'Roboto Mono',monospace; font-size:13.5px; background:var(--surface); padding:1px 6px; border-radius:3px;">quarto render</code>; zamrznuti izlazi jamče iste brojeve.</span></li>
+      </ol>
+
+      <div style="margin-top:34px; border-left:2px solid var(--accent); padding:2px 0 2px 20px;">
+        <div style="font-family:'Roboto Mono',monospace; font-size:11px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:8px;">Savjet</div>
+        <p style="font-size:14.5px; line-height:1.65; color:var(--muted); margin:0;">Zajednička ggplot2 tema i plotly predložak dolaze iz internog paketa <code style="font-family:'Roboto Mono',monospace; font-size:13px;">croaicon</code>, pa svaki graf automatski nasljeđuje paletu i Roboto Mono.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="margin-top:clamp(56px,7vw,88px); padding:34px 0 46px; border-top:1px solid var(--hairline); display:flex; flex-wrap:wrap; gap:20px 40px; justify-content:space-between; align-items:center; font-family:'Roboto Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:0.04em;">
+    <a href="Home.dc.html" style="font-weight:700; font-size:15px; color:var(--ink); letter-spacing:0;">CroAIcon</a>
+    <div>posljednje ažuriranje 2026.06.18 · © 2026 CroAIcon</div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    try{ const t = localStorage.getItem('croaicon-theme'); if(t) document.documentElement.dataset.theme = t; }catch(e){}
+  }
+  renderVals(){
+    return {
+      toggleTheme: () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        try{ localStorage.setItem('croaicon-theme', next); }catch(e){}
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,16 +1,23 @@
 ---
 title: "O projektu"
+comments: false
 ---
+
+::: {.cro-eyebrow}
+O projektu
+:::
 
 CroAIcon spaja podatkovnu analizu i urednički nadzor. R i Python skripte pripremaju podatke, tablice i grafove, a AI generira nacrte tekstova isključivo na temelju izračunatih činjenica.
 
-Radni proces:
+## Radni proces
 
+::: {.cro-steps}
 1. Osvježiti GFI, Eurostat ili druge izvore.
 2. Izračunati pokazatelje i spremiti provjerljive činjenice.
 3. Generirati AI nacrt na hrvatskom.
 4. Ručno pregledati tekst, brojke i interpretaciju.
 5. Objaviti Quarto post.
+:::
 
 Brojke u objavljenim tekstovima trebaju dolaziti iz skripti i navedenih izvora, ne iz slobodne AI interpretacije.
 

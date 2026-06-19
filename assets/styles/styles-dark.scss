@@ -1,0 +1,60 @@
+/*-- scss:defaults --*/
+
+// =====================================================================
+// CroAIcon — DARK token overrides. Loaded LAST in the dark theme list
+// (after cosmo + styles.scss), so these win on the Bootstrap variables.
+// The shared component rules live in styles.scss and reference the CSS
+// custom properties re-emitted below, so they recolor automatically.
+// =====================================================================
+
+// --- Design tokens (dark) ---
+$paper:    #0F0F11;
+$ink:      #ECECEC;
+$muted:    #8A8A90;
+$hairline: #262629;
+$accent:   #5C78FF;
+$surface:  #17171A;
+$rise:     #2BA56B;
+$fall:     #E15B4F;
+$code:     #141417;
+
+// --- Bootstrap / Quarto bindings (kept in sync with light) ---
+$body-bg:            $paper;
+$body-color:         $ink;
+$primary:            $accent;
+$link-color:         $accent;
+$link-hover-color:   $accent;
+$border-color:       $hairline;
+$text-muted:         $muted;
+
+$font-family-sans-serif: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+$font-family-monospace:  "Roboto Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+$headings-font-family:   "Roboto Mono", ui-monospace, monospace;
+$headings-color:         $ink;
+
+$code-color:             $accent;
+$code-bg:                $surface;
+$code-block-bg:          $code;
+$pre-bg:                 $code;
+
+$navbar-bg:              $paper;
+$navbar-fg:              $muted;
+$navbar-hover-color:     $ink;
+$navbar-active-color:    $accent;
+$navbar-brand-color:     $ink;
+
+$footer-bg:              $paper;
+$footer-fg:              $muted;
+
+
+/*-- scss:rules --*/
+
+// Re-emit the CSS custom properties with dark values. This file is only
+// loaded in the dark bundle, so :root here applies only in dark mode.
+:root,
+body.quarto-dark,
+[data-bs-theme="dark"] {
+  --paper: #{$paper};   --ink: #{$ink};       --muted: #{$muted};
+  --hairline: #{$hairline}; --accent: #{$accent}; --surface: #{$surface};
+  --rise: #{$rise};     --fall: #{$fall};     --code: #{$code};
+}

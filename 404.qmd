@@ -1,0 +1,21 @@
+---
+title: ""
+toc: false
+comments: false
+---
+
+<!-- Links use the GitHub Pages project base path (/CroAIcon/). On a local
+     `quarto preview` (served at /) they will not resolve; that is expected. -->
+
+```{=html}
+<div class="cro-404">
+  <div class="cro-404-num">404</div>
+  <div class="cro-404-term">$ GET <span class="path">/analiza/nepoznato</span> → <span class="code">404</span><span class="cursor"></span></div>
+  <p>Tražena putanja ne postoji u indeksu. Serija je možda preimenovana ili
+  premještena. Vratite se na popis analiza i pokušajte odande.</p>
+  <div class="cro-404-cta">
+    <a class="cro-btn" href="/CroAIcon/">← Na popis analiza</a>
+    <a class="cro-btn-outline" href="/CroAIcon/podaci.html">Podaci</a>
+  </div>
+</div>
+```

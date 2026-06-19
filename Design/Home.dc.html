@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F7F4; --ink:#18181B; --muted:#71717A; --hairline:#E6E6E1;
+    --accent:#2348E5; --surface:#F1F1EC; --rise:#1C8F5A; --fall:#D2463A;
+  }
+  html[data-theme="dark"]{
+    --paper:#0F0F11; --ink:#ECECEC; --muted:#8A8A90; --hairline:#262629;
+    --accent:#5C78FF; --surface:#17171A; --rise:#2BA56B; --fall:#E15B4F;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Source Sans 3',system-ui,sans-serif; -webkit-font-smoothing:antialiased; transition:background .45s ease,color .45s ease; }
+  ::selection{ background:var(--accent); color:#fff; }
+  a{ color:inherit; text-decoration:none; }
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;} }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
+</style>
+</helmet>
+
+<div style="min-height:100vh; padding:clamp(24px,5vw,72px) clamp(20px,6vw,96px) 0; max-width:1180px; margin:0 auto;">
+
+  <header style="display:flex; flex-wrap:wrap; gap:28px 40px; align-items:flex-start; justify-content:space-between; padding-bottom:clamp(28px,4vw,44px); border-bottom:1px solid var(--hairline);">
+    <a href="Home.dc.html" style="display:block;">
+      <div style="font-family:'Roboto Mono',monospace; font-weight:700; font-size:25px; letter-spacing:-0.01em; color:var(--ink);">CroAIcon</div>
+      <div style="font-family:'Roboto Mono',monospace; font-weight:400; font-size:12.5px; letter-spacing:0.02em; color:var(--muted); margin-top:7px;">hrvatski gospodarski podaci, analize i nacrti</div>
+    </a>
+
+    <nav style="display:flex; flex-wrap:wrap; align-items:center; gap:22px 24px; font-family:'Roboto Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.085em; text-transform:uppercase;">
+      <a href="Home.dc.html" style="color:var(--accent);">Analize</a>
+      <a href="O projektu.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">O&nbsp;projektu</a>
+      <a href="Podaci.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">Podaci</a>
+      <a href="#" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">RSS</a>
+      <a href="#" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">GitHub</a>
+      <span style="width:1px; height:15px; background:var(--hairline);"></span>
+      <button onClick="{{ openSearch }}" aria-label="Pretraži" style="display:flex; align-items:center; gap:7px; background:none; border:none; cursor:pointer; padding:0; color:var(--muted); font-family:'Roboto Mono',monospace; font-size:12px; letter-spacing:0.085em; transition:color .2s;" style-hover="color:var(--ink);">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="5.4" cy="5.4" r="4"></circle><line x1="8.4" y1="8.4" x2="12" y2="12"></line></svg>
+        <span style="letter-spacing:0.085em;">⌘K</span>
+      </button>
+      <button onClick="{{ toggleTheme }}" aria-label="Promijeni temu" style="width:30px; height:30px; display:grid; place-items:center; background:none; border:1px solid var(--hairline); border-radius:50%; cursor:pointer; color:var(--ink); transition:border-color .2s,color .2s;" style-hover="border-color:var(--accent); color:var(--accent);">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0a7 7 0 100 14A4.6 4.6 0 017 0z"></path></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main style="padding:clamp(40px,7vw,84px) 0 0; animation:fadeUp .55s ease both;">
+
+    <div style="font-family:'Roboto Mono',monospace; font-size:11.5px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:clamp(20px,3vw,30px); display:flex; align-items:center; gap:14px;">
+      <span>Najnovije</span>
+      <span style="flex:1; height:1px; background:var(--hairline);"></span>
+      <span style="color:var(--muted); letter-spacing:0.1em;">08 zapisa</span>
+    </div>
+
+    <div style="display:flex; flex-direction:column;">
+
+      <a href="Article.dc.html" style="display:grid; grid-template-columns:96px minmax(0,1fr) auto; column-gap:clamp(16px,2.5vw,34px); row-gap:8px; align-items:baseline; padding:22px 0; border-top:1px solid var(--hairline); color:var(--ink); transition:color .25s ease;" style-hover="color:var(--accent);">
+        <span style="font-family:'Roboto Mono',monospace; font-size:13px; font-weight:400; color:var(--muted); letter-spacing:0.01em; padding-top:3px;">2026.06.18</span>
+        <span style="grid-column:2; min-width:0;">
+          <span style="display:block; font-family:'Roboto Mono',monospace; font-size:clamp(16px,1.9vw,18.5px); font-weight:500; line-height:1.4; color:inherit;">Neto marže hrvatskih nefinancijskih poduzeća, 2019–2024</span>
+          <span style="display:block; font-family:'Source Sans 3',sans-serif; font-size:14px; color:var(--muted); margin-top:7px; line-height:1.55;">Što agregirani GFI izvještaji govore o profitabilnosti nakon energetskog šoka.</span>
+          <span style="display:flex; flex-wrap:wrap; gap:10px; margin-top:11px; font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); letter-spacing:0.03em;">
+            <span>[gfi]</span><span>[fina]</span><span>[profitabilnost]</span>
+          </span>
+        </span>
+        <span style="grid-column:3; padding-top:5px;">
+          <svg width="84" height="26" viewBox="0 0 84 26" fill="none" preserveAspectRatio="none"><polyline points="0,16 14,21 28,9 42,6 56,7 70,12 84,11" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+        </span>
+      </a>
+
+      <a href="Article.dc.html" style="display:grid; grid-template-columns:96px minmax(0,1fr) auto; column-gap:clamp(16px,2.5vw,34px); row-gap:8px; align-items:baseline; padding:22px 0; border-top:1px solid var(--hairline); color:var(--ink); transition:color .25s ease;" style-hover="color:var(--accent);">
+        <span style="font-family:'Roboto Mono',monospace; font-size:13px; font-weight:400; color:var(--muted); letter-spacing:0.01em; padding-top:3px;">2026.06.11</span>
+        <span style="grid-column:2; min-width:0;">
+          <span style="display:block; font-family:'Roboto Mono',monospace; font-size:clamp(16px,1.9vw,18.5px); font-weight:500; line-height:1.4; color:inherit;">HICP inflacija: usporavanje u uslužnom sektoru</span>
+          <span style="display:block; font-family:'Source Sans 3',sans-serif; font-size:14px; color:var(--muted); margin-top:7px; line-height:1.55;">Razdvajamo doprinose energije, hrane i usluga u svibnju 2026.</span>
+          <span style="display:flex; flex-wrap:wrap; gap:10px; margin-top:11px; font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); letter-spacing:0.03em;">
+            <span>[eurostat]</span><span>[hicp]</span><span>[inflacija]</span>
+          </span>
+        </span>
+        <span style="grid-column:3; padding-top:5px;">
+          <svg width="84" height="26" viewBox="0 0 84 26" fill="none" preserveAspectRatio="none"><polyline points="0,4 14,7 28,9 42,13 56,17 70,19 84,22" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+        </span>
+      </a>
+
+      <a href="Article.dc.html" style="display:grid; grid-template-columns:96px minmax(0,1fr) auto; column-gap:clamp(16px,2.5vw,34px); row-gap:8px; align-items:baseline; padding:22px 0; border-top:1px solid var(--hairline); color:var(--ink); transition:color .25s ease;" style-hover="color:var(--accent);">
+        <span style="font-family:'Roboto Mono',monospace; font-size:13px; font-weight:400; color:var(--muted); letter-spacing:0.01em; padding-top:3px;">2026.05.29</span>
+        <span style="grid-column:2; min-width:0;">
+          <span style="display:block; font-family:'Roboto Mono',monospace; font-size:clamp(16px,1.9vw,18.5px); font-weight:500; line-height:1.4; color:inherit;">BDP po stanovniku: konvergencija prema prosjeku EU-a</span>
+          <span style="display:block; font-family:'Source Sans 3',sans-serif; font-size:14px; color:var(--muted); margin-top:7px; line-height:1.55;">Hrvatska na 76 % prosjeka EU-27 u paritetu kupovne moći.</span>
+          <span style="display:flex; flex-wrap:wrap; gap:10px; margin-top:11px; font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); letter-spacing:0.03em;">
+            <span>[eurostat]</span><span>[bdp]</span>
+          </span>
+        </span>
+        <span style="grid-column:3; padding-top:5px;">
+          <svg width="84" height="26" viewBox="0 0 84 26" fill="none" preserveAspectRatio="none"><polyline points="0,20 14,18 28,15 42,13 56,10 70,7 84,5" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+        </span>
+      </a>
+
+      <a href="Article.dc.html" style="display:grid; grid-template-columns:96px minmax(0,1fr) auto; column-gap:clamp(16px,2.5vw,34px); row-gap:8px; align-items:baseline; padding:22px 0; border-top:1px solid var(--hairline); color:var(--ink); transition:color .25s ease;" style-hover="color:var(--accent);">
+        <span style="font-family:'Roboto Mono',monospace; font-size:13px; font-weight:400; color:var(--muted); letter-spacing:0.01em; padding-top:3px;">2026.05.20</span>
+        <span style="grid-column:2; min-width:0;">
+          <span style="display:block; font-family:'Roboto Mono',monospace; font-size:clamp(16px,1.9vw,18.5px); font-weight:500; line-height:1.4; color:inherit;">Izvoz roba 2025: struktura i glavni partneri</span>
+          <span style="display:block; font-family:'Source Sans 3',sans-serif; font-size:14px; color:var(--muted); margin-top:7px; line-height:1.55;">Strojevi i transportna oprema vode rast, Njemačka i Italija ostaju prve.</span>
+          <span style="display:flex; flex-wrap:wrap; gap:10px; margin-top:11px; font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); letter-spacing:0.03em;">
+            <span>[eurostat]</span><span>[trgovina]</span>
+          </span>
+        </span>
+        <span style="grid-column:3;"></span>
+      </a>
+
+      <a href="Article.dc.html" style="display:grid; grid-template-columns:96px minmax(0,1fr) auto; column-gap:clamp(16px,2.5vw,34px); row-gap:8px; align-items:baseline; padding:22px 0; border-top:1px solid var(--hairline); color:var(--ink); transition:color .25s ease;" style-hover="color:var(--accent);">
+        <span style="font-family:'Roboto Mono',monospace; font-size:13px; font-weight:400; color:var(--muted); letter-spacing:0.01em; padding-top:3px;">2026.05.08</span>
+        <span style="grid-column:2; min-width:0;">
+          <span style="display:block; font-family:'Roboto Mono',monospace; font-size:clamp(16px,1.9vw,18.5px); font-weight:500; line-height:1.4; color:inherit;">Tržište rada: stopa zaposlenosti po županijama</span>
+          <span style="display:block; font-family:'Source Sans 3',sans-serif; font-size:14px; color:var(--muted); margin-top:7px; line-height:1.55;">Jadranska Hrvatska i dalje ispod kontinentalnog prosjeka izvan sezone.</span>
+          <span style="display:flex; flex-wrap:wrap; gap:10px; margin-top:11px; font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); letter-spacing:0.03em;">
+            <span>[dzs]</span><span>[rad]</span>
+          </span>
+        </span>
+        <span style="grid-column:3;"></span>
+      </a>
+
+      <a href="Article.dc.html" style="display:grid; grid-template-columns:96px minmax(0,1fr) auto; column-gap:clamp(16px,2.5vw,34px); row-gap:8px; align-items:baseline; padding:22px 0; border-top:1px solid var(--hairline); color:var(--ink); transition:color .25s ease;" style-hover="color:var(--accent);">
+        <span style="font-family:'Roboto Mono',monospace; font-size:13px; font-weight:400; color:var(--muted); letter-spacing:0.01em; padding-top:3px;">2026.04.27</span>
+        <span style="grid-column:2; min-width:0;">
+          <span style="display:block; font-family:'Roboto Mono',monospace; font-size:clamp(16px,1.9vw,18.5px); font-weight:500; line-height:1.4; color:inherit;">Cijene stambenih nekretnina: indeks 2015=100</span>
+          <span style="display:block; font-family:'Source Sans 3',sans-serif; font-size:14px; color:var(--muted); margin-top:7px; line-height:1.55;">Indeks prelazi 210 bodova; usporavanje rasta na godišnjoj razini.</span>
+          <span style="display:flex; flex-wrap:wrap; gap:10px; margin-top:11px; font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); letter-spacing:0.03em;">
+            <span>[eurostat]</span><span>[nekretnine]</span>
+          </span>
+        </span>
+        <span style="grid-column:3; padding-top:5px;">
+          <svg width="84" height="26" viewBox="0 0 84 26" fill="none" preserveAspectRatio="none"><polyline points="0,23 14,20 28,16 42,12 56,8 70,5 84,4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+        </span>
+      </a>
+
+      <a href="Article.dc.html" style="display:grid; grid-template-columns:96px minmax(0,1fr) auto; column-gap:clamp(16px,2.5vw,34px); row-gap:8px; align-items:baseline; padding:22px 0; border-top:1px solid var(--hairline); color:var(--ink); transition:color .25s ease;" style-hover="color:var(--accent);">
+        <span style="font-family:'Roboto Mono',monospace; font-size:13px; font-weight:400; color:var(--muted); letter-spacing:0.01em; padding-top:3px;">2026.04.15</span>
+        <span style="grid-column:2; min-width:0;">
+          <span style="display:block; font-family:'Roboto Mono',monospace; font-size:clamp(16px,1.9vw,18.5px); font-weight:500; line-height:1.4; color:inherit;">Reproducibilnost: kako pripremamo Eurostat serije u R-u</span>
+          <span style="display:block; font-family:'Source Sans 3',sans-serif; font-size:14px; color:var(--muted); margin-top:7px; line-height:1.55;">Od poziva na API do zamrznute tablice — bilješka o metodi.</span>
+          <span style="display:flex; flex-wrap:wrap; gap:10px; margin-top:11px; font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); letter-spacing:0.03em;">
+            <span>[metoda]</span><span>[r]</span>
+          </span>
+        </span>
+        <span style="grid-column:3;"></span>
+      </a>
+
+      <a href="Article.dc.html" style="display:grid; grid-template-columns:96px minmax(0,1fr) auto; column-gap:clamp(16px,2.5vw,34px); row-gap:8px; align-items:baseline; padding:22px 0; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline); color:var(--ink); transition:color .25s ease;" style-hover="color:var(--accent);">
+        <span style="font-family:'Roboto Mono',monospace; font-size:13px; font-weight:400; color:var(--muted); letter-spacing:0.01em; padding-top:3px;">2026.04.02</span>
+        <span style="grid-column:2; min-width:0;">
+          <span style="display:block; font-family:'Roboto Mono',monospace; font-size:clamp(16px,1.9vw,18.5px); font-weight:500; line-height:1.4; color:inherit;">Javni dug opće države: kvartalni pregled</span>
+          <span style="display:block; font-family:'Source Sans 3',sans-serif; font-size:14px; color:var(--muted); margin-top:7px; line-height:1.55;">Udio u BDP-u pada ispod 60 % prvi put nakon 2008.</span>
+          <span style="display:flex; flex-wrap:wrap; gap:10px; margin-top:11px; font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); letter-spacing:0.03em;">
+            <span>[eurostat]</span><span>[fiskalno]</span>
+          </span>
+        </span>
+        <span style="grid-column:3; padding-top:5px;">
+          <svg width="84" height="26" viewBox="0 0 84 26" fill="none" preserveAspectRatio="none"><polyline points="0,5 14,7 28,10 42,11 56,15 70,18 84,21" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+        </span>
+      </a>
+
+    </div>
+
+    <div style="display:flex; justify-content:center; padding:clamp(34px,5vw,52px) 0;">
+      <a href="Tag Index.dc.html" style="font-family:'Roboto Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); border-bottom:1px solid var(--hairline); padding-bottom:4px; transition:color .2s,border-color .2s;" style-hover="color:var(--accent); border-color:var(--accent);">Pregledaj po oznakama →</a>
+    </div>
+
+  </main>
+
+  <footer style="margin-top:clamp(40px,6vw,72px); padding:clamp(34px,4vw,46px) 0 clamp(30px,4vw,46px); border-top:1px solid var(--hairline); display:flex; flex-wrap:wrap; gap:28px 48px; justify-content:space-between; align-items:flex-start;">
+    <div style="max-width:330px;">
+      <div style="font-family:'Roboto Mono',monospace; font-weight:700; font-size:16px; color:var(--ink);">CroAIcon</div>
+      <p style="font-family:'Source Sans 3',sans-serif; font-size:13.5px; line-height:1.65; color:var(--muted); margin:10px 0 0;">Reproducibilne analize hrvatskih gospodarskih podataka. R za analizu, Python za nacrte teksta, Quarto za objavu.</p>
+    </div>
+    <div style="display:flex; gap:48px; flex-wrap:wrap; font-family:'Roboto Mono',monospace; font-size:11.5px; letter-spacing:0.07em;">
+      <div style="display:flex; flex-direction:column; gap:11px;">
+        <span style="color:var(--muted); text-transform:uppercase; letter-spacing:0.14em; font-size:10.5px;">Veze</span>
+        <a href="#" style="color:var(--ink);" style-hover="color:var(--accent);">RSS</a>
+        <a href="#" style="color:var(--ink);" style-hover="color:var(--accent);">GitHub</a>
+        <a href="Podaci.dc.html" style="color:var(--ink);" style-hover="color:var(--accent);">Podaci</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:11px;">
+        <span style="color:var(--muted); text-transform:uppercase; letter-spacing:0.14em; font-size:10.5px;">Dizajn</span>
+        <a href="Style Tile.dc.html" style="color:var(--ink);" style-hover="color:var(--accent);">Predložak</a>
+        <a href="Brand.dc.html" style="color:var(--ink);" style-hover="color:var(--accent);">Brand</a>
+        <a href="404.dc.html" style="color:var(--ink);" style-hover="color:var(--accent);">404</a>
+      </div>
+    </div>
+    <div style="font-family:'Roboto Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:0.04em; line-height:1.9;">
+      <div>build 2026.06.18 · 14:22 CET</div>
+      <div>© 2026 CroAIcon · CC BY 4.0</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    try{
+      const t = localStorage.getItem('croaicon-theme');
+      if(t) document.documentElement.dataset.theme = t;
+    }catch(e){}
+  }
+  renderVals(){
+    return {
+      toggleTheme: () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        try{ localStorage.setItem('croaicon-theme', next); }catch(e){}
+      },
+      openSearch: () => {}
+    };
+  }
+}
+</script>
+</body>
+</html>

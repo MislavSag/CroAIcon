@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{ --paper:#F7F7F4; --ink:#18181B; --muted:#71717A; --hairline:#E6E6E1; --accent:#2348E5; --surface:#F1F1EC; }
+  html[data-theme="dark"]{ --paper:#0F0F11; --ink:#ECECEC; --muted:#8A8A90; --hairline:#262629; --accent:#5C78FF; --surface:#17171A; }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Source Sans 3',system-ui,sans-serif; -webkit-font-smoothing:antialiased; transition:background .45s ease,color .45s ease; }
+  ::selection{ background:var(--accent); color:#fff; }
+  a{ color:inherit; text-decoration:none; }
+  @keyframes blink{ 0%,49%{opacity:1;} 50%,100%{opacity:0;} }
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;} }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+</style>
+</helmet>
+
+<div style="min-height:100vh; padding:clamp(24px,5vw,56px) clamp(20px,6vw,96px); max-width:1180px; margin:0 auto; display:flex; flex-direction:column;">
+
+  <header style="display:flex; flex-wrap:wrap; gap:24px 40px; align-items:center; justify-content:space-between; padding-bottom:22px; border-bottom:1px solid var(--hairline);">
+    <a href="Home.dc.html" style="font-family:'Roboto Mono',monospace; font-weight:700; font-size:19px; letter-spacing:-0.01em; color:var(--ink);">CroAIcon</a>
+    <nav style="display:flex; flex-wrap:wrap; align-items:center; gap:20px 22px; font-family:'Roboto Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.085em; text-transform:uppercase;">
+      <a href="Home.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">Analize</a>
+      <a href="O projektu.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">O&nbsp;projektu</a>
+      <a href="Podaci.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">Podaci</a>
+      <button onClick="{{ toggleTheme }}" aria-label="Promijeni temu" style="width:30px; height:30px; display:grid; place-items:center; background:none; border:1px solid var(--hairline); border-radius:50%; cursor:pointer; color:var(--ink); transition:border-color .2s,color .2s;" style-hover="border-color:var(--accent); color:var(--accent);">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0a7 7 0 100 14A4.6 4.6 0 017 0z"></path></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:clamp(48px,10vw,120px) 0; animation:fadeUp .55s ease both; max-width:620px;">
+    <div style="font-family:'Roboto Mono',monospace; font-size:clamp(56px,12vw,104px); font-weight:300; letter-spacing:-0.03em; color:var(--ink); line-height:1;">404</div>
+    <div style="font-family:'Roboto Mono',monospace; font-size:13px; color:var(--muted); letter-spacing:0.04em; margin-top:24px;">$ GET <span style="color:var(--ink);">/analiza/nepoznato</span> → <span style="color:var(--accent);">404</span><span style="display:inline-block; width:8px; height:15px; background:var(--accent); margin-left:6px; vertical-align:-2px; animation:blink 1.1s step-end infinite;"></span></div>
+    <p style="font-family:'Source Sans 3',sans-serif; font-size:16px; line-height:1.7; color:var(--muted); margin:28px 0 0;">Tražena putanja ne postoji u indeksu. Serija je možda preimenovana ili premještena. Vratite se na listing i pokušajte odande.</p>
+    <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:34px;">
+      <a href="Home.dc.html" style="font-family:'Roboto Mono',monospace; font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--paper); background:var(--accent); padding:11px 20px; border-radius:3px;">← Na listing</a>
+      <a href="Tag Index.dc.html" style="font-family:'Roboto Mono',monospace; font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); border:1px solid var(--hairline); padding:11px 20px; border-radius:3px; transition:border-color .2s;" style-hover="border-color:var(--accent);">Oznake</a>
+    </div>
+  </main>
+
+  <footer style="padding:30px 0 12px; border-top:1px solid var(--hairline); font-family:'Roboto Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:0.04em;">© 2026 CroAIcon · CC BY 4.0</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    try{ const t = localStorage.getItem('croaicon-theme'); if(t) document.documentElement.dataset.theme = t; }catch(e){}
+  }
+  renderVals(){
+    return {
+      toggleTheme: () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        try{ localStorage.setItem('croaicon-theme', next); }catch(e){}
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

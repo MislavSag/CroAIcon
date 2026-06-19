@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F7F4; --ink:#18181B; --muted:#71717A; --hairline:#E6E6E1;
+    --accent:#2348E5; --surface:#F1F1EC; --rise:#1C8F5A; --fall:#D2463A; --code:#EFEFEA;
+  }
+  html[data-theme="dark"]{
+    --paper:#0F0F11; --ink:#ECECEC; --muted:#8A8A90; --hairline:#262629;
+    --accent:#5C78FF; --surface:#17171A; --rise:#2BA56B; --fall:#E15B4F; --code:#141417;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Source Sans 3',system-ui,sans-serif; -webkit-font-smoothing:antialiased; transition:background .45s ease,color .45s ease; }
+  ::selection{ background:var(--accent); color:#fff; }
+  a{ color:inherit; text-decoration:none; }
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;} }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+</style>
+</helmet>
+
+<div style="min-height:100vh; padding:clamp(24px,5vw,56px) clamp(20px,6vw,96px) 0; max-width:1180px; margin:0 auto;">
+
+  <header style="display:flex; flex-wrap:wrap; gap:24px 40px; align-items:center; justify-content:space-between; padding-bottom:22px; border-bottom:1px solid var(--hairline);">
+    <a href="Home.dc.html" style="font-family:'Roboto Mono',monospace; font-weight:700; font-size:19px; letter-spacing:-0.01em; color:var(--ink);">CroAIcon</a>
+    <nav style="display:flex; flex-wrap:wrap; align-items:center; gap:20px 22px; font-family:'Roboto Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.085em; text-transform:uppercase;">
+      <a href="Home.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">Analize</a>
+      <a href="O projektu.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">O&nbsp;projektu</a>
+      <a href="Podaci.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">Podaci</a>
+      <button onClick="{{ toggleTheme }}" aria-label="Promijeni temu" style="width:30px; height:30px; display:grid; place-items:center; background:none; border:1px solid var(--hairline); border-radius:50%; cursor:pointer; color:var(--ink); transition:border-color .2s,color .2s;" style-hover="border-color:var(--accent); color:var(--accent);">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0a7 7 0 100 14A4.6 4.6 0 017 0z"></path></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main style="padding:clamp(40px,6vw,72px) 0 0; animation:fadeUp .55s ease both;">
+
+    <div style="font-family:'Roboto Mono',monospace; font-size:11.5px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); margin-bottom:16px;">Stilski predložak</div>
+    <h1 style="font-family:'Roboto Mono',monospace; font-weight:700; font-size:clamp(30px,5vw,44px); line-height:1.12; letter-spacing:-0.02em; margin:0 0 14px; color:var(--ink);">Sustav dizajna</h1>
+    <p style="font-family:'Source Sans 3',sans-serif; font-size:16px; line-height:1.7; color:var(--muted); max-width:560px; margin:0;">Jedan tipografski sustav, jedna signalna boja, tanke crte umjesto okvira. Tihi podatkovni terminal otisnut na papiru.</p>
+
+    <!-- TYPE -->
+    <section style="margin-top:clamp(48px,7vw,88px); padding-top:30px; border-top:1px solid var(--hairline);">
+      <div style="font-family:'Roboto Mono',monospace; font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:32px;">01 — Tipografija</div>
+
+      <div style="display:flex; flex-wrap:wrap; gap:48px 64px;">
+        <div style="flex:1 1 280px;">
+          <div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:18px;">Roboto Mono — težine</div>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="display:flex; align-items:baseline; gap:16px;"><span style="font-family:'Roboto Mono',monospace; font-weight:300; font-size:26px; color:var(--ink);">Aa 0123</span><span style="font-family:'Roboto Mono',monospace; font-size:11px; color:var(--muted);">300 light</span></div>
+            <div style="display:flex; align-items:baseline; gap:16px;"><span style="font-family:'Roboto Mono',monospace; font-weight:400; font-size:26px; color:var(--ink);">Aa 0123</span><span style="font-family:'Roboto Mono',monospace; font-size:11px; color:var(--muted);">400 regular</span></div>
+            <div style="display:flex; align-items:baseline; gap:16px;"><span style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:26px; color:var(--ink);">Aa 0123</span><span style="font-family:'Roboto Mono',monospace; font-size:11px; color:var(--muted);">500 medium</span></div>
+            <div style="display:flex; align-items:baseline; gap:16px;"><span style="font-family:'Roboto Mono',monospace; font-weight:700; font-size:26px; color:var(--ink);">Aa 0123</span><span style="font-family:'Roboto Mono',monospace; font-size:11px; color:var(--muted);">700 bold</span></div>
+          </div>
+        </div>
+        <div style="flex:1 1 280px;">
+          <div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:18px;">Source Sans 3 — tijelo teksta</div>
+          <p style="font-family:'Source Sans 3',sans-serif; font-size:16px; line-height:1.72; color:var(--ink); margin:0; max-width:48ch;">Za najduže tekstove tijelo se postavlja u neutralni sans, dok naslovi, navigacija, metapodaci, kod i tablice ostaju u Roboto Monu. Mjera je oko 68–72 znaka.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:44px; display:flex; flex-direction:column; gap:22px; border-top:1px solid var(--hairline); padding-top:32px;">
+        <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap;"><span style="font-family:'Roboto Mono',monospace; font-weight:700; font-size:33px; letter-spacing:-0.015em; color:var(--ink);">Naslov članka</span><span style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted);">700 · 2.1rem · −0.015em</span></div>
+        <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap;"><span style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:23px; letter-spacing:-0.01em; color:var(--ink);">Naslov odjeljka</span><span style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted);">500 · 1.45rem</span></div>
+        <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap;"><span style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:18px; color:var(--ink);">Podnaslov</span><span style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted);">500 · 1.15rem</span></div>
+        <div style="display:flex; align-items:baseline; gap:18px; flex-wrap:wrap;"><span style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:11.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent);">Eyebrow / utility</span><span style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted);">500 · uppercase · 0.08–0.16em</span></div>
+      </div>
+    </section>
+
+    <!-- COLOR -->
+    <section style="margin-top:clamp(48px,7vw,88px); padding-top:30px; border-top:1px solid var(--hairline);">
+      <div style="font-family:'Roboto Mono',monospace; font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:32px;">02 — Boja</div>
+
+      <div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Svijetla tema</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:14px;">
+        <div><div style="height:74px; border-radius:3px; border:1px solid var(--hairline); background:#F7F7F4;"></div><div style="font-family:'Roboto Mono',monospace; font-size:11.5px; margin-top:10px; color:var(--ink);">Paper</div><div style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted);">#F7F7F4</div></div>
+        <div><div style="height:74px; border-radius:3px; background:#18181B;"></div><div style="font-family:'Roboto Mono',monospace; font-size:11.5px; margin-top:10px; color:var(--ink);">Ink</div><div style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted);">#18181B</div></div>
+        <div><div style="height:74px; border-radius:3px; background:#71717A;"></div><div style="font-family:'Roboto Mono',monospace; font-size:11.5px; margin-top:10px; color:var(--ink);">Muted</div><div style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted);">#71717A</div></div>
+        <div><div style="height:74px; border-radius:3px; border:1px solid #d8d8d2; background:#E6E6E1;"></div><div style="font-family:'Roboto Mono',monospace; font-size:11.5px; margin-top:10px; color:var(--ink);">Hairline</div><div style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted);">#E6E6E1</div></div>
+        <div><div style="height:74px; border-radius:3px; background:#2348E5;"></div><div style="font-family:'Roboto Mono',monospace; font-size:11.5px; margin-top:10px; color:var(--ink);">Accent</div><div style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted);">#2348E5</div></div>
+      </div>
+
+      <div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin:30px 0 16px;">Tamna tema</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:14px;">
+        <div><div style="height:74px; border-radius:3px; border:1px solid #262629; background:#0F0F11;"></div><div style="font-family:'Roboto Mono',monospace; font-size:11.5px; margin-top:10px; color:var(--ink);">Background</div><div style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted);">#0F0F11</div></div>
+        <div><div style="height:74px; border-radius:3px; border:1px solid #262629; background:#17171A;"></div><div style="font-family:'Roboto Mono',monospace; font-size:11.5px; margin-top:10px; color:var(--ink);">Surface</div><div style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted);">#17171A</div></div>
+        <div><div style="height:74px; border-radius:3px; background:#ECECEC;"></div><div style="font-family:'Roboto Mono',monospace; font-size:11.5px; margin-top:10px; color:var(--ink);">Text</div><div style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted);">#ECECEC</div></div>
+        <div><div style="height:74px; border-radius:3px; background:#8A8A90;"></div><div style="font-family:'Roboto Mono',monospace; font-size:11.5px; margin-top:10px; color:var(--ink);">Muted</div><div style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted);">#8A8A90</div></div>
+        <div><div style="height:74px; border-radius:3px; background:#5C78FF;"></div><div style="font-family:'Roboto Mono',monospace; font-size:11.5px; margin-top:10px; color:var(--ink);">Accent</div><div style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted);">#5C78FF</div></div>
+      </div>
+
+      <div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin:30px 0 16px;">Semantika smjera — samo grafovi i tablice</div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <div style="flex:1 1 180px;"><div style="height:60px; border-radius:3px; background:#1C8F5A; display:flex; align-items:center; padding:0 16px; font-family:'Roboto Mono',monospace; font-size:13px; color:#fff;">▲ rast</div><div style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted); margin-top:9px;">#1C8F5A</div></div>
+        <div style="flex:1 1 180px;"><div style="height:60px; border-radius:3px; background:#D2463A; display:flex; align-items:center; padding:0 16px; font-family:'Roboto Mono',monospace; font-size:13px; color:#fff;">▼ pad</div><div style="font-family:'Roboto Mono',monospace; font-size:10.5px; color:var(--muted); margin-top:9px;">#D2463A</div></div>
+      </div>
+    </section>
+
+    <!-- SPACING -->
+    <section style="margin-top:clamp(48px,7vw,88px); padding-top:30px; border-top:1px solid var(--hairline);">
+      <div style="font-family:'Roboto Mono',monospace; font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">03 — Razmak</div>
+      <p style="font-family:'Source Sans 3',sans-serif; font-size:14px; color:var(--muted); margin:0 0 30px;">Ljestvica od 8px. Glavni blokovi 64–96px, velikodušan zrak.</p>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="display:flex; align-items:center; gap:16px;"><span style="font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); width:48px;">8</span><div style="height:14px; width:8px; background:var(--accent);"></div></div>
+        <div style="display:flex; align-items:center; gap:16px;"><span style="font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); width:48px;">16</span><div style="height:14px; width:16px; background:var(--accent);"></div></div>
+        <div style="display:flex; align-items:center; gap:16px;"><span style="font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); width:48px;">24</span><div style="height:14px; width:24px; background:var(--accent);"></div></div>
+        <div style="display:flex; align-items:center; gap:16px;"><span style="font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); width:48px;">32</span><div style="height:14px; width:32px; background:var(--accent);"></div></div>
+        <div style="display:flex; align-items:center; gap:16px;"><span style="font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); width:48px;">48</span><div style="height:14px; width:48px; background:var(--accent);"></div></div>
+        <div style="display:flex; align-items:center; gap:16px;"><span style="font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); width:48px;">64</span><div style="height:14px; width:64px; background:var(--accent);"></div></div>
+        <div style="display:flex; align-items:center; gap:16px;"><span style="font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); width:48px;">96</span><div style="height:14px; width:96px; background:var(--accent);"></div></div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS -->
+    <section style="margin-top:clamp(48px,7vw,88px); padding-top:30px; border-top:1px solid var(--hairline);">
+      <div style="font-family:'Roboto Mono',monospace; font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-bottom:32px;">04 — Komponente</div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:34px 48px;">
+
+        <div>
+          <div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Oznake</div>
+          <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+            <span style="font-family:'Roboto Mono',monospace; font-size:12px; color:var(--muted);">[eurostat]</span>
+            <span style="font-family:'Roboto Mono',monospace; font-size:12px; color:var(--accent);">[hicp]</span>
+            <span style="font-family:'Roboto Mono',monospace; font-size:11px; color:var(--muted); border:1px solid var(--hairline); padding:3px 10px; border-radius:20px;">gfi</span>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Poveznice i gumb</div>
+          <div style="display:flex; flex-wrap:wrap; gap:18px; align-items:center;">
+            <a href="#" style="font-family:'Source Sans 3',sans-serif; font-size:15px; color:var(--accent); border-bottom:1px solid var(--accent); padding-bottom:1px;">poveznica</a>
+            <button style="font-family:'Roboto Mono',monospace; font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--paper); background:var(--accent); border:none; padding:9px 18px; border-radius:3px; cursor:pointer;">Pretplata</button>
+          </div>
+        </div>
+
+        <div style="grid-column:1/-1;">
+          <div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Redak manifesta</div>
+          <div style="display:grid; grid-template-columns:96px 1fr auto; column-gap:24px; align-items:baseline; padding:18px 0; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);">
+            <span style="font-family:'Roboto Mono',monospace; font-size:13px; color:var(--muted);">2026.06.18</span>
+            <span>
+              <span style="display:block; font-family:'Roboto Mono',monospace; font-size:16px; font-weight:500; color:var(--ink);">Naslov zapisa u manifestu</span>
+              <span style="display:flex; gap:10px; margin-top:9px; font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted);"><span>[eurostat]</span><span>[bdp]</span></span>
+            </span>
+            <svg width="84" height="26" viewBox="0 0 84 26" fill="none"><polyline points="0,20 14,16 28,17 42,11 56,9 70,5 84,6" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Callout</div>
+          <div style="border-left:2px solid var(--accent); padding:2px 0 2px 18px;">
+            <div style="font-family:'Roboto Mono',monospace; font-size:10.5px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:7px;">Napomena</div>
+            <p style="font-family:'Source Sans 3',sans-serif; font-size:14px; line-height:1.6; color:var(--muted); margin:0;">Tanka crta u akcentu, mala mono oznaka, bez teškog ispuna.</p>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Blok koda</div>
+          <div style="background:var(--code); border:1px solid var(--hairline); border-radius:4px; overflow:hidden;">
+            <div style="display:flex; justify-content:space-between; padding:7px 12px; border-bottom:1px solid var(--hairline);"><span style="font-family:'Roboto Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);">R</span><span style="font-family:'Roboto Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Kopiraj</span></div>
+            <pre style="margin:0; padding:13px; font-family:'Roboto Mono',monospace; font-size:12px; line-height:1.7;"><code><span style="color:var(--accent);">mean</span>(hicp$stopa, na.rm = <span style="color:var(--ink);">TRUE</span>)</code></pre>
+          </div>
+        </div>
+
+        <div style="grid-column:1/-1;">
+          <div style="font-family:'Roboto Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Tablica</div>
+          <table style="width:100%; border-collapse:collapse; font-family:'Roboto Mono',monospace; font-size:13px;">
+            <thead><tr style="border-bottom:1.5px solid var(--ink);">
+              <th style="text-align:left; padding:9px 0; font-weight:500; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Serija</th>
+              <th style="text-align:right; padding:9px 0; font-weight:500; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">2024</th>
+              <th style="text-align:right; padding:9px 0; font-weight:500; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Δ</th>
+            </tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--hairline);"><td style="padding:9px 0; color:var(--ink);">HICP</td><td style="text-align:right; color:var(--ink); font-variant-numeric:tabular-nums;">3,1 %</td><td style="text-align:right; color:var(--fall);">−0,4</td></tr>
+              <tr><td style="padding:9px 0; color:var(--ink);">BDP</td><td style="text-align:right; color:var(--ink); font-variant-numeric:tabular-nums;">2,9 %</td><td style="text-align:right; color:var(--rise);">+0,3</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <footer style="margin-top:clamp(48px,6vw,80px); padding:34px 0 46px; border-top:1px solid var(--hairline); display:flex; flex-wrap:wrap; gap:20px 40px; justify-content:space-between; align-items:center; font-family:'Roboto Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:0.04em;">
+      <a href="Home.dc.html" style="font-weight:700; font-size:15px; color:var(--ink); letter-spacing:0;">CroAIcon</a>
+      <div>stilski predložak · © 2026 CroAIcon</div>
+    </footer>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    try{ const t = localStorage.getItem('croaicon-theme'); if(t) document.documentElement.dataset.theme = t; }catch(e){}
+  }
+  renderVals(){
+    return {
+      toggleTheme: () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        try{ localStorage.setItem('croaicon-theme', next); }catch(e){}
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

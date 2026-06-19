@@ -1,13 +1,19 @@
 ---
-title: "CroAIcon"
+title: ""
 listing:
   contents: posts
   sort: "date desc"
   type: default
   fields: [date, title, description, categories]
-  categories: true
+  categories: false
   feed: true
+  date-format: "YYYY.MM.DD"
 page-layout: full
+comments: false
 ---
 
 CroAIcon je analitički blog za hrvatske gospodarske podatke, GFI izvještaje i Eurostat serije. Postovi su zamišljeni kao reproducibilne analize: podaci se obrađuju skriptama, a AI pomaže u pisanju prvog nacrta teksta.
+
+```{=html}
+<div class="cro-divider"><span>Najnovije</span><span class="rule"></span></div>
+```

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F7F4; --ink:#18181B; --muted:#71717A; --hairline:#E6E6E1;
+    --accent:#2348E5; --surface:#F1F1EC; --rise:#1C8F5A; --fall:#D2463A; --code:#EFEFEA;
+  }
+  html[data-theme="dark"]{
+    --paper:#0F0F11; --ink:#ECECEC; --muted:#8A8A90; --hairline:#262629;
+    --accent:#5C78FF; --surface:#17171A; --rise:#2BA56B; --fall:#E15B4F; --code:#141417;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; scroll-behavior:smooth; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Source Sans 3',system-ui,sans-serif; -webkit-font-smoothing:antialiased; transition:background .45s ease,color .45s ease; }
+  ::selection{ background:var(--accent); color:#fff; }
+  a{ color:inherit; text-decoration:none; }
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;} }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{ animation:none !important; transition:none !important; } }
+  .art-layout{ display:grid; grid-template-columns:minmax(0,1fr) 196px; gap:clamp(36px,5vw,72px); align-items:start; }
+  .art-toc{ position:sticky; top:32px; }
+  @media (max-width: 900px){ .art-layout{ grid-template-columns:1fr; } .art-toc{ position:static; order:-1; margin-bottom:8px; } }
+</style>
+</helmet>
+
+<div style="min-height:100vh; padding:clamp(24px,5vw,56px) clamp(20px,6vw,96px) 0; max-width:1180px; margin:0 auto;">
+
+  <header style="display:flex; flex-wrap:wrap; gap:24px 40px; align-items:center; justify-content:space-between; padding-bottom:22px; border-bottom:1px solid var(--hairline);">
+    <a href="Home.dc.html" style="font-family:'Roboto Mono',monospace; font-weight:700; font-size:19px; letter-spacing:-0.01em; color:var(--ink);">CroAIcon</a>
+    <nav style="display:flex; flex-wrap:wrap; align-items:center; gap:20px 22px; font-family:'Roboto Mono',monospace; font-size:12px; font-weight:500; letter-spacing:0.085em; text-transform:uppercase;">
+      <a href="Home.dc.html" style="color:var(--accent);">Analize</a>
+      <a href="O projektu.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">O&nbsp;projektu</a>
+      <a href="Podaci.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">Podaci</a>
+      <a href="#" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">GitHub</a>
+      <button onClick="{{ toggleTheme }}" aria-label="Promijeni temu" style="width:30px; height:30px; display:grid; place-items:center; background:none; border:1px solid var(--hairline); border-radius:50%; cursor:pointer; color:var(--ink); transition:border-color .2s,color .2s;" style-hover="border-color:var(--accent); color:var(--accent);">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0a7 7 0 100 14A4.6 4.6 0 017 0z"></path></svg>
+      </button>
+    </nav>
+  </header>
+
+  <div class="art-layout" style="padding-top:clamp(40px,6vw,72px); animation:fadeUp .55s ease both;">
+
+    <article style="min-width:0; max-width:720px;">
+
+      <div style="font-family:'Roboto Mono',monospace; font-size:11.5px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); margin-bottom:20px;">Analiza · GFI</div>
+
+      <h1 style="font-family:'Roboto Mono',monospace; font-weight:700; font-size:clamp(28px,4.4vw,38px); line-height:1.18; letter-spacing:-0.015em; margin:0; color:var(--ink); text-wrap:balance;">Neto marže hrvatskih nefinancijskih poduzeća, 2019–2024</h1>
+
+      <div style="display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:24px; padding-bottom:24px; border-bottom:1px solid var(--hairline); font-family:'Roboto Mono',monospace; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted);">
+        <span>2026.06.18</span><span style="color:var(--hairline);">·</span>
+        <span>Ivan Kovačević</span><span style="color:var(--hairline);">·</span>
+        <span>7 min čitanja</span><span style="color:var(--hairline);">·</span>
+        <span>Analiza</span>
+      </div>
+
+      <section id="pregled" style="scroll-margin-top:28px;">
+        <p style="font-size:16px; line-height:1.72; color:var(--ink); margin:34px 0 0;">Nakon energetskog šoka 2022. profitabilnost hrvatskih nefinancijskih poduzeća dosegnula je vrhunac, a potom se počela vraćati prema dugoročnom prosjeku. Agregirani godišnji financijski izvještaji (GFI) koje poduzeća predaju FINA-i omogućuju da to kretanje pratimo na razini cijelog sektora, bez oslanjanja na ankete ili procjene.</p>
+        <p style="font-size:16px; line-height:1.72; color:var(--ink); margin:20px 0 0;">U ovoj bilješci promatramo <em>neto maržu</em> — odnos neto dobiti i ukupnih prihoda — za razdoblje 2019.–2024. Riječ je o jednostavnom, ali otpornom pokazatelju koji apsorbira i učinke izlaznih cijena i učinke troškova financiranja.</p>
+      </section>
+
+      <section id="podaci-metoda" style="scroll-margin-top:28px;">
+        <h2 style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:clamp(20px,2.6vw,23px); letter-spacing:-0.01em; margin:56px 0 0; color:var(--ink);">Podaci i metoda</h2>
+        <p style="font-size:16px; line-height:1.72; color:var(--ink); margin:18px 0 0;">Polazimo od javno dostupnih agregata FINA-e za nefinancijska poduzeća. Prihodi i neto dobit izraženi su u milijardama eura, uz preračun povijesnih vrijednosti iz kuna po fiksnom tečaju konverzije. Maržu računamo izravno iz agregata, a ne kao prosjek pojedinačnih marži, čime izbjegavamo pristranost malih poduzeća.</p>
+
+        <div style="border-left:2px solid var(--accent); padding:4px 0 4px 20px; margin:30px 0 0;">
+          <div style="font-family:'Roboto Mono',monospace; font-size:11px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:8px;">Napomena</div>
+          <p style="font-size:14.5px; line-height:1.65; color:var(--muted); margin:0;">GFI agregati revidiraju se kako pristižu zakašnjeli izvještaji. Vrijednosti za 2024. preliminarne su i mogu se promijeniti pri sljedećoj objavi FINA-e.</p>
+        </div>
+      </section>
+
+      <section id="kretanje" style="scroll-margin-top:28px;">
+        <h2 style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:clamp(20px,2.6vw,23px); letter-spacing:-0.01em; margin:56px 0 0; color:var(--ink);">Kretanje neto marže</h2>
+        <p style="font-size:16px; line-height:1.72; color:var(--ink); margin:18px 0 0;">Marža pada u pandemijskoj 2020., naglo raste 2021. i 2022., te se zatim blago smanjuje. Vrhunac od 6,6 % u 2022. poklapa se s razdobljem visokih izlaznih cijena; pad u 2024. odražava normalizaciju marži i rast troškova rada.</p>
+
+        <figure style="margin:34px -24px 0; border:1px solid var(--hairline); background:var(--surface); padding:24px 22px 18px; border-radius:3px;">
+          <svg viewBox="0 0 720 320" style="width:100%; height:auto; display:block; font-family:'Roboto Mono',monospace;">
+            <line x1="56" y1="30" x2="700" y2="30" stroke="var(--hairline)" stroke-width="1"></line>
+            <line x1="56" y1="90" x2="700" y2="90" stroke="var(--hairline)" stroke-width="1"></line>
+            <line x1="56" y1="150" x2="700" y2="150" stroke="var(--hairline)" stroke-width="1"></line>
+            <line x1="56" y1="210" x2="700" y2="210" stroke="var(--hairline)" stroke-width="1"></line>
+            <line x1="56" y1="270" x2="700" y2="270" stroke="var(--muted)" stroke-width="1" opacity="0.5"></line>
+            <text x="44" y="34" text-anchor="end" font-size="12" fill="var(--muted)">8%</text>
+            <text x="44" y="94" text-anchor="end" font-size="12" fill="var(--muted)">6%</text>
+            <text x="44" y="154" text-anchor="end" font-size="12" fill="var(--muted)">4%</text>
+            <text x="44" y="214" text-anchor="end" font-size="12" fill="var(--muted)">2%</text>
+            <text x="44" y="274" text-anchor="end" font-size="12" fill="var(--muted)">0%</text>
+            <polyline points="56,120 184.8,159 313.6,81 442.4,72 571.2,75 700,99" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+            <circle cx="56" cy="120" r="3.4" fill="var(--paper)" stroke="var(--accent)" stroke-width="2"></circle>
+            <circle cx="184.8" cy="159" r="3.4" fill="var(--paper)" stroke="var(--accent)" stroke-width="2"></circle>
+            <circle cx="313.6" cy="81" r="3.4" fill="var(--paper)" stroke="var(--accent)" stroke-width="2"></circle>
+            <circle cx="442.4" cy="72" r="4.6" fill="var(--accent)"></circle>
+            <circle cx="571.2" cy="75" r="3.4" fill="var(--paper)" stroke="var(--accent)" stroke-width="2"></circle>
+            <circle cx="700" cy="99" r="3.4" fill="var(--paper)" stroke="var(--accent)" stroke-width="2"></circle>
+            <text x="442.4" y="58" text-anchor="middle" font-size="12" font-weight="500" fill="var(--accent)">6,6%</text>
+            <text x="56" y="292" text-anchor="middle" font-size="11.5" fill="var(--muted)">2019</text>
+            <text x="184.8" y="292" text-anchor="middle" font-size="11.5" fill="var(--muted)">2020</text>
+            <text x="313.6" y="292" text-anchor="middle" font-size="11.5" fill="var(--muted)">2021</text>
+            <text x="442.4" y="292" text-anchor="middle" font-size="11.5" fill="var(--muted)">2022</text>
+            <text x="571.2" y="292" text-anchor="middle" font-size="11.5" fill="var(--muted)">2023</text>
+            <text x="700" y="292" text-anchor="middle" font-size="11.5" fill="var(--muted)">2024</text>
+          </svg>
+          <figcaption style="font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); letter-spacing:0.04em; margin-top:14px; padding-top:12px; border-top:1px solid var(--hairline);"><span style="color:var(--ink); font-weight:500;">Slika 1</span> — Neto marža nefinancijskih poduzeća, 2019.–2024. Izvor: FINA / GFI, izračun CroAIcon.</figcaption>
+        </figure>
+      </section>
+
+      <section id="djelatnosti" style="scroll-margin-top:28px;">
+        <h2 style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:clamp(20px,2.6vw,23px); letter-spacing:-0.01em; margin:56px 0 0; color:var(--ink);">Razlike po djelatnostima</h2>
+        <p style="font-size:16px; line-height:1.72; color:var(--ink); margin:18px 0 24px;">Agregat skriva znatne razlike. Prerađivačka industrija i energetika vode rast u 2022., dok trgovina ranije osjeća pritisak na marže. Sljedeća tablica daje agregatne vrijednosti iz kojih je izračunata marža.</p>
+
+        <div style="font-family:'Roboto Mono',monospace; font-size:11.5px; color:var(--muted); letter-spacing:0.04em; margin:0 0 12px;"><span style="color:var(--ink); font-weight:500;">Tablica 1</span> — Agregirani GFI pokazatelji, nefinancijska poduzeća (mlrd EUR).</div>
+        <div style="overflow-x:auto; margin:0 -24px;">
+        <table style="width:100%; min-width:520px; border-collapse:collapse; font-family:'Roboto Mono',monospace; font-size:13.5px; margin:0 24px;">
+          <thead>
+            <tr style="border-bottom:1.5px solid var(--ink);">
+              <th style="text-align:left; padding:10px 14px 10px 0; font-weight:500; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Godina</th>
+              <th style="text-align:right; padding:10px 14px; font-weight:500; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Prihodi</th>
+              <th style="text-align:right; padding:10px 14px; font-weight:500; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Neto dobit</th>
+              <th style="text-align:right; padding:10px 14px; font-weight:500; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Neto marža</th>
+              <th style="text-align:right; padding:10px 0 10px 14px; font-weight:500; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Δ pp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--hairline);"><td style="padding:11px 14px 11px 0; color:var(--ink);">2019</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">142,3</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">7,1</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">5,0 %</td><td style="text-align:right; padding:11px 0 11px 14px; color:var(--muted);">—</td></tr>
+            <tr style="border-bottom:1px solid var(--hairline);"><td style="padding:11px 14px 11px 0; color:var(--ink);">2020</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">131,8</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">4,9</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">3,7 %</td><td style="text-align:right; padding:11px 0 11px 14px; color:var(--fall); font-variant-numeric:tabular-nums;">−1,3</td></tr>
+            <tr style="border-bottom:1px solid var(--hairline);"><td style="padding:11px 14px 11px 0; color:var(--ink);">2021</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">156,4</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">9,8</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">6,3 %</td><td style="text-align:right; padding:11px 0 11px 14px; color:var(--rise); font-variant-numeric:tabular-nums;">+2,6</td></tr>
+            <tr style="border-bottom:1px solid var(--hairline);"><td style="padding:11px 14px 11px 0; color:var(--ink);">2022</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">188,7</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">12,4</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums; font-weight:500;">6,6 %</td><td style="text-align:right; padding:11px 0 11px 14px; color:var(--rise); font-variant-numeric:tabular-nums;">+0,3</td></tr>
+            <tr style="border-bottom:1px solid var(--hairline);"><td style="padding:11px 14px 11px 0; color:var(--ink);">2023</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">201,2</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">13,1</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">6,5 %</td><td style="text-align:right; padding:11px 0 11px 14px; color:var(--fall); font-variant-numeric:tabular-nums;">−0,1</td></tr>
+            <tr><td style="padding:11px 14px 11px 0; color:var(--ink);">2024</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">209,5</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">12,0</td><td style="text-align:right; padding:11px 14px; color:var(--ink); font-variant-numeric:tabular-nums;">5,7 %</td><td style="text-align:right; padding:11px 0 11px 14px; color:var(--fall); font-variant-numeric:tabular-nums;">−0,8</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section id="kod" style="scroll-margin-top:28px;">
+        <h2 style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:clamp(20px,2.6vw,23px); letter-spacing:-0.01em; margin:56px 0 0; color:var(--ink);">Kod</h2>
+        <p style="font-size:16px; line-height:1.72; color:var(--ink); margin:18px 0 24px;">Cijeli izračun i graf reproducira se sljedećim isječkom. Tema <code style="font-family:'Roboto Mono',monospace; font-size:14px; background:var(--surface); padding:1px 5px; border-radius:3px;">theme_croaicon()</code> i paleta dolaze iz internog paketa pa svaki graf automatski prati tipografiju i boje stranice.</p>
+
+        <div style="position:relative; background:var(--code); border:1px solid var(--hairline); border-radius:4px; overflow:hidden;">
+          <div style="display:flex; align-items:center; justify-content:space-between; padding:9px 14px; border-bottom:1px solid var(--hairline);">
+            <span style="font-family:'Roboto Mono',monospace; font-size:10.5px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);">R</span>
+            <button onClick="{{ copyCode }}" style="font-family:'Roboto Mono',monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); background:none; border:none; cursor:pointer; padding:0; transition:color .2s;" style-hover="color:var(--accent);">{{ copyLabel }}</button>
+          </div>
+          <pre style="margin:0; padding:18px; overflow-x:auto; font-family:'Roboto Mono',monospace; font-size:13px; line-height:1.85; color:var(--ink);"><div style="white-space:pre"><span style="color:var(--accent);">library</span>(tidyverse)</div><div style="white-space:pre"><span style="color:var(--accent);">library</span>(croaicon)   <span style="color:var(--muted);"># interni paket: tema i paleta</span></div><div style="white-space:pre"> </div><div style="white-space:pre"><span style="color:var(--muted);"># Agregirani GFI pokazatelji (FINA)</span></div><div style="white-space:pre">gfi &lt;- <span style="color:var(--accent);">read_gfi</span>(<span style="color:var(--rise);">"data/gfi_agregat_2019_2024.csv"</span>)</div><div style="white-space:pre"> </div><div style="white-space:pre">marze &lt;- gfi |&gt;</div><div style="white-space:pre">  <span style="color:var(--accent);">mutate</span>(neto_marza = neto_dobit / prihodi * <span style="color:var(--ink);">100</span>) |&gt;</div><div style="white-space:pre">  <span style="color:var(--accent);">select</span>(godina, prihodi, neto_dobit, neto_marza)</div><div style="white-space:pre"> </div><div style="white-space:pre"><span style="color:var(--accent);">ggplot</span>(marze, <span style="color:var(--accent);">aes</span>(godina, neto_marza)) +</div><div style="white-space:pre">  <span style="color:var(--accent);">geom_line</span>(colour = cro_accent, linewidth = <span style="color:var(--ink);">0.9</span>) +</div><div style="white-space:pre">  <span style="color:var(--accent);">geom_point</span>(colour = cro_accent, size = <span style="color:var(--ink);">2</span>) +</div><div style="white-space:pre">  <span style="color:var(--accent);">labs</span>(x = <span style="color:var(--ink);">NULL</span>, y = <span style="color:var(--rise);">"Neto marža"</span>,</div><div style="white-space:pre">       caption = <span style="color:var(--rise);">"Izvor: FINA / GFI"</span>) +</div><div style="white-space:pre">  <span style="color:var(--accent);">theme_croaicon</span>()</div></pre>
+        </div>
+      </section>
+
+      <section id="zakljucak" style="scroll-margin-top:28px;">
+        <h2 style="font-family:'Roboto Mono',monospace; font-weight:500; font-size:clamp(20px,2.6vw,23px); letter-spacing:-0.01em; margin:56px 0 0; color:var(--ink);">Zaključak</h2>
+        <p style="font-size:16px; line-height:1.72; color:var(--ink); margin:18px 0 0;">Profitabilnost se vraća na održiviju razinu nakon iznimnih godina. Za čitatelja koji prati pojedine kompanije, agregatna marža daje koristan referentni okvir: veće odstupanje od raspona od ~5–6 % vrijedi dodatno ispitati u pojedinačnim izvještajima.</p>
+      </section>
+
+      <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:48px; padding-top:26px; border-top:1px solid var(--hairline); font-family:'Roboto Mono',monospace; font-size:12px; color:var(--muted); letter-spacing:0.03em;">
+        <a href="Tag Index.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--accent);">[gfi]</a>
+        <a href="Tag Index.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--accent);">[fina]</a>
+        <a href="Tag Index.dc.html" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--accent);">[profitabilnost]</a>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:14px; margin-top:30px; padding:18px 20px; border:1px solid var(--hairline); border-radius:4px;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M6.5 13.5c-2.5.8-2.5-1.3-3.5-1.6M13 16v-2.6c0-.8-.1-1.1-.5-1.5 2-.2 4-1 4-4.4a3.4 3.4 0 00-.9-2.4 3.2 3.2 0 00-.1-2.4s-.8-.2-2.5 1a8.4 8.4 0 00-4.5 0C6.3 2 5.5 2.2 5.5 2.2a3.2 3.2 0 00-.1 2.4 3.4 3.4 0 00-.9 2.4c0 3.4 2 4.2 4 4.4-.3.3-.5.7-.5 1.5V16"></path></svg>
+        <p style="font-family:'Source Sans 3',sans-serif; font-size:14px; line-height:1.6; color:var(--muted); margin:0;">Izvorni kod i podaci za ovu analizu dostupni su na <a href="#" style="color:var(--accent); border-bottom:1px solid var(--accent); padding-bottom:1px;">GitHubu</a> — slobodno reproducirajte rezultat ili otvorite issue.</p>
+      </div>
+
+      <nav style="display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; margin-top:30px;">
+        <a href="Article.dc.html" style="flex:1 1 220px; padding:18px 20px; border:1px solid var(--hairline); border-radius:4px; transition:border-color .2s; color:var(--ink);" style-hover="border-color:var(--accent);">
+          <div style="font-family:'Roboto Mono',monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">← Prethodno</div>
+          <div style="font-family:'Roboto Mono',monospace; font-size:13.5px; line-height:1.4;">HICP inflacija: usporavanje u uslužnom sektoru</div>
+        </a>
+        <a href="Article.dc.html" style="flex:1 1 220px; padding:18px 20px; border:1px solid var(--hairline); border-radius:4px; transition:border-color .2s; text-align:right; color:var(--ink);" style-hover="border-color:var(--accent);">
+          <div style="font-family:'Roboto Mono',monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">Sljedeće →</div>
+          <div style="font-family:'Roboto Mono',monospace; font-size:13.5px; line-height:1.4;">Izvoz roba 2025: struktura i glavni partneri</div>
+        </a>
+      </nav>
+
+    </article>
+
+    <aside class="art-toc">
+      <div style="font-family:'Roboto Mono',monospace; font-size:10.5px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Sadržaj</div>
+      <nav style="display:flex; flex-direction:column; gap:12px; font-family:'Roboto Mono',monospace; font-size:12.5px; line-height:1.4; border-left:1px solid var(--hairline); padding-left:16px;">
+        <a id="toc-pregled" href="#pregled" style="color:var(--accent); transition:color .2s;" style-hover="color:var(--accent);">Pregled</a>
+        <a id="toc-podaci-metoda" href="#podaci-metoda" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">Podaci i metoda</a>
+        <a id="toc-kretanje" href="#kretanje" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">Kretanje neto marže</a>
+        <a id="toc-djelatnosti" href="#djelatnosti" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">Razlike po djelatnostima</a>
+        <a id="toc-kod" href="#kod" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">Kod</a>
+        <a id="toc-zakljucak" href="#zakljucak" style="color:var(--muted); transition:color .2s;" style-hover="color:var(--ink);">Zaključak</a>
+      </nav>
+    </aside>
+
+  </div>
+
+  <footer style="margin-top:clamp(48px,6vw,80px); padding:34px 0 46px; border-top:1px solid var(--hairline); display:flex; flex-wrap:wrap; gap:20px 40px; justify-content:space-between; align-items:center; font-family:'Roboto Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:0.04em;">
+    <a href="Home.dc.html" style="font-weight:700; font-size:15px; color:var(--ink); letter-spacing:0;">CroAIcon</a>
+    <div>build 2026.06.18 · © 2026 CroAIcon · CC BY 4.0</div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { copyLabel: 'Kopiraj' };
+  componentDidMount(){
+    try{
+      const t = localStorage.getItem('croaicon-theme');
+      if(t) document.documentElement.dataset.theme = t;
+    }catch(e){}
+    // scroll spy: highlight active TOC link
+    const ids = ['pregled','podaci-metoda','kretanje','djelatnosti','kod','zakljucak'];
+    this._obs = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){
+          ids.forEach(id=>{
+            const link = document.getElementById('toc-'+id);
+            if(link) link.style.color = (id===en.target.id) ? 'var(--accent)' : 'var(--muted)';
+          });
+        }
+      });
+    }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+    ids.forEach(id=>{ const el=document.getElementById(id); if(el) this._obs.observe(el); });
+  }
+  componentWillUnmount(){ if(this._obs) this._obs.disconnect(); }
+  renderVals(){
+    return {
+      copyLabel: this.state.copyLabel,
+      toggleTheme: () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        try{ localStorage.setItem('croaicon-theme', next); }catch(e){}
+      },
+      copyCode: (e) => {
+        const pre = e.currentTarget.closest('div').parentElement.querySelector('pre');
+        const txt = pre ? pre.innerText : '';
+        try{ navigator.clipboard.writeText(txt); }catch(_){}
+        this.setState({ copyLabel: 'Kopirano ✓' });
+        setTimeout(()=>this.setState({ copyLabel: 'Kopiraj' }), 1800);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

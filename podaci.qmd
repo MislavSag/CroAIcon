@@ -1,0 +1,52 @@
+---
+title: "Podaci i metoda"
+subtitle: "Izvori, serije i reproducibilnost"
+toc: false
+comments: false
+---
+
+Pregled izvora, Eurostat serija i postupka kojim CroAIcon analize nastaju. Svaki
+podatak ima naveden izvor, serijski kod, učestalost ažuriranja i licencu.
+
+## Izvori
+
+| Izvor | Sadržaj | Ažuriranje | Licenca |
+|-------|---------|-----------|---------|
+| Eurostat | HICP, BDP, vanjska trgovina | mjesečno / kvartalno | CC BY 4.0 |
+| FINA / GFI | Godišnji financijski izvještaji | godišnje | uvjeti FINA-e |
+| DZS | Domaće makro serije | mjesečno | CC BY 4.0 |
+
+## Eurostat serije u uporabi
+
+::: {.cro-series-grid}
+::: {.cell}
+`prc_hicp_midx` — HICP indeks, mjesečno
+:::
+::: {.cell}
+`nama_10_gdp` — BDP, kvartalno
+:::
+::: {.cell}
+`ext_lt_intratrd` — vanjska trgovina, mjesečno
+:::
+:::
+
+## Podatkovni rječnik
+
+| Polje | Tip | Opis |
+|-------|-----|------|
+| `godina` | int | Referentna godina |
+| `neto_marza` | num | Neto marža u postocima |
+| `promjena` | num | Godišnja promjena u postotnim bodovima |
+
+## Kako reproducirati
+
+::: {.cro-steps}
+1. `renv::restore()` — vrati zaključane verzije paketa.
+2. `source("scripts/update_data.R")` — osvježi izvore podataka.
+3. `quarto render` — izgradi stranicu iz obrađenih podataka.
+:::
+
+::: {.callout-note appearance="minimal"}
+**Savjet** — sve serije keširaju se lokalno; ponovni `quarto render` ne poziva
+mrežu osim ako su podaci zastarjeli.
+:::
