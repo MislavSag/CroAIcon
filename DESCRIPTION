@@ -1,0 +1,22 @@
+Package: CroAIcon
+Type: Project
+Title: CroAIcon Blog
+Version: 0.0.0.9000
+Authors@R:
+    person("Mislav", "Sagovac", role = c("aut", "cre"))
+Description: Quarto blog for AI-assisted analysis of Croatian GFI data and Eurostat series.
+Encoding: UTF-8
+Depends:
+    R (>= 4.3)
+Imports:
+    arrow,
+    DBI,
+    duckdb,
+    eurostat,
+    ggplot2,
+    jsonlite,
+    knitr,
+    readr,
+    readxl,
+    rmarkdown,
+    scales

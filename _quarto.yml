@@ -1,0 +1,72 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - about.qmd
+    - posts/**/*.qmd
+  preview:
+    port: 4200
+    browser: false
+
+lang: hr
+
+execute:
+  freeze: auto
+  warning: false
+  message: false
+
+website:
+  title: "CroAIcon"
+  description: "AI-potpomognute analize hrvatskog gospodarstva, GFI podataka i Eurostata."
+  site-url: "https://MislavSag.github.io/CroAIcon"
+  repo-url: "https://github.com/MislavSag/CroAIcon"
+  repo-actions: [source, issue]
+  open-graph: true
+  twitter-card: true
+  search:
+    location: navbar
+    type: overlay
+  navbar:
+    title: "CroAIcon"
+    right:
+      - text: "Blog"
+        href: index.qmd
+      - text: "O projektu"
+        href: about.qmd
+      - icon: github
+        href: "https://github.com/MislavSag/CroAIcon"
+        aria-label: "GitHub"
+  page-footer:
+    left: "CroAIcon"
+    right:
+      - text: "RSS"
+        href: index.xml
+  comments:
+    giscus:
+      repo: MislavSag/CroAIcon
+      category: Announcements
+      mapping: pathname
+      reactions-enabled: true
+      input-position: bottom
+      theme: light
+      language: hr
+      loading: lazy
+
+format:
+  html:
+    theme:
+      - cosmo
+      - assets/styles/styles.scss
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-tools: false
+    code-copy: true
+    date-format: "DD.MM.YYYY."
+    smooth-scroll: true
+    anchor-sections: true
+    link-external-newwindow: true
+    link-external-icon: true
+    fig-align: center
+    df-print: paged

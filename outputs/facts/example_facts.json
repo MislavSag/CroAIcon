@@ -1,0 +1,43 @@
+{
+  "title": "CroAIcon demo facts",
+  "generated_at": "2026-06-19 12:10:29 CEST",
+  "source": "Synthetic example data for project verification only.",
+  "observation_count": 6,
+  "first_period": 2020,
+  "latest_period": 2025,
+  "first_index": 100,
+  "latest_index": 121,
+  "total_change_pct": 21,
+  "table": [
+    {
+      "period": 2020,
+      "index": 100,
+      "source": "synthetic"
+    },
+    {
+      "period": 2021,
+      "index": 103.2,
+      "source": "synthetic"
+    },
+    {
+      "period": 2022,
+      "index": 108.5,
+      "source": "synthetic"
+    },
+    {
+      "period": 2023,
+      "index": 112.1,
+      "source": "synthetic"
+    },
+    {
+      "period": 2024,
+      "index": 116.4,
+      "source": "synthetic"
+    },
+    {
+      "period": 2025,
+      "index": 121,
+      "source": "synthetic"
+    }
+  ]
+}

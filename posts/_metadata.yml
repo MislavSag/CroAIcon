@@ -1,0 +1,13 @@
+author: "Mislav Sagovac"
+lang: hr
+
+format:
+  html:
+    toc: true
+    code-fold: true
+
+execute:
+  warning: false
+  message: false
+  freeze: auto
+

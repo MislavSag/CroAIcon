@@ -1,0 +1,34 @@
+---
+title: "CroAIcon: okvir za podatkovni blog"
+date: 2026-06-19
+categories: [metodologija, AI, podaci]
+description: "Početni primjer posta koji pokazuje strukturu analitičkog bloga."
+---
+
+## Sažetak
+
+Ovaj primjer pokazuje kako će izgledati CroAIcon post: kratka interpretacija, jasan izvor podataka, reproducibilan kod i graf koji nastaje iz skripte ili samog dokumenta.
+
+U stvarnim objavama podaci će dolaziti iz GFI baze, Eurostata ili drugih jasno navedenih izvora. AI može pomoći u formulaciji teksta, ali izračuni i brojke trebaju ostati pod kontrolom skripti.
+
+## Primjer reproducibilnog izlaza
+
+Sljedeći graf koristi mali sintetički primjer. Generira ga `scripts/update_data.R`, a služi samo za provjeru da R pipeline, izlazni grafovi i Quarto prikaz rade u početnom projektu.
+
+![Primjer indeksa kroz vrijeme, sintetički podaci.](../../outputs/figures/example_macro_index.png)
+
+U ovom sintetičkom primjeru indeks je od 2020. do 2025. porastao za 21,0%.
+
+## Predložena struktura stvarnog posta
+
+Svaki ozbiljniji post treba imati isti osnovni redoslijed:
+
+1. Što analiziramo.
+2. Koji su izvori i ograničenja podataka.
+3. Koji su glavni rezultati.
+4. Kako interpretirati nalaze.
+5. Što ne možemo zaključiti iz tih podataka.
+
+## Izvori
+
+Ovaj početni post koristi sintetičke podatke i nema empirijski zaključak.
