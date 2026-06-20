@@ -25,7 +25,6 @@ language:
   repo-action-links-source: "Izvor"
   repo-action-links-issue: "Prijavi problem"
   back-to-top: "Na vrh"
-  toggle-dark-mode: "Promijeni temu"
   toggle-navigation: "Izbornik"
   search-label: "Pretraži"
   search-text-placeholder: "Pretraži"
@@ -107,13 +106,8 @@ website:
 format:
   html:
     theme:
-      light:
-        - cosmo
-        - assets/styles/styles.scss
-      dark:
-        - cosmo
-        - assets/styles/styles.scss
-        - assets/styles/styles-dark.scss
+      - cosmo
+      - assets/styles/styles.scss
     include-in-header:
       - text: |
           <link rel="preconnect" href="https://fonts.googleapis.com">
