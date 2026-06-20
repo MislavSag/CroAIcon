@@ -1,0 +1,49 @@
+---
+title: "Firme rastu, radna mjesta se sele"
+subtitle: "Broj firmi udvostručen, a radna mjesta su iz industrije i građevine pobjegla u turizam i usluge"
+description: "Broj firmi se udvostručio. Radna mjesta su se preselila iz industrije i građevine u turizam i usluge."
+author: "Luka Šikić"
+date: 2026-06-20
+categories: [gfi, sektori, zaposlenost, struktura gospodarstva]
+draft: false
+---
+
+22 godine, dvije priče. Broj firmi. **65.000 (2002.) → 162.000 (2024.)**. Koliko firmi posluje, gdje i koliko ljudi zapošljava.
+
+## Recesija se vidi u radnim mjestima, ne u broju firmi
+
+![Indeks (2008. = 100). Broj firmi i ukupan broj zaposlenih.](sectors_1_index.png)
+
+**Minus 127.000** radnih mjesta. Tijekom recesije (2009. do 2014.) broj firmi je rastao, a zaposlenost padala. **982.000 (2008.) → 855.000 (2014.)**, **minus 13%**. Oporavak tek nakon 2015. Do 2024. oko **1,15 milijuna**, iznad pretkrizne razine. Firme su preživljavale. Rezale su ljude.
+
+*Logika živih mrtvaca.* Poduzeća ostaju, ljudi odlaze. (Dio rasta broja firmi odražava i širi obuhvat baze. Zaposlenost je broj glava, robustnija mjera.)
+
+## Sve više firmi, sve više u uslugama
+
+![Broj firmi po djelatnosti, 6 najvećih u 2024.](sectors_2_firms.png)
+
+Trgovina ostaje najbrojnija (oko **28.000** firmi), ali stagnira. Rast vode stručne djelatnosti (**13.000 → 26.000**), građevinarstvo (**13.000 → 24.000**), smještaj i ugostiteljstvo te informacije i komunikacije. Struktura se pomiče prema uslugama i znanju.
+
+## Industrija drži vrh, građevina pada i ustaje, turizam eksplodira
+
+![Ukupan broj zaposlenih po djelatnosti, 6 najvećih u 2024.](sectors_3_employment.png)
+
+Prerađivačka industrija je najveći poslodavac (oko **260.000**), uz blagi pad (**minus 5%**). Građevina je drama. **118.000 → 74.000** (**minus 37%**). Pa natrag na **135.000**. Turizam udvostručuje. **45.000 → 96.000** (**plus 113%**).
+
+## Tko je dobio, a tko izgubio radna mjesta
+
+![Promjena zaposlenosti po djelatnosti, 2008. do 2024.](sectors_4_change.png)
+
+Realokacija u jednoj slici. Dobitnici. Zdravstvo **plus 164%**, turizam **plus 113%**, informacije **plus 74%**. Gubitnici. Rudarstvo **minus 49%**, nekretnine **minus 40%**, financije **minus 37%**. Klasici stoje. Industrija **minus 5%**, trgovina **minus 1%**.
+
+Realokacija ocrtava novi model rasta. Težište se seli s industrije i građevine na turizam i usluge. To je i snaga (novi poslovi, oporavak iznad pretkrizne razine) i rizik (rast sve više počiva na turizmu, osjetljivom na vanjske šokove).
+
+## Metoda i ograničenja
+
+- Izvor. GFI baza, tablica `db_afs`, jedan redak po firmi i godini, 2002. do 2024.
+- Broj firmi. Poduzeća koja su predala GFI te godine (uključuje firme bez zaposlenih).
+- Zaposleni. `employeecounteop` (kraj razdoblja), zbroj po djelatnosti.
+- Djelatnost. NKD 2007. područje (`nacerev21`, A do U).
+- Oprez. Rast broja firmi dijelom odražava širi obuhvat baze. Zaposlenost je robustnija mjera. Financijski stupci (prihod, dobit, dug) nisu korišteni. Tek ih treba potvrditi.
+
+*Izvor. FINA, Godišnji financijski izvještaji (`db_afs`). Izračun. AI.econ. Skripte. `python/sectors_build.py`, `python/sectors_charts.py`.*

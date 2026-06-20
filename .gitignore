@@ -1,6 +1,7 @@
 _site/
 .quarto/
 .freeze/
+preview/
 
 .Rproj.user/
 .Rhistory

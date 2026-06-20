@@ -12,7 +12,7 @@ page-layout: full
 comments: false
 ---
 
-AI.econ je analitički blog na bazi hrvatskih ekonomskih podataka. Ideja u pozadini bloga je što više skratiti put od ideje do gotove analize. Postovi su zamišljeni kao kratke i svrhovite reproducibilne analize.
+AI.econ je analitički blog na bazi hrvatskih ekonomskih podataka. Ideja u pozadini bloga je što više skratiti put od ideje do gotove analize. Postovi su zamišljeni kao kratke, svrhovite i uvijek reproducibilne analize. Blog je rezultat suradnje dvoje starih prijatelja i kolega Mislava Šagovca i Luke Šikića.
 
 ```{=html}
 <div class="cro-divider"><span>Najnovije</span><span class="rule"></span></div>
