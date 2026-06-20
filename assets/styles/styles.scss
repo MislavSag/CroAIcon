@@ -127,7 +127,7 @@ main.content, #quarto-document-content { animation: fadeUp .55s ease both; }
 }
 // Subtitle under the wordmark (Quarto navbar has no native subtitle slot)
 .navbar-brand::after {
-  content: "hrvatski gospodarski podaci, analize i nacrti";
+  content: "ekonomski blog";
   display: block;
   font-family: "Roboto Mono", monospace;
   font-weight: 400;

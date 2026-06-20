@@ -3,3 +3,9 @@ title: "Izvori"
 toc: false
 comments: false
 ---
+
+| Izvor | Sadržaj | Ažuriranje | Licenca |
+|-------|---------|-----------|---------|
+| Eurostat | HICP, BDP, vanjska trgovina | mjesečno / kvartalno | CC BY 4.0 |
+| FINA / GFI | Godišnji financijski izvještaji | godišnje | uvjeti FINA-e |
+| DZS | Domaće makro serije | mjesečno | CC BY 4.0 |
