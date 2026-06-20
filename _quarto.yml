@@ -74,7 +74,7 @@ website:
         href: index.qmd
       - text: "O projektu"
         href: about.qmd
-      - text: "Podaci"
+      - text: "Izvori"
         href: podaci.qmd
       - text: "RSS"
         href: index.xml
