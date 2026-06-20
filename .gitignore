@@ -44,3 +44,6 @@ Thumbs.db
 
 # Local-only research scratch (full DB schema incl. non-GFI tables)
 _local/
+
+# Editorial guidelines and writing procedures (local only)
+editorial/
