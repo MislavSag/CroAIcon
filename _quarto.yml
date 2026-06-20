@@ -57,7 +57,7 @@ execute:
 
 website:
   title: "AI.econ"
-  description: "hrvatski gospodarski podaci, analize i nacrti"
+  description: "ekonomski blog"
   site-url: "https://MislavSag.github.io/CroAIcon"
   repo-url: "https://github.com/MislavSag/CroAIcon"
   repo-actions: [source, issue]
