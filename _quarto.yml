@@ -72,7 +72,7 @@ website:
     right:
       - text: "Analize"
         href: index.qmd
-      - text: "O projektu"
+      - text: "O blogu"
         href: about.qmd
       - text: "Podaci"
         href: podaci.qmd
