@@ -1,6 +1,6 @@
 Package: CroAIcon
 Type: Project
-Title: CroAIcon Blog
+Title: AI.econ Blog
 Version: 0.0.0.9000
 Authors@R:
     person("Mislav", "Sagovac", role = c("aut", "cre"))

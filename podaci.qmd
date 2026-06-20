@@ -5,7 +5,7 @@ toc: false
 comments: false
 ---
 
-Pregled izvora, Eurostat serija i postupka kojim CroAIcon analize nastaju. Svaki
+Pregled izvora, Eurostat serija i postupka kojim AI.econ analize nastaju. Svaki
 podatak ima naveden izvor, serijski kod, učestalost ažuriranja i licencu.
 
 ## Izvori

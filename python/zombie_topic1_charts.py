@@ -15,7 +15,7 @@ out=r"C:\Users\lsikic\projects\CroAIcon\outputs\figures"; os.makedirs(out,exist_
 yr=pd.read_csv(r"C:\Users\lsikic\projects\CroAIcon\outputs\zombie_yearly.csv"); yr=yr[yr.reportyear>=2004]
 ys=yr.set_index("reportyear")
 pct=FuncFormatter(lambda v,_:f"{v:.0f}%")
-SRC="Izvor: FINA GFI (db_afs), izračun CroAIcon"
+SRC="Izvor: FINA GFI (db_afs), izračun AI.econ"
 
 def titles(fig,ax,title,sub,src,tfs=12.5):
     ax.text(0,1.20,title,transform=ax.transAxes,fontsize=tfs,weight="bold",color=INK)

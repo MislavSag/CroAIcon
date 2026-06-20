@@ -1,8 +1,8 @@
-# CroAIcon
+# AI.econ
 
 **Stranica uživo:** <https://MislavSag.github.io/CroAIcon>
 
-CroAIcon je Quarto analitički blog za hrvatske gospodarske podatke, GFI izvještaje i Eurostat serije. Projekt je pripremljen za rad u Positronu, uz R kao glavni analitički jezik i Python za AI nacrte tekstova.
+AI.econ je Quarto analitički blog za hrvatske gospodarske podatke, GFI izvještaje i Eurostat serije. Projekt je pripremljen za rad u Positronu, uz R kao glavni analitički jezik i Python za AI nacrte tekstova.
 
 ## Brzi start
 

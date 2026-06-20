@@ -70,5 +70,5 @@ nekretninski balon *pukao je ranije* (stečajevi 2009.–2011.), pa su preživje
   kako pristižu izvještaji; OECD/ICR je samo jedna od pet definicija (usporedba slijedi
   u zasebnom tekstu).
 
-*Izvor: FINA, Godišnji financijski izvještaji (`db_afs`). Izračun: CroAIcon.
+*Izvor: FINA, Godišnji financijski izvještaji (`db_afs`). Izračun: AI.econ.
 Skripte: `python/zombie_topic1_build.py`, `python/zombie_topic1_charts.py`.*

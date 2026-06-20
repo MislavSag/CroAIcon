@@ -17,7 +17,7 @@ build_example_facts <- function(data = build_demo_dataset()) {
   total_change <- latest$index / first$index - 1
 
   list(
-    title = "CroAIcon demo facts",
+    title = "AI.econ demo facts",
     generated_at = format(Sys.time(), "%Y-%m-%d %H:%M:%S %Z"),
     source = "Synthetic example data for project verification only.",
     observation_count = nrow(data),

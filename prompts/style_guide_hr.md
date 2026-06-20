@@ -1,4 +1,4 @@
-CroAIcon stil:
+AI.econ stil:
 
 - Kratke rečenice kad god je moguće.
 - Bez pretjeranih pridjeva.

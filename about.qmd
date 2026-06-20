@@ -7,7 +7,7 @@ comments: false
 O projektu
 :::
 
-CroAIcon spaja podatkovnu analizu i urednički nadzor. R i Python skripte pripremaju podatke, tablice i grafove, a AI generira nacrte tekstova isključivo na temelju izračunatih činjenica.
+AI.econ spaja podatkovnu analizu i urednički nadzor. R i Python skripte pripremaju podatke, tablice i grafove, a AI generira nacrte tekstova isključivo na temelju izračunatih činjenica.
 
 ## Radni proces
 

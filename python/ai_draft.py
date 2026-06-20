@@ -133,7 +133,7 @@ def default_output_path(title: str) -> Path:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Generate a CroAIcon AI-assisted draft.")
+    parser = argparse.ArgumentParser(description="Generate a AI.econ AI-assisted draft.")
     parser.add_argument(
         "--facts",
         type=Path,
@@ -159,7 +159,7 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     facts = read_json(args.facts)
-    title = args.title or facts.get("title", "CroAIcon nacrt")
+    title = args.title or facts.get("title", "AI.econ nacrt")
     output = args.out or default_output_path(title)
     output.parent.mkdir(parents=True, exist_ok=True)
 

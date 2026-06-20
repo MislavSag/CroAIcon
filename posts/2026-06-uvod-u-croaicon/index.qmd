@@ -1,5 +1,5 @@
 ---
-title: "CroAIcon: okvir za podatkovni blog"
+title: "AI.econ: okvir za podatkovni blog"
 date: 2026-06-19
 categories: [metodologija, AI, podaci]
 description: "Početni primjer posta koji pokazuje strukturu analitičkog bloga."
@@ -7,7 +7,7 @@ description: "Početni primjer posta koji pokazuje strukturu analitičkog bloga.
 
 ## Sažetak
 
-Ovaj primjer pokazuje kako će izgledati CroAIcon post: kratka interpretacija, jasan izvor podataka, reproducibilan kod i graf koji nastaje iz skripte ili samog dokumenta.
+Ovaj primjer pokazuje kako će izgledati AI.econ post: kratka interpretacija, jasan izvor podataka, reproducibilan kod i graf koji nastaje iz skripte ili samog dokumenta.
 
 U stvarnim objavama podaci će dolaziti iz GFI baze, Eurostata ili drugih jasno navedenih izvora. AI može pomoći u formulaciji teksta, ali izračuni i brojke trebaju ostati pod kontrolom skripti.
 
