@@ -3,21 +3,4 @@ title: "O projektu"
 comments: false
 ---
 
-::: {.cro-eyebrow}
-O projektu
-:::
-
 AI.econ je analitički blog koji spaja podatkovnu analizu i urednički nadzor. Iza bloga stoje Mislav Šagovac, Luka Šikić i frontier AI set-up. Glavna ideja u pozadini je maksimalno skratiti put od ideje do gotove analize. Postovi su zamišljeni kao kratke, zanimljive, nepristrane i uvijek reproducibilne analize. Blog je nastao na podlozi više od desetljeća duge suradnje, brojnih radova, projekata...
-
-## Radni proces
-
-::: {.cro-steps}
-1. Osvježiti GFI, Eurostat ili druge izvore.
-2. Izračunati pokazatelje i spremiti provjerljive činjenice.
-3. Generirati AI nacrt na hrvatskom.
-4. Ručno pregledati tekst, brojke i interpretaciju.
-5. Objaviti Quarto post.
-:::
-
-Brojke u objavljenim tekstovima trebaju dolaziti iz skripti i navedenih izvora, ne iz slobodne AI interpretacije.
-
