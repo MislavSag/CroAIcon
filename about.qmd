@@ -7,7 +7,7 @@ comments: false
 O projektu
 :::
 
-AI.econ spaja podatkovnu analizu i urednički nadzor. R i Python skripte pripremaju podatke, tablice i grafove, a AI generira nacrte tekstova isključivo na temelju izračunatih činjenica.
+AI.econ je analitički blog koji spaja podatkovnu analizu i urednički nadzor. Iza bloga stoje Mislav Šagovac, Luka Šikić i frontier AI set-up. Glavna ideja u pozadini je maksimalno skratiti put od ideje do gotove analize. Postovi su zamišljeni kao kratke, zanimljive, nepristrane i uvijek reproducibilne analize. Blog je nastao na podlozi više od desetljeća duge suradnje, brojnih radova, projekata...
 
 ## Radni proces
 
