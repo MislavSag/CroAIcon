@@ -1,0 +1,43 @@
+---
+title: "Hook goes here. Then the finding in plain words"
+subtitle: "One literal line that hands a skimmer the result"
+author: "Mislav Sagovac"
+date: "YYYY.MM.DD"
+categories: [gfi, sektori, zaposlenost]
+draft: true
+---
+
+<!-- House style. Punchy and present tense. Periods over colons, arrows over long dashes, italics over quote marks. Numbers lead. Full guide in _workflow/house-style-guide.md. -->
+
+[Opening punch. One or two numbers that frame the whole post.]
+
+## First finding stated as a claim
+
+[Chart caption in one literal line.]
+
+[Two or three tight sentences. The number leads. Change shown with an arrow, like 65.000 → 162.000. Magnitude in parentheses, plus or minus spelled out.]
+
+[KUT] [Where the author reads meaning into the pattern.]
+
+## Second finding stated as a claim
+
+[Chart caption.]
+
+[Prose.]
+
+## Tko je dobio, a tko izgubio
+
+[Chart caption.]
+
+Dobitnici. [...]
+Gubitnici. [...]
+
+[KUT — glavna interpretacija] [The central angle of the post.]
+
+## Metoda i ograničenja
+
+Izvor. [source]
+Tablica. `db_afs`
+Stupci. `employeecounteop`, `nacerev21`
+Skripte. `R/<build>.R`, `R/<charts>.R`
+Oprez. [what is not trusted yet]

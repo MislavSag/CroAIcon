@@ -48,3 +48,8 @@ _local/
 
 # Editorial guidelines and writing procedures (local only)
 editorial/
+
+# Workflow layer, keep local only files out
+.claude/settings.local.json
+.claude/state/personal-memory.md
+AGENTS.override.md
