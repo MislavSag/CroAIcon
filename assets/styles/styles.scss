@@ -83,6 +83,9 @@ $link-decoration:        none !default;
 //    styles-dark.scss redefines these for dark.
 // =====================================================================
 :root {
+  // Light-only site: tell the browser so mobile "force dark" / auto-dark
+  // does not invert the page to a black background.
+  color-scheme: light;
   --paper: #{$paper};   --ink: #{$ink};       --muted: #{$muted};
   --hairline: #{$hairline}; --accent: #{$accent}; --surface: #{$surface};
   --rise: #{$rise};     --fall: #{$fall};     --code: #{$code};
