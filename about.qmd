@@ -2,5 +2,5 @@
 title: "O blogu"
 comments: false
 ---
-
-AI.econ je analitički blog koji spaja podatkovnu analizu i urednički nadzor. Iza bloga stoje Mislav Šagovac, Luka Šikić i frontier AI set-up. Glavna ideja u pozadini je maksimalno skratiti put od ideje do gotove analize. Postovi su zamišljeni kao kratke, zanimljive, nepristrane i uvijek reproducibilne analize. Blog je nastao na podlozi više od desetljeća duge suradnje, brojnih radova, projekata...
+<br><br><br>
+AI.econ je analitički blog koji spaja podatkovnu analizu, frontier AI set-up i urednički nadzor. Iza bloga stoje Mislav Šagovac, Luka Šikić i više od desetljeća duge suradnje, brojnih radova, projekata... Glavna motivacija u pozadini bloga je maksimalno skratiti put od ideje do gotove analize, jer ideje su najvrijednije. Postovi su zamišljeni kao kratke, zanimljive, široj publici razumljive (*ne samo ekonomistima)* i uvijek [reproducibilne](https://www.i4replication.org/) analize. 
