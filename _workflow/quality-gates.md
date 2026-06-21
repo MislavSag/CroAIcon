@@ -21,10 +21,13 @@ Start at 100. Subtract for issues found against the review checklist.
 | Missing notes box | 20 |
 | The wrong chart for the message (dual-axis for an index, levels merged across sources, a pie ranking many slices) | 10 |
 | A headline that hides the finding | 10 |
+| The argument wanders, a section does not build on the central finding | 10 |
+| The post ends with no payoff, flat on the data | 8 |
 | A figure title that states a variable, not a finding | 8 |
 | A section header that states no claim | 8 |
 | Long dashes, colons, or quote marks in prose | 5 |
 | An AI tell, such as hedging or vague attribution | 5 |
+| A flat hook, or a payoff that only restates the finding | 3 |
 | An off-palette chart color, or a missing source caption | 3 |
 | A number not rounded for memory | 3 |
 | A phrase that could be tighter | 1 |

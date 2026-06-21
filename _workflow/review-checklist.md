@@ -26,6 +26,14 @@ Run it as a read only pass. Produce a report grouped by severity. Do not edit wh
 - Every [KUT] marker is present where interpretation is needed, and none is filled silently. Flag each to the author.
 - The notes box (*## Napomene*) is present and honest. Source, columns, and scripts in backticks. A plain caution about limits. The body does not restate the box, it points to it subtly.
 
+## Narrative arc
+
+The post is one argument in three beats. Claude wraps this in the `editor` agent. Codex reads it here. Same standard either way.
+
+- The open hooks. The opener orients and the hook lands, so a reader wants the next line, not a flat setup.
+- The build is consistent. Every section, chart, and number advances the one central finding and stays consistent with it. No section wanders, no figure pulls against the story.
+- The close lands a payoff. The post ends on an earned insight, a sharp so what that resolves the central [KUT] or opens one forward line, distinct from the notes box. Not a flat ending on the data.
+
 ## Charts and figures
 
 The chart bar lives in `_workflow/chart-playbook.md`. Claude wraps it in the `chart-critic` agent. Codex reads the file. Same standard either way.
@@ -39,7 +47,7 @@ The chart bar lives in `_workflow/chart-playbook.md`. Claude wraps it in the `ch
 ## Severity
 
 - **Critical.** A number with no source, a filled or missing [KUT], a missing notes box, an untrusted column used. A figure whose data does not trace to `outputs/`, or that makes a different claim than the prose.
-- **Major.** A limp lede, a topic header that states no finding, stacked dashes, an AI tell. The wrong chart for the message, a dual-axis where an index is meant, levels merged across sources, a figure title that states a variable not a finding.
-- **Minor.** A rounding slip, a phrase that could be tighter. An off-palette color, a missing or vague source caption.
+- **Major.** A limp lede, a topic header that states no finding, stacked dashes, an AI tell. An argument that wanders where a section does not build on the central finding, a post that ends with no payoff. The wrong chart for the message, a dual-axis where an index is meant, levels merged across sources, a figure title that states a variable not a finding.
+- **Minor.** A rounding slip, a phrase that could be tighter. A flat hook, a perfunctory payoff that only restates the finding. An off-palette color, a missing or vague source caption.
 
 For each finding give the location, the problem in one line, and a concrete rewrite the author can paste.

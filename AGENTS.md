@@ -27,7 +27,8 @@ This is the shared brain for the blog. Codex reads it from the repo root. Claude
 - Coin a phrase only when it explains itself. If the reader has to decode it, say the thing plainly.
 - Show change with an arrow. 65.000 → 162.000. Round so the number sticks. Magnitude in parentheses, plus and minus spelled out.
 - Sort the world into winners and losers when the data invites it.
-- Close every post with the notes box, heading *## Napomene*, kept lean. Source, the columns the post used, scripts in backticks, and a plain caution about limits. Leave out internal schema detail and cautions about columns the post never touched.
+- A post is one argument. A hook that opens, a build where every section, chart, and number advances the one finding and stays consistent with it, and a payoff that lands a *so what* before the notes box. Cut any section that does not move the story.
+- After the payoff, the notes box closes the page, heading *## Napomene*, kept lean. Source, the columns the post used, scripts in backticks, and a plain caution about limits. Leave out internal schema detail and cautions about columns the post never touched.
 - The body and the notes box do not repeat each other. The span, the column definitions, and the full coverage caveat live once, in the notes box. The body points to a limit subtly rather than restating it (*...broj firmi je rastao (više o obuhvatu u Napomenama), a zaposlenost padala.*). The coverage caveat still gets flagged, in the box. No repetition means no full caveat in two places, not no flag at all.
 - The full writing bar and the full review bar live in `_workflow/house-style-guide.md` and `_workflow/review-checklist.md`. Read the checklist before you call a post done.
 

@@ -67,6 +67,8 @@ Write every section header as a claim that stands on its own. Stack the headers 
 
 If a header names only a topic, rewrite it as a finding.
 
+Every section also has to advance the one finding. Stacked headers should read as a single argument that builds, not a list of separate facts. A section that does not move the story forward gets cut or folded in.
+
 ## Verbs that move
 
 Choose verbs with motion and weight. Make the economy feel alive on the page.
@@ -116,9 +118,17 @@ Tag every spot that needs human judgment with [KUT]. KUT is your angle, the read
 
 Resolve or delete every [KUT] before publishing. None survive into the final post.
 
+## Close on a payoff
+
+The body lands one last move before the notes box. A payoff. A sharp *so what* that resolves the central [KUT] or opens one forward line. Earn it from the numbers above, then land it in a sentence or two.
+
+> Strukturni pomak je gotov. Ostaje pitanje je li zdrav, jer turizam koji je primio bijeg iz industrije naplaćuje se sezonski.
+
+It is a punch, not a summary. Do not recount the post. Do not hedge it away. The reader should close the body holding the point, not a recap. The notes box follows as reference, it is not the last idea.
+
 ## The notes box
 
-Close every post with the notes box. In a post it carries the heading *## Napomene*. Short, technical, honest. Name the source, the columns the post actually uses, the scripts. Flag whatever is not yet trustworthy. This is the reproducible promise of the blog, so it never gets skipped.
+After the payoff, the notes box closes the page. In a post it carries the heading *## Napomene*. Short, technical, honest. Name the source, the columns the post actually uses, the scripts. Flag whatever is not yet trustworthy. This is the reproducible promise of the blog, so it never gets skipped.
 
 > ## Napomene
 > Izvor. GFI baza, razdoblje 2002. do 2024.
@@ -160,5 +170,6 @@ Stacked dashes. You already know the fix.
 7. Dashes are gone, replaced by periods, arrows, or parentheses
 8. A coined phrase explains itself, or it is cut
 9. Every [KUT] is written up or removed
-10. The notes box (*## Napomene*) is present and lean, with sources and scripts, no schema detail or untouched-column cautions, and the body does not restate its span, columns, or caveat but points to it subtly
-11. A reader can finish in two minutes and recall three numbers
+10. The body closes on a payoff, a *so what* that lands before the notes box, not a recap and not a flat ending on the data
+11. The notes box (*## Napomene*) is present and lean, with sources and scripts, no schema detail or untouched-column cautions, and the body does not restate its span, columns, or caveat but points to it subtly
+12. A reader can finish in two minutes and recall three numbers

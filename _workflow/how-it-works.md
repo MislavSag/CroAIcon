@@ -10,6 +10,11 @@ it, each through a different AI tool, and the posts come out identical. This pag
 explains why: the style, the charts, and the pipeline all live in the repo, not with
 the author.
 
+The layer does two jobs. It makes every post uniform in form, so a Codex post and a
+Claude post are the same object. And it makes each post hold together as one argument.
+The first is the styling layers and the pipeline below. The second is the narrative arc,
+in its own section.
+
 ## One brain, two tools
 
 The shared brain is three things at the repo root: `AGENTS.md` (how we work),
@@ -56,6 +61,28 @@ the site renders. There are three layers.
 **The caveat.** The palette lives in three places — `assets/styles/styles.scss`,
 `R/house_style.R`, and the Python chart scripts. They are kept in lockstep by hand, not
 enforced. Edit one, update the others, or the "identical look" quietly drifts.
+
+## The second aspect — a post that holds together
+
+The three layers above make posts uniform. They do not, on their own, make a post worth
+reading start to finish. That is the layer's second job, the narrative arc, and it has its
+own bar.
+
+A post is one argument in three beats.
+
+1. **Hook.** The open grabs and orients. The opener, the bridge, and the two-beat headline
+   do this work; the check is that the hook lands, not that it merely sets up.
+2. **Build.** Every section, chart, and number advances the one central finding and stays
+   consistent with it. No section wanders, no figure pulls against the story. Stacked
+   section headers read as a single argument that builds.
+3. **Payoff.** The post closes on an earned insight, a sharp *so what* that resolves the
+   central `[KUT]` or opens one forward line, before the `## Napomene` notes box. The notes
+   box is reference matter, not the last idea.
+
+The bar lives in the `Narrative arc` section of `_workflow/review-checklist.md` and the
+close guidance in `_workflow/house-style-guide.md`. `/qa-post` enforces it: Claude through
+the `editor` agent, Codex by reading the checklist. `_workflow/quality-gates.md` scores a
+wandering build and a missing payoff.
 
 ## The content pipeline (topic → published post)
 
@@ -104,6 +131,7 @@ These come from `AGENTS.md` and `MEMORY.md`. They are not optional.
 | Corrections, data quirks | `MEMORY.md` |
 | Writing voice | `_workflow/house-style-guide.md` |
 | Review bar | `_workflow/review-checklist.md` |
+| Narrative arc, payoff close | `_workflow/review-checklist.md`, `_workflow/house-style-guide.md` |
 | Chart bar / decision rules | `_workflow/chart-playbook.md` |
 | Scoring rubric | `_workflow/quality-gates.md` |
 | Idea bar / backlog | `_workflow/idea-playbook.md`, `_workflow/ideas-backlog.md` |
