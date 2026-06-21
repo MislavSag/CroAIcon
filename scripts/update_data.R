@@ -33,5 +33,10 @@ tryCatch(
   }
 )
 
+tryCatch(
+  source(path_project("scripts", "update_gdp.R")),
+  error = function(err) message("GDP update skipped: ", conditionMessage(err))
+)
+
 message("Data update completed.")
 

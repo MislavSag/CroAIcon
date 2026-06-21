@@ -25,6 +25,12 @@ data/warehouse/**
 *.duckdb.wal
 *.parquet
 
+# Non-refetchable / public reference series (e.g. transcribed Tica appendix)
+# and the source registry are intentionally TRACKED. data/reference/ is not
+# matched by the ignores above, but keep this explicit so it stays committed.
+!data/reference/
+!data/reference/**
+
 drafts/ai/**
 !drafts/ai/.gitkeep
 

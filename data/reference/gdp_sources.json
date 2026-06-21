@@ -1,0 +1,76 @@
+{
+  "description": "Source registry for the long-run Croatian GDP-per-capita series. The data itself is NOT committed (git-ignored under data/raw, data/processed, data/warehouse); only this registry, the transcribed Tica CSV, and rendered charts are. Runtime provenance (download dates, row counts) is regenerated into outputs/facts/gdp_provenance.json.",
+  "join_keys": {
+    "note": "Country code differs by provider: 'HRV' (Maddison, PWT, World Bank), 'HR' (Eurostat). Loaders normalize to year-level series for Croatia."
+  },
+  "sources": [
+    {
+      "id": "eurostat",
+      "role": "modern anchor (1995-present)",
+      "name": "Eurostat national accounts, real GDP per capita (ESA 2010)",
+      "dataset": "nama_10_pc",
+      "filters": {"geo": "HR", "na_item": "B1GQ", "unit": "CLV*_EUR_HAB (most recent reference year populated)"},
+      "unit": "chain-linked volumes, euro per capita",
+      "coverage": "1995-present",
+      "access": "R package `eurostat` (get_eurostat); cached under data/raw/eurostat/",
+      "refetchable": true,
+      "license": "CC BY 4.0",
+      "url": "https://ec.europa.eu/eurostat/cache/metadata/en/nama_10_gdp_esms.htm"
+    },
+    {
+      "id": "maddison",
+      "role": "bridge (1952-1994): socialist era + 1990s transition",
+      "name": "Maddison Project Database 2023 (Bolt & van Zanden 2024)",
+      "unit": "real GDP per capita, 2011 international (PPP) dollars",
+      "coverage": "HRV 1952-2022 (no pre-1952 Croatian value)",
+      "access": "xlsx GET from Dataverse datafile 421302 (sheet 'Full data'); or CRAN package `MaddisonData`",
+      "refetchable": true,
+      "license": "see MPD citation policy (cite source papers when showing <12 countries)",
+      "citation": "Bolt, J. & van Zanden, J.L. (2024). Maddison style estimates of the evolution of the world economy: A new 2023 update. Journal of Economic Surveys.",
+      "doi": "10.34894/INZBF2",
+      "url": "https://www.rug.nl/ggdc/historicaldevelopment/maddison/releases/maddison-project-database-2023"
+    },
+    {
+      "id": "tica",
+      "role": "pre-1952 backbone (1910-1951 unique contribution)",
+      "name": "Tica (2004), The Estimation of 1910-1989 Per Capita GDP in Croatia",
+      "unit": "per-capita GDP (academic reconstruction, own base; used for growth rates only)",
+      "coverage": "1910-1989 (WWII years uncertain)",
+      "access": "PDF only -- full paper transcribed into data/reference/Tica_2004_Croatia_GDP_data.xlsx (15 tables); the headline GVSM annual series (sheet GVSM_annual_series, gdppc_1990gk) is extracted into data/reference/tica_2004_gdppc.csv for the splice. War years 1914-1919 and 1940-1946 are blank in the source.",
+      "refetchable": false,
+      "license": "open access (Hrcak)",
+      "citation": "Tica, J. (2004). Zagreb International Review of Economics & Business 7(1):103-133.",
+      "url": "https://hrcak.srce.hr/35610",
+      "warning": "Backcast estimates; author advises caution. Use for growth-rate chaining, not as published levels."
+    },
+    {
+      "id": "pwt",
+      "role": "cross-check (socialist era + modern)",
+      "name": "Penn World Table 10.01",
+      "unit": "rgdpo/rgdpe in millions 2017 US$ -> per capita in 2017 US$",
+      "coverage": "HRV 1950-2019",
+      "access": "CRAN package `pwt10` (data bundled in R library)",
+      "refetchable": true,
+      "license": "CC BY 4.0",
+      "url": "https://www.rug.nl/ggdc/productivity/pwt/"
+    },
+    {
+      "id": "worldbank",
+      "role": "cross-check (modern)",
+      "name": "World Bank WDI, GDP per capita (constant 2015 US$)",
+      "indicator": "NY.GDP.PCAP.KD",
+      "unit": "constant 2015 US$",
+      "coverage": "HRV 1990-present (growth series from 1991)",
+      "access": "R package `WDI` (preferred over `wbstats`)",
+      "refetchable": true,
+      "license": "CC BY 4.0",
+      "url": "https://databank.worldbank.org/source/world-development-indicators"
+    }
+  ],
+  "context_only_references": [
+    {"name": "Vinski; Stajic (Nacionalni dohodak Jugoslavije 1923-1939)", "use": "interwar national-income foundations cited by Tica; print only"},
+    {"name": "Nikolic (2017), New Economic History of Yugoslavia 1919-1939", "use": "modern interwar regional reconstruction", "url": "https://etheses.whiterose.ac.uk/17519/"},
+    {"name": "Kukic, Socialist Growth Revisited: Insights from Yugoslavia", "use": "socialist-era cross-check", "url": "https://www.hnb.hr/documents/20182/122197/kukic.pdf"},
+    {"name": "Druzic & Tica (2002), 1920-2001 series", "use": "illustrative only; criticized as undocumented"}
+  ]
+}

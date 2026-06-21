@@ -20,3 +20,7 @@ Imports:
     readxl,
     rmarkdown,
     scales
+Suggests:
+    MaddisonData,
+    pwt10,
+    WDI

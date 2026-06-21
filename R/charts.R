@@ -93,6 +93,31 @@ save_facet_chart <- function(
 
 # --- House-styled GDP charts (match python/sectors_charts.py aesthetic) -------
 
+# Draw shaded event bands with optional text labels. Each band is either a
+# numeric c(from, to) or a list(from=, to=, label=). Labels are staggered in two
+# rows near the top so adjacent ones do not collide.
+.add_bands <- function(plot, bands) {
+  i <- 0
+  for (b in bands) {
+    i <- i + 1
+    from <- if (!is.null(b[["from"]])) b[["from"]] else b[[1]]
+    to <- if (!is.null(b[["to"]])) b[["to"]] else b[[2]]
+    label <- if (!is.null(b[["label"]])) b[["label"]] else NULL
+
+    plot <- plot + ggplot2::annotate(
+      "rect", xmin = from, xmax = to, ymin = -Inf, ymax = Inf, fill = house_pal$surface
+    )
+    if (!is.null(label) && nzchar(label)) {
+      vj <- if (i %% 2 == 1) 1.3 else 3.1
+      plot <- plot + ggplot2::annotate(
+        "text", x = (from + to) / 2, y = Inf, label = label,
+        vjust = vj, size = 2.6, color = house_pal$muted, family = "mono"
+      )
+    }
+  }
+  plot
+}
+
 # Spliced long index. Accent line, gray recession/break bands, reference line
 # at the base year, source caption. `long` has columns year, index.
 save_gdp_index_chart <- function(
@@ -131,14 +156,7 @@ save_gdp_index_chart <- function(
     dash <- dash[order(dash$year), , drop = FALSE]
   }
 
-  x_min <- min(long$year)
-  plot <- ggplot2::ggplot()
-  for (b in bands) {
-    plot <- plot + ggplot2::annotate(
-      "rect", xmin = b[1], xmax = b[2], ymin = -Inf, ymax = Inf,
-      fill = house_pal$surface
-    )
-  }
+  plot <- .add_bands(ggplot2::ggplot(), bands)
   plot <- plot +
     ggplot2::geom_hline(yintercept = base_index, color = house_pal$hair, linewidth = 0.5)
   if (has_bench) {
@@ -185,7 +203,7 @@ save_gdp_panels_chart <- function(
   plot <- ggplot2::ggplot(long_raw, ggplot2::aes(x = .data[["year"]], y = .data[["value"]])) +
     ggplot2::annotate("rect", xmin = 1991, xmax = 1995, ymin = -Inf, ymax = Inf, fill = house_pal$surface) +
     ggplot2::geom_line(color = house_pal$accent, linewidth = 0.9) +
-    ggplot2::facet_wrap(~source, scales = "free_y", ncol = 2) +
+    ggplot2::facet_wrap(~source, scales = "free", ncol = 2) +
     ggplot2::labs(title = title, subtitle = subtitle, caption = caption) +
     theme_house(base_size = 11)
 
@@ -193,40 +211,117 @@ save_gdp_panels_chart <- function(
   invisible(path)
 }
 
-# Fan of estimates: many thin muted lines for the alternative series, one bold
-# accent line for the chosen one. `long` has columns year, estimate, value,
-# chosen (logical). For showing a reconstruction rests on a spread of estimates.
-save_gdp_fan_chart <- function(
+# Windowed zoom of the spliced index. Same house treatment as the hero chart
+# (annual line breaks at gaps; pre-1910 benchmarks as points + dashed connector),
+# restricted to [year_min, year_max], with optional shaded crisis bands. `long`
+# has columns year, index, granularity.
+save_gdp_zoom_chart <- function(
   long,
+  year_min,
+  year_max,
   path,
   title,
   subtitle,
   caption,
-  width = 8.2,
-  height = 4.8
+  bands = list(),
+  width = 7.4,
+  height = 4.0
 ) {
   dir_create(dirname(path))
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
-    message("save_gdp_fan_chart needs ggplot2; skipping ", basename(path))
+    message("save_gdp_zoom_chart needs ggplot2; skipping ", basename(path))
+    return(invisible(NULL))
+  }
+  if (is.null(long[["granularity"]])) long$granularity <- "annual"
+
+  w <- long[long$year >= year_min & long$year <= year_max, , drop = FALSE]
+  ann <- w[w$granularity == "annual", , drop = FALSE]
+  bench <- w[w$granularity == "benchmark", c("year", "index"), drop = FALSE]
+  has_bench <- nrow(bench) > 0
+
+  # Complete the annual grid so unobserved gaps (war years) break the line.
+  if (nrow(ann)) {
+    grid <- data.frame(year = seq(min(ann$year), max(ann$year)))
+    ann <- merge(grid, ann[, c("year", "index")], by = "year", all.x = TRUE)
+  }
+  if (has_bench) {
+    first_ann <- w[w$granularity == "annual", c("year", "index")]
+    if (nrow(first_ann)) {
+      first_ann <- first_ann[which.min(first_ann$year), , drop = FALSE]
+      dash <- rbind(bench, first_ann)
+    } else {
+      dash <- bench
+    }
+    dash <- dash[order(dash$year), , drop = FALSE]
+  }
+
+  plot <- .add_bands(ggplot2::ggplot(), bands)
+  if (has_bench) {
+    plot <- plot +
+      ggplot2::geom_line(
+        data = dash, ggplot2::aes(x = .data[["year"]], y = .data[["index"]]),
+        color = house_pal$accent, linewidth = 0.7, linetype = "22"
+      ) +
+      ggplot2::geom_point(
+        data = bench, ggplot2::aes(x = .data[["year"]], y = .data[["index"]]),
+        color = house_pal$accent, fill = house_pal$paper, shape = 21, size = 1.8, stroke = 0.9
+      )
+  }
+  if (nrow(ann)) {
+    plot <- plot + ggplot2::geom_line(
+      data = ann, ggplot2::aes(x = .data[["year"]], y = .data[["index"]]),
+      color = house_pal$accent, linewidth = 1.2
+    )
+  }
+  plot <- plot +
+    ggplot2::labs(title = title, subtitle = subtitle, caption = caption) +
+    ggplot2::scale_x_continuous(expand = ggplot2::expansion(mult = c(0.03, 0.03))) +
+    theme_house()
+
+  ggplot2::ggsave(path, plot = plot, width = width, height = height, dpi = 170)
+  invisible(path)
+}
+
+# Horizontal growth-rate bars by era. Green for positive, red for negative, value
+# labels with the sign. `eras` has columns era, cagr (numeric %), positive (lgl).
+save_gdp_growth_bars <- function(
+  eras,
+  path,
+  title,
+  subtitle,
+  caption,
+  width = 7.6,
+  height = 4.2
+) {
+  dir_create(dirname(path))
+  if (!requireNamespace("ggplot2", quietly = TRUE)) {
+    message("save_gdp_growth_bars needs ggplot2; skipping ", basename(path))
     return(invisible(NULL))
   }
 
-  variants <- long[!long$chosen, , drop = FALSE]
-  chosen <- long[long$chosen, , drop = FALSE]
+  eras$era <- factor(eras$era, levels = rev(eras$era))
+  eras$lab <- paste0(
+    ifelse(eras$cagr >= 0, "+", "minus "),
+    formatC(abs(eras$cagr), format = "f", digits = 1, decimal.mark = ","),
+    "%"
+  )
 
-  plot <- ggplot2::ggplot() +
-    ggplot2::geom_line(
-      data = variants,
-      ggplot2::aes(x = .data[["year"]], y = .data[["value"]], group = .data[["estimate"]]),
-      color = house_pal$muted, linewidth = 0.5, alpha = 0.5
+  plot <- ggplot2::ggplot(eras, ggplot2::aes(x = .data[["cagr"]], y = .data[["era"]])) +
+    ggplot2::geom_col(ggplot2::aes(fill = .data[["positive"]]), width = 0.64, show.legend = FALSE) +
+    ggplot2::scale_fill_manual(values = c("TRUE" = house_pal$rise, "FALSE" = house_pal$fall)) +
+    ggplot2::geom_vline(xintercept = 0, color = house_pal$ink, linewidth = 0.5) +
+    ggplot2::geom_text(
+      ggplot2::aes(label = .data[["lab"]], hjust = ifelse(.data[["cagr"]] >= 0, -0.12, 1.12)),
+      size = 3.3, color = house_pal$ink, family = "mono"
     ) +
-    ggplot2::geom_line(
-      data = chosen,
-      ggplot2::aes(x = .data[["year"]], y = .data[["value"]]),
-      color = house_pal$accent, linewidth = 1.3
-    ) +
+    ggplot2::scale_x_continuous(expand = ggplot2::expansion(mult = c(0.34, 0.2))) +
     ggplot2::labs(title = title, subtitle = subtitle, caption = caption) +
-    theme_house()
+    theme_house() +
+    ggplot2::theme(
+      panel.grid.major.y = ggplot2::element_blank(),
+      panel.grid.major.x = ggplot2::element_line(color = house_pal$hair, linewidth = 0.4),
+      axis.text.x = ggplot2::element_blank()
+    )
 
   ggplot2::ggsave(path, plot = plot, width = width, height = height, dpi = 170)
   invisible(path)

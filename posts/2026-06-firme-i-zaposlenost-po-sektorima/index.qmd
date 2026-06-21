@@ -2,7 +2,9 @@
 title: "Broj firmi raste, a radna mjesta se sele"
 subtitle: "Broj firmi u RH je udvostručen u zadnja dva desetljeća, a radna mjesta su iz industrije i građevine pobjegla u turizam i usluge"
 description: ""
-author: "Luka Šikić"
+author:
+  name: "Luka Šikić"
+  url: "https://www.lukasikic.info/"
 date: 2026-06-20
 categories: [gfi, sektori, zaposlenost, struktura gospodarstva]
 draft: false

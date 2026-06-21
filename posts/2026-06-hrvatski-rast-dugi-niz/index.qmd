@@ -1,0 +1,159 @@
+---
+title: "Svi naši usponi i padovi"
+subtitle: "Hrvatski BDP po stanovniku od 1870. do 2025., dvije krize suprotnih naravi i koliko je brzo rastao između njih"
+description: "Sto pedeset i pet godina rasta u jednoj liniji. Pet padova, pet uspona, i kako je linija uopće sastavljena."
+author:
+  name: "Luka Šikić"
+  url: "https://www.lukasikic.info/"
+date: 2026-06-20
+categories: [bdp, rast, dugi niz, ekonomska povijest]
+draft: true
+---
+
+> **Nacrt za uredničku obradu.** Brojke i grafovi dolaze iz spojenog niza
+> (`scripts/update_gdp.R`) i provjereni su u `outputs/tables/`. Mjesta označena
+> s **[KUT]** su za interpretaciju i čekaju autorovu ruku.
+
+Indeks 6. Pa indeks 150.
+
+Koliko se popela jedna linija od 1870. do 2025., kroz dva svjetska rata, dvije
+države koje su nestale i dvije teške krize? Oko dvadeset i pet puta, do blizu vrha
+cijelog niza. Sve je na grafu ispod (indeks 2015. = 100, više u *Napomenama*).
+
+![BDP po stanovniku, spojeni indeks (2015. = 100), od 1870. do 2025.](gdp_1_long_index.png)
+
+Ali najupečatljivije nije sam rast, nego povratak. Linija se nakon svakog pada
+vrati na staru putanju. Pet padova, pet povrataka. Dva sloma se izdvajaju, posve
+različita. Jedan dubok i brz, drugi plitak i dug.
+
+Pogledajmo prvo koliko je brzo rasla, pa onda svako razdoblje izbliza.
+
+## Brz rast u dva naleta, dvaput prekinut krizom
+
+![Prosječni godišnji realni rast BDP-a po stanovniku, po razdoblju.](gdp_2_growth_eras.png)
+
+Rast nije bio ravnomjeran. Socijalizam ga je gurao **plus 5,0% godišnje**
+(1952. do 1986.), a poslijeratni oporavak jednako jako, **plus 5,0%** (1993. do
+2008.). Novije razdoblje drži **plus 4,0%** (2014. do 2025.).
+
+Pa dva razdoblja kad je linija išla unatrag. Prva kriza **minus 6,9% godišnje**
+(1986. do 1993.). Druga **minus 1,4%** (2008. do 2014.). Cijeli niz od 1952. ipak
+raste **plus 3,1% godišnje**. Prije rata sporije. Habsburško razdoblje **plus
+1,6%** (1870. do 1900.), međuratno **plus 1,8%** (1920. do 1939.).
+
+> **[KUT]** Što ovi dugoročni tempovi govore. Je li hrvatski rast priča o brzom
+> sustizanju koje krize uvijek prekinu, ili o povratku na isti, umjereni trend.
+
+## Prije 1900. jedva pomak, Habsburška Hrvatska raste sporo i od niske baze
+
+![BDP po stanovniku do 1952. Kružići su desetljetne procjene, rupe su ratovi.](gdp_3_zoom_prewar.png)
+
+Indeks 6 (1870.) → indeks 9 (1900.). Trideset godina, jedva pomak. Ovo su
+desetljetne procjene, ne godišnji niz, pa stoje kao kružići na isprekidanoj liniji
+(više u *Napomenama*).
+
+Onda dvije rupe. Prvi svjetski rat lomi niz između 1914. i 1919. Drugi između
+1940. i 1946. Godine bez podataka. Međuratno razdoblje jedva pomakne liniju, oko
+**indeksa 16 do 17**. Tek nakon 1950. počinje pravi uspon.
+
+> **[KUT]** Koliko vjerovati ovim desetljetnim orijentirima i što oni mjere. Zaostali
+> rub velikih carstava, ili tek niska baza s koje svaki kasniji uspon izgleda
+> dramatičnije.
+
+## Socijalizam diže liniju pet puta, najstrmiji uspon u nizu
+
+![BDP po stanovniku, 1952. do 1986. Siva traka, zastoj 1980-ih.](gdp_4_zoom_socialism.png)
+
+Indeks 16 (1952.) → indeks 84 (1986.). Peterostruko u jednoj generaciji, **plus 5%
+godišnje**. Industrijalizacija i sustizanje s niske baze guraju liniju gotovo bez
+prekida.
+
+A onda staje. Indeks 84 je strop tog razdoblja, koji linija dugo neće prijeći.
+
+> **[KUT]** Kako uokviriti taj uzlet. Stvarna konvergencija ili rast s niske baze
+> kojem ponestane daha. Iza 1986. slijedi slom.
+
+## Prva kriza ruši liniju duboko i brzo
+
+![BDP po stanovniku, 1986. do 2000. Siva traka, Domovinski rat (rekonstruirane godine 1991. do 1995.).](gdp_5_zoom_crisis1.png)
+
+Indeks 84 (1986.) → indeks 51 (1993.). **Minus 39%**, najdublji izmjereni pad, i to
+munjevit. Rat, raspad Jugoslavije i tranzicija na tržište udaraju istovremeno.
+Tvornice staju, država se mijenja. Linija se ne spušta polako, nego se ruši.
+
+Te su godine osjetljive (1991. do 1995. su rekonstruirane, više u *Napomenama*),
+pa se ne oslanjamo na točan postotak nego na slaganje izvora. Pad od 1990. do dna
+mjeri svaki niz. Maddison **minus 33%**, Penn World Table **minus 35%**, Svjetska
+banka **minus 33%**.
+
+Pa ipak, linija se vrati. Vrh iz 1980-ih ponovno je dosegnut tek 2003. Sedamnaest
+godina da se stigne tamo gdje se već jednom bilo.
+
+> **[KUT]** Je li tih dvadeset izgubljenih godina cijena rata, cijena tranzicije,
+> ili obje, i kako to čitati.
+
+## Druga kriza liniju jedva ogrebe, ali je dugo drži dolje, pa stiže COVID
+
+![BDP po stanovniku, 2008. do 2025. Sive trake, financijska kriza i COVID.](gdp_6_zoom_crisis2.png)
+
+Indeks 105 (2008.) → indeks 97 (2014.). **Minus 8%**, plitko. Ali šest godina dugo.
+Globalna financijska kriza pa duga domaća recesija drže liniju ispod vrha pola
+desetljeća.
+
+Dvije krize, dva lica. Prva duboka i brza, druga plitka i spora. *Dubina protiv
+trajanja.* I baš trajanje, ne dubina, ostavlja sektorski trag. Duga, spora kriza
+poklapa se s razdobljem u kojem su prethodni tekstovi našli zombi-firme i selidbu
+radnih mjesta iz industrije i građevine u turizam i usluge.
+
+Onda COVID. Indeks 119 (2019.) → indeks 110 (2020.) → indeks 125 (2021.). Pad pa
+skok u dvije godine, najbrži oporavak u godišnjem nizu. Linija nastavi dalje, do
+oko **indeksa 150 (2025.)**.
+
+> **[KUT]** Koliko prostora dati vezi ove makro-linije i firm-level nalaza
+> (zombi-firme, sektorska realokacija). Uzrok ili poklapanje u vremenu.
+
+## Pet puta dolje, pet puta natrag
+
+Rat 1914. Rat 1940. Slom 1990-ih. Mljevenje 2008. do 2014. Pandemija 2020. Pet
+puta dolje, pet puta natrag. To je *zakon povratka* ovog grafa. Svaki šok je test,
+i liniju do danas nije srušio nijedan.
+
+> **[KUT]** Je li ovaj vječni povratak znak otpornosti ili znak stropa koji
+> Hrvatska dosegne ali nikad odlučno ne probije. Što čitatelj nosi iz 155 godina.
+
+## Kako je ovo izračunato, i gdje je nesigurno
+
+Jedna linija, ali tri izvora. Spajamo ih **rastom, ne razinama**. Eurostat nosi
+1995. nadalje, Maddison 1952. do 1994., Tica 1910. do 1951., a desetljetne
+procjene (Good 1994.) sežu do 1870. Svaki stariji niz prilagodimo tako da
+zadržimo njegove **stope rasta**, ne apsolutne razine. Da lijepimo razine,
+ubacili bismo lažne skokove jer su jedinice različite.
+
+Tri su mjesta gdje je niz nesiguran, i sva tri su na grafu vidljiva. Prije 1910.
+imamo samo desetljetne točke, pa ih crtamo kružićima i isprekidano, ne kao glatku
+krivulju. Ratne godine (1914. do 1919. i 1940. do 1946.) nedostaju, pa je linija
+prekinuta. Godine 1991. do 1995. su rekonstruirane, ne službeno izmjerene.
+
+Zato za najdramatičniji potez, slom 1990-ih, tražimo potvrdu izvana. Isti pad
+vide svi neovisni izvori.
+
+![Isti oblik u više izvora, svaki u vlastitoj jedinici i baznoj godini.](gdp_7_raw_panels.png)
+
+Slom je stvaran, a ne šav između izvora. Ali razine ostaju sintetske, pa priču
+vodimo kroz oblik i rast, ne kroz točne razine.
+
+## Napomene
+
+- **Bazna godina.** Indeks 2015. = 100. Stope rasta po razdoblju iz
+  `outputs/tables/gdp_growth_eras.csv`.
+- **Spajanje i nesigurnost.** Kako je niz sastavljen (ulančavanje stopa rasta) i
+  gdje je nesiguran (desetljetne procjene do 1910., ratne rupe 1914. do 1919. i 1940.
+  do 1946., rekonstrukcija 1991. do 1995.) opisano je gore, u odjeljku *Kako je
+  ovo izračunato*.
+- **Razine i usporedbe.** Razine su sintetske (ulančane stope), pa ih iznosimo
+  oprezno. Na grafu nema usporednog niza, pa o razini prema EU ili o konvergenciji
+  ne govorimo.
+
+*Izvori. Eurostat (`nama_10_pc`), Maddison Project 2023, Tica (2004) i Good
+(1994). PWT i Svjetska banka kao provjera. Registar izvora.
+`data/reference/gdp_sources.json`. Skripta. `scripts/update_gdp.R`.*

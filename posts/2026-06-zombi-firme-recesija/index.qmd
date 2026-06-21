@@ -59,7 +59,7 @@ nekretninski balon *pukao je ranije* (stečajevi 2009.–2011.), pa su preživje
 > kredita), što govori o (ne)učinkovitosti čišćenja, i je li povratak na 1,5 %
 > stvarno čišćenje ili posljedica još nepotpunih podataka za 2023.–2024.
 
-## Metoda i ograničenja
+## Napomene
 
 - **Definicija (OECD/ICR):** starost ≥ 10 g. **i** ICR = poslovna dobit / kamatni
   rashod < 1 tri godine zaredom. ICR = (`b125` − `b131`) / (`b166` + `b168`).
