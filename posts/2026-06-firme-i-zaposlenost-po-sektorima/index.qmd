@@ -1,22 +1,20 @@
 ---
-title: "Firme rastu, radna mjesta se sele"
-subtitle: "Broj firmi udvostručen, a radna mjesta su iz industrije i građevine pobjegla u turizam i usluge"
-description: "Broj firmi se udvostručio. Radna mjesta su se preselila iz industrije i građevine u turizam i usluge."
+title: "Broj firmi raste, a radna mjesta se sele"
+subtitle: "Broj firmi u RH je udvostručen u zadnja dva desetljeća, a radna mjesta su iz industrije i građevine pobjegla u turizam i usluge"
+description: ""
 author: "Luka Šikić"
 date: 2026-06-20
 categories: [gfi, sektori, zaposlenost, struktura gospodarstva]
 draft: false
 ---
 
-22 godine, dvije priče. Broj firmi. **65.000 (2002.) → 162.000 (2024.)**. Koliko firmi posluje, gdje i koliko ljudi zapošljava.
+Koliko firmi posluje u RH, gdje i koliko ljudi zapošljavaju? Odgovorimo na ovo pitanje kroz dvije brojke, dvije različite priče. Broj firmi raste. **65.000 (2002.) → 162.000 (2024.)**.
 
 ## Recesija se vidi u radnim mjestima, ne u broju firmi
 
 ![Indeks (2008. = 100). Broj firmi i ukupan broj zaposlenih.](sectors_1_index.png)
 
-**Minus 127.000** radnih mjesta. Tijekom recesije (2009. do 2014.) broj firmi je rastao, a zaposlenost padala. **982.000 (2008.) → 855.000 (2014.)**, **minus 13%**. Oporavak tek nakon 2015. Do 2024. oko **1,15 milijuna**, iznad pretkrizne razine. Firme su preživljavale. Rezale su ljude.
-
-*Logika živih mrtvaca.* Poduzeća ostaju, ljudi odlaze. (Dio rasta broja firmi odražava i širi obuhvat baze. Zaposlenost je broj glava, robustnija mjera.)
+**Minus 127.000** radnih mjesta. Tijekom recesije (2009. do 2014.) broj firmi je rastao (više o obuhvatu u *Napomenama*), a zaposlenost padala. **982.000 (2008.) → 855.000 (2014.)**, **minus 13%**. Oporavak dolazi tek nakon 2015. Do 2024. broj zaposlenih je porastao do ~ **1,15 milijuna**, iznad pretkrizne razine. Firme su preživljavale. Rezale su ljude. *Firmi sve više, radnih mjesta manje.* 
 
 ## Sve više firmi, sve više u uslugama
 
@@ -36,14 +34,14 @@ Prerađivačka industrija je najveći poslodavac (oko **260.000**), uz blagi pad
 
 Realokacija u jednoj slici. Dobitnici. Zdravstvo **plus 164%**, turizam **plus 113%**, informacije **plus 74%**. Gubitnici. Rudarstvo **minus 49%**, nekretnine **minus 40%**, financije **minus 37%**. Klasici stoje. Industrija **minus 5%**, trgovina **minus 1%**.
 
-Realokacija ocrtava novi model rasta. Težište se seli s industrije i građevine na turizam i usluge. To je i snaga (novi poslovi, oporavak iznad pretkrizne razine) i rizik (rast sve više počiva na turizmu, osjetljivom na vanjske šokove).
+Realokacija ocrtava RH model rasta. Strukturno preslagivanje. Težište se seli s industrije i građevine na turizam i usluge. To je i snaga (novi poslovi, oporavak iznad pretkrizne razine) i rizik (rast sve više počiva na turizmu, osjetljivom na vanjske šokove).
 
-## Metoda i ograničenja
+## Napomene
 
-- Izvor. GFI baza, tablica `db_afs`, jedan redak po firmi i godini, 2002. do 2024.
+- Izvor. GFI baza, razdoblje 2002. do 2024.
 - Broj firmi. Poduzeća koja su predala GFI te godine (uključuje firme bez zaposlenih).
 - Zaposleni. `employeecounteop` (kraj razdoblja), zbroj po djelatnosti.
 - Djelatnost. NKD 2007. područje (`nacerev21`, A do U).
-- Oprez. Rast broja firmi dijelom odražava širi obuhvat baze. Zaposlenost je robustnija mjera. Financijski stupci (prihod, dobit, dug) nisu korišteni. Tek ih treba potvrditi.
+- Oprez. Rast broja firmi dijelom odražava širi obuhvat baze. Zaposlenost je robustnija mjera.
 
 *Izvor. FINA, Godišnji financijski izvještaji (`db_afs`). Izračun. AI.econ. Skripte. `python/sectors_build.py`, `python/sectors_charts.py`.*
