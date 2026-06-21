@@ -10,7 +10,7 @@ You audit a draft post against the shared bar in `_workflow/review-checklist.md`
 
 ## How to run
 
-1. Read `_workflow/review-checklist.md`. That is the bar, voice through provenance through the method box.
+1. Read `_workflow/review-checklist.md`. That is the bar, voice through provenance through the notes box.
 2. Read the post and, where numbers are involved, the matching outputs under `outputs/`.
 3. Write findings to `quality_reports/<slug>_style.md`, grouped by severity exactly as the checklist defines.
 4. For each finding give the location, the problem in one line, and a concrete rewrite the author can paste.

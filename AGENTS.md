@@ -7,6 +7,8 @@ This is the shared brain for the blog. Codex reads it from the repo root. Claude
 **Stack.** R and Python for analysis and charts. Quarto for the site and the posts. Git for everything.
 **Authors.** [your name] on Claude Code. Mislav Sagovac on Codex.
 
+**New here?** Read `_workflow/how-it-works.md` first. It maps the whole machine in one page. How a post gets its voice, its look, and its charts, how content flows from a topic to a published post, and how the two tools share one brain.
+
 ## Core principles
 
 1. **Plan first.** Think before editing on any task that touches more than one file or changes an analysis. Save the plan under `quality_reports/plans/`.
@@ -19,11 +21,14 @@ This is the shared brain for the blog. Codex reads it from the repo root. Claude
 ## Writing a post, the short rules
 
 - A draft is written up from `drafts/`. The finished post lands in `posts/`.
-- Headlines come in two beats. A vivid hook, then a literal subtitle that hands a skimmer the finding.
+- Open with an opener and a bridge. The opener orients the reader on the subject, a question is one device among many. The bridge invites them in, reach for the hortative (*Odgovorimo*) over the flat *Ovaj post gleda*, and names the promise the body keeps. Connect the opening up to the subtitle and down to the first number.
+- Headlines come in two beats. A vivid hook, then a literal subtitle that hands a skimmer the finding. Leave `description` empty when it would only echo them.
 - Section headers are claims that stand on their own.
+- Coin a phrase only when it explains itself. If the reader has to decode it, say the thing plainly.
 - Show change with an arrow. 65.000 → 162.000. Round so the number sticks. Magnitude in parentheses, plus and minus spelled out.
 - Sort the world into winners and losers when the data invites it.
-- Close every post with the method box. Source, table, columns, scripts in backticks, and a plain caution about limits.
+- Close every post with the notes box, heading *## Napomene*, kept lean. Source, the columns the post used, scripts in backticks, and a plain caution about limits. Leave out internal schema detail and cautions about columns the post never touched.
+- The body and the notes box do not repeat each other. The span, the column definitions, and the full coverage caveat live once, in the notes box. The body points to a limit subtly rather than restating it (*...broj firmi je rastao (više o obuhvatu u Napomenama), a zaposlenost padala.*). The coverage caveat still gets flagged, in the box. No repetition means no full caveat in two places, not no flag at all.
 - The full writing bar and the full review bar live in `_workflow/house-style-guide.md` and `_workflow/review-checklist.md`. Read the checklist before you call a post done.
 
 ## Data and reproducibility
@@ -38,7 +43,7 @@ This is the shared brain for the blog. Codex reads it from the repo root. Claude
 - `set.seed()` in R, a fixed seed in Python, once at the top. Load libraries at the top. Paths relative to the repo root.
 - One script, one job. Reading, cleaning, modelling, and charting hand off through saved outputs.
 - Numbers that land in a post are written to `outputs/` as csv or figures, in R or in Python. Posts read those files. A post never hardcodes a number a script produced.
-- One chart, one point. The title states the finding. One house palette, sourced from one place.
+- One chart, one point. The title states the finding. One house palette, sourced from one place. The full chart bar, which chart fits which message and the house look, lives in `_workflow/chart-playbook.md`.
 
 ## Ideas, memory, and review
 
@@ -49,7 +54,7 @@ The system is built to get better with use. Four shared files carry that.
 - `MEMORY.md` is the log of corrections and data quirks that must never be relearned.
 - `_workflow/quality-gates.md` is the scoring rubric and the thresholds.
 
-The skills that drive them, all in shared SKILL.md form, are `brainstorm`, `find-angle`, `learn`, and `qa-post`. On the Claude side they call dedicated agents in `.claude/agents/`. On the Codex side they run from `.agents/skills/` against the same docs.
+The skills that drive them, all in shared SKILL.md form, are `brainstorm`, `find-angle`, `chart`, `learn`, and `qa-post`. On the Claude side they call dedicated agents in `.claude/agents/`. On the Codex side they run from `.agents/skills/` against the same docs.
 
 ## Folder map
 
@@ -60,7 +65,7 @@ The skills that drive them, all in shared SKILL.md form, are `brainstorm`, `find
 | `outputs/` | Tables and figures the scripts write and posts read |
 | `R/`, `python/` | The two analysis pipelines |
 | `data/` | Source data and provenance notes. Raw is gitignored |
-| `_workflow/` | Style guide, review checklist, idea playbook, quality gates, ideas backlog, provenance template |
+| `_workflow/` | Style guide, review checklist, chart playbook, idea playbook, quality gates, ideas backlog, provenance template |
 | `MEMORY.md` | Corrections and learnings, read every session |
 | `editorial/`, `research/`, `prompts/` | Your editorial space, exploration, and prompt snippets |
 | `.claude/skills/` | Skills, canonical. Codex reads the same set from `.agents/skills/` |
@@ -76,6 +81,7 @@ The skills that drive them, all in shared SKILL.md form, are `brainstorm`, `find
 | `python python/<script>.py` | Run a Python script |
 | `/brainstorm` | Generate and rank post ideas from the data |
 | `/find-angle` | Surface and test [KUT] angles for a finding |
+| `/chart` | Recommend the right chart for a finding and build it in house style |
 | `/qa-post` | Score a post against the quality gate |
 | `/learn` | Capture a correction or a discovery |
 

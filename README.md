@@ -2,12 +2,14 @@
 
 **Stranica uživo:** <https://MislavSag.github.io/CroAIcon>
 
-AI.econ je Quarto analitički blog za hrvatske gospodarske podatke, GFI izvještaje i Eurostat serije. Projekt je pripremljen za rad u Positronu, uz R kao glavni analitički jezik i Python za AI nacrte tekstova.
+AI.econ je Quarto analitički blog za hrvatske gospodarske podatke, GFI izvještaje i Eurostat serije. Projekt je pripremljen za rad u Positronu, uz R kao glavni analitički jezik i Python za izgradnju podataka i grafova.
+
+**Kako sve radi:** za cjelovitu sliku (stil, grafovi, cijeli tijek od teme do objave i kako oba AI alata dijele isti mozak) pogledaj [`_workflow/how-it-works.md`](_workflow/how-it-works.md).
 
 ## Brzi start
 
 ```powershell
-cd C:\Users\Mislav\projects_r\CroAIcon
+cd CroAIcon
 Rscript scripts/update_data.R
 quarto preview
 ```
@@ -33,7 +35,7 @@ Rscript scripts/setup_r_packages.R
 
 ## Otvaranje u Positronu
 
-Otvori folder `C:\Users\Mislav\projects_r\CroAIcon` ili datoteku `CroAIcon.Rproj`.
+Otvori folder repozitorija ili datoteku `CroAIcon.Rproj`.
 
 ## Struktura
 
@@ -56,6 +58,10 @@ scripts/    Operativne skripte
 5. AI nacrt ide u `drafts/ai/`, a nakon provjere se ručno prebacuje u `posts/`.
 
 ## AI nacrt
+
+Objavljeni postovi nastaju ručno. Build skripta (`python/*_build.py`) sprema tablice u `outputs/`, chart skripta (`python/*_charts.py`) crta PNG grafove, a tekst se piše u `posts/<slug>/index.qmd` s brojkama vezanim na `outputs/`. Cijeli tijek je u [`_workflow/how-it-works.md`](_workflow/how-it-works.md).
+
+`ai_draft.py` je opcionalni pomoćnik koji od provjerenog facts JSON-a radi nacrt, sa ili bez OpenAI ključa. Nije dio žive objave.
 
 Bez API poziva:
 

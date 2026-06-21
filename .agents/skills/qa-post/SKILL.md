@@ -9,7 +9,7 @@ A read only pass that scores the post and says whether it clears the gate.
 
 ## Steps
 
-1. **Run the bar.** Apply every check in `_workflow/review-checklist.md`. On the Claude side, run the `style-critic` for voice, the `editor` for the angle, and the `number-checker` for provenance, together. On the Codex side, work the checklist top to bottom.
+1. **Run the bar.** Apply every check in `_workflow/review-checklist.md`. On the Claude side, run the `style-critic` for voice, the `editor` for the angle, the `number-checker` for provenance, and the `chart-critic` for the figures, together. On the Codex side, work the checklist top to bottom, charts included.
 2. **Check the numbers.** For every figure in the post, confirm it traces to an output under `outputs/`, and that the output is current. Flag anything unsourced or stale.
 3. **Score.** Apply the rubric in `_workflow/quality-gates.md`. Start at 100 and subtract per issue.
 4. **Verdict.** State the score and the gate. Under 80 is blocked, fix first. 80 to 89 is commit only. 90 and up is publish ready.

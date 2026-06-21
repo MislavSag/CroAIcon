@@ -34,7 +34,7 @@ Gubitnici. [...]
 
 [KUT — glavna interpretacija] [The central angle of the post.]
 
-## Metoda i ograničenja
+## Napomene
 
 Izvor. [source]
 Tablica. `db_afs`

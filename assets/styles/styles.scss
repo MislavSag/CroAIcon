@@ -83,13 +83,17 @@ $link-decoration:        none !default;
 //    styles-dark.scss redefines these for dark.
 // =====================================================================
 :root {
-  // Light-only site: tell the browser so mobile "force dark" / auto-dark
-  // does not invert the page to a black background.
-  color-scheme: light;
+  // Light-only site: "only light" is the strongest opt-out so mobile
+  // "force dark" / auto-dark browsers do not invert the page to black.
+  color-scheme: only light;
   --paper: #{$paper};   --ink: #{$ink};       --muted: #{$muted};
   --hairline: #{$hairline}; --accent: #{$accent}; --surface: #{$surface};
   --rise: #{$rise};     --fall: #{$fall};     --code: #{$code};
 }
+
+// Pin a solid light background on the document so no transparent area
+// falls through to a dark canvas on mobile.
+html, body { background-color: var(--paper) !important; }
 
 ::selection { background: var(--accent); color: #fff; }
 

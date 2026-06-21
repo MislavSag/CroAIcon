@@ -24,6 +24,18 @@ One idea per sentence. One point per paragraph. Lead with the finding, then show
 
 Look at that last pair. Two short clauses, two periods, no dash. Subject, verb, punch.
 
+## Open with an opener and a bridge
+
+The opening does two jobs. An opener orients the reader on what the post is about. A bridge invites them into the finding and names the promise the body then keeps. Opener orients, bridge invites, body delivers. The vivid hook, when there is one, lands after, once the reader arrives oriented.
+
+The opener orients. A question the reader already holds is one good device, not the only one. A scene, a span of years framed as data, a flat fact that begs a second line, any of these can open. What it must do is hand a skimmer the subject before the first number lands.
+
+The bridge invites, then promises. Reach for the hortative. *Odgovorimo* pulls the reader into a shared look at the data, where *Ovaj post gleda* leaves them watching from outside. The bridge also plants the tension the body resolves. *Dvije brojke, dvije različite priče* promises a contrast, and the post owes the reader that contrast.
+
+> Koliko firmi posluje u RH, gdje i koliko ljudi zapošljava? Odgovorimo na ovo pitanje kroz dvije brojke, broj firmi i broj zaposlenih, na 22 godine podataka. Dvije brojke, dvije različite priče. Broj firmi raste. 65.000 (2002.) → 162.000 (2024.). Radna mjesta se sele.
+
+Never drop an opener cold. The opening is a hinge, not an isolated flourish. It answers up to the subtitle above it and hands down to the numbers right below it. *Dvije različite priče* echoes the *radna mjesta se sele* of the title and opens the door to the arrow that follows. Read the headline, the opening, and the first number as one move.
+
 ## Lead with the number
 
 The number is the hero, so put it early. Show change over time with an arrow rather than words.
@@ -38,10 +50,12 @@ Round so the number sticks. 162.000, never 161.847. Keep the house format steady
 
 ## Headlines in two beats
 
-Beat one hooks. Beat two states the finding in plain words. The hook can be vivid. The second line must be literal, so even a skimmer leaves with the result.
+Beat one hooks. Beat two states the finding in plain words. The hook can be vivid. The second line must be literal, so even a skimmer leaves with the result. The subtitle carries the specifics, so name the place and the span where it helps.
 
-> Firme rastu, radna mjesta se sele
-> Broj firmi udvostručen, a radna mjesta su iz industrije i građevine pobjegla u turizam i usluge
+> Broj firmi raste, a radna mjesta se sele
+> Broj firmi u RH je udvostručen u zadnjih 20 godina, a radna mjesta su iz industrije i građevine pobjegla u turizam i usluge
+
+Leave the `description` empty when it would only repeat the title and subtitle. Two beats already hand the finding to the reader. A third copy is noise.
 
 ## Headers that carry the story
 
@@ -82,9 +96,9 @@ Give every chart one short caption that says plainly what the reader is looking 
 
 ## Coining a phrase
 
-When you name an idea, set it in italics rather than quote marks. It reads cleaner and keeps the house look.
+When you name an idea, set it in italics rather than quote marks. It reads cleaner and keeps the house look. Coin only when the phrase is self-explaining. If the reader has to stop and decode it, drop the metaphor and say the thing.
 
-> Logika *živih mrtvaca*. Poduzeća ostaju, ljudi odlaze.
+> *Firmi sve više, radnih mjesta manje.* Poduzeća ostaju otvorena, ljudi odlaze.
 
 ## Breaking the dash habit
 
@@ -102,13 +116,22 @@ Tag every spot that needs human judgment with [KUT]. KUT is your angle, the read
 
 Resolve or delete every [KUT] before publishing. None survive into the final post.
 
-## The method box
+## The notes box
 
-Close every post with method and limits. Short, technical, honest. Name the source, the table, the columns, the scripts. Flag whatever is not yet trustworthy. This is the reproducible promise of the blog, so it never gets skipped.
+Close every post with the notes box. In a post it carries the heading *## Napomene*. Short, technical, honest. Name the source, the columns the post actually uses, the scripts. Flag whatever is not yet trustworthy. This is the reproducible promise of the blog, so it never gets skipped.
 
-> Izvor. GFI baza, tablica `db_afs`, jedan redak po firmi i godini.
+> ## Napomene
+> Izvor. GFI baza, razdoblje 2002. do 2024.
 > Zaposleni. `employeecounteop`, zbroj po djelatnosti.
 > Oprez. Rast broja firmi dijelom odražava širi obuhvat baze. Zaposlenost je robustnija mjera.
+
+Keep the box lean. Schema detail the reader does not need to reproduce the post (one row per firm and year, internal table names) stays out. Only caution about what the post actually shows. Do not flag columns the post never used. A caution about untrusted financial columns belongs in `MEMORY.md`, not in a post that never touched them.
+
+The body and the notes box do not repeat each other. The data span, the column definitions, and the full coverage and limitation caveat live once, in the notes box. The body does not restate them. When the body needs to acknowledge a limit, it points to the box subtly, a light parenthetical that nods to *Napomene*, never a second copy of the caveat.
+
+> ...broj firmi je rastao (više o obuhvatu u *Napomenama*), a zaposlenost padala.
+
+The coverage caveat still gets flagged. It must. The rule bans stating the same caveat in full in two places, not flagging it at all. The full caution sits in the notes box. The body carries the subtle pointer to it.
 
 Set table names, column names, and script paths in backticks so they read as code, not prose.
 
@@ -129,10 +152,13 @@ Stacked dashes. You already know the fix.
 ## Before you publish
 
 1. The headline and its second line hand the finding to a skimmer
-2. Reading only the headers still tells the whole story
-3. Every paragraph leads with or lands on a number
-4. Changes appear as arrows
-5. Dashes are gone, replaced by periods, arrows, or parentheses
-6. Every [KUT] is written up or removed
-7. The method box is present, with sources and scripts
-8. A reader can finish in two minutes and recall three numbers
+2. The opening orients on the subject, invites with a bridge, and connects up to the subtitle and down to the first number
+3. The `description` is empty when it would only echo the title and subtitle
+4. Reading only the headers still tells the whole story
+5. Every paragraph leads with or lands on a number
+6. Changes appear as arrows
+7. Dashes are gone, replaced by periods, arrows, or parentheses
+8. A coined phrase explains itself, or it is cut
+9. Every [KUT] is written up or removed
+10. The notes box (*## Napomene*) is present and lean, with sources and scripts, no schema detail or untouched-column cautions, and the body does not restate its span, columns, or caveat but points to it subtly
+11. A reader can finish in two minutes and recall three numbers

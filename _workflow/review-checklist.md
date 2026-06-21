@@ -24,12 +24,22 @@ Run it as a read only pass. Produce a report grouped by severity. Do not edit wh
 ## Editorial and method
 
 - Every [KUT] marker is present where interpretation is needed, and none is filled silently. Flag each to the author.
-- The method box is present and honest. Source, table, columns, and scripts in backticks. A plain caution about limits.
+- The notes box (*## Napomene*) is present and honest. Source, columns, and scripts in backticks. A plain caution about limits. The body does not restate the box, it points to it subtly.
+
+## Charts and figures
+
+The chart bar lives in `_workflow/chart-playbook.md`. Claude wraps it in the `chart-critic` agent. Codex reads the file. Same standard either way.
+
+- The chart makes the post's one claim, on the most accurate channel the data allows. One chart, one point.
+- The title states the finding, not the variable. A source caption sits at the foot.
+- The figure traces to a file under `outputs/`, and no untrusted column is plotted.
+- It stays in the house palette and theme. No off-palette color, no hardcoded hex.
+- It avoids the traps. No dual axes, no levels merged across sources, no gap interpolated, no truncated bar baseline.
 
 ## Severity
 
-- **Critical.** A number with no source, a filled or missing [KUT], a missing method box, an untrusted column used.
-- **Major.** A limp lede, a topic header that states no finding, stacked dashes, an AI tell.
-- **Minor.** A rounding slip, a phrase that could be tighter.
+- **Critical.** A number with no source, a filled or missing [KUT], a missing notes box, an untrusted column used. A figure whose data does not trace to `outputs/`, or that makes a different claim than the prose.
+- **Major.** A limp lede, a topic header that states no finding, stacked dashes, an AI tell. The wrong chart for the message, a dual-axis where an index is meant, levels merged across sources, a figure title that states a variable not a finding.
+- **Minor.** A rounding slip, a phrase that could be tighter. An off-palette color, a missing or vague source caption.
 
 For each finding give the location, the problem in one line, and a concrete rewrite the author can paste.
