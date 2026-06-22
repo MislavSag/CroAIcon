@@ -43,11 +43,12 @@ if (nrow(plot_data)) {
     plot_data,
     path = path_project("outputs", "figures", "gdp_long_index.png"),
     title = "Hrvatski BDP po stanovniku, 1870. do 2025.",
-    subtitle = "Spojeni indeks, 2015. = 100  ·  pet padova, pet povrataka",
+    subtitle = "Spojeni indeks, 2015. = 100  ·  šest padova, šest povrataka",
     caption = "Izvor: Eurostat, Maddison 2023, Tica (2004) / Good 1994, izračun AI.econ  ·  kružići = desetljetne procjene do 1910.  ·  sive trake = ratovi i krize",
     bands = list(
       list(from = 1914, to = 1919, label = "I. svj. rat"),
       list(from = 1940, to = 1946, label = "II. svj. rat"),
+      list(from = 1949, to = 1952, label = "Informbiro"),
       list(from = 1991, to = 1995, label = "Domovinski rat"),
       list(from = 2009, to = 2014, label = "Fin. kriza"),
       list(from = 2019.5, to = 2020.5, label = "COVID")
@@ -86,10 +87,13 @@ zoom(1870, 1952, "gdp_zoom_prewar.png",
        list(from = 1914, to = 1919, label = "I. svj. rat"),
        list(from = 1940, to = 1946, label = "II. svj. rat")
      ))
-zoom(1952, 1986, "gdp_zoom_socialism.png",
+zoom(1949, 1986, "gdp_zoom_socialism.png",
      "Socijalizam: najstrmiji uspon, pa zastoj 1980-ih",
-     "Indeks BDP-a po stanovniku, 1952. do 1986.",
-     bands = list(list(from = 1980, to = 1986, label = "zastoj 1980-ih")))
+     "Indeks BDP-a po stanovniku, 1949. do 1986.",
+     bands = list(
+       list(from = 1949, to = 1952, label = "Informbiro"),
+       list(from = 1980, to = 1986, label = "zastoj 1980-ih")
+     ))
 zoom(1986, 2000, "gdp_zoom_crisis1.png",
      "Prva kriza: duboki pad, pa spori oporavak",
      "Indeks BDP-a po stanovniku, 1986. do 2000.",
