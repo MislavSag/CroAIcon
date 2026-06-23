@@ -118,18 +118,27 @@ save_facet_chart <- function(
   plot
 }
 
-# Spliced long index. Accent line, gray recession/break bands, reference line
-# at the base year, source caption. `long` has columns year, index.
+# Spliced long index, with the UNCERTAINTY drawn into the picture (so a reader
+# who never reaches the notes still sees where the ground is soft):
+#   * shaded ribbon where the early sources diverge (the Tica fan of pre-1952
+#     estimates), passed in via `ribbon` (year, lo, hi in index units);
+#   * hollow dashed circles for the pre-1910 decadal benchmarks;
+#   * grey GAPS for the two war windows (no data), labelled as gaps;
+#   * the pre-1952 single-source stretch drawn thinner, the reconstructed
+#     1991-1995 window drawn as an amber dashed segment, both flagged in place.
+# `long` has columns year, index, granularity.
 save_gdp_index_chart <- function(
   long,
   path,
   title,
   subtitle,
   caption,
+  ribbon = NULL,
+  recon_window = c(1990, 1995),
+  war_gaps = list(c(1914, 1919), c(1940, 1946)),
   base_index = 100,
-  bands = list(c(1991, 1995), c(2009, 2014)),
-  width = 8.2,
-  height = 4.8
+  width = 8.6,
+  height = 5.0
 ) {
   dir_create(dirname(path))
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
@@ -138,12 +147,22 @@ save_gdp_index_chart <- function(
   }
 
   if (is.null(long[["granularity"]])) long$granularity <- "annual"
+  pal <- house_pal
+  ymax <- max(long$index, na.rm = TRUE) * 1.06
 
   # Annual part: complete the year grid so unobserved gaps (war years missing in
   # Tica) BREAK the solid line instead of being interpolated across.
-  ann <- long[long$granularity == "annual", , drop = FALSE]
+  ann <- long[long$granularity == "annual", c("year", "index"), drop = FALSE]
   grid <- data.frame(year = seq(min(ann$year), max(ann$year)))
-  ann <- merge(grid, ann[, c("year", "index")], by = "year", all.x = TRUE)
+  ann <- merge(grid, ann, by = "year", all.x = TRUE)
+
+  # Split the annual line into a soft single-source pre-1952 stretch (thinner)
+  # and the firmer 1952+ stretch, and break the firmer line across the
+  # reconstructed window so no straight chord is drawn under the amber segment.
+  soft_pre <- ann[ann$year <= 1951, , drop = FALSE]
+  firm <- ann[ann$year >= 1952, , drop = FALSE]
+  firm$index[firm$year >= recon_window[1] & firm$year <= recon_window[2]] <- NA
+  recon <- long[long$year >= recon_window[1] & long$year <= recon_window[2], c("year", "index"), drop = FALSE]
 
   # Benchmark part: sparse decadal points, shown as points + a dashed connector
   # that reaches the first annual year, so they read as benchmarks not data.
@@ -156,28 +175,74 @@ save_gdp_index_chart <- function(
     dash <- dash[order(dash$year), , drop = FALSE]
   }
 
-  plot <- .add_bands(ggplot2::ggplot(), bands)
+  plot <- ggplot2::ggplot()
+  for (b in war_gaps) {
+    plot <- plot + ggplot2::annotate(
+      "rect", xmin = b[[1]], xmax = b[[2]], ymin = -Inf, ymax = Inf, fill = pal$surface
+    )
+  }
+
+  # Uncertainty band where the early sources diverge.
+  if (!is.null(ribbon) && nrow(ribbon)) {
+    plot <- plot + ggplot2::geom_ribbon(
+      data = ribbon,
+      ggplot2::aes(x = .data[["year"]], ymin = .data[["lo"]], ymax = .data[["hi"]]),
+      fill = pal$accent, alpha = 0.18
+    )
+  }
+
   plot <- plot +
-    ggplot2::geom_hline(yintercept = base_index, color = house_pal$hair, linewidth = 0.5)
+    ggplot2::geom_hline(yintercept = base_index, color = pal$hair, linewidth = 0.5)
+
   if (has_bench) {
     plot <- plot +
       ggplot2::geom_line(
         data = dash, ggplot2::aes(x = .data[["year"]], y = .data[["index"]]),
-        color = house_pal$accent, linewidth = 0.7, linetype = "22"
+        color = pal$accent, linewidth = 0.6, linetype = "22"
       ) +
       ggplot2::geom_point(
         data = bench, ggplot2::aes(x = .data[["year"]], y = .data[["index"]]),
-        color = house_pal$accent, fill = house_pal$paper, shape = 21, size = 1.8, stroke = 0.9
+        color = pal$accent, fill = pal$paper, shape = 21, size = 1.9, stroke = 0.9
       )
   }
+
   plot <- plot +
     ggplot2::geom_line(
-      data = ann, ggplot2::aes(x = .data[["year"]], y = .data[["index"]]),
-      color = house_pal$accent, linewidth = 1.1
+      data = soft_pre, ggplot2::aes(x = .data[["year"]], y = .data[["index"]]),
+      color = pal$accent, linewidth = 0.7
     ) +
+    ggplot2::geom_line(
+      data = firm, ggplot2::aes(x = .data[["year"]], y = .data[["index"]]),
+      color = pal$accent, linewidth = 1.15
+    ) +
+    ggplot2::geom_line(
+      data = recon, ggplot2::aes(x = .data[["year"]], y = .data[["index"]]),
+      color = pal$amber, linewidth = 1.0, linetype = "42"
+    )
+
+  # In-place flags for each soft spot (positional, self-explaining).
+  lab <- function(x, y, text, color, hjust = 0.5) {
+    ggplot2::annotate("text", x = x, y = y, label = text, size = 2.3,
+                      color = color, family = "mono", lineheight = 0.9, hjust = hjust)
+  }
+  plot <- plot +
+    lab(1885, 0.13 * ymax, "desetljetne\nprocjene", pal$muted) +
+    lab(1927, 0.27 * ymax, "raspon procjena\n(izvori se razilaze)", pal$accent) +
+    ggplot2::annotate("segment", x = 1927, xend = 1927, y = 0.205 * ymax, yend = 0.115 * ymax,
+                      color = pal$accent, linewidth = 0.3) +
+    lab(mean(war_gaps[[1]]), 0.97 * ymax, "rat\n(rupa)", pal$muted) +
+    lab(mean(war_gaps[[2]]), 0.97 * ymax, "rat\n(rupa)", pal$muted) +
+    lab(1948.5, 0.22 * ymax, "samo\nTica", pal$amber, hjust = 1) +
+    ggplot2::annotate("segment", x = 1950, xend = 1950, y = 0.155 * ymax, yend = 0.13 * ymax,
+                      color = pal$amber, linewidth = 0.3) +
+    lab(1996, 0.28 * ymax, "rekonstruirano\n1991.–1995.", pal$amber, hjust = 0)
+
+  plot <- plot +
     ggplot2::labs(title = title, subtitle = subtitle, caption = caption) +
     ggplot2::scale_x_continuous(expand = ggplot2::expansion(mult = c(0.01, 0.03))) +
-    theme_house()
+    ggplot2::scale_y_continuous(limits = c(0, ymax), breaks = c(0, 50, 100, 150)) +
+    theme_house() +
+    ggplot2::theme(plot.caption = ggplot2::element_text(size = 7.2))
 
   ggplot2::ggsave(path, plot = plot, width = width, height = height, dpi = 170)
   invisible(path)
@@ -277,6 +342,82 @@ save_gdp_zoom_chart <- function(
     ggplot2::labs(title = title, subtitle = subtitle, caption = caption) +
     ggplot2::scale_x_continuous(expand = ggplot2::expansion(mult = c(0.03, 0.03))) +
     theme_house()
+
+  ggplot2::ggsave(path, plot = plot, width = width, height = height, dpi = 170)
+  invisible(path)
+}
+
+# The 1990s, where the DEPTH is the number to trust least. Same house line, but
+# the contested part is drawn in: the pre-collapse high is marked at three
+# candidate peaks (1986, 1989, 1990) so the reader sees the fall depends on
+# where you start counting, and the reconstructed 1991-1995 window is amber
+# dashed. `anchors` has columns peak_year, peak_index, fall_pct; `trough_index`
+# is the spliced 1993 trough.
+save_gdp_crisis1_chart <- function(
+  long,
+  anchors,
+  trough_index,
+  path,
+  title,
+  subtitle,
+  caption,
+  year_min = 1984,
+  year_max = 2003,
+  trough_year = 1993,
+  recon_window = c(1990, 1995),
+  width = 7.4,
+  height = 4.2
+) {
+  dir_create(dirname(path))
+  if (!requireNamespace("ggplot2", quietly = TRUE)) {
+    message("save_gdp_crisis1_chart needs ggplot2; skipping ", basename(path))
+    return(invisible(NULL))
+  }
+  pal <- house_pal
+
+  w <- long[long$year >= year_min & long$year <= year_max, c("year", "index"), drop = FALSE]
+  grid <- data.frame(year = seq(year_min, year_max))
+  w <- merge(grid, w, by = "year", all.x = TRUE)
+  firm <- w
+  firm$index[firm$year >= recon_window[1] & firm$year <= recon_window[2]] <- NA
+  recon <- long[long$year >= recon_window[1] & long$year <= recon_window[2], c("year", "index"), drop = FALSE]
+
+  plot <- ggplot2::ggplot() +
+    ggplot2::annotate("rect", xmin = recon_window[1], xmax = recon_window[2],
+                      ymin = -Inf, ymax = Inf, fill = pal$surface) +
+    ggplot2::annotate("text", x = mean(recon_window), y = Inf, vjust = 1.4,
+                      label = "rekonstruirano", size = 2.5, color = pal$muted, family = "mono")
+
+  # Dashed guide from each candidate peak across to the trough year, so the
+  # different depths are visible as different drop heights.
+  if (!is.null(anchors) && nrow(anchors)) {
+    for (i in seq_len(nrow(anchors))) {
+      yv <- anchors$peak_index[i]
+      plot <- plot +
+        ggplot2::annotate("segment", x = anchors$peak_year[i], xend = trough_year,
+                          y = yv, yend = yv, color = pal$muted, linewidth = 0.3, linetype = "33") +
+        ggplot2::annotate("text", x = year_min - 0.3, y = yv, hjust = 1,
+                          label = paste0(anchors$peak_year[i], "  ", sprintf("%+d%%", round(anchors$fall_pct[i]))),
+                          size = 2.5, color = pal$ink, family = "mono")
+    }
+  }
+
+  plot <- plot +
+    ggplot2::geom_line(data = firm, ggplot2::aes(x = .data[["year"]], y = .data[["index"]]),
+                       color = pal$accent, linewidth = 1.2) +
+    ggplot2::geom_line(data = recon, ggplot2::aes(x = .data[["year"]], y = .data[["index"]]),
+                       color = pal$amber, linewidth = 1.1, linetype = "42") +
+    ggplot2::geom_point(data = anchors, ggplot2::aes(x = .data[["peak_year"]], y = .data[["peak_index"]]),
+                        color = pal$accent, fill = pal$paper, shape = 21, size = 2, stroke = 0.9) +
+    ggplot2::annotate("point", x = trough_year, y = trough_index, color = pal$fall, size = 2.4) +
+    ggplot2::annotate("text", x = trough_year, y = trough_index, vjust = 2.1,
+                      label = "dno 1993.", size = 2.5, color = pal$fall, family = "mono") +
+    ggplot2::annotate("text", x = 1989, y = 95,
+                      label = "Miljković: vrh 1989.", size = 2.6, color = pal$ink, family = "mono", hjust = 0.5) +
+    ggplot2::labs(title = title, subtitle = subtitle, caption = caption) +
+    ggplot2::scale_x_continuous(expand = ggplot2::expansion(mult = c(0.12, 0.04))) +
+    theme_house() +
+    ggplot2::theme(plot.caption = ggplot2::element_text(size = 7.2))
 
   ggplot2::ggsave(path, plot = plot, width = width, height = height, dpi = 170)
   invisible(path)

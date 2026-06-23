@@ -37,22 +37,20 @@ tryCatch(
 
 plot_data <- long[!is.na(long$index), , drop = FALSE]
 
-# Hero chart: the whole arc.
+# Uncertainty inputs: the early fan ribbon, the 1990s cross-source depth, and the
+# peak-anchor sensitivity. Drawn into the charts, not buried in the notes.
+unc <- build_gdp_uncertainty(long)
+
+# Hero chart: the whole arc, with the soft ground drawn in (divergence band,
+# decadal circles, war gaps, single-source + reconstructed flags).
 if (nrow(plot_data)) {
   save_gdp_index_chart(
     plot_data,
     path = path_project("outputs", "figures", "gdp_long_index.png"),
     title = "Hrvatski BDP po stanovniku, 1870. do 2025.",
-    subtitle = "Spojeni indeks, 2015. = 100  ·  šest padova, šest povrataka",
-    caption = "Izvor: Eurostat, Maddison 2023, Tica (2004) / Good 1994, izračun AI.econ  ·  kružići = desetljetne procjene do 1910.  ·  sive trake = ratovi i krize",
-    bands = list(
-      list(from = 1914, to = 1919, label = "I. svj. rat"),
-      list(from = 1940, to = 1946, label = "II. svj. rat"),
-      list(from = 1949, to = 1952, label = "Informbiro"),
-      list(from = 1991, to = 1995, label = "Domovinski rat"),
-      list(from = 2009, to = 2014, label = "Fin. kriza"),
-      list(from = 2019.5, to = 2020.5, label = "COVID")
-    )
+    subtitle = "Spojeni indeks, 2015. = 100  ·  oblik je siguran, dubine nisu  ·  nesigurnost je ucrtana u graf",
+    caption = "Izvor: Eurostat, Maddison 2023, Tica (2004) / Good 1994. Pojas = raspon ranih procjena, sive rupe = ratne godine bez podataka.",
+    ribbon = unc$ribbon
   )
 }
 
@@ -94,10 +92,13 @@ zoom(1949, 1986, "gdp_zoom_socialism.png",
        list(from = 1949, to = 1952, label = "Informbiro"),
        list(from = 1980, to = 1986, label = "zastoj 1980-ih")
      ))
-zoom(1986, 2000, "gdp_zoom_crisis1.png",
-     "Prva kriza: duboki pad, pa spori oporavak",
-     "Indeks BDP-a po stanovniku, 1986. do 2000.",
-     bands = list(list(from = 1991, to = 1995, label = "Domovinski rat")))
+save_gdp_crisis1_chart(
+  long, unc$anchors, unc$trough_index,
+  path = path_project("outputs", "figures", "gdp_zoom_crisis1.png"),
+  title = "Prva kriza: smjer siguran, dubina nije",
+  subtitle = "Indeks BDP-a po stanovniku  ·  pad ovisi o tome gdje stavite vrh",
+  caption = "Spojeni indeks, 2015. = 100. Maddison, PWT i Svjetska banka dijele isti izvor, pa potvrđuju smjer, ne dubinu."
+)
 zoom(2008, 2025, "gdp_zoom_crisis2.png",
      "Druga kriza pa COVID: plitko, dugo, pa uzlet",
      "Indeks BDP-a po stanovniku, 2008. do 2025.",
@@ -159,7 +160,7 @@ write_json(provenance, path_project("outputs", "facts", "gdp_provenance.json"))
 
 # Sync the post's committed figure copies (outputs/figures is git-ignored, so the
 # post folder holds the published copies). Keeps them fresh on every rerun.
-post_dir <- path_project("posts", "2026-06-hrvatski-rast-dugi-niz")
+post_dir <- path_project("drafts", "2026-06-hrvatski-rast-dugi-niz")
 if (dir.exists(post_dir)) {
   fig_copies <- list(
     c("gdp_long_index.png", "gdp_1_long_index.png"),
