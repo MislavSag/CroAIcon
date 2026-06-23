@@ -3,7 +3,7 @@
 Same look as the live posts (python/sectors_charts.py): DejaVu Sans Mono, paper
 background, title and subtitle in the top margin, hairline y-grid, source line
 below. Reads the data tables written by scripts/update_gdp.R and writes the seven
-PNGs straight into the draft folder.
+PNGs straight into the post folder.
 
   Run after the data build (scripts/update_gdp.R):
       uv run --extra charts python python/gdp_charts.py
@@ -33,7 +33,7 @@ mpl.rcParams.update({
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TAB = os.path.join(ROOT, "outputs", "tables")
 FIG = os.path.join(ROOT, "outputs", "figures")
-DRAFT = os.path.join(ROOT, "drafts", "2026-06-hrvatski-rast-dugi-niz")
+POST = os.path.join(ROOT, "posts", "2026-06-hrvatski-rast-dugi-niz")
 os.makedirs(FIG, exist_ok=True)
 
 
@@ -61,8 +61,8 @@ def spines(ax, which="y"):
 def save(fig, canonical, numbered):
     fig.savefig(os.path.join(FIG, canonical), dpi=170, bbox_inches="tight")
     plt.close(fig)
-    if os.path.isdir(DRAFT):
-        shutil.copyfile(os.path.join(FIG, canonical), os.path.join(DRAFT, numbered))
+    if os.path.isdir(POST):
+        shutil.copyfile(os.path.join(FIG, canonical), os.path.join(POST, numbered))
 
 
 def pct_hr(v, decimals=0):
@@ -341,4 +341,4 @@ zoom(2008, 2025, "gdp_zoom_crisis2.png", "gdp_6_zoom_crisis2.png",
      bands=[(2009, 2014), (2019.5, 2020.5)],
      band_labels=[(2011.5, "financijska\nkriza"), (2020, "COVID")])
 raw_panels()
-print("OK -- 7 GDP charts ->", DRAFT)
+print("OK -- 7 GDP charts ->", POST)

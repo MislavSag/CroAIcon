@@ -7,7 +7,7 @@ author:
   url: "https://www.lukasikic.info/"
 date: 2026-06-20
 categories: [bdp, rast, dugi niz, ekonomska povijest]
-draft: true
+draft: false
 ---
 
 Hrvatski BDP po stanovniku stane u jednu liniju, od 1870. do danas. Kroz dva
