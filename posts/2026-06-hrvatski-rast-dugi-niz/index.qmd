@@ -14,7 +14,7 @@ Hrvatski BDP po stanovniku stane u jednu liniju, od 1870. do danas. Kroz dva
 svjetska rata, dvije države koje su nestale i četiri krize. Šest puta padne,
 šest puta se vrati.
 
-Odmah razjasnimo dvije stvari. *Kretanje* linije je sigurno, a točne brojke puno manje. Da
+Odmah razjasnimo dvije stvari. *Smjer* linije je siguran, a točne brojke puno manje. Da
 je do svakog pada došlo, i kad otprilike, znamo pouzdano. Koliko je dubok bio,
 puno manje. Zato nesigurnost ne guramo u napomene na dnu. Ona je na početku prikazana na grafu,
 da je vidi i onaj čitatelj koji do napomena uopće ne stigne.
@@ -84,20 +84,15 @@ se računa na modernim Eurostatovim podatcima. I baš trajanje, ne dubina, ostav
 vjerujemo, jer je na Eurostatovim podatcima. Linija nastavi do **indeksa 150
 (2025.)**.
 
-I tu je *dubina naspram trajanja*. Prva kriza duboka i kratka, druga plitka i duga,
-pandemija blitz duboka. Ni jedan pad nije kao prošli. Najveći od svih, onaj
+I tu je *dubina vs. trajanje*. Prva kriza duboka i kratka, druga plitka i duga,
+pandemija blitz+duboka. Ni jedan pad nije kao prošli. Najveći od svih, onaj
 devedesetih, ostavljamo za kraj. On je i najveći i najnesigurniji. Zato traži
 posebni tretman.
 
 ## Što je starije, to je tanje, osim devedesetih
 
 Prije nego zumiramo devedesete, još malo opreza. Sve prije 1952. je
-rekonstrukcija, ne mjerenje. Nekolicina ljudi pokušala je staviti brojke tamo
-gdje ih službeno nema, kod nas Tica, na Goodovim desetljetnim točkama. To je
-najslabiji dio cijele linije. Ali ga ne brišemo. Težak je to posao koji netko
-mora odraditi, mislimo da vrijedi, samo ga čitajte kao procjenu, ne kao podatak.
-
-Evo karte pouzdanosti, dionicu po dionicu.
+rekonstrukcija. Evo karte pouzdanosti, dionicu po dionicu.
 
 **Socijalizam (1947. do 1990.).** Najlakše ga je obnoviti, postoje gotovi
 predlošci. Ali kako linija sad stoji, počiva na jugoslavenskim stopama
