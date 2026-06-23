@@ -149,7 +149,13 @@ def hero():
     ax.set_xlim(1866, 2028)
     ax.set_ylim(0, YMAX)
     ax.set_yticks([0, 50, 100, 150])
-    ax.set_xticks(range(1880, 2021, 20))
+    # Long axis: label every decade, draw a faint vertical line every 5 years so
+    # the eye can place a peak/trough year precisely across 155 years.
+    ax.set_xticks(range(1870, 2026, 10))
+    ax.set_xticks(range(1875, 2026, 5), minor=True)
+    ax.tick_params(axis="x", which="minor", length=0)
+    ax.grid(axis="x", which="major", color=HAIR, lw=0.7, zorder=0)
+    ax.grid(axis="x", which="minor", color=HAIR, lw=0.4, alpha=0.55, zorder=0)
     ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:.0f}"))
     titles(fig, ax,
            "Hrvatski BDP po stanovniku, 1870. do 2025.",
