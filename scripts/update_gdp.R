@@ -1,11 +1,12 @@
-# Build the long-run Croatian GDP-per-capita series.
-# Run: Rscript scripts/update_gdp.R
-# All raw data stays out of git; only outputs/figures/*.png and the provenance
-# json are produced (and the committed Tica CSV is the only data input in repo).
+# Build the long-run Croatian GDP-per-capita series and write the data tables the
+# chart layer reads. Charts are rendered separately by python/gdp_charts.py
+# (matplotlib, house style), mirroring the sectors build/charts split so the GDP
+# post matches the look of the live posts.
+#   Run: Rscript scripts/update_gdp.R        # data tables -> outputs/tables/
+#   then: python python/gdp_charts.py        # charts -> drafts/.../gdp_*.png
 
 source(file.path("R", "00_config.R"))
 source(file.path("R", "prepare_data.R")) # write_warehouse_table()
-source(file.path("R", "charts.R"))
 source(file.path("R", "prepare_gdp.R"))
 
 # Keep the eurostat package cache inside the git-ignored data tree.
@@ -35,80 +36,24 @@ tryCatch(
   error = function(err) message("Warehouse skipped: ", conditionMessage(err))
 )
 
-plot_data <- long[!is.na(long$index), , drop = FALSE]
-
-# Uncertainty inputs: the early fan ribbon, the 1990s cross-source depth, and the
-# peak-anchor sensitivity. Drawn into the charts, not buried in the notes.
-unc <- build_gdp_uncertainty(long)
-
-# Hero chart: the whole arc, with the soft ground drawn in (divergence band,
-# decadal circles, war gaps, single-source + reconstructed flags).
-if (nrow(plot_data)) {
-  save_gdp_index_chart(
-    plot_data,
-    path = path_project("outputs", "figures", "gdp_long_index.png"),
-    title = "Hrvatski BDP po stanovniku, 1870. do 2025.",
-    subtitle = "Spojeni indeks, 2015. = 100  ·  oblik je siguran, dubine nisu  ·  nesigurnost je ucrtana u graf",
-    caption = "Izvor: Eurostat, Maddison 2023, Tica (2004) / Good 1994. Pojas = raspon ranih procjena, sive rupe = ratne godine bez podataka.",
-    ribbon = unc$ribbon
-  )
-}
-
-# Growth by era (bars): the long-term growth-rate payload. Plot the five spans;
-# also write the summary rates (pre-war pace, whole run) quoted in prose.
+# Growth by era: the five plotted spans (boom/crisis) for the bar chart, plus the
+# summary rates (pre-war pace, whole run) quoted in prose.
 growth <- build_gdp_growth(long)
 growth_summary <- build_gdp_growth_summary(long)
 write_table_data(rbind(growth, growth_summary), path_project("outputs", "tables", "gdp_growth_eras.csv"))
-save_gdp_growth_bars(
-  growth,
-  path = path_project("outputs", "figures", "gdp_growth_eras.png"),
-  title = "Najbrži rast pod socijalizmom, dva razdoblja pada",
-  subtitle = "Prosječni godišnji realni rast BDP-a po stanovniku, po razdoblju",
-  caption = "Izvor: spojeni niz (Eurostat, Maddison, Tica), izračun AI.econ  ·  zeleno rast, crveno pad"
-)
+write_table_data(growth, path_project("outputs", "tables", "gdp_growth_bars.csv"))
 
-# Per-era zoom charts.
-zoom <- function(y0, y1, file, title, subtitle, bands = list()) {
-  if (!nrow(plot_data)) return(invisible(NULL))
-  save_gdp_zoom_chart(
-    plot_data, y0, y1,
-    path = path_project("outputs", "figures", file),
-    title = title, subtitle = subtitle,
-    caption = "Spojeni indeks, 2015. = 100. Izvor kao na glavnom grafu.",
-    bands = bands
-  )
-}
-zoom(1870, 1952, "gdp_zoom_prewar.png",
-     "Prije 1952.: nisko, ravno, isprekidano",
-     "Indeks BDP-a po stanovniku  ·  desetljetne točke do 1910., ratne rupe",
-     bands = list(
-       list(from = 1914, to = 1919, label = "I. svj. rat"),
-       list(from = 1940, to = 1946, label = "II. svj. rat")
-     ))
-zoom(1949, 1986, "gdp_zoom_socialism.png",
-     "Socijalizam: najstrmiji uspon, pa zastoj 1980-ih",
-     "Indeks BDP-a po stanovniku, 1949. do 1986.",
-     bands = list(
-       list(from = 1949, to = 1952, label = "Informbiro"),
-       list(from = 1980, to = 1986, label = "zastoj 1980-ih")
-     ))
-save_gdp_crisis1_chart(
-  long, unc$anchors, unc$trough_index,
-  path = path_project("outputs", "figures", "gdp_zoom_crisis1.png"),
-  title = "Prva kriza: smjer siguran, dubina nije",
-  subtitle = "Indeks BDP-a po stanovniku  ·  pad ovisi o tome gdje stavite vrh",
-  caption = "Spojeni indeks, 2015. = 100. Maddison, PWT i Svjetska banka dijele isti izvor, pa potvrđuju smjer, ne dubinu."
-)
-zoom(2008, 2025, "gdp_zoom_crisis2.png",
-     "Druga kriza pa COVID: plitko, dugo, pa uzlet",
-     "Indeks BDP-a po stanovniku, 2008. do 2025.",
-     bands = list(
-       list(from = 2009, to = 2014, label = "Financijska kriza"),
-       list(from = 2019.5, to = 2020.5, label = "COVID")
-     ))
+# Uncertainty inputs, drawn into the charts rather than buried in the notes:
+#   ribbon  = spread of the pre-1952 fan of estimates (sources diverge),
+#   anchors = depth from each candidate peak 1986/1989/1990 (depends on the vrh),
+#   depth   = the 1990s cross-source fall from 1990 (shared bias, not confirmation).
+unc <- build_gdp_uncertainty(long)
+if (!is.null(unc$ribbon)) write_table_data(unc$ribbon, path_project("outputs", "tables", "gdp_ribbon.csv"))
+if (!is.null(unc$anchors)) write_table_data(unc$anchors, path_project("outputs", "tables", "gdp_anchors.csv"))
+if (!is.null(unc$depth)) write_table_data(unc$depth, path_project("outputs", "tables", "gdp_depth.csv"))
 
-# Raw multi-source panel: each series in its own unit/base year. Shows how the
-# independent sources corroborate the same shape (esp. the 1990s contraction).
+# Raw multi-source panel data in long, labelled form, for the cross-check chart.
+# Each series keeps its native unit/base year (never merge levels across sources).
 if (nrow(raw)) {
   labels <- c(
     gdppc_modern_eur_clv = "Eurostat (EUR, 1995+)",
@@ -128,15 +73,8 @@ if (nrow(raw)) {
       stringsAsFactors = FALSE
     )
   }))
-
   if (!is.null(long_raw) && nrow(long_raw)) {
-    save_gdp_panels_chart(
-      long_raw,
-      path = path_project("outputs", "figures", "gdp_raw_panels.png"),
-      title = "Isti oblik, više izvora",
-      subtitle = "Svaki sirovi niz u vlastitoj jedinici i baznoj godini  ·  pad 1990-ih vidljiv u svima",
-      caption = "Izvor: Eurostat, Maddison 2023, PWT 10.01, Svjetska banka, izračun AI.econ  ·  siva traka = 1991.–1995."
-    )
+    write_table_data(long_raw, path_project("outputs", "tables", "gdp_raw_long.csv"))
   }
 }
 
@@ -158,24 +96,5 @@ provenance <- list(
 )
 write_json(provenance, path_project("outputs", "facts", "gdp_provenance.json"))
 
-# Sync the post's committed figure copies (outputs/figures is git-ignored, so the
-# post folder holds the published copies). Keeps them fresh on every rerun.
-post_dir <- path_project("drafts", "2026-06-hrvatski-rast-dugi-niz")
-if (dir.exists(post_dir)) {
-  fig_copies <- list(
-    c("gdp_long_index.png", "gdp_1_long_index.png"),
-    c("gdp_growth_eras.png", "gdp_2_growth_eras.png"),
-    c("gdp_zoom_prewar.png", "gdp_3_zoom_prewar.png"),
-    c("gdp_zoom_socialism.png", "gdp_4_zoom_socialism.png"),
-    c("gdp_zoom_crisis1.png", "gdp_5_zoom_crisis1.png"),
-    c("gdp_zoom_crisis2.png", "gdp_6_zoom_crisis2.png"),
-    c("gdp_raw_panels.png", "gdp_7_raw_panels.png")
-  )
-  for (fc in fig_copies) {
-    src <- path_project("outputs", "figures", fc[[1]])
-    if (file.exists(src)) file.copy(src, file.path(post_dir, fc[[2]]), overwrite = TRUE)
-  }
-}
-
-message("GDP build complete: ", min(long$year), "-", max(long$year),
-        " (", nrow(long), " years).")
+message("GDP data build complete: ", min(long$year), "-", max(long$year),
+        " (", nrow(long), " years). Now render charts: python python/gdp_charts.py")

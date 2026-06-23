@@ -12,6 +12,13 @@ dependencies = [
 dev = [
   "ruff>=0.8.0"
 ]
+# Chart rendering in the house matplotlib style (python/gdp_charts.py,
+# python/sectors_charts.py, ...). Run: uv run --extra charts python python/<script>.py
+charts = [
+  "matplotlib>=3.8",
+  "pandas>=2.0",
+  "numpy>=1.24"
+]
 
 [tool.ruff]
 line-length = 100

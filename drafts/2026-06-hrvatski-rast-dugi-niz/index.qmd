@@ -14,21 +14,20 @@ Hrvatski BDP po stanovniku stane u jednu liniju, od 1870. do danas. Kroz dva
 svjetska rata, dvije države koje su nestale i četiri krize. Šest puta padne,
 šest puta se vrati.
 
-Odmah razdvojimo dvije stvari. *Oblik* te linije je čvrst, brojke ispod nisu. Da
+Odmah razjasnimo dvije stvari. *Kretanje* linije je sigurno, a točne brojke puno manje. Da
 je do svakog pada došlo, i kad otprilike, znamo pouzdano. Koliko je dubok bio,
-puno manje. Zato nesigurnost ne guramo u napomene na dnu. Crtamo je u sam graf,
-da je vidi i čitatelj koji do napomena nikad ne stigne.
+puno manje. Zato nesigurnost ne guramo u napomene na dnu. Ona je na početku prikazana na grafu,
+da je vidi i onaj čitatelj koji do napomena uopće ne stigne.
 
 ![BDP po stanovniku, spojeni indeks (2015. = 100), od 1870. do 2025. Nesigurnost je ucrtana u liniju.](gdp_1_long_index.png)
 
-Pogledajte gdje je tlo meko. Pojas oko rane linije je raspon procjena, mjesto
-gdje se izvori razilaze. Kružići prije 1910. su desetljetne procjene, ne godišnji
+Pogledajte što je nesigurno. Pojas oko linije pri početku je raspon procjena. Tu se izvori razilaze. Kružići prije 1910. su desetljetne procjene, ne godišnji
 podatci. Sive rupe su ratne godine bez ijednog broja. Žuta isprekidana dionica
-devedesetih je rekonstrukcija, ne mjerenje. A dionicu oko 1950. drži jedan jedini
+devedesetih je rekonstrukcija. A za dio oko 1950. postoji samo jedan
 izvor.
 
-Linija se popne otprilike 25 puta. **Indeks 6 (1870.) → indeks 150 (2025.)**. Tu
-brojku držimo najlabavije od svih, jer su razine sintetske, spojene iz tri niza
+Linija se popne otprilike 25 puta. **Indeks 6 (1870.) → indeks 150 (2025.)**. U ovu 
+brojku najmanje vjerujemo, jer su razine sintetske, spojene iz tri niza
 (više u *Napomenama*). Sigurno je nešto drugo. Raspored padova i povrataka, i
 koliko je linija svaki put trebala da se vrati.
 
@@ -36,7 +35,7 @@ koliko je linija svaki put trebala da se vrati.
 
 ![Prosječni godišnji realni rast BDP-a po stanovniku, po razdoblju.](gdp_2_growth_eras.png)
 
-Stope rasta su čvršće tlo od razina, pa krenimo od njih. Rast nije bio
+Stope rasta su sigurnije od razina, pa krenimo od njih. Rast nije bio
 ravnomjeran. Socijalizam je gurao liniju **plus 5,0% godišnje** (1952. do 1986.),
 poslijeratni oporavak jednako jako, **plus 5,0%** (1993. do 2008.). Novije
 razdoblje drži **plus 4,0%** (2014. do 2025.).
@@ -46,8 +45,7 @@ do 1993.), druga **minus 1,4%** (2008. do 2014.). Prije rata sporije i od niske
 baze. Habsburško **plus 1,6%** (1870. do 1900.), međuratno **plus 1,8%** (1920.
 do 1939.).
 
-I tu vrijedi ista ograda. Smjer svake od ovih brojki je siguran, zadnja decimala
-nije.
+I tu opet oprez. Smjer  je siguran, brojke nisu.
 
 ## Šest padova, ni jedan isti
 
@@ -56,15 +54,15 @@ je procjena.*
 
 **Rat 1914. i rat 1940.** Dvije rupe, ne dvije brojke. Prvi svjetski rat prekida
 liniju između 1914. i 1919., drugi između 1940. i 1946. Tu nema podataka, pa
-linija stoji prekinuta. Sigurno je da je bilo loše. Koliko, ne piše nigdje.
+linija stoji prekinuta. Sigurno je da je bilo loše. Koliko?
 
 ![BDP po stanovniku do 1952. Kružići su desetljetne procjene, sive rupe su ratovi.](gdp_3_zoom_prewar.png)
 
 **Blokada 1949. do 1952.** **Indeks 19 (1949.) → indeks 16 (1952.)**, oko **minus
-16%**. Raskol s Informbiroom i blokada Istočnog bloka. Ali ovu dionicu nosi samo
-jedan izvor (Tica), prije nego Maddison preuzme niz 1952. Smjer je dosljedan
-unutar tog niza, drugi ga izvori ne potvrđuju, pa samu dubinu uzmite kao grubu.
-Zato na glavnom grafu i nosi oznaku *samo Tica*.
+16%**. Raskol s Informbiroom i blokada Istočnog bloka. Ali za ovu dionicu postoji samo
+jedan izvor (Tica), prije nego Maddison (Milanović zapravo, iz sjene) preuzme niz 1952. Smjer je dosljedan
+unutar ove dionice. Ipak drugi ga izvori ne potvrđuju, pa samu dubinu uzmite kao grubu.
+Zato na glavnom grafuu i nosi oznaku *samo Tica*.
 
 ![BDP po stanovniku, 1949. do 1986. Sive trake, blokada Informbiroa i zastoj 1980-ih.](gdp_4_zoom_socialism.png)
 
@@ -82,18 +80,24 @@ se računa na modernim Eurostatovim podatcima. I baš trajanje, ne dubina, ostav
 ![BDP po stanovniku, 2008. do 2025. Sive trake, financijska kriza i COVID.](gdp_6_zoom_crisis2.png)
 
 **Pandemija 2020.** **Indeks 119 (2019.) → indeks 110 (2020.) → indeks 125
-(2021.)**. Pad pa skok u dvije godine, najbrži povratak u nizu. I ovo je čvrsto
-izmjereno, opet na Eurostatovim podatcima. Linija nastavi do **indeksa 150
+(2021.)**. Pad pa skok u dvije godine, najbrži povratak u nizu. U ovo čvrsto
+vjerujemo, jer je na Eurostatovim podatcima. Linija nastavi do **indeksa 150
 (2025.)**.
 
 I tu je *dubina naspram trajanja*. Prva kriza duboka i kratka, druga plitka i duga,
-pandemija duboka i munjevita. Ni jedan pad nije kao prošli. Najveći od svih, onaj
-devedesetih, ostavljamo za kraj. On je i najveći i najnesigurniji, pa traži
-vlastiti odjeljak.
+pandemija blitz duboka. Ni jedan pad nije kao prošli. Najveći od svih, onaj
+devedesetih, ostavljamo za kraj. On je i najveći i najnesigurniji. Zato traži
+posebni tretman.
 
 ## Što je starije, to je tanje, osim devedesetih
 
-Prije nego zumiramo devedesete, evo karte pouzdanosti, dionicu po dionicu.
+Prije nego zumiramo devedesete, još malo opreza. Sve prije 1952. je
+rekonstrukcija, ne mjerenje. Nekolicina ljudi pokušala je staviti brojke tamo
+gdje ih službeno nema, kod nas Tica, na Goodovim desetljetnim točkama. To je
+najslabiji dio cijele linije. Ali ga ne brišemo. Težak je to posao koji netko
+mora odraditi, mislimo da vrijedi, samo ga čitajte kao procjenu, ne kao podatak.
+
+Evo karte pouzdanosti, dionicu po dionicu.
 
 **Socijalizam (1947. do 1990.).** Najlakše ga je obnoviti, postoje gotovi
 predlošci. Ali kako linija sad stoji, počiva na jugoslavenskim stopama
@@ -106,7 +110,7 @@ pojas oko rane linije na glavnom grafu.
 rekonstrukcija (Good), nisu specifične za Hrvatsku nego pripadaju cijeloj regiji
 pa su pripisane.
 
-**Ratne rupe (1914. do 1919., 1940. do 1946.).** Naprosto ih nema.
+**Ratne rupe (1914. do 1919., 1940. do 1946.).** Nema podataka. Tehnički rečeno, NA.
 
 **Tranzicija (devedesete).** Najspornija od svih. Njoj sad.
 
@@ -114,9 +118,9 @@ pa su pripisane.
 
 ![BDP po stanovniku oko prve krize. Pad ovisi o tome gdje stavite vrh.](gdp_5_zoom_crisis1.png)
 
-Devedesete su u središtu priče, a ujedno i mjesto gdje brojci najmanje vjerujemo.
-Pad je golem, to nitko ne spori. Ali kolik je točno, ovisi o tome gdje stavite
-vrh.
+Devedesete nisu godine za vjerovati brojkama.
+Pad je golem, to nitko ne spori. Ali koliko točno, ovisi o tome gdje stavite
+vrh. Odnosno, ubodete prstom.
 
 Od 1986. (indeks 84) pad je **minus 39%**, od 1990. (indeks 76) **minus 32%**.
 Razlika je samo u izboru početne godine. Procjena koju jedan kasniji pregled drži
@@ -124,43 +128,36 @@ najpouzdanijom za to razdoblje (Miljković, 1992.) vrh stavlja na 1989., ne na
 1990., što daje pad od oko **minus 37%**.
 
 Zabilježeni pad k tome vjerojatno precjenjuje stvarni. Dio gospodarstva preselio
-se u sivu zonu koju statistika ne hvata. To je opće mjesto literature o
-tranziciji, zabilježeni pad redovito precjenjuje stvarni, a za koliko, razlikuje
-se od zemlje do zemlje. Rat je k tome dio zemlje nakratko izmaknuo iz brojki, no
-ta su područja bila siromašnija od prosjeka, pa je njihov udio u izgubljenom
-outputu vjerojatno manji nego u stanovništvu.
+se u sivu zonu koju statistika ne hvata. Opće mjesto literature o
+tranziciji je da zabilježeni pad redovito precjenjuje stvarni. Za koliko, razlikuje
+se od zemlje do zemlje.
 
 A slaganje izvora?
 
 ![Isti oblik u više izvora, svaki u vlastitoj jedinici i baznoj godini.](gdp_7_raw_panels.png)
 
 Maddison, Penn World Table i Svjetska banka svi pokazuju isti pad, oko **minus
-33%** od 1990., u skladu s našom procjenom. Zvuči kao potvrda. Nije. Sva tri u
-konačnici crpe iz istog izvora, pa dijele istu pristranost. Njihovo slaganje
-pribija **smjer** i grubo **vrijeme**, ne **dubinu**. Smjer je siguran. Dubina je
-jedina brojka kojoj u cijelom nizu vjerujemo najmanje.
+33%** od 1990., u skladu s našom procjenom. Zvuči kao potvrda? Nije. Sva tri u
+konačnici uzimaju iz istog izvora i zato dijele istu pristranost. Njihovo slaganje
+utvrđuje **smjer** i grubo **vrijeme**, ne **dubinu**. Smjer je siguran. Dubini  vjerujemo najmanje.
 
 Pa ipak, linija se vrati. Vrh iz 1980-ih dosegnut je tek 2003., četrnaest do
 sedamnaest godina ovisno o izboru vrha. Toliko da bi se linija vratila tamo gdje
 je već bila.
 
-## Raznolikost padova je nalaz, ne njihova dubina
+## Raznolikost padova, ne njihova dubina
 
 Ogradimo zaključak pošteno.
 
 Povratak sam po sebi nije velika vijest. Svako gospodarstvo koje preživi na kraju
-nešto pokaže prema gore. K tome, niz je ulančan na novije podatke koji jesu
+ide prema gore. K tome, niz je ulančan na novije podatke koji jesu
 rasli, pa je *povratak dijelom ugrađen* u samu konstrukciju linije. Dubine padova
 su nesigurne, posebno ona devedesetih. O razini prema EU ili o konvergenciji iz
-ovog niza ne govorimo, za to bi trebao usporedni niz.
+ovog niza ne govorimo. Za to bi trebao usporedni niz i to nam je trenutno previše.
 
 Ono što ovaj niz pouzdano govori je nešto drugo. Ne kolika je svaka kriza bila,
 nego koliko su bile različite, i koliko je svaki put trebalo da se linija vrati,
-od jedne godine do sedamnaest. *To* je nalaz, ne brojka na dnu svakog pada. Za
-novije krize ta su vremena povratka čvrsta, na Eurostatovim podatcima, a za
-devedesete su i sama očitana s ulančanog niza, pa ih uzmite kao red veličine.
-
-Smjer pričamo glasno. Dubinu pričamo tiho.
+od jedne godine do sedamnaest. *To* je najsigurniji zaključak.
 
 ## Napomene
 
