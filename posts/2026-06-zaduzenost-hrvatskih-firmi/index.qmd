@@ -44,16 +44,19 @@ Sad znamo gdje je dug. Ali je li opasan? Dijelom ovisi o tome koliko brzo dospij
 
 To ne znači da je rizik refinanciranja malen. Znači da ga ne treba preuveličati. Većina duga knjižena je kao dugoročna obveza.
 
-Zaključak je čvrst. Nije svaka hrvatska firma prezadužena. Dug je koncentriran. Tipična firma je umjereno zadužena, a veličina, profitabilnost i sektor otkrivaju gdje se skriva financijska ranjivost.
+Zaključno. Nije svaka hrvatska firma prezadužena. Dug je koncentriran. Tipična firma je umjereno zadužena, a veličina, profitabilnost i sektor otkrivaju gdje se skriva financijska ranjivost.
 
 ## Napomene
 
-- Izvor. FINA / GFI, MySQL tablica `db_afs`, 2008. do 2024.
-- Mjere. *Tipična firma* je medijan, firma u sredini. *Sve firme zajedno* je agregatni omjer, zbroj duga podijeljen zbrojem prihoda. *Petina* znači da su firme poredane po profitabilnosti i podijeljene u pet jednakih skupina.
-- Šifrarnik. Pozicije su čitane fizičkim GFI šifrarnikom `codes_gfi_db_afs_physical` (uvezen iz `financije_sifrarnik.xlsx`, sheet `cb_afs`), koji mapira fizičke `db_afs.bNNN` stupce. Stari `codes_gfi` se ne koristi za ove pozicije jer se ne poklapa s fizičkim rasporedom stupaca.
-- Uzorak. Aktivne nefinancijske firme s `b110 > 0`, valjanom NKD sekcijom `A` do `S`, bez `K`. Broj firmi po godini ide od ~80.000 do ~142.000.
-- Financijski dug. Dugoročno `b086 + b087`, kratkoročno `b096 + b097`. Obveze za zajmove, depozite i slično te obveze prema bankama i drugim financijskim institucijama.
-- Prihod i profitabilnost. Poslovni prihodi `b110`. Neto rezultat razdoblja `b152 - b153`. Neto marža je taj rezultat podijeljen poslovnim prihodima.
-- Što nije korišteno. Pokriće kamata nije prikazano jer kamatni trošak još nije posebno validiran u ovom pipelineu. Ranije korišteni `b166 + b168` nisu kamate u fizičkom šifrarniku.
-- Literatura. Myers (2001) za pecking-order motiv, Martinis i Ljubaj (HNB) za hrvatski debt overhang, Pepur, Ćurak i Poposki za velike hrvatske firme, Šarlija i Harc za hrvatska mala i srednja poduzeća, IMF i ECB za dug, rizik refinanciranja i investicije.
+- Izvor. FINA, Godišnji financijski izvještaji (GFI), 2008. do 2024.
+- Mjere. *Tipična firma* je medijan, firma u sredini. *Sve firme zajedno* je agregatni omjer, zbroj duga svih firmi podijeljen zbrojem njihovih prihoda. *Petina* znači da su firme poredane po profitabilnosti i podijeljene u pet jednakih skupina.
+- Uzorak. Aktivne nefinancijske firme s pozitivnim poslovnim prihodima, iz svih djelatnosti osim financijskih. Od ~80.000 do ~142.000 firmi godišnje.
+- Financijski dug. Obveze prema bankama i drugim financijskim institucijama, zajmovi, depoziti i slično. Zbrajamo dugoročni i kratkoročni dio.
+- Profitabilnost. Neto marža, dobit poslovne godine podijeljena poslovnim prihodima.
+- Što nije uključeno. Pokriće kamata (koliko zarada pokriva kamate) nije prikazano jer kamatni trošak još nije pouzdano izmjeren.
+- Literatura.
+    - Myers (2001.), [*Capital Structure*](https://doi.org/10.1257/jep.15.2.81), o pecking-order motivu.
+    - Martinis i Ljubaj (2017.), [*Corporate Debt Overhang in Croatia*](https://www.hnb.hr/documents/20182/1993349/w-051.pdf), HNB, o prezaduženosti hrvatskih firmi.
+    - Pepur, Ćurak i Poposki (2016.), [*Corporate capital structure: the case of large Croatian companies*](https://doi.org/10.1080/1331677X.2016.1175726), o velikim firmama.
+    - Šarlija i Harc (2016.), [*Capital Structure Determinants of Small and Medium Enterprises in Croatia*](https://www.fm-kp.si/en/zalozba/ISSN/1581-6311/14_251-266.pdf), o malim i srednjim poduzećima.
 - Skripte. `python/import_gfi_db_afs_codebook.py`, `python/debt_structure_build.py`, `python/debt_structure_charts.py`.
