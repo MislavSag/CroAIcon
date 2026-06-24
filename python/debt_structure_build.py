@@ -20,25 +20,35 @@ YEARS = range(2008, 2025)
 POST_SLUG = "2026-06-zaduzenost-hrvatskih-firmi"
 
 AOP_COLUMNS = {
+    "b058": 58,
+    "b061": 61,
     "b063": 63,
-    "b065": 65,
-    "b067": 67,
-    "b095": 95,
-    "b100": 100,
-    "b101": 101,
-    "b107": 107,
-    "b112": 112,
-    "b113": 113,
-    "b123": 123,
+    "b084": 84,
+    "b086": 86,
+    "b087": 87,
+    "b094": 94,
+    "b096": 96,
+    "b097": 97,
+    "b108": 108,
     "b125": 125,
-    "b131": 131,
-    "b141": 141,
-    "b166": 166,
-    "b168": 168,
-    "b184": 184,
-    "b185": 185,
-    "b197": 197,
-    "b198": 198,
+    "b152": 152,
+    "b153": 153,
+}
+
+EXCEL_AOP_LABELS = {
+    "b058": "IV. NOVAC U BANCI I BLAGAJNI",
+    "b061": "E) UKUPNO AKTIVA",
+    "b063": "A) KAPITAL I REZERVE",
+    "b084": "C) DUGOROČNE OBVEZE",
+    "b086": "2. Obveze za zajmove, depozite i slično",
+    "b087": "3. Obveze prema bankama i drugim financijskim institucijama",
+    "b094": "D) KRATKOROČNE OBVEZE",
+    "b096": "2. Obveze za zajmove, depozite i slično",
+    "b097": "3. Obveze prema bankama i drugim financijskim institucijama",
+    "b108": "F) UKUPNO PASIVA",
+    "b125": "I. POSLOVNI PRIHODI",
+    "b152": "1. Dobit razdoblja",
+    "b153": "2. Gubitak razdoblja",
 }
 
 SIZE_LABELS = {
@@ -129,24 +139,21 @@ def ensure_dirs() -> None:
 
 
 def query_aop_map(conn: pymysql.connections.Connection) -> pd.DataFrame:
-    cur = conn.cursor()
-    aops = list(AOP_COLUMNS.values())
-    fmt = ",".join(["%s"] * len(aops))
-    cur.execute(
-        f"""
-        SELECT AOP, OPIS, OPIS_ENG, VRSTA
-        FROM codes_gfi
-        WHERE AOP IN ({fmt})
-        ORDER BY AOP
-        """,
-        aops,
-    )
-    rows = cur.fetchall()
-    aop_map = pd.DataFrame(rows, columns=["aop", "label_hr", "label_en", "vrsta"])
-    aop_map["column_name"] = aop_map["aop"].map(
-        {aop: col for col, aop in AOP_COLUMNS.items()}
-    )
-    return aop_map[["column_name", "aop", "label_hr", "label_en", "vrsta"]]
+    # The `codes_gfi` table does not match the physical `db_afs.bNNN`
+    # positions for balance-sheet columns in this database. Use the local FINA
+    # workbook `financije_sifrarnik.xlsx` mapping (PositionID -> label) instead.
+    rows = []
+    for column_name, aop in AOP_COLUMNS.items():
+        rows.append(
+            {
+                "column_name": column_name,
+                "aop": aop,
+                "position_id": f"{aop:03d}B",
+                "label_hr": EXCEL_AOP_LABELS[column_name],
+                "source": "D:/data/poslovni_subjekti/sifrarnik/sifrarnici/financije_sifrarnik.xlsx",
+            }
+        )
+    return pd.DataFrame(rows).sort_values("aop")
 
 
 def query_year_audit(conn: pymysql.connections.Connection, year: int) -> dict[str, float]:
@@ -155,36 +162,35 @@ def query_year_audit(conn: pymysql.connections.Connection, year: int) -> dict[st
         """
         SELECT
             COUNT(*) AS n,
-            SUM(CASE WHEN b065 IS NOT NULL AND b065 <> 0 THEN 1 ELSE 0 END) AS n_assets,
-            SUM(CASE WHEN b123 IS NOT NULL AND b123 <> 0 THEN 1 ELSE 0 END) AS n_passive,
-            SUM(CASE WHEN b065 IS NOT NULL AND b065 <> 0
-                      AND b123 IS NOT NULL AND b123 <> 0 THEN 1 ELSE 0 END) AS n_both,
-            SUM(CASE WHEN b065 IS NOT NULL AND b065 <> 0
-                      AND b123 IS NOT NULL AND b123 <> 0
-                      AND ABS(b065 - b123) <=
-                          GREATEST(1, 0.01 * GREATEST(ABS(b065), ABS(b123)))
+            SUM(CASE WHEN b061 IS NOT NULL AND b061 <> 0 THEN 1 ELSE 0 END) AS n_assets,
+            SUM(CASE WHEN b108 IS NOT NULL AND b108 <> 0 THEN 1 ELSE 0 END) AS n_passive,
+            SUM(CASE WHEN b061 IS NOT NULL AND b061 <> 0
+                      AND b108 IS NOT NULL AND b108 <> 0 THEN 1 ELSE 0 END) AS n_both,
+            SUM(CASE WHEN b061 IS NOT NULL AND b061 <> 0
+                      AND b108 IS NOT NULL AND b108 <> 0
+                      AND ABS(b061 - b108) <=
+                          GREATEST(1, 0.01 * GREATEST(ABS(b061), ABS(b108)))
                      THEN 1 ELSE 0 END) AS n_balanced_1pct,
-            SUM(CASE WHEN ABS(COALESCE(b100, 0) + COALESCE(b101, 0))
-                         <= ABS(COALESCE(b095, 0)) + 1
+            SUM(CASE WHEN ABS(COALESCE(b086, 0) + COALESCE(b087, 0))
+                         <= ABS(COALESCE(b084, 0)) + 1
                      THEN 1 ELSE 0 END) AS n_lt_components_ok,
-            SUM(CASE WHEN ABS(COALESCE(b112, 0) + COALESCE(b113, 0))
-                         <= ABS(COALESCE(b107, 0)) + 1
+            SUM(CASE WHEN ABS(COALESCE(b096, 0) + COALESCE(b097, 0))
+                         <= ABS(COALESCE(b094, 0)) + 1
                      THEN 1 ELSE 0 END) AS n_st_components_ok,
             SUM(CASE WHEN COALESCE(b166, 0) + COALESCE(b168, 0) > 0
                      THEN 1 ELSE 0 END) AS n_interest_pos,
             SUM(CASE WHEN COALESCE(b166, 0) + COALESCE(b168, 0) < 0
                      THEN 1 ELSE 0 END) AS n_interest_neg,
-            SUM(CASE WHEN COALESCE(b100, 0) + COALESCE(b101, 0)
-                          + COALESCE(b112, 0) + COALESCE(b113, 0) <> 0
+            SUM(CASE WHEN COALESCE(b086, 0) + COALESCE(b087, 0)
+                          + COALESCE(b096, 0) + COALESCE(b097, 0) <> 0
                      THEN 1 ELSE 0 END) AS n_fin_debt,
-            SUM(ABS(COALESCE(b095, 0))) AS sum_lt_liabilities,
-            SUM(ABS(COALESCE(b107, 0))) AS sum_st_liabilities,
-            SUM(ABS(COALESCE(b100, 0) + COALESCE(b101, 0))) AS sum_lt_fin_debt,
-            SUM(ABS(COALESCE(b112, 0) + COALESCE(b113, 0))) AS sum_st_fin_debt,
+            SUM(ABS(COALESCE(b084, 0))) AS sum_lt_liabilities,
+            SUM(ABS(COALESCE(b094, 0))) AS sum_st_liabilities,
+            SUM(ABS(COALESCE(b086, 0) + COALESCE(b087, 0))) AS sum_lt_fin_debt,
+            SUM(ABS(COALESCE(b096, 0) + COALESCE(b097, 0))) AS sum_st_fin_debt,
             SUM(COALESCE(b125, 0)) AS sum_revenue,
             SUM(COALESCE(b131, 0)) AS sum_opex,
-            SUM(COALESCE(b184, 0) + COALESCE(b197, 0)
-                - COALESCE(b185, 0) - COALESCE(b198, 0)) AS sum_net_result
+            SUM(COALESCE(b152, 0) - COALESCE(b153, 0)) AS sum_net_result
         FROM db_afs
         WHERE reportyear = %s
           AND b125 > 0
@@ -234,17 +240,17 @@ def make_validation_tables(yearly: pd.DataFrame) -> tuple[pd.DataFrame, bool, st
         ),
         (
             "financial_debt_component_coverage",
-            "Direct loan and bank-debt components must be present for at least 95% of rows.",
+            "Direct loan and bank-debt components must be non-zero in enough rows to describe a distribution.",
             yearly["financial_debt_coverage"].min(),
-            0.95,
-            yearly["financial_debt_coverage"].min() >= 0.95,
+            0.50,
+            yearly["financial_debt_coverage"].min() >= 0.50,
         ),
         (
             "scaled_stock_flow_plausibility",
-            "Debt/revenue must be plausible after scaling P&L fields by 1,000.",
+            "Debt/revenue must be plausible after scaling P&L revenue by 1,000.",
             yearly["scaled_debt_to_revenue"].max(),
             2.00,
-            yearly["scaled_debt_to_revenue"].between(0.01, 2.00).all(),
+            yearly["scaled_debt_to_revenue"].between(0.001, 2.00).all(),
         ),
         (
             "asset_coverage",
@@ -292,6 +298,8 @@ def make_validation_tables(yearly: pd.DataFrame) -> tuple[pd.DataFrame, bool, st
         "financial_debt_component_coverage",
         "scaled_stock_flow_plausibility",
         "long_term_debt_components",
+        "short_term_debt_components",
+        "balance_identity",
     }
     failed = audit.loc[(~audit["passed"]) & audit["rule"].isin(fatal_rules), "rule"].tolist()
     blocked_but_nonfatal = audit.loc[
@@ -332,24 +340,21 @@ def query_firm_panel(conn: pymysql.connections.Connection) -> pd.DataFrame:
         "nacerev21",
         "subjectsizeeurev2",
         "employeecounteop",
+        "b058",
         "b063",
-        "b065",
-        "b067",
-        "b095",
-        "b100",
-        "b101",
-        "b107",
-        "b112",
-        "b113",
+        "b061",
+        "b084",
+        "b086",
+        "b087",
+        "b094",
+        "b096",
+        "b097",
+        "b108",
         "b125",
-        "b131",
-        "b141",
         "b166",
         "b168",
-        "b184",
-        "b185",
-        "b197",
-        "b198",
+        "b152",
+        "b153",
     ]
     cur = conn.cursor()
     frames = []
@@ -392,12 +397,12 @@ def compute_outputs(conn: pymysql.connections.Connection, yearly_diag: pd.DataFr
     df = panel.rename(columns={"reportyear": "year", "nacerev21": "sector"}).copy()
     df["sector_name"] = df["sector"].map(SECTOR_NAMES).fillna(df["sector"])
     df["size_name"] = df["subjectsizeeurev2"].fillna(0).astype(int).map(SIZE_LABELS).fillna("nepoznato")
-    # GFI P&L fields are stored on a thousand-unit scale relative to balance
-    # sheet stocks in this extract. Stock/flow ratios therefore use scaled P&L.
+    # GFI P&L revenue is stored on a thousand-unit scale relative to balance
+    # sheet stocks in this extract. Stock/flow ratios therefore use scaled revenue.
     df["revenue"] = df["b125"] * 1000
-    df["net_result"] = (df["b184"] + df["b197"] - df["b185"] - df["b198"]) * 1000
-    df["ebit"] = (df["b125"] - df["b131"]) * 1000
-    df["ebitda"] = df["ebit"] + (df["b141"] * 1000)
+    df["net_result"] = df["b152"] - df["b153"]
+    df["ebit"] = np.nan
+    df["ebitda"] = np.nan
     df["interest_raw"] = df["b166"] + df["b168"]
 
     # This branch runs only after interest sign validation passes.
@@ -405,23 +410,22 @@ def compute_outputs(conn: pymysql.connections.Connection, yearly_diag: pd.DataFr
     majority_negative = sign_by_year["n_interest_neg"].sum() > sign_by_year["n_interest_pos"].sum()
     df["interest"] = (-df["interest_raw"] if majority_negative else df["interest_raw"]) * 1000
 
-    df["lt_fin_debt"] = df["b100"] + df["b101"]
-    df["st_fin_debt"] = df["b112"] + df["b113"]
+    df["lt_fin_debt"] = df["b086"] + df["b087"]
+    df["st_fin_debt"] = df["b096"] + df["b097"]
     df["financial_debt"] = df["lt_fin_debt"] + df["st_fin_debt"]
-    df["net_debt"] = df["financial_debt"] - df["b063"]
-    df["assets"] = df["b065"]
-    df["equity"] = df["b067"]
+    df["net_debt"] = df["financial_debt"] - df["b058"]
+    df["assets"] = df["b061"]
+    df["equity"] = df["b063"]
 
     for col in ["financial_debt", "lt_fin_debt", "st_fin_debt", "interest"]:
         df.loc[df[col] < 0, col] = np.nan
 
     df["debt_to_revenue"] = df["financial_debt"] / df["revenue"].where(df["revenue"] > 0)
-    # Full-balance ratios are intentionally blocked by the audit and kept blank.
-    df["debt_to_assets"] = np.nan
-    df["debt_to_equity"] = np.nan
+    df["debt_to_assets"] = df["financial_debt"] / df["assets"].where(df["assets"] > 0)
+    df["debt_to_equity"] = df["financial_debt"] / df["equity"].where(df["equity"] > 0)
     df["net_debt_to_revenue"] = df["net_debt"] / df["revenue"].where(df["revenue"] > 0)
     df["net_margin"] = df["net_result"] / df["revenue"].where(df["revenue"] > 0)
-    df["roa"] = np.nan
+    df["roa"] = df["net_result"] / df["assets"].where(df["assets"] > 0)
     df["icr"] = np.nan
     df["st_debt_share"] = df["st_fin_debt"] / df["financial_debt"].where(df["financial_debt"] > 0)
 

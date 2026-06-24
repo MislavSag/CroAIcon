@@ -1,32 +1,32 @@
 ---
-title: "Financijski dug raste, ali bilanca još šuti"
-subtitle: "Na provjerenom GFI podskupu medijan dug/prihod raste s 8% na 18%, dok puni bilančni omjeri još ne prolaze audit"
-description: "Financijski dug velikih hrvatskih nefinancijskih firmi raste, ali GFI bilancu još ne treba čitati kao punu mapu zaduženosti."
+title: "Financijski dug je manji nego što je izgledalo"
+subtitle: "Nakon korekcije šifrarnika agregatni dug/prihod iznosi 2,9% u 2024., a najveći teret nose turizam, nekretnine i građevina"
+description: "Ispravljeno čitanje GFI šifrarnika mijenja sliku zaduženosti hrvatskih firmi."
 author: "Mislav Sagovac"
 date: 2026-06-24
 categories: [gfi, zaduženost, financije, firme]
 draft: false
 ---
 
-Zaduženost firme zvuči kao jedno pitanje. Nije. GFI baza danas dopušta jedan siguran odgovor i jedan veliki oprez. Siguran odgovor je u izravnim komponentama financijskog duga. Zajmovi, depoziti i obveze prema bankama mogu se pratiti kroz vrijeme. Veliki oprez je puna bilanca. Ukupna imovina, ukupna pasiva i dio parent-stavki ne prolaze audit, pa iz njih ne izvodimo dug/imovina, dug/kapital ni pokriće kamata.
+Zaduženost firme zvuči kao jedno pitanje. Nije. Prvi pokušaj čitanja GFI-ja koristio je krivi AOP šifrarnik za bilančne pozicije. Ispravak mijenja nalaz. Financijski dug nije eksplodirao na razini tipične firme. Vidljiv je u agregatu i u sektorima, ali je puno manji nego što je izgledalo pod pogrešnim mapiranjem.
 
-Na provjerenom podskupu aktivnih nefinancijskih firmi financijski dug raste. Tipična firma imala je dug od **8% prihoda (2008.) → 18% prihoda (2024.)**. Agregat je niži, ali ide istim smjerom. **6,6% → 11,0%**, s vrhom od **12,7% (2023.)**.
+Na provjerenom podskupu aktivnih nefinancijskih firmi agregatni financijski dug iznosi **2,0% prihoda (2008.) → 2,9% prihoda (2024.)**, s vrhom od **3,6% (2023.)**. Medijan firme je nizak. **0,5% → 0,7%**. Glavna priča zato nije prosječna firma, nego koncentracija duga u nekoliko sektora i na rubovima profitabilnosti.
 
-## Tipična firma se zadužila više nego agregat
+## Agregat nosi priču, ne tipična firma
 
 ![Financijski dug / prihod, agregat SUM/SUM i medijan firme.](debt_1_dynamics.png)
 
-Agregat skriva razliku između velikih i tipičnih firmi. Ukupan financijski dug prema prihodu raste s **6,6% (2008.)** na **11,0% (2024.)**. Medijan firme raste brže. **8,3% → 17,8%**. To je poanta. Ne raste samo dug velikih sustava. Pomiče se i sredina distribucije.
+Agregat se pomiče više od medijana. Ukupan financijski dug prema prihodu raste s **2,0% (2008.)** na **2,9% (2024.)**. Put nije ravan. Pada do 2013., zatim raste, skače u post-COVID godinama i doseže **3,6% (2023.)**.
 
-P75 se pomaknuo još jače. **43% prihoda (2008.) → 134% prihoda (2024.)**. Gornji kvartil firmi ulazi u zonu gdje financijski dug više nije rubni dodatak bilanci nego materijalni teret.
+Medijan ostaje blizu nule. **0,5% prihoda (2008.) → 0,7% prihoda (2024.)**. P75 se ipak pomiče. **4,7% → 10,1%**. Drugim riječima, većina firmi nema veliki financijski dug prema prihodu, ali gornji dio distribucije postaje vidljiviji.
 
-## Dug je gotovo sav kratkoročan u prijavi
+## Dug je više dugoročan nego kratkoročan
 
 ![Udio dugoročnog i kratkoročnog financijskog duga.](debt_2_maturity.png)
 
-Struktura je gruba, ali jasna. Gotovo sav identificirani financijski dug sjedi u kratkoročnim komponentama. Udio kratkoročnog duga kroz cijelo razdoblje ostaje oko **98% do 100%**.
+Ispravljeni šifrarnik mijenja i ročnost. Financijski dug nije gotovo sav kratkoročan. Kratkoročne komponente nose oko **27% do 36%** identificiranog financijskog duga, a dugoročne oko dvije trećine.
 
-To ne znači da su sve firme stvarno financirane samo kratkoročno. Znači opreznije: u ovom GFI izvlačenju dugoročne komponente su male, a kratkoročne komponente nose seriju. Zato je sigurniji nalaz o ročnom profilu prijave nego o stvarnoj ugovornoj ročnosti svakog kredita.
+To je važna razlika. Rollover rizik postoji, ali ga ne treba napuhati. Serija prije govori da su krediti i zajmovi pretežno knjiženi kao dugoročni, dok se kratkoročni dio kreće oko trećine ukupnog financijskog duga.
 
 ## Dug se skuplja na rubovima profitabilnosti
 
@@ -34,25 +34,26 @@ To ne znači da su sve firme stvarno financirane samo kratkoročno. Znači oprez
 
 Literatura o kapitalnoj strukturi nudi jednostavnu intuiciju. Profitabilnije firme mogu financirati ulaganja iz vlastite dobiti, pa po pecking-order logici trebaju manje vanjskog duga. Hrvatski podaci nisu tako čisti. Dug se gomila na rubovima.
 
-Najslabiji kvintil profitabilnosti ima medijan duga od **39% prihoda**. Sredina je niža, oko **11% do 14%**. Najprofitabilniji kvintil opet raste, na **24% prihoda**. To je važan signal. Visok dug nije samo znak slabosti. Kod dijela jakih firmi on je i znak kapaciteta da se dug nosi.
+Najslabiji kvintil profitabilnosti ima medijan duga od **0,7% prihoda**. Sredina je niža, oko **0,2% do 0,4%**. Najprofitabilniji kvintil iskače na **23% prihoda**. To je signal da dug nije samo znak slabosti. Kod dijela profitabilnih firmi on je i znak imovine, projekata i kapaciteta da se dug nosi.
 
 ## Turizam i trgovina nose najteži omjer
 
 ![Financijski dug / prihod po sektoru, 2024.](debt_4_sector_size.png)
 
-Sektorska karta otvara hrvatski kut. Najviši omjer financijskog duga i prihoda imaju smještaj i ugostiteljstvo (**24%**) te trgovina (**23%**). Iza njih su poljoprivreda (**11%**), informacije i komunikacije (**11%**) te prerađivačka industrija (**9%**).
+Sektorska karta otvara hrvatski kut. Najviši omjer financijskog duga i prihoda imaju smještaj i ugostiteljstvo (**16%**), nekretnine (**6%**) i građevina (**6%**). Iza njih su poljoprivreda (**3%**), administrativne usluge (**3%**) i trgovina (**3%**).
 
 To je struktura ranjivosti, ne presuda. Turizam i trgovina imaju različite modele imovine, sezone i obrtnog kapitala. Ali ako se financijski uvjeti stisnu, upravo tamo treba gledati prvi pritisak na refinanciranje.
 
-Zaključak je namjerno uzak. GFI već dopušta čitanje financijskog duga kroz vrijeme, ali još ne dopušta mirno čitanje pune bilance zaduženosti. Dug raste i koncentrira se u gornjem dijelu distribucije. Bilanca još traži čišćenje.
+Zaključak je namjerno uži i čišći. Kad se koristi pravi šifrarnik, financijski dug nije masovan teret tipične firme. Teret postoji, ali je koncentriran. Turizam, nekretnine, građevina i najprofitabilniji rep distribucije nose sliku zaduženosti.
 
 ## Napomene
 
 - Izvor. FINA / GFI, tablica `db_afs`, 2008. do 2024.
+- Šifrarnik. `D:/data/poslovni_subjekti/sifrarnik/sifrarnici/financije_sifrarnik.xlsx`, sheet `cb_afs`. Taj šifrarnik se razlikuje od `codes_gfi` za fizičke `bNNN` pozicije u `db_afs`.
 - Uzorak. Aktivne nefinancijske firme s `b125 > 0`, validnim `nacerev21`, bez NKD K. Broj firmi po godini ide od oko 7.500 do 9.800.
-- Financijski dug. `b100 + b101 + b112 + b113`, odnosno obveze za zajmove, depozite i slično te obveze prema bankama i drugim financijskim institucijama.
+- Financijski dug. Dugoročno `b086 + b087`; kratkoročno `b096 + b097`. To su obveze za zajmove, depozite i slično te obveze prema bankama i drugim financijskim institucijama.
 - Prihod. `b125`, poslovni prihodi. Skripta ga skalira s 1.000 prije usporedbe s bilančnim stock-stavkama jer audit pokazuje da su P&L stavke u ovom izvlačenju na tisućnoj skali u odnosu na bilančne komponente.
-- Profitabilnost. Neto rezultat koristi istu logiku kao službeni pogled `vw_db_afs_financial_subject_year`: `COALESCE(b184, b197) - COALESCE(b185, b198)`, skalirano jednako kao prihod. Neto marža je omjer, pa skaliranje ne mijenja rezultat.
-- Što nije korišteno. `b065`, `b067`, `b107`, `b123` i `b166 + b168` nisu nositelji nalaza. Audit je blokirao dug/imovina, dug/kapital i pokriće kamata jer obuhvat, bilančni identiteti i znak kamatnog rashoda ne prolaze prag.
+- Profitabilnost. Neto rezultat razdoblja = `b152 - b153`, iz istog šifrarnika.
+- Što nije korišteno. `codes_gfi` nije korišten za fizičko mapiranje bilančnih `bNNN` pozicija jer ne odgovara ovom `db_afs` rasporedu. Pokriće kamata nije korišteno jer znak kamatnog rashoda ne prolazi audit.
 - Literatura. Myers (2001) za pecking-order motiv, Martinis i Ljubaj (HNB) za hrvatski debt overhang, Pepur, Ćurak i Poposki za velike hrvatske firme, Šarlija i Harc za hrvatska mala i srednja poduzeća, IMF i ECB za dug, rollover rizik i investicije.
 - Skripte. `python/debt_structure_build.py`, `python/debt_structure_charts.py`.

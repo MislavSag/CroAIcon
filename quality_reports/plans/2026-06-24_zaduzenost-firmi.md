@@ -10,8 +10,11 @@ post.
 ## Data
 
 - Source: FINA / GFI, MySQL table `db_afs`, one row per firm-year.
-- Validation sources: `codes_gfi` for AOP mapping and
-  `vw_db_afs_financial_subject_year` for blessed P&L fields.
+- Validation source for physical `bNNN` mapping:
+  `D:/data/poslovni_subjekti/sifrarnik/sifrarnici/financije_sifrarnik.xlsx`,
+  sheet `cb_afs`. This workbook maps the `db_afs` balance-sheet positions
+  correctly; `codes_gfi` does not match the physical `bNNN` layout for these
+  fields.
 - Intended period: 2008-2024.
 - Universe: active non-financial firms, `b125 > 0`, valid `nacerev21`,
   excluding `nacerev21 = 'K'`.
@@ -55,3 +58,11 @@ post.
 - Inspect `outputs/tables/debt_structure_audit.csv`.
 - Only if `go_no_go` passes, run charts, write post, render the post, and QA
   against `_workflow/review-checklist.md`.
+
+## Correction. 2026-06-24
+
+The first implementation used `codes_gfi` and therefore mapped financial debt
+to the wrong physical columns. The corrected implementation uses
+`financije_sifrarnik.xlsx`: long-term financial debt is `b086 + b087`,
+short-term financial debt is `b096 + b097`, total assets are `b061`, total
+passive is `b108`, and equity is `b063`.

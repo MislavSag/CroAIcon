@@ -136,6 +136,7 @@ def main() -> int:
     )
     spines(ax)
     ax.yaxis.set_major_formatter(pct)
+    ax.set_ylim(0, max(yearly["agg_debt_to_revenue"].max(), yearly["debt_to_revenue_median"].max()) * 1.15)
     ax.set_xlim(yearly["year"].min(), yearly["year"].max() + 2)
     titles(
         fig,
@@ -158,11 +159,11 @@ def main() -> int:
     ax.yaxis.set_major_formatter(pct)
     ax.set_ylim(0, 1)
     ax.text(2021.8, 0.86, "kratkorocni", color=PAPER, fontsize=9, weight="bold")
-    ax.text(2011.0, 0.035, "dugorocni", color=ACCENT, fontsize=8.5, weight="bold")
+    ax.text(2011.0, 0.35, "dugorocni", color=PAPER, fontsize=9, weight="bold")
     titles(
         fig,
         ax,
-        "Struktura duga pokazuje koliki je rollover rizik",
+        "Financijski dug je vecinom dugorocan",
         "udio dugorocnog i kratkorocnog financijskog duga",
         SRC,
     )
