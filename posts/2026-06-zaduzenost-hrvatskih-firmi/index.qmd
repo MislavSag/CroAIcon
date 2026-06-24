@@ -8,23 +8,15 @@ categories: [gfi, zaduženost, financije, firme]
 draft: false
 ---
 
-Koliko su hrvatske firme zadužene? Probajmo s dvije brojke. (Naslov obećava pedeset, ali dovoljne su zapravo dvije.) Tipična firma duguje malo. **6,6% prihoda (2024.)**. Sve firme zajedno, puno. **32%**. Upravo je razlika između te dvije brojke odgovor na naše pitanje. Dug nije ogroman, koncentriran je. Skuplja se u većim firmama, manje profitabilnima i u nekoliko kapitalno intenzivnih sektora.
+Koliko su hrvatske firme zadužene? Probajmo s dvije brojke. (Naslov obećava pedeset, ali dovoljne su zapravo dvije.) Tipična firma duguje malo. **6,6% prihoda (2024.)**. Sve firme zajedno, puno. **32%**. Upravo je razlika između te dvije brojke odgovor na naše pitanje. Dug nije ogroman, koncentriran je. I to u tri dimenzije. Veličina firme, profitabilnost i sektor.
 
 ## Tipična firma duguje malo, sve firme zajedno puno
 
 ![Dug kao udio prihoda. Sve firme zajedno i tipična firma.](debt_1_dynamics.png)
 
-Sve firme zajedno duguju **37% prihoda (2008.) → 32% (2024.)**. Pad nije bio ravnomjeran. Omjer se najprije popeo do **50% (2016.)**, pa se spustio nakon 2020.
+Prva dimenzija je veličina. Sve firme zajedno duguju **37% prihoda (2008.) → 32% (2024.)**. Pad nije bio ravnomjeran. Omjer se najprije popeo do **50% (2016.)**, pa se spustio nakon 2020.
 
-Tipična firma izgleda sasvim drukčije. **8,0% (2008.) → 6,6% (2024.)**. Ali nije svaka firma tipična. Najzaduženija četvrtina drži oko **42% (2024.)**, a kod najzaduženijih deset posto dug premašuje cijeli godišnji prihod. Zato ukupna brojka nije slika prosječne firme. Ona je slika koncentracije.
-
-## Dug je dugoročan
-
-![Udio dugoročnog i kratkoročnog duga.](debt_2_maturity.png)
-
-Ako se dug skuplja u nekoliko ruku, koliko brzo dospijeva? Ročnost ne izgleda opasno. Kratkoročni dug je oko **32% (2024.)**, gotovo isto kao 2008. Najviše je dosegao **37% (2016.)**.
-
-To ne znači da je rizik refinanciranja malen. Znači da ga ne treba preuveličati. Većina duga knjižena je kao dugoročna obveza.
+Tipična firma izgleda sasvim drukčije. **8,0% (2008.) → 6,6% (2024.)**. Ali nije svaka firma tipična. Najzaduženija četvrtina drži oko **42% (2024.)**, a kod najzaduženijih deset posto dug premašuje cijeli godišnji prihod. Zato ukupna brojka nije slika prosječne firme. Ona je slika koncentracije. Najviše duga nose najveće firme.
 
 ## Neprofitabilne firme nose najteži teret
 
@@ -44,7 +36,15 @@ Treća dimenzija je sektor, i tu je stvar jasna. Sektor nekretnina nosi dug od *
 
 To odražava strukturu ranjivosti. Nekretnine prirodno nose više imovine i duga prema prihodu. Turizam i građevina imaju vlastite cikluse, kolateral i sezonalnost. Ali ako zaoštre financijski uvjeti, pritisak refinanciranja prvo udara tu.
 
-Zaključak je čvrst. Nije svaka hrvatska firma prezadužena. Dug je koncentriran. Tipična firma je umjereno zadužena, a ukupna brojka, profitabilnost i sektor otkrivaju gdje se skriva financijska ranjivost.
+## Koncentriran, ali uglavnom dugoročan
+
+![Udio dugoročnog i kratkoročnog duga.](debt_2_maturity.png)
+
+Sad znamo gdje je dug. Ali je li opasan? Dijelom ovisi o tome koliko brzo dospijeva. Ročnost ne izgleda opasno. Kratkoročni dug je oko **32% (2024.)**, gotovo isto kao 2008. Najviše je dosegao **37% (2016.)**.
+
+To ne znači da je rizik refinanciranja malen. Znači da ga ne treba preuveličati. Većina duga knjižena je kao dugoročna obveza.
+
+Zaključak je čvrst. Nije svaka hrvatska firma prezadužena. Dug je koncentriran. Tipična firma je umjereno zadužena, a veličina, profitabilnost i sektor otkrivaju gdje se skriva financijska ranjivost.
 
 ## Napomene
 
