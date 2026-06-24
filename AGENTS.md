@@ -2,10 +2,10 @@
 
 This is the shared brain for the blog. Codex reads it from the repo root. Claude Code reads it through a one line import in `CLAUDE.md`. It sits on top of an existing Quarto site, so it governs how we work, not how the site is built.
 
-**Project.** CroAIcon. A reproducible analytics blog built on Croatian economic data.
-**Mission.** Cut the distance from data to insight. Posts are short, purposeful, and reproducible.
+**Project.** AI.econ. A reproducible analytics blog built on Croatian economic data.
+**Mission.** Cut the distance from data to insight. Posts are short, purposeful, atractive and reproducible. Aimed to general public, even though hard core economics in the background.
 **Stack.** R and Python for analysis and charts. Quarto for the site and the posts. Git for everything.
-**Authors.** [your name] on Claude Code. Mislav Sagovac on Codex.
+**Authors.** [Luka Sikic] on Claude Code. Mislav Sagovac on Codex.
 
 **New here?** Read `_workflow/how-it-works.md` first. It maps the whole machine in one page. How a post gets its voice, its look, and its charts, how content flows from a topic to a published post, and how the two tools share one brain.
 
@@ -15,7 +15,7 @@ This is the shared brain for the blog. Codex reads it from the repo root. Claude
 2. **Verify after.** Rerun the scripts and render the post before reporting a task done. Never claim done from memory.
 3. **Numbers are anchored.** Every figure in a post traces to a saved output under `outputs/`. A number is never typed from an old draft.
 4. **House style is law.** Posts follow the style guide. Punchy and present tense. Periods over colons, arrows over long dashes, italics over quote marks. Full guide in `_workflow/house-style-guide.md`.
-5. **[KUT] stays human.** Markers tagged [KUT] hold the editorial angle. Draft around them, never fill one silently, flag every one back to the author.
+5. **[KUT] stays human.** Markers tagged [KUT] hold the editorial angle. Draft around them, never fill one silently, flag every one back to the author. Add max 3 of the best possible ones for a human to decide 
 6. **Learn once.** Read `MEMORY.md` before you write or review. When the author corrects you, capture it with the `learn` skill so it never repeats.
 
 ## Writing a post, the short rules
@@ -25,9 +25,9 @@ This is the shared brain for the blog. Codex reads it from the repo root. Claude
 - Headlines come in two beats. A vivid hook, then a literal subtitle that hands a skimmer the finding. Leave `description` empty when it would only echo them.
 - Section headers are claims that stand on their own.
 - Coin a phrase only when it explains itself. If the reader has to decode it, say the thing plainly.
-- Show change with an arrow. 65.000 → 162.000. Round so the number sticks. Magnitude in parentheses, plus and minus spelled out.
+- Show change with an arrow. 65.000 → 162.000. Round so the number sticks. Magnitude in parentheses, plus and minus spelled out. Put change in bold.
 - Sort the world into winners and losers when the data invites it.
-- A post is one argument. A hook that opens, a build where every section, chart, and number advances the one finding and stays consistent with it, and a payoff that lands a *so what* before the notes box. Cut any section that does not move the story.
+- A post is one argument. A hook that opens, a build where every section, chart, and number advances the one finding and stays consistent with it, and a payoff that lands a *so what* before the notes box. Cut any section that does not move the story. Take care that there are narative bridges between sections of the post. 
 - After the payoff, the notes box closes the page, heading *## Napomene*, kept lean. Source, the columns the post used, scripts in backticks, and a plain caution about limits. Leave out internal schema detail and cautions about columns the post never touched.
 - The body and the notes box do not repeat each other. The span, the column definitions, and the full coverage caveat live once, in the notes box. The body points to a limit subtly rather than restating it (*...broj firmi je rastao (više o obuhvatu u Napomenama), a zaposlenost padala.*). The coverage caveat still gets flagged, in the box. No repetition means no full caveat in two places, not no flag at all.
 - The full writing bar and the full review bar live in `_workflow/house-style-guide.md` and `_workflow/review-checklist.md`. Read the checklist before you call a post done.

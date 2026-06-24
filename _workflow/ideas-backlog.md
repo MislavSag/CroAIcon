@@ -25,6 +25,39 @@ Ideas that cleared the playbook and are ready to draft.
 Good ideas waiting on data, on a cleaner column, or on the right moment.
 
 - Anything resting on financial columns (revenue, profit, debt). Waiting on the GFI financial cleanup.
+- **Financije na razini firme. deset tema iz medija, sve Park dok GFI financijski stupci nisu pročišćeni.**
+  Puni preliminarni nacrti (kostur posta + blok za izradu) u `drafts/balance-sheet/`, mapa u
+  `drafts/balance-sheet/00-index.md`. Brojke u nacrtima su medijske, za provjeru, nisu naš nalaz.
+  - **Visoka poluga, plitka likvidnost.** Spoj visoke poluge i niske likvidnosti predviđa kasniji stečaj,
+    pokriće kamata ispod 1 najjači signal. D/E, tekuća likvidnost, pokriće kamata + ishod. Effort velik.
+    → `drafts/balance-sheet/01-zaduzenost-i-likvidnost.md`
+  - **Pune sobe, tanke marže.** Trošak osoblja jede hotelsku maržu brže nego što dolasci rastu, laka
+    bilanca (najam) izmiče stisku. Trošak osoblja/prihod, iskorištenost imovine. Effort velik.
+    → `drafts/balance-sheet/02-turizam-marze-i-troskovi.md`
+  - **Cijene rastu na ekranu, bilance se pune u tišini.** Rast cijena sjeda kao zaliha i dug kod
+    investitora (NKD 41, 68), ne kao prodaja. Zalihe, potraživanja, hipoteka/imovina. Effort velik.
+    → `drafts/balance-sheet/03-nekretnine-investitori.md`
+  - **Struja koja jede maržu.** Energetski šok stišće EBITDA maržu izloženih industrija, prijenos troška
+    dijeli pobjednike od gubitnika. Energija/OPEX, EBITDA marža (diff-in-diff). Effort velik.
+    → `drafts/balance-sheet/04-energija-i-konkurentnost.md`
+  - **Plaće rastu brže od učinka.** Jedinični trošak rada raste, marža se stišće prvo u ugostiteljstvu i
+    trgovini. Trošak osoblja/prihodi, bruto i operativna marža. Effort velik.
+    → `drafts/balance-sheet/05-place-i-marze.md`
+  - **Police pune, marže tanke.** Hrvatski lanci po dodanoj vrijednosti i marži zaostaju za
+    internacionalnima, sporiji obrtaj zaliha. Obrtaj zaliha, neto marža, ciklus obrtnog kapitala. Effort velik.
+    → `drafts/balance-sheet/06-trgovina-marze.md`
+  - **Gubitak je proračunska stavka.** Jezgra državnih firmi reže operativni gubitak pokriven transferima,
+    teret raste izvan bilance. Operativni gubitak, dokapitalizacije, jamstva. Effort velik.
+    → `drafts/balance-sheet/07-drzavne-firme.md`
+  - **Subvencije ulaze, rezultati ne izlaze.** Udio subvencija u prihodu raste a ROA stoji, jaz priljeva i
+    rezultata u agrobiznisu. Subvencija/prihod, ROA, poluga (NKD 01, 10, 11). Effort velik.
+    → `drafts/balance-sheet/08-poljoprivreda-subvencije.md`
+  - **Likvidni, a žedni kapitala.** MSP nisu prezaduženi i sjede na gotovini, a financiranje teško stiže
+    do onih s pravim ograničenjem. Poluga, capex, gotovina/imovina, ročnost duga. Effort velik.
+    → `drafts/balance-sheet/09-msp-financiranje.md`
+  - **Bilanca bez tvornice.** ICT firme (NKD 62, 63) nose vrijednost u nematerijalnoj imovini i
+    pretplatama, klasični omjeri promaše narav. Nematerijalna imovina, cash burn, odgođeni prihodi. Effort velik.
+    → `drafts/balance-sheet/10-ict-i-startupi.md`
 - **Yugoslav-era sector growth decomposition** (where the socialist boom came from).
   Data in `data/reference/Tica_2004_Croatia_GDP_data.xlsx`: `T4_YU_GDP_sector_gr_1965_88`
   and `T5_HR_sector_gr_RA_1958_90` (industry, agriculture, construction, trade, hotels,
