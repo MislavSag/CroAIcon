@@ -11,27 +11,30 @@ post.
 
 - Source: FINA / GFI, MySQL table `db_afs`, one row per firm-year.
 - Validation source for physical `bNNN` mapping:
+  MySQL table `codes_gfi_db_afs_physical`, imported from
   `D:/data/poslovni_subjekti/sifrarnik/sifrarnici/financije_sifrarnik.xlsx`,
-  sheet `cb_afs`. This workbook maps the `db_afs` balance-sheet positions
-  correctly; `codes_gfi` does not match the physical `bNNN` layout for these
-  fields.
+  sheet `cb_afs`. This workbook maps the physical `db_afs.bNNN` positions
+  correctly; `codes_gfi` does not match this layout for these fields.
 - Intended period: 2008-2024.
-- Universe: active non-financial firms, `b125 > 0`, valid `nacerev21`,
-  excluding `nacerev21 = 'K'`.
+- Universe: active non-financial firms, `b110 > 0`, valid `nacerev21` sections
+  `A` to `S`, excluding `nacerev21 = 'K'`.
 
 ## Validation Gates
 
-- Do not use debt/assets unless `b065` has stable coverage and balance-sheet
+- Do not use debt/assets unless `b061` has stable coverage and balance-sheet
   identity checks are credible.
 - Do not use financial debt unless long-term debt components fit within
-  `b095` and short-term debt components fit within `b107`.
-- Do not use ICR unless the sign of `b166 + b168` is consistent enough to
-  normalize interest expense.
+  `b084` and short-term debt components fit within `b094`.
+- Do not use ICR until interest expense is explicitly mapped and validated.
+  `b166 + b168` is not interest in the physical codebook.
 - Every denominator must be positive, with firm counts reported by year.
 
 ## Implementation
 
+- `python/import_gfi_db_afs_codebook.py` imports the local workbook into
+  MySQL table `codes_gfi_db_afs_physical`.
 - `python/debt_structure_build.py` writes:
+  - `outputs/tables/debt_structure_aop_map.csv`
   - `outputs/tables/debt_structure_audit.csv`
   - `outputs/tables/debt_structure_yearly.csv`
   - `outputs/tables/debt_profitability_bins.csv`
@@ -63,6 +66,8 @@ post.
 
 The first implementation used `codes_gfi` and therefore mapped financial debt
 to the wrong physical columns. The corrected implementation uses
-`financije_sifrarnik.xlsx`: long-term financial debt is `b086 + b087`,
+`codes_gfi_db_afs_physical` imported from `financije_sifrarnik.xlsx`:
+long-term financial debt is `b086 + b087`,
 short-term financial debt is `b096 + b097`, total assets are `b061`, total
-passive is `b108`, and equity is `b063`.
+passive is `b108`, equity is `b063`, revenue is `b110`, and net result is
+`b152 - b153`.

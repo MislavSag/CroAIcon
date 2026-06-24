@@ -8,12 +8,13 @@ Format for a correction. [LEARN:category] what was wrong → what is right, with
 
 - The stack is R for analysis, Quarto for posts, git for everything.
 - The GFI base is FINA annual reports, table `db_afs`, one row per firm and year.
-- Trusted columns today are `employeecounteop` and `nacerev21`. Financial columns are not.
+- Trusted baseline columns are `employeecounteop` and `nacerev21`. Financial columns require the `codes_gfi_db_afs_physical` codebook plus an analysis-specific audit before use.
 
 ## Data quirks
 
 - [LEARN:data] A rising firm count in `db_afs` partly reflects wider coverage of the base, not real growth → say coverage, not growth, unless you can separate the two.
 - [LEARN:data] Employee counts are end of period headcounts and more robust than firm counts → lead with employment when the two disagree.
+- [LEARN:data] `codes_gfi` does not match the physical `db_afs.bNNN` financial-column layout -> use MySQL table `codes_gfi_db_afs_physical`, imported from `financije_sifrarnik.xlsx`, for GFI balance/P&L column labels.
 
 ## Corrections log
 

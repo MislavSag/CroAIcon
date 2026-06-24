@@ -175,14 +175,26 @@ def main() -> int:
         bins["median_debt_to_revenue"],
         color=[FALL, AMBER, MUTED, RISE, ACCENT][: len(bins)],
         zorder=3,
+        label="medijan",
+    )
+    ax.plot(
+        bins["profitability_bin"].astype(str),
+        bins["agg_debt_to_revenue"],
+        color=INK,
+        lw=2.0,
+        marker="o",
+        ms=4.5,
+        zorder=4,
+        label="agregat",
     )
     spines(ax)
     ax.yaxis.set_major_formatter(pct)
+    ax.legend(frameon=False, loc="upper right", fontsize=8)
     titles(
         fig,
         ax,
-        "Dug se skuplja na rubovima profitabilnosti",
-        "medijan financijskog duga / prihoda po kvintilu neto marze, zadnja godina",
+        "Neprofitabilne firme nose najveci teret duga",
+        "financijski dug / prihod po kvintilu neto marze, zadnja godina",
         SRC,
     )
     save_and_copy(fig, "debt_3_profitability.png")

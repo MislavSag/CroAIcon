@@ -35,7 +35,8 @@ This is the shared brain for the blog. Codex reads it from the repo root. Claude
 ## Data and reproducibility
 
 - Name the source, the table, and the exact columns in every post. The sectors work uses the GFI base, table `db_afs`, from FINA annual reports.
-- Keep untrusted columns out of posts. Financial columns (revenue, profit, debt) stay out until cleaned and confirmed.
+- For GFI financial columns in `db_afs`, do not use `codes_gfi` as the physical `bNNN` map. Use MySQL table `codes_gfi_db_afs_physical`, imported from `D:/data/poslovni_subjekti/sifrarnik/sifrarnici/financije_sifrarnik.xlsx`, sheet `cb_afs`.
+- Keep untrusted columns out of posts. Financial columns (revenue, profit, debt) need the physical codebook and an analysis-specific audit before use.
 - Separate a real change in the world from wider coverage of the base. A rising firm count can be coverage, not growth. Say which, or say you cannot tell yet.
 - Reproduce someone else's headline number before extending it. Match first, build second.
 
@@ -93,7 +94,7 @@ The skills that drive them, all in shared SKILL.md form, are `brainstorm`, `find
 ## Current state
 
 - **Sectors post** (firms grow, jobs move, 2002 to 2024). Draft for the editorial pass. GFI `db_afs`, reliable columns only. Build scripts in `python/`.
-- **GFI financial columns.** Not yet cleaned. Keep out of posts until confirmed.
+- **GFI financial columns.** Physical `db_afs.bNNN` labels are in MySQL table `codes_gfi_db_afs_physical`. Use that table, not `codes_gfi`, and still audit each ratio before publishing.
 - [add posts and datasets here as they land]
 
 ## Per tool harness
