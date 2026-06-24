@@ -19,6 +19,7 @@ Format for a correction. [LEARN:category] what was wrong → what is right, with
 ## Corrections log
 
 - [LEARN:style] (seed example) A long dash slipped into a method box → the house uses periods, arrows, and parentheses, never long dashes.
+- [LEARN:style] Post notes (`## Napomene`) carried raw GFI column codes (`b110`, `b086 + b087`, NKD section letters) and codebook internals (`codes_gfi_db_afs_physical`, table and šifrarnik names) in the prose, and literature as bare `Author (year) za topic` → keep Napomene plain. Say what each variable means and how it is calculated, not its column code. Keep codebook and table names out of the post (they govern the analysis, not the reader, see the `codes_gfi_db_afs_physical` data quirk above). Give literature as proper references with working links (DOI or direct PDF). Script paths in backticks stay. Taught editing `posts/2026-06-zaduzenost-hrvatskih-firmi/index.qmd`.
 - [add corrections here as they happen, newest at the bottom]
 
 ## Workflow learnings
