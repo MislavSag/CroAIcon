@@ -15,6 +15,7 @@ Format for a correction. [LEARN:category] what was wrong → what is right, with
 - [LEARN:data] A rising firm count in `db_afs` partly reflects wider coverage of the base, not real growth → say coverage, not growth, unless you can separate the two.
 - [LEARN:data] Employee counts are end of period headcounts and more robust than firm counts → lead with employment when the two disagree.
 - [LEARN:data] `codes_gfi` does not match the physical `db_afs.bNNN` financial-column layout -> use MySQL table `codes_gfi_db_afs_physical`, imported from `financije_sifrarnik.xlsx`, for GFI balance/P&L column labels.
+- [LEARN:data] GFI/FINA health employment (zdravstvo, NKD područje Q) does not match DZS health figures → DZS counts all health personnel plus dental care and pharmaceutical wholesalers (veledrogerije), a wider scope than the GFI base. Read the health sector and its +164% gain cautiously. Flagged by Zoran Aralica on the sektori post.
 
 ## Corrections log
 

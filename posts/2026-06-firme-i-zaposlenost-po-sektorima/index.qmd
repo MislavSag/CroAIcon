@@ -36,7 +36,7 @@ Prerađivačka industrija je najveći poslodavac (oko **260.000**), uz blagi pad
 
 Realokacija u jednoj slici. Dobitnici. Zdravstvo **plus 164%**, turizam **plus 113%**, informacije **plus 74%**. Gubitnici. Rudarstvo **minus 49%**, nekretnine **minus 40%**, financije **minus 37%**. Klasici stoje. Industrija **minus 5%**, trgovina **minus 1%**.
 
-Realokacija ocrtava RH model rasta. Strukturno preslagivanje. Težište se seli s industrije i građevine na turizam i usluge. To je i snaga (novi poslovi, oporavak iznad pretkrizne razine) i rizik (rast sve više počiva na turizmu, osjetljivom na vanjske šokove).
+Realokacija ocrtava RH model rasta. Strukturno preslagivanje. Težište se seli s industrije i građevine na turizam i usluge. To je i snaga (novi poslovi, oporavak iznad pretkrizne razine) i rizik (rast sve više počiva na turizmu, osjetljivom na vanjske šokove). Je li takva struktura i [poduzetnička](https://www.nacional.hr/gost-kolumnist-zoran-aralica-je-li-hrvatska-poduzetnicka-drzava/), otvoreno je pitanje.
 
 ## Napomene
 
@@ -45,5 +45,6 @@ Realokacija ocrtava RH model rasta. Strukturno preslagivanje. Težište se seli 
 - Zaposleni. `employeecounteop` (kraj razdoblja), zbroj po djelatnosti.
 - Djelatnost. NKD 2007. područje (`nacerev21`, A do U).
 - Oprez. Rast broja firmi dijelom odražava širi obuhvat baze. Zaposlenost je robustnija mjera.
+- Oprez (zdravstvo). Podaci za zdravstvo iz GFI baze ne poklapaju se s onima DZS-a. DZS obuhvaća sve zdravstveno osoblje te zaposlene u dentalnoj zaštiti i veledrogerijama, pa rast zaposlenosti u zdravstvu treba čitati opreznije. Na nepodudarnost upozorio je Zoran Aralica.
 
 *Izvor. FINA, Godišnji financijski izvještaji (`db_afs`). Izračun. AI.econ. Skripte. `python/sectors_build.py`, `python/sectors_charts.py`.*
