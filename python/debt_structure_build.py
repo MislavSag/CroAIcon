@@ -20,6 +20,7 @@ YEARS = range(2008, 2025)
 POST_SLUG = "2026-06-zaduzenost-hrvatskih-firmi"
 
 AOP_COLUMNS = {
+    "b002": 2,
     "b058": 58,
     "b061": 61,
     "b063": 63,
@@ -170,6 +171,13 @@ def query_year_audit(conn: pymysql.connections.Connection, year: int) -> dict[st
         """
         SELECT
             COUNT(*) AS n,
+            SUM(CASE WHEN b002 IS NOT NULL THEN 1 ELSE 0 END) AS n_fixed_assets,
+            SUM(CASE WHEN b002 IS NOT NULL AND b002 >= 0 THEN 1 ELSE 0 END) AS n_fixed_assets_nonnegative,
+            SUM(CASE WHEN b002 IS NOT NULL
+                      AND b061 IS NOT NULL
+                      AND b002 >= 0
+                      AND b002 <= b061 + 1
+                     THEN 1 ELSE 0 END) AS n_fixed_assets_inside_assets,
             SUM(CASE WHEN b061 IS NOT NULL AND b061 <> 0 THEN 1 ELSE 0 END) AS n_assets,
             SUM(CASE WHEN b108 IS NOT NULL AND b108 <> 0 THEN 1 ELSE 0 END) AS n_passive,
             SUM(CASE WHEN b061 IS NOT NULL AND b061 <> 0
@@ -192,6 +200,8 @@ def query_year_audit(conn: pymysql.connections.Connection, year: int) -> dict[st
             SUM(ABS(COALESCE(b094, 0))) AS sum_st_liabilities,
             SUM(ABS(COALESCE(b086, 0) + COALESCE(b087, 0))) AS sum_lt_fin_debt,
             SUM(ABS(COALESCE(b096, 0) + COALESCE(b097, 0))) AS sum_st_fin_debt,
+            SUM(COALESCE(b002, 0)) AS sum_fixed_assets,
+            SUM(COALESCE(b061, 0)) AS sum_assets,
             SUM(COALESCE(b110, 0)) AS sum_revenue,
             SUM(COALESCE(b152, 0) - COALESCE(b153, 0)) AS sum_net_result
         FROM db_afs
@@ -214,6 +224,18 @@ def make_validation_tables(yearly: pd.DataFrame) -> tuple[pd.DataFrame, bool, st
     yearly = yearly.copy()
     yearly["asset_coverage"] = yearly["n_assets"] / yearly["n"]
     yearly["passive_coverage"] = yearly["n_passive"] / yearly["n"]
+    yearly["fixed_asset_coverage"] = yearly["n_fixed_assets"] / yearly["n"]
+    yearly["fixed_asset_nonnegative_share"] = np.where(
+        yearly["n_fixed_assets"] > 0,
+        yearly["n_fixed_assets_nonnegative"] / yearly["n_fixed_assets"],
+        0,
+    )
+    yearly["fixed_asset_inside_assets_share"] = np.where(
+        yearly["n_fixed_assets"] > 0,
+        yearly["n_fixed_assets_inside_assets"] / yearly["n_fixed_assets"],
+        0,
+    )
+    yearly["fixed_assets_to_assets"] = yearly["sum_fixed_assets"] / yearly["sum_assets"]
     yearly["balance_match_share"] = np.where(
         yearly["n_both"] > 0,
         yearly["n_balanced_1pct"] / yearly["n_both"],
@@ -236,6 +258,27 @@ def make_validation_tables(yearly: pd.DataFrame) -> tuple[pd.DataFrame, bool, st
             yearly["n"].min(),
             5000,
             yearly["n"].min() >= 5000,
+        ),
+        (
+            "fixed_asset_coverage",
+            "Fixed assets b002 must be present for at least 70% of active non-financial firms.",
+            yearly["fixed_asset_coverage"].min(),
+            0.70,
+            yearly["fixed_asset_coverage"].min() >= 0.70,
+        ),
+        (
+            "fixed_asset_nonnegative",
+            "Fixed assets b002 must be non-negative in at least 99% of covered rows.",
+            yearly["fixed_asset_nonnegative_share"].min(),
+            0.99,
+            yearly["fixed_asset_nonnegative_share"].min() >= 0.99,
+        ),
+        (
+            "fixed_asset_inside_assets",
+            "Fixed assets b002 must fit inside total assets b061 in at least 95% of covered rows.",
+            yearly["fixed_asset_inside_assets_share"].min(),
+            0.95,
+            yearly["fixed_asset_inside_assets_share"].min() >= 0.95,
         ),
         (
             "financial_debt_component_coverage",
@@ -288,6 +331,9 @@ def make_validation_tables(yearly: pd.DataFrame) -> tuple[pd.DataFrame, bool, st
     fatal_rules = {
         "active_sample_size",
         "stock_flow_plausibility",
+        "fixed_asset_coverage",
+        "fixed_asset_nonnegative",
+        "fixed_asset_inside_assets",
         "long_term_debt_components",
         "short_term_debt_components",
         "balance_identity",
@@ -331,6 +377,7 @@ def query_firm_panel(conn: pymysql.connections.Connection) -> pd.DataFrame:
         "nacerev21",
         "subjectsizeeurev2",
         "employeecounteop",
+        "b002",
         "b058",
         "b063",
         "b061",
@@ -376,6 +423,89 @@ def winsorize_by_year(data: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
     return out
 
 
+DEBT_BIN_LABELS = ["0%", "0-10%", "10-50%", "50-100%", ">100%"]
+
+
+def assign_debt_bins(values: pd.Series) -> pd.Series:
+    return pd.cut(
+        values.fillna(0),
+        bins=[-np.inf, 0, 0.10, 0.50, 1.00, np.inf],
+        labels=DEBT_BIN_LABELS,
+        include_lowest=True,
+    )
+
+
+def add_profit_groups(data: pd.DataFrame) -> pd.DataFrame:
+    out = data.copy()
+    out["profit_group"] = pd.NA
+    labels = ["slaba marza", "srednja marza", "jaka marza"]
+    for _, idx in out.groupby("year").groups.items():
+        margin = out.loc[idx, "lag_net_margin"]
+        ok = margin.notna()
+        if ok.sum() < 3:
+            continue
+        ranks = margin.loc[ok].rank(method="first")
+        out.loc[ranks.index, "profit_group"] = pd.qcut(ranks, q=3, labels=labels).astype(str)
+    return out
+
+
+def aggregate_investment(data: pd.DataFrame, group_cols: list[str]) -> pd.DataFrame:
+    grouped = data.groupby(group_cols, observed=True).agg(
+        n_obs=("subjecttaxnoid", "size"),
+        n_firms=("subjecttaxnoid", "nunique"),
+        revenue=("revenue", "sum"),
+        lag_fixed_assets=("lag_fixed_assets", "sum"),
+        delta_fixed_assets=("delta_fixed_assets", "sum"),
+        median_investment_rate=("investment_rate", "median"),
+        p25_investment_rate=("investment_rate", lambda x: x.quantile(0.25)),
+        p75_investment_rate=("investment_rate", lambda x: x.quantile(0.75)),
+        median_lag_debt_to_revenue=("lag_debt_to_revenue", "median"),
+        median_lag_net_margin=("lag_net_margin", "median"),
+        median_lag_st_debt_share=("lag_st_debt_share", "median"),
+    ).reset_index()
+    grouped["agg_investment_rate"] = grouped["delta_fixed_assets"] / grouped["lag_fixed_assets"]
+    return grouped
+
+
+def make_investment_panel(clean: pd.DataFrame) -> pd.DataFrame:
+    base = clean.sort_values(["subjecttaxnoid", "year"]).copy()
+    group = base.groupby("subjecttaxnoid", sort=False)
+    lag_cols = [
+        "year",
+        "fixed_assets",
+        "financial_debt",
+        "debt_to_revenue",
+        "debt_to_assets",
+        "net_margin",
+        "st_debt_share",
+        "revenue",
+        "assets",
+    ]
+    for col in lag_cols:
+        base[f"lag_{col}"] = group[col].shift(1)
+
+    consecutive = base["year"].eq(base["lag_year"] + 1)
+    valid = (
+        consecutive
+        & base["fixed_assets"].notna()
+        & base["lag_fixed_assets"].notna()
+        & (base["fixed_assets"] >= 0)
+        & (base["lag_fixed_assets"] > 0)
+    )
+    inv = base.loc[valid].copy()
+    inv["delta_fixed_assets"] = inv["fixed_assets"] - inv["lag_fixed_assets"]
+    inv["investment_rate"] = inv["delta_fixed_assets"] / inv["lag_fixed_assets"]
+    inv.loc[~np.isfinite(inv["investment_rate"]), "investment_rate"] = np.nan
+    inv = inv[inv["investment_rate"].notna()].copy()
+    inv = winsorize_by_year(inv, ["investment_rate"])
+    inv["debt_bin"] = assign_debt_bins(inv["lag_debt_to_revenue"])
+    inv["debt_bin_order"] = inv["debt_bin"].astype(str).map(
+        {label: i for i, label in enumerate(DEBT_BIN_LABELS)}
+    )
+    inv = add_profit_groups(inv)
+    return inv
+
+
 def compute_outputs(conn: pymysql.connections.Connection, yearly_diag: pd.DataFrame) -> None:
     panel = query_firm_panel(conn)
     numeric_cols = [col for col in panel.columns if col.startswith("b")] + [
@@ -400,14 +530,17 @@ def compute_outputs(conn: pymysql.connections.Connection, yearly_diag: pd.DataFr
     df["net_debt"] = df["financial_debt"] - df["b058"]
     df["assets"] = df["b061"]
     df["equity"] = df["b063"]
+    df["fixed_assets"] = df["b002"]
 
-    for col in ["financial_debt", "lt_fin_debt", "st_fin_debt", "interest"]:
+    for col in ["financial_debt", "lt_fin_debt", "st_fin_debt", "interest", "fixed_assets"]:
         df.loc[df[col] < 0, col] = np.nan
 
     df["debt_to_revenue"] = df["financial_debt"] / df["revenue"].where(df["revenue"] > 0)
     df["debt_to_assets"] = df["financial_debt"] / df["assets"].where(df["assets"] > 0)
     df["debt_to_equity"] = df["financial_debt"] / df["equity"].where(df["equity"] > 0)
     df["net_debt_to_revenue"] = df["net_debt"] / df["revenue"].where(df["revenue"] > 0)
+    df["fixed_assets_to_revenue"] = df["fixed_assets"] / df["revenue"].where(df["revenue"] > 0)
+    df["fixed_assets_to_assets"] = df["fixed_assets"] / df["assets"].where(df["assets"] > 0)
     df["net_margin"] = df["net_result"] / df["revenue"].where(df["revenue"] > 0)
     df["roa"] = df["net_result"] / df["assets"].where(df["assets"] > 0)
     df["icr"] = np.nan
@@ -418,6 +551,8 @@ def compute_outputs(conn: pymysql.connections.Connection, yearly_diag: pd.DataFr
         "debt_to_assets",
         "debt_to_equity",
         "net_debt_to_revenue",
+        "fixed_assets_to_revenue",
+        "fixed_assets_to_assets",
         "net_margin",
         "roa",
         "icr",
@@ -434,11 +569,13 @@ def compute_outputs(conn: pymysql.connections.Connection, yearly_diag: pd.DataFr
         net_debt=("net_debt", "sum"),
         lt_fin_debt=("lt_fin_debt", "sum"),
         st_fin_debt=("st_fin_debt", "sum"),
+        fixed_assets=("fixed_assets", "sum"),
         net_result=("net_result", "sum"),
         debt_to_revenue_median=("debt_to_revenue", "median"),
         debt_to_revenue_p75=("debt_to_revenue", lambda x: x.quantile(0.75)),
         debt_to_revenue_p90=("debt_to_revenue", lambda x: x.quantile(0.90)),
         debt_to_assets_median=("debt_to_assets", "median"),
+        fixed_assets_to_revenue_median=("fixed_assets_to_revenue", "median"),
         net_margin_median=("net_margin", "median"),
         icr_median=("icr", "median"),
     ).reset_index()
@@ -482,6 +619,80 @@ def compute_outputs(conn: pymysql.connections.Connection, yearly_diag: pd.DataFr
         encoding="utf-8-sig",
     )
 
+    by_sector_detail = latest.groupby(["sector", "sector_name"]).agg(
+        n_firms=("subjecttaxnoid", "size"),
+        revenue=("revenue", "sum"),
+        financial_debt=("financial_debt", "sum"),
+        lt_fin_debt=("lt_fin_debt", "sum"),
+        st_fin_debt=("st_fin_debt", "sum"),
+        cash=("b058", "sum"),
+        assets=("assets", "sum"),
+        fixed_assets=("fixed_assets", "sum"),
+        equity=("equity", "sum"),
+        net_result=("net_result", "sum"),
+        debt_firm_share=("financial_debt", lambda x: (x > 0).mean()),
+        median_debt_to_revenue=("debt_to_revenue", "median"),
+        p75_debt_to_revenue=("debt_to_revenue", lambda x: x.quantile(0.75)),
+        p90_debt_to_revenue=("debt_to_revenue", lambda x: x.quantile(0.90)),
+        median_debt_to_assets=("debt_to_assets", "median"),
+        median_fixed_assets_to_revenue=("fixed_assets_to_revenue", "median"),
+        median_fixed_assets_to_assets=("fixed_assets_to_assets", "median"),
+        median_net_margin=("net_margin", "median"),
+    ).reset_index()
+    by_sector_detail["debt_to_revenue"] = (
+        by_sector_detail["financial_debt"] / by_sector_detail["revenue"]
+    )
+    by_sector_detail["lt_debt_to_revenue"] = by_sector_detail["lt_fin_debt"] / by_sector_detail["revenue"]
+    by_sector_detail["st_debt_to_revenue"] = by_sector_detail["st_fin_debt"] / by_sector_detail["revenue"]
+    by_sector_detail["debt_to_assets"] = by_sector_detail["financial_debt"] / by_sector_detail["assets"]
+    by_sector_detail["fixed_assets_to_revenue"] = by_sector_detail["fixed_assets"] / by_sector_detail["revenue"]
+    by_sector_detail["fixed_assets_to_assets"] = by_sector_detail["fixed_assets"] / by_sector_detail["assets"]
+    by_sector_detail["st_debt_share"] = (
+        by_sector_detail["st_fin_debt"] / by_sector_detail["financial_debt"]
+    )
+    by_sector_detail["share_total_debt"] = (
+        by_sector_detail["financial_debt"] / by_sector_detail["financial_debt"].sum()
+    )
+    by_sector_detail = by_sector_detail.sort_values("debt_to_revenue", ascending=False)
+    by_sector_detail.to_csv(
+        TABLE_DIR / "debt_by_sector_detail.csv",
+        index=False,
+        encoding="utf-8-sig",
+    )
+
+    inv = make_investment_panel(clean)
+    inv_sector_all = aggregate_investment(inv, ["sector", "sector_name"])
+    inv_sector_all["period"] = f"{min(YEARS) + 1}-{max(YEARS)}"
+    inv_sector_latest = aggregate_investment(
+        inv[inv["year"] == inv["year"].max()],
+        ["sector", "sector_name"],
+    )
+    inv_sector_latest["period"] = str(int(inv["year"].max()))
+    pd.concat([inv_sector_latest, inv_sector_all], ignore_index=True).to_csv(
+        TABLE_DIR / "debt_investment_by_sector.csv",
+        index=False,
+        encoding="utf-8-sig",
+    )
+
+    frictions = aggregate_investment(inv, ["debt_bin", "debt_bin_order"])
+    frictions = frictions.sort_values("debt_bin_order")
+    frictions.to_csv(
+        TABLE_DIR / "debt_financial_frictions_bins.csv",
+        index=False,
+        encoding="utf-8-sig",
+    )
+
+    literature = aggregate_investment(
+        inv[inv["profit_group"].notna()],
+        ["profit_group", "debt_bin", "debt_bin_order"],
+    )
+    literature = literature.sort_values(["profit_group", "debt_bin_order"])
+    literature.to_csv(
+        TABLE_DIR / "debt_literature_current.csv",
+        index=False,
+        encoding="utf-8-sig",
+    )
+
 
 def write_blocked_outputs(reason: str, yearly_diag: pd.DataFrame) -> None:
     blocked = pd.DataFrame(
@@ -494,6 +705,10 @@ def write_blocked_outputs(reason: str, yearly_diag: pd.DataFrame) -> None:
     )
     blocked.to_csv(TABLE_DIR / "debt_profitability_bins.csv", index=False, encoding="utf-8-sig")
     blocked.to_csv(TABLE_DIR / "debt_by_sector_size.csv", index=False, encoding="utf-8-sig")
+    blocked.to_csv(TABLE_DIR / "debt_by_sector_detail.csv", index=False, encoding="utf-8-sig")
+    blocked.to_csv(TABLE_DIR / "debt_investment_by_sector.csv", index=False, encoding="utf-8-sig")
+    blocked.to_csv(TABLE_DIR / "debt_financial_frictions_bins.csv", index=False, encoding="utf-8-sig")
+    blocked.to_csv(TABLE_DIR / "debt_literature_current.csv", index=False, encoding="utf-8-sig")
     yearly_diag.to_csv(TABLE_DIR / "debt_structure_yearly.csv", index=False, encoding="utf-8-sig")
 
 

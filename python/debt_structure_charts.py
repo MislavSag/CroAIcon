@@ -111,6 +111,9 @@ def main() -> int:
     yearly = pd.read_csv(TABLE_DIR / "debt_structure_yearly.csv")
     bins = pd.read_csv(TABLE_DIR / "debt_profitability_bins.csv")
     sector_size = pd.read_csv(TABLE_DIR / "debt_by_sector_size.csv")
+    sector_detail = pd.read_csv(TABLE_DIR / "debt_by_sector_detail.csv")
+    frictions = pd.read_csv(TABLE_DIR / "debt_financial_frictions_bins.csv")
+    literature = pd.read_csv(TABLE_DIR / "debt_literature_current.csv")
 
     pct = FuncFormatter(lambda v, _: f"{100 * v:.0f}%")
 
@@ -219,6 +222,76 @@ def main() -> int:
     )
     fig.subplots_adjust(left=0.24, top=0.80, bottom=0.14)
     save_and_copy(fig, "debt_4_sector_size.png")
+
+    stock = sector_detail.sort_values("share_total_debt").tail(10)
+    fig, ax = plt.subplots(figsize=(8.4, 5.0))
+    lt_share = stock["lt_fin_debt"] / sector_detail["financial_debt"].sum()
+    st_share = stock["st_fin_debt"] / sector_detail["financial_debt"].sum()
+    ax.barh(stock["sector_name"], lt_share, color=ACCENT, zorder=3, label="dugorocni")
+    ax.barh(stock["sector_name"], st_share, left=lt_share, color=AMBER, zorder=3, label="kratkorocni")
+    spines(ax, which="x")
+    ax.xaxis.set_major_formatter(pct)
+    ax.set_xlim(0, (lt_share + st_share).max() * 1.18)
+    ax.legend(frameon=False, loc="lower right", fontsize=8)
+    titles(
+        fig,
+        ax,
+        "Najvece stanje duga nije samo u najzaduzenijem sektoru",
+        "udio ukupnog financijskog duga, dugorocni i kratkorocni dio, 2024.",
+        SRC,
+        tfs=12.0,
+    )
+    fig.subplots_adjust(left=0.24, top=0.80, bottom=0.14)
+    save_and_copy(fig, "debt_5_sector_stock.png")
+
+    frictions = frictions.sort_values("debt_bin_order")
+    fig, ax = plt.subplots(figsize=(8.0, 4.6))
+    colors = [MUTED, RISE, ACCENT, AMBER, FALL][: len(frictions)]
+    ax.bar(frictions["debt_bin"].astype(str), frictions["agg_investment_rate"], color=colors, zorder=3)
+    ax.axhline(0, color=HAIR, lw=1.0, zorder=2)
+    spines(ax)
+    ax.yaxis.set_major_formatter(pct)
+    titles(
+        fig,
+        ax,
+        "Umjeren dug prati vise ulaganje, visok dug nize",
+        "neto promjena dugotrajne imovine / lagirana dugotrajna imovina, 2009.-2024.",
+        SRC,
+        tfs=12.0,
+    )
+    save_and_copy(fig, "debt_6_investment_bins.png")
+
+    lit = literature[literature["profit_group"].isin(["slaba marza", "jaka marza"])].copy()
+    lit = lit.sort_values(["profit_group", "debt_bin_order"])
+    fig, ax = plt.subplots(figsize=(8.0, 4.6))
+    for group, color, label in [
+        ("slaba marza", FALL, "slaba marza"),
+        ("jaka marza", RISE, "jaka marza"),
+    ]:
+        part = lit[lit["profit_group"] == group]
+        ax.plot(
+            part["debt_bin"].astype(str),
+            part["agg_investment_rate"],
+            color=color,
+            lw=2.2,
+            marker="o",
+            ms=4.5,
+            label=label,
+            zorder=3,
+        )
+    ax.axhline(0, color=HAIR, lw=1.0, zorder=2)
+    spines(ax)
+    ax.yaxis.set_major_formatter(pct)
+    ax.legend(frameon=False, loc="upper right", fontsize=8)
+    titles(
+        fig,
+        ax,
+        "Dug najvise steze firme sa slabom marzom",
+        "isti investicijski omjer po lagiranom dugu i profitabilnosti, 2009.-2024.",
+        SRC,
+        tfs=12.0,
+    )
+    save_and_copy(fig, "debt_7_debt_overhang.png")
 
     print("OK. Debt charts created.")
     return 0
