@@ -1,6 +1,6 @@
 ---
 title: "Marža je skočila gdje je ne tražimo prvo"
-subtitle: "Među velikim nefinancijskim sektorima najveći rast neto marže 2021. do 2024. bilježi umjetnost i rekreacija"
+subtitle: "Na sektoru vodi rekreacija, ali detaljni NKD izbacuje upravljanje, elektromotore, otpad i klađenje"
 description: ""
 author:
   name: "Mislav Sagovac"
@@ -9,17 +9,35 @@ categories: [gfi, marže, sektori, inflacija]
 draft: false
 ---
 
-Inflacijska priča obično traži krivca u trgovini, energiji ili turizmu. GFI daje drukčiji prvi trag. Odgovorimo kroz neto maržu po sektorima, od 2021. do 2024.
+Inflacijska priča obično traži krivca u trgovini, energiji ili turizmu. GFI daje drukčiji prvi trag. Odgovorimo kroz neto maržu po sektorima, pa se spustimo na detaljnije NKD razine.
 
-Najveći skok među velikim nefinancijskim sektorima sjedi u umjetnosti i rekreaciji. **8,4% (2021.) → 16,0% (2024.)** (**plus 7,5 postotnih bodova**).
+Na najširoj razini najveći skok sjedi u umjetnosti i rekreaciji. **8,4% (2021.) → 16,0% (2024.)** (**plus 7,5 postotnih bodova**). Ispod toga slika postaje zanimljivija. Pobjednici više nisu samo sektori, nego konkretne niše.
 
-## Najveći skok marže sjedi u rekreaciji
+## Sektor kaže rekreacija
 
 ![Promjena agregatne neto marže po sektoru, 2021. do 2024.](sector_margin_growth_bars.png)
 
 Umjetnost i rekreacija odskače od ostatka liste. Drugo mjesto dijele stručne djelatnosti i vodoopskrba, obje s oko **plus 3,6 postotnih bodova**. Nekretnine rastu **plus 2,7**, prijevoz i skladištenje **plus 2,6**.
 
 To nije mala razlika u poretku. Prvi sektor raste dvostruko jače od drugog. Ako tražimo gdje se neto rezultat najviše odvojio od prihoda, prvi trag nije tamo gdje ga javna rasprava najčešće traži.
+
+## Razina 2 spušta priču na upravljanje i klađenje
+
+![Promjena agregatne neto marže po NKD odjeljcima, 2021. do 2024.](sector_margin_growth_nkd2_bars.png)
+
+Na dvije znamenke pobjednik više nije rekreacija kao široki sektor. Prvo mjesto drže upravljačke djelatnosti i savjetovanje u vezi s upravljanjem. **16,9% → 32,7%** (**plus 15,9 postotnih bodova**).
+
+Odmah iza su djelatnosti kockanja i klađenja. **13,5% → 23,8%** (**plus 10,2**). Treća je proizvodnja električne opreme. **6,0% → 14,0%** (**plus 8,0**). Agregatna rekreacija zato nije jedna priča. U njoj sjede i klađenje i sportsko-zabavne djelatnosti.
+
+## Razine 3 i 4 vraćaju industrijske niše na vrh
+
+![Promjena agregatne neto marže po NKD skupinama, 2021. do 2024.](sector_margin_growth_nkd3_bars.png)
+
+Na tri znamenke vrh preuzima proizvodnja elektromotora, generatora i transformatora. **5,9% → 17,0%** (**plus 11,1 postotnih bodova**). Iza nje stoje skupljanje otpada. **minus 6,4% → 4,1%** (**plus 10,5**). Treće je kockanje i klađenje. **13,5% → 23,8%** (**plus 10,2**).
+
+![Promjena agregatne neto marže po NKD razredima, 2021. do 2024.](sector_margin_growth_nkd4_bars.png)
+
+Na četiri znamenke rezultat je još konkretniji. Proizvodnja elektromotora, generatora i transformatora vodi s **6,9% → 21,6%** (**plus 14,7 postotnih bodova**). Skupljanje neopasnog otpada ide **minus 6,9% → 3,7%** (**plus 10,7**). Kockanje i klađenje ostaje treće.
 
 ## Veliki osumnjičenici nisu na vrhu
 
@@ -33,13 +51,14 @@ Ako se lista čita doslovno, financije i osiguranje imaju najveći skok. **30,6%
 
 Zato ih ne guramo u glavni naslov. Financijski sektor nije usporediv s ostatkom gospodarstva, a rudarstvo je premali sektor za opći zaključak (manje od 1 mlrd. prihoda u 2024.). Za makro priču treba rang koji ne dobije pobjednika iz računovodstvene neusporedivosti ili male baze.
 
-Prvi zaključak je uži, ali zanimljiviji. Inflacijsko razdoblje nije samo priča o trgovini i energiji. U podacima se vidi i snažan postpandemijski povratak sektora potrošnje, zabave i rekreacije. To nije presuda o inflacijskom profiterstvu. To je signal gdje vrijedi otvoriti sljedeći graf.
+Agregatni sektor je dobar signal, ali loš kraj analize. Što je NKD sitniji, to priča manje izgleda kao opća inflacijska marža, a više kao skup specifičnih niša. Rekreacija otvara vrata. Elektromotori, otpad i klađenje pokazuju kroz koja treba proći.
 
 ## Napomene
 
 - Izvor. FINA GFI, 2021. i 2024.
-- Mjera. Agregatna neto marža po sektoru. Neto rezultat razdoblja podijeljen poslovnim prihodima, zbrojeno na razini sektora.
-- Uzorak. Glavni rang isključuje financije i osiguranje te sektore s manje od 1 mlrd. poslovnih prihoda u 2024.
+- Mjera. Agregatna neto marža. Neto rezultat razdoblja podijeljen poslovnim prihodima, zbrojeno na razini djelatnosti.
+- NKD razine. Sektor je najšira razina. Razina 2 su odjeljci, razina 3 skupine, razina 4 razredi.
+- Uzorak. Sektorski rang isključuje financije i osiguranje te sektore s manje od 1 mlrd. poslovnih prihoda u 2024. Detaljni NKD grafovi isključuju financije i osiguranje te djelatnosti s manje od 500 mil. poslovnih prihoda u 2024.
 - Oprez. Ovo je neto marža, ne EBITDA marža i ne cjenovna marža. Mjera može hvatati jednokratne stavke, poreze, gubitke i postpandemijski bazni efekt.
-- Oprez. Post koristi GFI financijske stupce provjerene kroz fizički šifrarnik za ovu dijagnostiku, ali treba širi audit prije jačeg kauzalnog zaključka.
+- Oprez. Stupci za prihod i neto rezultat provjereni su za ovu dijagnostiku, ali treba širi audit prije jačeg kauzalnog zaključka.
 - Skripte. `python/sector_margin_growth_2021_2024.py`, `python/sector_margin_growth_charts.py`.
