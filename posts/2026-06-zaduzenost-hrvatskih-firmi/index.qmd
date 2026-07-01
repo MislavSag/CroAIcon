@@ -1,6 +1,6 @@
 ---
 title: "50 nijansi zaduženosti"
-subtitle: "Tipična RH firma duguje 6,6% prihoda. Sve firme zajedno 32%. Kad dug prijeđe godišnji prihod, ulaganje se stisne prema nuli"
+subtitle: "Tipična RH firma duguje 6,6% prihoda. Sve firme zajedno 32%. Kad dug prijeđe godišnji prihod, firme prestaju ulagati"
 description: ""
 author: "Mislav Sagovac"
 date: 2026-06-25
@@ -8,9 +8,9 @@ categories: [gfi, zaduženost, financije, firme]
 draft: false
 ---
 
-Koliko su hrvatske firme zadužene? Probajmo odgovoriti pomoću dvije brojke. (Naslov obećava pedeset, ali dovoljne su zapravo dvije.) Tipična firma duguje malo. **6,6% prihoda (2024.)**. Sve firme zajedno, puno. **32%**.
+Koliko su hrvatske firme zadužene? Krenimo od dvije brojke. Tipična firma duguje malo. **6,6% prihoda (2024.)**. Sve firme zajedno, puno. **32%**. Naslov obećava 50 nijansi. Potrebno je manje da bi se razumjela zaduženost. Ovo su prve dvije.
 
-Ta razlika otvara priču. Dug nije masovan, nego koncentriran. I to u nekoliko dimenzija. Veličina firme, profitabilnost, sektor, ročnost i ulaganje. Zadnja dimenzija je najvažnija. Dug je problem tek kad počne jesti prostor za novi projekt.
+Ta razlika otvara priču. Dug nije velik, nego koncentriran. To se očituje u nekoliko dimenzija. Veličina firme, profitabilnost, sektor, ročnost i investicije. Zadnja dimenzija je najvažnija. Dug je problem tek kad počne uzimati prostor za nove investicije.
 
 ## Tipična firma duguje malo, sve firme zajedno puno
 
@@ -28,21 +28,21 @@ Druga dimenzija je profitabilnost. Logika je jednostavna. Profitabilnije firme u
 
 Podijelimo firme u pet skupina po profitabilnosti. Kod najslabije petine tipičan dug je **60% prihoda**. U sredini pada na **~7%**, a kod najprofitabilnije petine na **0%**. Mnoge vrlo profitabilne firme uopće nemaju dug.
 
-Pa ipak, te najprofitabilnije firme zajedno duguju **48%**. Mali broj velikih, profitabilnih firmi ima puno duga, vjerojatno jer ima imovinu, projekte i sposobnost otplate. Opet ista priča. Tipična firma nisko, sve zajedno visoko.
+Pa ipak, te najprofitabilnije firme zajedno duguju **48%**. Mali broj velikih, profitabilnih firmi ima puno duga. Opet ista priča. Tipična firma nisko, sve zajedno visoko.
 
-## Nekretnine su najteži omjer, ali stanje duga je šire
+## Nekretnine su najzaduženije u odnosu na prihod, ali dug je raspoređen po mnogim sektorima
 
 ![Dug kao udio prihoda, po sektoru, 2024.](debt_4_sector_size.png)
 
 Treća dimenzija je sektor, i tu je stvar jasna. Sektor nekretnina nosi dug od **325% godišnjih prihoda (2024.)**. Slijede smještaj i ugostiteljstvo (**75%**) i građevinarstvo (**68%**). Administrativne usluge, stručne djelatnosti, poljoprivreda i prijevoz kreću se **39% do 45%**.
 
-To je mjera tereta, ne mjera ukupnog stanja duga. Nekretnine prirodno nose više imovine i duga prema prihodu. Ali kad se gleda gdje sjedi ukupan identificirani financijski dug, slika se širi.
+To je omjer tereta, koliko duga sektor nosi na svaki euro prihoda, a ne mjera toga gdje leži najveći dio ukupnog duga. Nekretnine po prirodi posla nose više imovine i duga u odnosu na prihod. Ali kad umjesto omjera mjerimo koliki udio ukupnog financijskog duga otpada na svaki sektor, slika se širi.
 
 ![Udio ukupnog financijskog duga po sektoru, dugoročni i kratkoročni dio.](debt_5_sector_stock.png)
 
-Građevinarstvo nosi **19%** ukupnog financijskog duga, prerađivačka industrija **15%**, trgovina **13%**, nekretnine **11%**, a smještaj i ugostiteljstvo **10%**. Omjer ranjivosti vrišti iz nekretnina, ali stanje duga sjedi u široj kapitalnoj jezgri ekonomije.
+Građevinarstvo nosi **19%** ukupnog financijskog duga, prerađivačka industrija **15%**, trgovina **13%**, nekretnine **11%**, a smještaj i ugostiteljstvo **10%**. Nekretnine imaju najveći omjer tereta, ali sam dug raspoređen je široko, po običnim sektorima poput građevinarstva, industrije i trgovine, a ne nagomilan u nekretninama.
 
-## Koncentriran, ali uglavnom dugoročan
+## Dug je koncentriran, ali uglavnom dugoročan
 
 ![Udio dugoročnog i kratkoročnog duga.](debt_2_maturity.png)
 
@@ -52,25 +52,25 @@ To ne znači da je rizik refinanciranja malen. Znači da ga ne treba preuveliča
 
 Ročnost po djelatnostima ipak dodaje nijansu. U građevinarstvu je kratkoročno oko **20%** financijskog duga, u nekretninama **26%**, u smještaju i ugostiteljstvu **28%**, a u trgovini **44%**. Trgovina zato nema ekstreman omjer duga i prihoda, ali ima veći kratki dio u velikom stanju duga.
 
-## Ulaganje se stanji kad dug prijeđe godišnji prihod
+## Ulaganja nestaju kad dug prijeđe godišnji prihod
 
-![Neto promjena dugotrajne imovine po razredu lagirane zaduženosti.](debt_6_investment_bins.png)
+![Neto promjena dugotrajne imovine po razredu zaduženosti na početku godine.](debt_6_investment_bins.png)
 
-Četvrta dimenzija je ulaganje. Ovdje koristimo promjenu dugotrajne imovine kroz firmu, podijeljenu dugotrajnom imovinom iz prethodne godine. To nije savršen capex, ali je dobar prvi trag.
+Četvrta dimenzija su investicije. Ovdje gledamo promjenu dugotrajne imovine kroz firmu, podijeljenu dugotrajnom imovinom iz prethodne godine. Nije savršen CAPEX, ali je dobar prvi trag.
 
 Kad firma u godinu ulazi s dugom od **0% do 10%** prihoda, agregatna neto promjena dugotrajne imovine iznosi **5,7%**. Kod duga od **10% do 50%** pada na **4,1%**. Kod **50% do 100%** pada na **1,8%**. Iznad **100%** prihoda gotovo nestaje. **0,03%**.
 
-To nije kauzalni test. Visok dug može značiti da je investicijski ciklus već odrađen. Može značiti i da firma nema prostor za novi projekt. Ali kao dijagnostika financijske frikcije nalaz je jasan. Umjeren dug prati ulaganje. Težak dug ga ne prati.
+To nije kauzalni test. Visok dug može značiti da je investicijski ciklus već odrađen. Može značiti i da firma nema prostora za novi projekt. Ali kao dijagnostika financijske frikcije nalaz je jasan. Umjeren dug podržava investiranje. Velik dug ne.
 
-## Dug najviše boli kad nema marže
+## Dug najviše koči ulaganje kad je marža slaba
 
 ![Neto promjena dugotrajne imovine po dugu i profitabilnosti.](debt_7_debt_overhang.png)
 
-Aktualni literaturni kut nije samo *koliko duga*. Nego *koji dug, kod koje firme, uz koju zaradu*. To je debt-overhang logika. Dug postaje frikcija kad kreditori imaju prvi red na budućem novcu, a firma nema dovoljno marže da istodobno nosi dug i novi projekt.
+Za investicije nije važno samo *koliko duga*. Nego *koji dug, kod koje firme, uz koju zaradu*. To je *debt-overhang* logika. Dug postaje smetnja za nova ulaganja kad kreditori imaju prvo pravo na budući novac firme, a firma nema dovoljno marže da istodobno otplaćuje dug i financira novu investiciju.
 
-GFI pokazuje isti oblik. Kod firmi s jakom maržom investicijski trag ostaje pozitivan u svim razredima duga. Čak i iznad godišnjeg prihoda iznosi **2,2%**. Kod firmi sa slabom maržom slika puca. U razredu **50% do 100%** duga/prihoda ulaganje je **minus 0,7%**, a iznad **100%** je **minus 0,2%**.
+ Kod firmi s jakom maržom ulaganje ostaje pozitivno u svim razredima duga. Čak i kod duga iznad godišnjeg prihoda iznosi **plus 2,2%**. Kod firmi sa slabom maržom ulaganje pada u minus. U razredu **50% do 100%** duga/prihoda ulaganje je **minus 0,7%**, a **iznad 100%** je **minus 0,2%**.
 
-Zaključno. Dug nije loš sam po sebi. Financira imovinu, hotele, strojeve, skladišta i projekte. Problem počinje kad se dug spoji sa slabom maržom i kratkim rokom. Tu se vidi prava financijska frikcija. Ne u prosječnoj firmi, nego u dijelu bilanci gdje obveza već jede prostor za novo ulaganje.
+Zaključno. Dug nije loš sam po sebi. Financira imovinu, hotele, strojeve, skladišta i projekte. Problem počinje kad se dug spoji sa slabom maržom i kratkim rokom otplate. Tu se odražava prava financijska frikcija. Ne u prosječnoj firmi, nego u dijelu bilanci gdje dug već uzima prostor za nove investicije.
 
 ## Napomene
 
