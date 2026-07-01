@@ -81,6 +81,17 @@ Choose verbs with motion and weight. Make the economy feel alive on the page.
 
 Save the big words for the big moves. A collapse of 37% earns the word drama. A dip of 2% does not.
 
+## Calm words for abstract things
+
+Motion verbs are for concrete actors. A sector, a firm, a workforce can move. An abstract financial concept cannot. Debt, a ratio, a margin, *the picture* get plain, literal language. Debt does not eat, scream, hurt, or crack, no matter how large the number behind it.
+
+This cuts on a different axis than *Verbs that move*. That rule cuts on magnitude, a big move earns a strong word. This one cuts on subject, an abstraction never takes a motion or feeling verb whatever its size. A vivid verb needs both, a concrete actor and a genuinely big move. Miss either test and it goes. So *turizam eksplodira* stays, but *dug eksplodira* does not.
+
+Reach for the exact word over the dramatic one. *Velik* over *masovan*. *Uzimati prostor za nove investicije* over *jesti prostor za novi projekt*. A header is a claim, so it stays literal too. *Dug najviše koči ulaganje kad je marža slaba* over *Dug najviše boli kad nema marže*.
+
+> Do. Omjer ranjivosti najviši je u nekretninama. Dug uzima prostor za nove investicije.
+> Don't. Omjer ranjivosti *vrišti* iz nekretnina. Dug *jede* prostor za novi projekt.
+
 ## Winners and losers
 
 Readers remember contrast, so sort the world into who gained and who lost.
@@ -169,7 +180,8 @@ Stacked dashes. You already know the fix.
 6. Changes appear as arrows
 7. Dashes are gone, replaced by periods, arrows, or parentheses
 8. A coined phrase explains itself, or it is cut
-9. Every [KUT] is written up or removed
-10. The body closes on a payoff, a *so what* that lands before the notes box, not a recap and not a flat ending on the data
-11. The notes box (*## Napomene*) is present and lean, with sources and scripts, no schema detail or untouched-column cautions, and the body does not restate its span, columns, or caveat but points to it subtly
-12. A reader can finish in two minutes and recall three numbers
+9. Abstract concepts (dug, omjeri, marža, slika) carry calm, literal verbs. Vivid motion is reserved for concrete actors making a genuinely big move
+10. Every [KUT] is written up or removed
+11. The body closes on a payoff, a *so what* that lands before the notes box, not a recap and not a flat ending on the data
+12. The notes box (*## Napomene*) is present and lean, with sources and scripts, no schema detail or untouched-column cautions, and the body does not restate its span, columns, or caveat but points to it subtly
+13. A reader can finish in two minutes and recall three numbers
