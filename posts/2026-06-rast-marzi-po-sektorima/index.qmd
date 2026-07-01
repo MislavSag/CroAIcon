@@ -1,6 +1,6 @@
 ---
-title: "Marža je skočila gdje je ne tražimo prvo"
-subtitle: "Marže izdvajaju rekreaciju i niše, a cijene vraćaju prijevoz, smještaj i energetiku u kadar"
+title: "Cijene gore, marže samo ponegdje"
+subtitle: "Eurostat i GFI vraćaju prijevoz, smještaj i energetiku u kadar, dok trgovina ne iskače"
 description: ""
 author:
   name: "Mislav Sagovac"
