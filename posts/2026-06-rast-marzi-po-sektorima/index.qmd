@@ -1,75 +1,73 @@
 ---
-title: "Cijene gore, marže samo ponegdje"
-subtitle: "Eurostat i GFI vraćaju prijevoz, smještaj i energetiku u kadar, dok trgovina ne iskače"
+title: "Porez na marže bez karte marži"
+# alt naslov: "Marže su rasle, ali ne u trgovini"
+subtitle: "Dok Vlada oporezuje prekomjerne marže, podatci (GFI, NKD i Eurostatove output-cijene) pokazuju da glavni osumnjičenici nisu na vrhu."
 description: ""
 author:
   name: "Mislav Sagovac"
 date: 2026-06-30
-categories: [gfi, marže, sektori, inflacija, cijene, eurostat]
+categories: [porez, gfi, marže, sektori, inflacija, cijene, eurostat]
 draft: false
 ---
 
-Inflacijska priča obično traži krivca u trgovini, energiji ili turizmu. GFI daje drukčiji prvi trag. Odgovorimo kroz neto maržu po sektorima, spustimo se na detaljnije NKD razine, pa na kraju ubacimo Eurostatove output-cijene.
+Vlada uvodi porez od 50 posto na prekomjerne bruto marže, mjereno prema prosjeku od 2023. do 2025., uz toleranciju od 15 posto, za srednje i velike tvrtke, dok izvoznike izuzima. Mjera pretpostavlja da prekomjerne marže postoje i da se otprilike zna gdje. No javna rasprava, od vladina dokumenta do kolumnista koji ga napadaju, teče bez ijedne sektorske karte marži. Ovaj tekst je ta karta. Pitanje nije prelazi li pojedina tvrtka porezni prag, nego gdje se širenje marže zapravo koncentriralo. Bruto i neto marža nisu isto, a razdoblja se ne poklapaju posve, pa i ne mjerimo razinu, nego poredak sektora u kojima se prostor najviše proširio. 
 
-Na najširoj razini najveći skok sjedi u umjetnosti i rekreaciji. **8,4% (2021.) → 16,0% (2024.)** (**plus 7,5 postotnih bodova**). Ispod toga slika postaje zanimljivija. Pobjednici više nisu samo sektori, nego konkretne niše.
+## Veliki osumnjičenici nisu na vrhu
 
-To zadnje je važna ograda. GFI ne vidi količine, pa sam ne može reći tko je dizao cijene. Eurostat ne zatvara slučaj, ali daje bolji trag. Tražimo djelatnosti u kojima rastu output-cijene, neto marža i neto rezultat.
+Trgovina je najveći prihodovni sektor, a neto marža joj se jedva pomiče, plus 0,2 postotna boda. Za usporedbu, kockanje raste plus 10,2, a upravljačko savjetovanje plus 15,9. Jaz između optuženika i stvarnoga krivca za proširenje marže je najbitniji kut u ovoj priči.
 
-## Sektor kaže rekreacija
+U brojkama, trgovina **3,9% → 4,1%** (**plus 0,2 postotna boda**). Energetika raste **3,4% → 4,4%** (**plus 1,0**). Smještaj i ugostiteljstvo **6,4% → 7,3%** (**plus 0,9**). Navedeni sektori prema ovoj mjeri nisu pobjednici. Neto marža hvata ono što ostane nakon svih prihoda i rashoda razdoblja. Na pitanje *tko je najviše proširio neto prostor*, odgovor nije trgovina!
+
+Gdje su marže? GFI daje prvi trag kroz neto maržu po sektorima. Onda se spuštamo niz NKD razine, gdje pobjednici više nisu sektori, nego sektorske niše.  U GFI-jevima se ne vide količine, pa se po toj osnovi ne može reći tko je dizao cijene. Zato koristimo i Eurostatove output-cijene. Ne izdvajamo olako krivca, (djelatnost) na temelju jednog broja. Označavamo ga tek kad se poklope tri signala, rast cijena, rast neto marže i rast neto rezultata.
+
+## Ugodna rekreacija
 
 ![Promjena agregatne neto marže po sektoru, 2021. do 2024.](sector_margin_growth_bars.png)
 
-Umjetnost i rekreacija odskače od ostatka liste. Drugo mjesto dijele stručne djelatnosti i vodoopskrba, obje s oko **plus 3,6 postotnih bodova**. Nekretnine rastu **plus 2,7**, prijevoz i skladištenje **plus 2,6**.
-
-To nije mala razlika u poretku. Prvi sektor raste dvostruko jače od drugog. Ako tražimo gdje se neto rezultat najviše odvojio od prihoda, prvi trag nije tamo gdje ga javna rasprava najčešće traži.
+Na najširoj razini najveći skok je u umjetnosti i rekreaciji. **8,4% → 16,0%** (**plus 7,5 postotnih bodova**). Dvostruko jače od drugoplasiranih. Stručne djelatnosti i vodoopskrba dijele drugo mjesto s oko **plus 3,6**, nekretnine rastu **plus 2,7**, a prijevoz i skladištenje **plus 2,6**.
 
 ## Razina 2 spušta priču na upravljanje i klađenje
 
 ![Promjena agregatne neto marže po NKD odjeljcima, 2021. do 2024.](sector_margin_growth_nkd2_bars.png)
 
-Na dvije znamenke pobjednik više nije rekreacija kao široki sektor. Prvo mjesto drže upravljačke djelatnosti i savjetovanje u vezi s upravljanjem. **16,9% → 32,7%** (**plus 15,9 postotnih bodova**).
-
-Odmah iza su djelatnosti kockanja i klađenja. **13,5% → 23,8%** (**plus 10,2**). Treća je proizvodnja električne opreme. **6,0% → 14,0%** (**plus 8,0**). Agregatna rekreacija zato nije jedna priča. U njoj sjede i klađenje i sportsko-zabavne djelatnosti.
+Na dvije znamenke vrh preuzimaju upravljačke djelatnosti i savjetovanje. **16,9% → 32,7%** (**plus 15,9 postotnih bodova**). Iza njih su kockanje i klađenje, **13,5% → 23,8%** (**plus 10,2**), pa proizvodnja električne opreme, **6,0% → 14,0%** (**plus 8,0**). Agregatna rekreacija se tako dijeli na klađenje i sportsko-zabavne niše.
 
 ## Razine 3 i 4 vraćaju industrijske niše na vrh
 
 ![Promjena agregatne neto marže po NKD skupinama, 2021. do 2024.](sector_margin_growth_nkd3_bars.png)
 
-Na tri znamenke vrh preuzima proizvodnja elektromotora, generatora i transformatora. **5,9% → 17,0%** (**plus 11,1 postotnih bodova**). Iza nje stoje skupljanje otpada. **minus 6,4% → 4,1%** (**plus 10,5**). Treće je kockanje i klađenje. **13,5% → 23,8%** (**plus 10,2**).
+Na tri znamenke vrh preuzima proizvodnja elektromotora, generatora i transformatora. **5,9% → 17,0%** (**plus 11,1 postotnih bodova**), a slijede skupljanje otpada, **minus 6,4% → 4,1%** (**plus 10,5**), i kockanje i klađenje, **13,5% → 23,8%** (**plus 10,2**).
 
 ![Promjena agregatne neto marže po NKD razredima, 2021. do 2024.](sector_margin_growth_nkd4_bars.png)
 
-Na četiri znamenke rezultat je još konkretniji. Proizvodnja elektromotora, generatora i transformatora vodi s **6,9% → 21,6%** (**plus 14,7 postotnih bodova**). Skupljanje neopasnog otpada ide **minus 6,9% → 3,7%** (**plus 10,7**). Kockanje i klađenje ostaje treće.
+Na četiri znamenke slika se (HD) izoštrava. Elektromotori vode s **6,9% → 21,6%** (**plus 14,7 postotnih bodova**), skupljanje neopasnog otpada ide **minus 6,9% → 3,7%** (**plus 10,7**), a kockanje i klađenje ostaje treće.
 
-## Veliki osumnjičenici nisu na vrhu
+## IO cijene vraćaju prijevoz i smještaj u fokus
 
-Trgovina je najveći prihodovni sektor u ovoj usporedbi, ali joj se neto marža jedva pomiče. **3,9% → 4,1%** (**plus 0,2 postotna boda**). Energetika raste **3,4% → 4,4%** (**plus 1,0**). Smještaj i ugostiteljstvo raste **6,4% → 7,3%** (**plus 0,9**).
-
-To ne znači da ti sektori nisu važni. Znači da na ovoj mjeri nisu pobjednici. Neto marža hvata ono što ostane nakon svih prihoda i rashoda razdoblja. Ako je pitanje *tko je najviše proširio neto prostor*, odgovor nije trgovina.
-
-## Cijene vraćaju prijevoz i smještaj u kadar
-
-Kad se GFI spoji s Eurostatovim output-cijenama, pitanje se mijenja. Ne tražimo najveći skok marže, nego djelatnosti u kojima se pale tri signala. Cijene rastu, neto marža raste, neto rezultat raste.
+Spojimo GFI s Eurostatovim output-cijenama. To omogućuje primjenu tri signala s početka. Ne tražimo najveći skok marže, nego djelatnosti u kojima cijene, neto marža i neto rezultat rastu zajedno.
 
 ![Djelatnosti s najvećim rastom output-cijena uz rast neto marže i neto rezultata, 2021. do 2024.](price_margin_candidates_bars.png)
 
 Na detaljnom NKD-u najveći rast cijena među takvim kandidatima ima vodeni prijevoz. **plus 105%**. Slijede smještaj **plus 79%**, energetika **plus 61%**, hrana i piće **plus 42%** i putničke agencije **plus 39%**.
 
-To ne dokazuje da je rast cijena završio u maržama. Ali sužava listu. Ako tražimo gdje se cjenovni val najvjerojatnije pretvorio u bolji rezultat, prvo gledamo prijevoz, smještaj, energetiku, dio turizma, savjetovanje u upravljanju i nemetalne minerale. Trgovina ni ovdje ne iskače.
+To ne dokazuje da je rast cijena završio u maržama. Ali sužava listu. Ako tražimo gdje se cjenovni val najvjerojatnije pretvorio u bolji rezultat, prvo gledamo prijevoz, smještaj, energetiku, dio turizma, savjetovanje u upravljanju i nemetalne minerale. Trgovina ni ovdje ne iskače. Podaci djelomično potvrđuju fokus na energiju i dio turizma, no ne i na trgovinu.
 
-Na široj sektorskoj razini rudarstvo je ekstrem. Cijene rastu **plus 39%**, a marža **plus 15,9 postotnih bodova**. Ali s manje od 1 mlrd. prihoda ostaje signal male baze. Korisno za provjeru, ne za naslov.
+Na široj sektorskoj razini rudarstvo je ekstrem. Cijene rastu **plus 39%**, a marža **plus 15,9 postotnih bodova**. Ali s manje od 1 mlrd. prihoda radi se o maloj bazi. 
 
 ## Financije i rudarstvo mijenjaju tablicu, ali ne i priču
 
 Ako se lista čita doslovno, financije i osiguranje imaju najveći skok. **30,6% → 54,1%** (**plus 23,5 postotnih bodova**). Rudarstvo također skače. **1,5% → 17,4%** (**plus 15,9**).
 
-Zato ih ne guramo u glavni naslov. Financijski sektor nije usporediv s ostatkom gospodarstva, a rudarstvo je premali sektor za opći zaključak (manje od 1 mlrd. prihoda u 2024.). Za makro priču treba rang koji ne dobije pobjednika iz računovodstvene neusporedivosti ili male baze.
+Upravo zato izbacujemo financije i rudarstvo, jedno zbog neusporedivosti, drugo zbog male baze. Karta koja svakoga proglasi krivim i nije neka karta. Financijski sektor nije usporediv s ostatkom gospodarstva, a rudarstvo ima manje od 1 mlrd. prihoda u 2024. 
 
-Agregatni sektor je dobar signal, ali loš kraj analize. Što je NKD sitniji, to priča manje izgleda kao opća inflacijska marža, a više kao skup specifičnih niša. Kad ubacimo cijene, dobivamo drugi sloj. Marže same guraju rekreaciju, elektromotore, otpad i klađenje. Cijene plus marže vraćaju prijevoz, smještaj i energetiku u kadar. To nije presuda, ali jest bolja lista za sljedeće pitanje.
+## Za bolje ciljanje, ne protiv mjere
+
+Dok zakon prolazi saborsku proceduru, ovo je empirijski sloj koji raspravi nedostaje. Nije presuda o mjeri, nego karta za bolje ciljanje. Rasprava se vodi na agregatu, a istina je u NKD detaljima.
 
 ## Napomene
 
 - Izvor. FINA GFI, 2021. i 2024. Eurostat, tablice `sts_inpp_m` i `sts_sepp_q`, Hrvatska, 2021. i 2024.
+- Porezna mjera. Vlada RH, [Mjere antiinflacijske politike](https://vlada.gov.hr/UserDocsImages/Vijesti/2026/Svibanj/28_svibnja/Mjere_antiinflacijske_politike.pdf), svibanj 2026. Porez 50% na dio dobiti iznad prosjeka bruto marže 2023.–2025. uvećanog za toleranciju od 15%, za srednje i velike obveznike poreza na dobit, uz izuzeće izvoznika.
 - Mjera. Agregatna neto marža. Neto rezultat razdoblja podijeljen poslovnim prihodima, zbrojeno na razini djelatnosti.
 - NKD razine. Sektor je najšira razina. Razina 2 su odjeljci, razina 3 skupine, razina 4 razredi.
 - Uzorak. Sektorski rang isključuje financije i osiguranje te sektore s manje od 1 mlrd. poslovnih prihoda u 2024. Detaljni NKD grafovi isključuju financije i osiguranje te djelatnosti s manje od 500 mil. poslovnih prihoda u 2024.
