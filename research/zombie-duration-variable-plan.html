@@ -1,0 +1,1214 @@
+
+<title>Zombie Duration: Variable Retrieval Plan</title>
+<style>
+/* ── Crimson Pro inlined (subset: Latin, weights 400/600) ── */
+@font-face {
+  font-family: 'Crimson Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('data:font/woff2;base64,d09GMgABAAAAA...') format('woff2');
+}
+
+/* Inline subset too large for reliable embedding — use Georgia as display proxy */
+:root {
+  --navy:      #1A1F2E;
+  --ground:    #F7F5F1;
+  --rule:      #E0D9CE;
+  --blue:      #2E5BA8;
+  --red:       #8B1A1A;
+  --green:     #3D7055;
+  --amber:     #8A5E00;
+  --text:      #1A1F2E;
+  --muted:     #5A5E6B;
+  --code-bg:   #EDEAE3;
+
+  --font-display: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+  --font-body:    -apple-system, 'Segoe UI', system-ui, sans-serif;
+  --font-mono:    'Cascadia Code', 'Fira Code', 'SF Mono', 'Consolas', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+/* ── Layout shell ── */
+.shell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+/* ── Top banner ── */
+.banner {
+  grid-column: 1 / -1;
+  background: var(--navy);
+  color: #fff;
+  padding: 28px 36px 24px;
+  border-bottom: 3px solid var(--blue);
+}
+.banner-eyebrow {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #9AABCC;
+  margin-bottom: 6px;
+}
+.banner h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #fff;
+  max-width: 72ch;
+  text-wrap: balance;
+}
+.banner-sub {
+  margin-top: 10px;
+  font-size: 13.5px;
+  color: #BCC8DF;
+  max-width: 72ch;
+  line-height: 1.5;
+}
+.banner-meta {
+  margin-top: 16px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.banner-meta span {
+  font-size: 11.5px;
+  color: #7B90B5;
+  letter-spacing: .04em;
+}
+.banner-meta strong { color: #BCC8DF; }
+
+/* ── Sidebar nav ── */
+nav.sidebar {
+  grid-row: 2;
+  grid-column: 1;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  border-right: 1px solid var(--rule);
+  padding: 28px 0 40px;
+  background: #F0EDE6;
+}
+nav.sidebar ul { list-style: none; }
+.nav-section {
+  padding: 18px 20px 6px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+nav.sidebar a {
+  display: block;
+  padding: 5px 20px 5px 22px;
+  font-size: 12.5px;
+  color: var(--muted);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color .15s, border-color .15s, background .15s;
+  line-height: 1.4;
+}
+nav.sidebar a:hover {
+  color: var(--blue);
+  border-left-color: var(--blue);
+  background: #E8E4DC;
+}
+
+/* ── Main content ── */
+main {
+  grid-row: 2;
+  grid-column: 2;
+  padding: 40px 48px 80px 52px;
+  max-width: calc(72ch + 104px);
+}
+
+/* ── Sections ── */
+.section {
+  margin-bottom: 56px;
+  padding-top: 4px;
+}
+.section + .section { border-top: 1px solid var(--rule); padding-top: 40px; }
+
+.section-eyebrow {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+.section h2 {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--navy);
+  text-wrap: balance;
+  margin-bottom: 16px;
+}
+.section h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--navy);
+  margin: 28px 0 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--rule);
+}
+
+p { font-size: 14.5px; line-height: 1.7; max-width: 68ch; margin-bottom: 12px; }
+p:last-child { margin-bottom: 0; }
+
+/* ── Intro box ── */
+.intro-box {
+  background: var(--navy);
+  color: #BCC8DF;
+  border-radius: 3px;
+  padding: 22px 26px;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 72ch;
+}
+.intro-box strong { color: #fff; }
+
+/* ── Status badges ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.badge-green  { background: #D5EAD9; color: var(--green); }
+.badge-red    { background: #F2D8D8; color: var(--red); }
+.badge-amber  { background: #F5E6C0; color: var(--amber); }
+.badge-blue   { background: #D3DDEF; color: var(--blue); }
+.badge-navy   { background: #CDD3E0; color: #1A2540; }
+
+/* ── Variable cards ── */
+.var-card {
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.var-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #EDE9E0;
+  border-bottom: 1px solid var(--rule);
+  flex-wrap: wrap;
+}
+.var-col {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  background: var(--code-bg);
+  padding: 2px 7px;
+  border-radius: 2px;
+}
+.var-meaning {
+  font-size: 13px;
+  color: var(--muted);
+  flex: 1;
+  min-width: 120px;
+}
+.var-body {
+  padding: 12px 16px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  display: grid;
+  gap: 8px;
+}
+.var-quirk {
+  font-size: 12.5px;
+  color: var(--red);
+  background: #FBF0F0;
+  border-left: 2px solid var(--red);
+  padding: 6px 10px;
+  border-radius: 0 2px 2px 0;
+  line-height: 1.55;
+}
+.var-quirk-amber {
+  color: var(--amber);
+  background: #FDF6E3;
+  border-left-color: var(--amber);
+}
+.var-quirk-green {
+  color: var(--green);
+  background: #EBF5EE;
+  border-left-color: var(--green);
+}
+
+/* ── Formula box ── */
+.formula-block {
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 14px 18px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.7;
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 10px 0;
+  white-space: pre;
+}
+
+/* ── Tables ── */
+.table-wrap { overflow-x: auto; margin: 14px 0; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+th {
+  background: var(--navy);
+  color: #BCC8DF;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  text-align: left;
+  white-space: nowrap;
+}
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  line-height: 1.5;
+}
+tr:nth-child(even) td { background: #F0EDE6; }
+td code { font-family: var(--font-mono); font-size: 11.5px; background: var(--code-bg); padding: 1px 5px; border-radius: 2px; }
+
+/* ── Callout blocks ── */
+.callout {
+  border-left: 3px solid var(--blue);
+  background: #EBF0F9;
+  padding: 14px 16px;
+  margin: 16px 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  border-radius: 0 3px 3px 0;
+  max-width: 72ch;
+}
+.callout-red {
+  border-left-color: var(--red);
+  background: #FBF0F0;
+}
+.callout-amber {
+  border-left-color: #C07B00;
+  background: #FDF7E8;
+}
+.callout-green {
+  border-left-color: var(--green);
+  background: #EBF5EE;
+}
+.callout strong { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; display: block; margin-bottom: 5px; }
+.callout-red strong { color: var(--red); }
+.callout-amber strong { color: var(--amber); }
+.callout-green strong { color: var(--green); }
+.callout .callout-label { color: var(--blue); }
+
+/* ── Source cards ── */
+.source-card {
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  background: #fff;
+}
+.source-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.source-body {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.source-body a { color: var(--blue); text-decoration: none; }
+.source-body a:hover { text-decoration: underline; }
+
+/* ── Definition blocks ── */
+.def-block {
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.def-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.def-num {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: #6080BB;
+  min-width: 28px;
+}
+.def-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #fff;
+  flex: 1;
+}
+.def-body { padding: 14px 16px; display: grid; gap: 10px; }
+.def-row { display: grid; grid-template-columns: 120px 1fr; gap: 8px; font-size: 13px; }
+.def-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 2px;
+}
+.def-value { font-size: 13px; line-height: 1.6; }
+
+/* ── DB session checklist ── */
+.checklist { list-style: none; margin: 10px 0; }
+.checklist li {
+  display: flex;
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  padding: 5px 0;
+  border-bottom: 1px dashed var(--rule);
+}
+.checklist li:last-child { border-bottom: none; }
+.check-box {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--rule);
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  background: #fff;
+}
+
+/* ── Transition state diagram (pure CSS) ── */
+.state-diagram {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 16px 0;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.state-node {
+  padding: 10px 18px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-align: center;
+}
+.state-healthy { background: #D5EAD9; color: var(--green); border: 1.5px solid var(--green); }
+.state-zombie  { background: #F2D8D8; color: var(--red);   border: 1.5px solid var(--red); }
+.state-exit    { background: #1A1F2E; color: #BCC8DF;       border: 1.5px solid #3A4060; }
+.state-arrow {
+  font-size: 20px;
+  color: var(--muted);
+  padding: 0 4px;
+  line-height: 1;
+  align-self: center;
+}
+.state-label {
+  font-size: 10px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 4px;
+}
+
+@media (max-width: 780px) {
+  .shell { grid-template-columns: 1fr; }
+  nav.sidebar { display: none; }
+  main { grid-column: 1; padding: 24px 20px 60px; }
+  .def-row { grid-template-columns: 1fr; }
+  .banner { padding: 20px; }
+}
+</style>
+
+<div class="shell">
+
+<!-- ── Banner ── -->
+<header class="banner">
+  <div class="banner-eyebrow">CroAIcon · GFI Duration Analysis · Data Retrieval Plan</div>
+  <h1>Koliko dugo živi hrvatski zombi?<br><span style="font-size:.7em;color:#9AABCC;">Variable Retrieval Plan for the Zombie Spell Duration Study</span></h1>
+  <p class="banner-sub">A panel-level specification of every column, table, and external source required to move from the existing snapshot analysis to a multi-year zombie-spell duration model. Each variable is flagged by audit status; unresolved conflicts are named, not papered over.</p>
+  <div class="banner-meta">
+    <span><strong>Panel:</strong> db_afs · FINA GFI · 2002 – 2024</span>
+    <span><strong>Grain:</strong> firm × year (subjecttaxnoid, reportyear)</span>
+    <span><strong>July 2026</strong></span>
+  </div>
+</header>
+
+<!-- ── Sidebar ── -->
+<nav class="sidebar" aria-label="Sections">
+  <div class="nav-section">Overview</div>
+  <ul>
+    <li><a href="#critical-issues">Critical Issues First</a></li>
+    <li><a href="#db-session">DB Session Checklist</a></li>
+  </ul>
+  <div class="nav-section">Variables</div>
+  <ul>
+    <li><a href="#core-identifiers">Core Identifiers</a></li>
+    <li><a href="#operating-performance">Operating Performance</a></li>
+    <li><a href="#balance-sheet">Balance Sheet</a></li>
+    <li><a href="#financial-debt">Financial Debt</a></li>
+    <li><a href="#dimensions">Slice Dimensions</a></li>
+  </ul>
+  <div class="nav-section">Definitions</div>
+  <ul>
+    <li><a href="#def-oecd">① OECD / ICR</a></li>
+    <li><a href="#def-negative-equity">② Negative Equity</a></li>
+    <li><a href="#def-hnb">③ HNB / Huljak</a></li>
+    <li><a href="#def-storz">④ Storz / ESRB</a></li>
+  </ul>
+  <div class="nav-section">External Sources</div>
+  <ul>
+    <li><a href="#exit-measurement">Exit &amp; Death</a></li>
+    <li><a href="#blockade">Blockade Data</a></li>
+    <li><a href="#geo-aux">Geo &amp; Auxiliary</a></li>
+  </ul>
+  <div class="nav-section">Methods</div>
+  <ul>
+    <li><a href="#spell-mechanics">Spell Mechanics</a></li>
+    <li><a href="#survival-setup">Survival Setup</a></li>
+  </ul>
+</nav>
+
+<!-- ── Main ── -->
+<main>
+
+<!-- ══ CRITICAL ISSUES ══ -->
+<section class="section" id="critical-issues">
+  <div class="section-eyebrow">Read before anything else</div>
+  <h2>Three blockers that must be resolved in a DB session</h2>
+
+  <div class="intro-box">
+    The existing zombie pipeline in <code style="font-family:var(--font-mono);font-size:12px;color:#9AABCC">zombie_topic1_build.py</code> rests on <strong>catalog-vintage</strong> column mappings (b125, b131, b166–b168) that conflict with the <strong>physical-vintage</strong> mappings used in the two audited published posts (b110 as revenue, b152–b153 as net result, b086–b087 / b096–b097 as financial debt). The duration analysis must resolve which mapping is correct before computing any zombie flag.
+  </div>
+
+  <div class="callout callout-red">
+    <strong>Blocker 1 — Revenue column</strong>
+    <code style="font-family:var(--font-mono);font-size:12px;">b125</code> (catalog: operating income) vs <code style="font-family:var(--font-mono);font-size:12px;">b110</code> (physical: operating revenue used in the audited debt and margins posts). Both cannot be correct simultaneously. Run: <code style="font-family:var(--font-mono);font-size:12px;">SELECT report_type, db_column, position_label FROM codes_gfi_db_afs_physical WHERE db_column IN ('b110','b125') AND position_label_language='HR'</code> — then cross-tabulate national sums against the ~150–200 bn EUR macro anchor.
+  </div>
+
+  <div class="callout callout-red">
+    <strong>Blocker 2 — Interest expense is unverified</strong>
+    The published debt post explicitly declined to report ICR because <em>"kamatni rashodi još nisu pouzdano izmjerni."</em> The OECD zombie series in the existing draft rests on <code style="font-family:var(--font-mono);font-size:12px;">b166+b168</code>, which was never audited. HNB FS 22 Box 4 (the Huljak-nod) calls firm-level interest data in FINA <em>"nepouzdani"</em> outright and imputes a benchmark rate instead. The duration study either inherits this unverified denominator or pivots to an interest-free definition for its headline.
+  </div>
+
+  <div class="callout callout-red">
+    <strong>Blocker 3 — foreigncontrol scale</strong>
+    Research notes assert 0–1 scale (threshold: ≥ 0.5), but <code style="font-family:var(--font-mono);font-size:12px;">zombie_topic1_build.py</code> line 71 uses <code style="font-family:var(--font-mono);font-size:12px;">foreigncontrol &gt; 50</code>. One is wrong. Verify: <code style="font-family:var(--font-mono);font-size:12px;">SELECT MIN(foreigncontrol), MAX(foreigncontrol), AVG(foreigncontrol) FROM db_afs WHERE foreigncontrol IS NOT NULL AND reportyear=2023</code>. The entire <code style="font-family:var(--font-mono);font-size:12px;">zombie_by_ownership_year.csv</code> output is suspect until this is fixed.
+  </div>
+</section>
+
+<!-- ══ DB SESSION CHECKLIST ══ -->
+<section class="section" id="db-session">
+  <div class="section-eyebrow">Before coding the duration pipeline</div>
+  <h2>DB session checklist</h2>
+  <p>These 11 queries or inspections must run before the duration build script starts. Mark each off when confirmed.</p>
+
+  <ul class="checklist">
+    <li><span class="check-box"></span><span><strong>Revenue mapping:</strong> dump <code style="font-family:var(--font-mono);font-size:11.5px;">codes_gfi_db_afs_physical</code> for b110 and b125 by report_type; cross-check national sums against 150–200 bn EUR anchor.</span></li>
+    <li><span class="check-box"></span><span><strong>Interest columns b166+b168:</strong> national sum coverage percentage 2008–2024; compare sum to b277 (annex interest field); decide whether to audit or pivot to imputed rate.</span></li>
+    <li><span class="check-box"></span><span><strong>Net profit field:</strong> confirm the <code style="font-family:var(--font-mono);font-size:11.5px;">COALESCE(NULLIF(b184,0),NULLIF(b197,0),0) − COALESCE(NULLIF(b185,0),NULLIF(b198,0),0)</code> construction yields sensible coverage; cross-check against physical b152−b153 from the margins post.</span></li>
+    <li><span class="check-box"></span><span><strong>Equity/assets:</strong> which physical column is book equity? Probe b063 (physical, from debt audit) vs b067 (catalog). Run: <code style="font-family:var(--font-mono);font-size:11.5px;">SELECT COUNT(*) FROM db_afs WHERE b063 &lt; 0 AND reportyear=2023</code> and same for b067; expect b067 near-zero by form design.</span></li>
+    <li><span class="check-box"></span><span><strong>Financial debt physical columns:</strong> confirm b086+b087 (LT) and b096+b097 (ST) from the debt audit as the EBITDA/debt denominator; run the component-fit gate ≥ 95% of rows where b084 > 0.</span></li>
+    <li><span class="check-box"></span><span><strong>EBITDA:</strong> identify the physical depreciation column (catalog b141 = amortizacija; physical equivalent may differ); check coverage % 2010–2024.</span></li>
+    <li><span class="check-box"></span><span><strong>foreigncontrol scale:</strong> <code style="font-family:var(--font-mono);font-size:11.5px;">SELECT MIN, MAX, AVG FROM db_afs WHERE foreigncontrol IS NOT NULL</code> — confirm 0–1 and fix the zombie ownership output.</span></li>
+    <li><span class="check-box"></span><span><strong>subjekti_26012026 schema:</strong> <code style="font-family:var(--font-mono);font-size:11.5px;">SHOW COLUMNS FROM subjekti_26012026</code> — confirm whether datum_brisanja, status, or pravni_oblik columns exist, or whether exit dates must come from the court register API.</span></li>
+    <li><span class="check-box"></span><span><strong>countyid → županija mapping:</strong> confirm the 21-row <code style="font-family:var(--font-mono);font-size:11.5px;">ref_county</code> table exists and join to confirm Zagreb = code 21; build the NUTS-3 crosswalk.</span></li>
+    <li><span class="check-box"></span><span><strong>price_deflator:</strong> <code style="font-family:var(--font-mono);font-size:11.5px;">SELECT reportyear, AVG(price_deflator) FROM db_afs GROUP BY reportyear ORDER BY reportyear</code> — confirm it exists, is not NULL for 2023, and is NULL for 2024.</span></li>
+    <li><span class="check-box"></span><span><strong>vw_db_afs_financial_subject_year:</strong> confirm view exists; <code style="font-family:var(--font-mono);font-size:11.5px;">SHOW CREATE VIEW vw_db_afs_financial_subject_year</code> to inspect its column definition for the blessed net-result construction.</span></li>
+  </ul>
+</section>
+
+<!-- ══ CORE IDENTIFIERS ══ -->
+<section class="section" id="core-identifiers">
+  <div class="section-eyebrow">From db_afs + subjekti_26012026</div>
+  <h2>Core identifiers &amp; panel keys</h2>
+
+  <div class="var-card">
+    <div class="var-header">
+      <span class="var-col">subjecttaxnoid</span>
+      <span class="var-meaning">OIB — firm identifier, joins to sudski registar</span>
+      <span class="badge badge-green">Confirmed</span>
+    </div>
+    <div class="var-body">
+      <span>Primary key of the panel alongside <code style="font-family:var(--font-mono);font-size:11.5px">reportyear</code>. Use as STRING — leading zeros possible. The existing zombie build correctly casts it as str before mapping founding years.</span>
+      <div class="var-quirk var-quirk-amber">Table does not guarantee uniqueness on (subjecttaxnoid, reportyear). The build calls <code style="font-family:var(--font-mono);font-size:11.5px">drop_duplicates</code> as a patch. Actual duplicate volume is unknown — audit in the DB session.</div>
+    </div>
+  </div>
+
+  <div class="var-card">
+    <div class="var-header">
+      <span class="var-col">reportyear</span>
+      <span class="var-meaning">Fiscal year of the GFI statement</span>
+      <span class="badge badge-green">Confirmed</span>
+    </div>
+    <div class="var-body">
+      <span>Range 2002–2024. 2023–2024 data is preliminary and subject to late-filer revisions. Nominal-to-real conversion via <code style="font-family:var(--font-mono);font-size:11.5px">price_deflator</code> ends at 2023 (NULL in 2024 — to be confirmed). Ratios and shares are HRK/EUR-neutral.</span>
+    </div>
+  </div>
+
+  <div class="var-card">
+    <div class="var-header">
+      <span class="var-col">godina_osnivanja</span>
+      <span class="var-meaning">Founding year — from subjekti_26012026</span>
+      <span class="badge badge-green">Confirmed · ~92% match rate</span>
+    </div>
+    <div class="var-body">
+      <span>Join on <code style="font-family:var(--font-mono);font-size:11.5px">oib = subjecttaxnoid</code>. Firm age = reportyear − godina_osnivanja. Used for the OECD age ≥ 10 filter and for OECD / HNB age > 3 filters.</span>
+      <div class="var-quirk var-quirk-amber">January-2026 snapshot: firms deleted before ~2010 are likely purged (survivorship bias). Avoid age-distribution claims before 2012. Founding year ≠ economic birth (reactivations, shell re-use). ~8% of firm-years have no match — they are dropped from OECD and HNB definitions; report coverage.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OPERATING PERFORMANCE ══ -->
+<section class="section" id="operating-performance">
+  <div class="section-eyebrow">P&amp;L variables — resolve vintage conflict first</div>
+  <h2>Operating performance columns</h2>
+
+  <div class="callout callout-amber">
+    <strong>Vintage conflict</strong>
+    The catalog vintage (used in zombie_topic1_build.py) and the physical vintage (used in the audited posts) label overlapping AOP positions differently. Do not mix them. Until the DB session resolves the mapping, the column names below are labelled by their established usage, not assumed physical meaning.
+  </div>
+
+  <div class="var-card">
+    <div class="var-header">
+      <span class="var-col">b125 / b110</span>
+      <span class="var-meaning">Operating revenue — UNRESOLVED</span>
+      <span class="badge badge-red">Conflict — must resolve</span>
+    </div>
+    <div class="var-body">
+      <span><strong>Catalog vintage:</strong> b125 = poslovni prihodi (operating income). Used as revenue in zombie / zagreb builds. <strong>Physical vintage:</strong> b110 = operating revenue in the audited debt and margins posts, which passed a stock-flow gate (debt/revenue in (0.001, 2.0)) against the ~150–200 bn EUR national anchor.</span>
+      <div class="var-quirk">b110 and b125 cannot both be operating revenue. The physical codebook labels b110 as operating revenue and b125 as something else. This must be resolved before the EBIT numerator is computed. Recommended action: dump both from codes_gfi_db_afs_physical by report_type and compare 2023 national sums to DZS/HNB corporate-sector revenue totals.</div>
+    </div>
+  </div>
+
+  <div class="var-card">
+    <div class="var-header">
+      <span class="var-col">b131 / [physical equivalent]</span>
+      <span class="var-meaning">Operating expenses — used in EBIT</span>
+      <span class="badge badge-red">Unaudited · coverage risk</span>
+    </div>
+    <div class="var-body">
+      <span>Catalog: poslovni rashodi. EBIT = b125 − b131 (catalog) = EBIT numerator for OECD and HNB definitions.</span>
+      <div class="var-quirk">gfi_blog_topics.md records that b131 is NULL for ~90% of the full-P&amp;L subset — making b125−b131 near-zero for the vast majority of firms and the resulting margin ~88% flat. The existing zombie build silently drops firms where b131 is NULL (EBIT becomes NaN, ICR comparison is False). Audit coverage before relying on the EBIT series; a robust alternative for EBIT is the physical b152−b153 net-result net of tax if that maps to operating earnings.</div>
+    </div>
+  </div>
+
+  <div class="var-card">
+    <div class="var-header">
+      <span class="var-col">b166 + b168</span>
+      <span class="var-meaning">Interest expense — OECD ICR denominator</span>
+      <span class="badge badge-red">Never audited · disputed reliability</span>
+    </div>
+    <div class="var-body">
+      <span>Catalog: b166 = kamate i slični rashodi prema poduzetnicima unutar grupe; b168 = kamate i slični rashodi (vanjski). ICR = EBIT / (b166+b168). Required only for the OECD definition.</span>
+      <div class="var-quirk">The published debt post explicitly declined to present ICR because interest data are unreliable. HNB FS 22 Box 4 (Huljak-nod) labels firm-specific interest figures in FINA as "nepouzdani" and uses an imputed 6% benchmark instead. The existing zombie series therefore rests on an unverified denominator. Decision: either audit b166+b168 coverage and validate against HNB aggregate interest flows, or adopt the HNB imputed-rate approach as the headline and treat the OECD/ICR series as a robustness check only.</div>
+      <div class="var-quirk var-quirk-amber">Current build: <code style="font-family:var(--font-mono);font-size:11.5px">fillna(0)</code> on both columns AND requires interest > 0 for ICR < 1 flag — so any firm with NULL interest is structurally excluded from zombie classification by construction. Report this share.</div>
+    </div>
+  </div>
+
+  <div class="var-card">
+    <div class="var-header">
+      <span class="var-col">b184 / b185 / b197 / b198</span>
+      <span class="var-meaning">Net profit and net loss of period</span>
+      <span class="badge badge-blue">Used in Zagreb post · partially validated</span>
+    </div>
+    <div class="var-body">
+      <span>Required for: HNB filter (net profit > 0 means still profitable → not zombie), Storz ROA criterion. Construction from the Zagreb plan:</span>
+      <div class="formula-block">net_result = (
+  COALESCE(NULLIF(b184, 0), NULLIF(b197, 0), 0)
+  - COALESCE(NULLIF(b185, 0), NULLIF(b198, 0), 0)
+)</div>
+      <div class="var-quirk var-quirk-green">b183 (catalog net result) is dead — only ~1% nonzero in 2024. Never use b183 directly. The COALESCE construction above is the sanctioned approach, attributed to vw_db_afs_financial_subject_year logic.</div>
+    </div>
+  </div>
+
+  <div class="var-card">
+    <div class="var-header">
+      <span class="var-col">b141 / [physical depreciation]</span>
+      <span class="var-meaning">Depreciation &amp; amortisation — for EBITDA</span>
+      <span class="badge badge-amber">Never queried · coverage unknown</span>
+    </div>
+    <div class="var-body">
+      <span>Required only for the Storz / ESRB definition: EBITDA = EBIT + depreciation. Catalog b141 = amortizacija.</span>
+      <div class="var-quirk var-quirk-amber">No committed script has ever selected this column. Coverage is unknown and likely inherits the b131 sparse-filing problem for abbreviated micro-entity forms. Probe in DB session: <code style="font-family:var(--font-mono);font-size:11.5px">SELECT reportyear, AVG(b141 IS NOT NULL) AS cov FROM db_afs WHERE b110 > 0 GROUP BY reportyear</code>. If coverage is < 50%, EBITDA-based definitions will lose most small firms — note this as scope limit or restrict to medium/large firms.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BALANCE SHEET ══ -->
+<section class="section" id="balance-sheet">
+  <div class="section-eyebrow">Assets, equity, and investment</div>
+  <h2>Balance sheet columns</h2>
+
+  <div class="var-card">
+    <div class="var-header">
+      <span class="var-col">b063 / b067</span>
+      <span class="var-meaning">Book equity (capital &amp; reserves)</span>
+      <span class="badge badge-red">Catalog b067 is structurally dead</span>
+    </div>
+    <div class="var-body">
+      <span><strong>b067 (catalog)</strong> is the naive negative-equity test column. <strong>b063 (physical)</strong> is the audited equity column from the debt build, confirmed via balance-identity gate. Required for the negative-equity zombie definition (book equity &lt; 0).</span>
+      <div class="var-quirk">b067 < 0 returns ~0% of firms every year. The form floors equity at zero in the catalog-vintage layout — ~94% of balance-filing firms report b067 = 0. USE b063 (physical). Confirm: <code style="font-family:var(--font-mono);font-size:11.5px">SELECT reportyear, SUM(b063 &lt; 0)/COUNT(*) FROM db_afs WHERE b061 > 0 GROUP BY reportyear</code> — should return meaningful shares.</div>
+    </div>
+  </div>
+
+  <div class="var-card">
+    <div class="var-header">
+      <span class="var-col">b061 / b065</span>
+      <span class="var-meaning">Total assets</span>
+      <span class="badge badge-green">b061 audited &amp; published</span>
+    </div>
+    <div class="var-body">
+      <span><strong>b061 (physical)</strong> is the audited total-assets column; balance identity confirmed within 1% in ≥ 95% of covered rows (|b061 − b108| ≤ 1%). Used as ROA denominator (Storz) and universe filter (b061 > 0).</span>
+      <div class="var-quirk var-quirk-green">b065 (catalog total assets) is only ~8% populated AND the share rises over time — using it as a universe filter fabricates a fake growth trend. Never use b065. Always use b061.</div>
+    </div>
+  </div>
+
+  <div class="var-card">
+    <div class="var-header">
+      <span class="var-col">b002</span>
+      <span class="var-meaning">Fixed assets (dugotrajna imovina) — for Δ net investment</span>
+      <span class="badge badge-green">Audited &amp; published (debt post)</span>
+    </div>
+    <div class="var-body">
+      <span>Net investment = b002(t) − b002(t−1), computed via self-join on subjecttaxnoid, reportyear−1. Required for Storz / ESRB definition criterion (ii). Consistent in both catalog and physical vintages — same label in both.</span>
+      <div class="var-quirk var-quirk-green">Coverage ~87–89% among operating firms 2008–2024 (audited). Δb002 is net change, not gross capex (includes disposals, depreciation, revaluation). Cannot stand in for capex. Negative Δb002 is the criterion — do not interpret as disinvestment without qualification.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINANCIAL DEBT ══ -->
+<section class="section" id="financial-debt">
+  <div class="section-eyebrow">Debt variables — physical vintage only</div>
+  <h2>Financial debt columns</h2>
+
+  <div class="callout callout-green">
+    <strong>Use the audited physical columns</strong>
+    The published debt post audited b086+b087 (LT financial debt) and b096+b097 (ST financial debt), with component-fit gates ≥ 95%. These are the ONLY verified financial-debt columns. The catalog-vintage equivalents (b100+b101 LT, b112+b113 ST) are unaudited and carry an unknown vintage conflict — do not use them for the EBITDA/debt Storz criterion.
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Meaning (physical)</th>
+          <th>Role</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>b084</code></td>
+          <td>LT liabilities total</td>
+          <td>Component-fit gate denominator</td>
+          <td><span class="badge badge-green">Audited</span></td>
+        </tr>
+        <tr>
+          <td><code>b086 + b087</code></td>
+          <td>LT loans + LT bank debt</td>
+          <td>LT financial debt numerator</td>
+          <td><span class="badge badge-green">Audited &amp; published</span></td>
+        </tr>
+        <tr>
+          <td><code>b094</code></td>
+          <td>ST liabilities total</td>
+          <td>Component-fit gate denominator</td>
+          <td><span class="badge badge-green">Audited</span></td>
+        </tr>
+        <tr>
+          <td><code>b096 + b097</code></td>
+          <td>ST loans + ST bank debt</td>
+          <td>ST financial debt numerator</td>
+          <td><span class="badge badge-green">Audited &amp; published</span></td>
+        </tr>
+        <tr>
+          <td><code>b100, b101</code></td>
+          <td>Catalog-vintage LT loan components</td>
+          <td>Do not use — unaudited, vintage conflict</td>
+          <td><span class="badge badge-red">Blocked</span></td>
+        </tr>
+        <tr>
+          <td><code>b112, b113</code></td>
+          <td>Catalog-vintage ST loan components</td>
+          <td>Do not use — unaudited, vintage conflict</td>
+          <td><span class="badge badge-red">Blocked</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="formula-block">-- Physical financial debt (Storz EBITDA/debt denominator)
+financial_debt = (b086 + b087) + (b096 + b097)
+
+-- Imputed interest (HNB/Huljak approach, 6% benchmark)
+imputed_interest = 0.06 * financial_debt
+
+-- Use a time-varying median rate across reportyears as a refinement</div>
+</section>
+
+<!-- ══ SLICE DIMENSIONS ══ -->
+<section class="section" id="dimensions">
+  <div class="section-eyebrow">Segmentation variables</div>
+  <h2>Slice dimensions</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Meaning</th>
+          <th>Notes</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>nacerev21</code></td>
+          <td>NKD section (single letter A–U)</td>
+          <td>Filter to regex <code>^[A-U]$</code>; exclude K (finance), D, E (utilities). Tourism = I, Construction = F, Real estate = L.</td>
+          <td><span class="badge badge-green">Confirmed · trusted baseline</span></td>
+        </tr>
+        <tr>
+          <td><code>countyid</code></td>
+          <td>County (županja) code 1–21</td>
+          <td>100% populated per zagreb post Napomene. Grad Zagreb = 21. Join to ref_county (existence unverified — check in DB session). Crosswalk to NUTS-3 provided in the geo section.</td>
+          <td><span class="badge badge-green">In db_afs · confirmed</span></td>
+        </tr>
+        <tr>
+          <td><code>foreigncontrol</code></td>
+          <td>Foreign ownership share</td>
+          <td>Scale to be confirmed (0–1 or 0–100). Threshold for "foreign" = ≥ 0.5 (if 0–1 scale). The zombie ownership output must be recomputed after scale is confirmed.</td>
+          <td><span class="badge badge-red">Scale unresolved</span></td>
+        </tr>
+        <tr>
+          <td><code>subjectsizeeurev2</code></td>
+          <td>Size class (0=unknown…4=large)</td>
+          <td>Coding assumed; no codebook evidence in repo. Confirm in DB session.</td>
+          <td><span class="badge badge-amber">Assumed coding</span></td>
+        </tr>
+        <tr>
+          <td><code>employeecounteop</code></td>
+          <td>Employees (end-of-period headcount)</td>
+          <td>Trusted baseline column. Use as zombie-employment weight: zombie employment share = Σ emp_zombie / Σ emp_total by year / county.</td>
+          <td><span class="badge badge-green">Trusted baseline</span></td>
+        </tr>
+        <tr>
+          <td><code>price_deflator</code></td>
+          <td>Per-row deflator (HRK→EUR adjusted)</td>
+          <td>Claimed to be a db_afs column; NULL for 2024. No script has ever selected it. Confirm existence in DB session. Ratios and shares do not need it — only nominal level comparisons across years.</td>
+          <td><span class="badge badge-amber">Unverified column</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ DEFINITIONS ══ -->
+<section class="section" id="def-oecd">
+  <div class="section-eyebrow">Definition 1 of 4</div>
+  <h2>Zombie definitions — variable requirements</h2>
+
+  <div class="def-block" id="def-oecd-card">
+    <div class="def-header">
+      <span class="def-num">①</span>
+      <span class="def-name">OECD / ICR (Adalet McGowan, Andrews &amp; Millot 2017)</span>
+      <span class="badge badge-amber">ICR denominator unaudited</span>
+    </div>
+    <div class="def-body">
+      <div class="def-row">
+        <span class="def-label">Formula</span>
+        <span class="def-value">ICR &lt; 1 for three consecutive years AND age ≥ 10. ICR = EBIT / interest_paid. Source confirmed: Economic Policy 33(96), 2018, p. 693 para. 24.</span>
+      </div>
+      <div class="formula-block">EBIT       = b125 − b131          (resolve vintage first)
+interest   = b166 + b168          (audit required)
+ICR        = EBIT / interest       (undefined if interest = 0)
+zombie_t   = (ICR_t < 1) AND (ICR_{t-1} < 1) AND (ICR_{t-2} < 1)
+             AND consecutive years AND age >= 10</div>
+      <div class="def-row">
+        <span class="def-label">Columns needed</span>
+        <span class="def-value">b125 (or physical rev), b131, b166, b168, subjecttaxnoid, reportyear, godina_osnivanja</span>
+      </div>
+      <div class="def-row">
+        <span class="def-label">Persistence</span>
+        <span class="def-value">3 consecutive years. Spell start = first year of the qualifying 3-year window (date back 2 years). Recovery = any year where ICR ≥ 1 breaks the chain.</span>
+      </div>
+      <div class="var-quirk">Interest denominator is unverified and flagged as unreliable by HNB. Use as robustness definition only; do not lead with OECD unless the DB session clears b166+b168 coverage. Firms with zero/NULL interest are structurally excluded — report their share.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="def-negative-equity">
+  <div class="def-block">
+    <div class="def-header">
+      <span class="def-num">②</span>
+      <span class="def-name">Negative equity (Bonfim et al. 2021; Croatian application: Beriša 2023 CNB)</span>
+      <span class="badge badge-green">Recommended headline — no interest needed</span>
+    </div>
+    <div class="def-body">
+      <div class="def-row">
+        <span class="def-label">Formula</span>
+        <span class="def-value">Book equity &lt; 0 in the previous period, i.e. physical b063_{t−1} &lt; 0. No age filter, no interest data required.</span>
+      </div>
+      <div class="formula-block">zombie_t = (b063_{t-1} < 0)      -- physical equity column
+           OR use b061 vs (b061 - b063) to reconstruct if needed
+
+-- For spell definition: require b063 < 0 in years t AND t-1
+-- (one-year lag per Bonfim et al.; two consecutive years for robustness variant)</div>
+      <div class="def-row">
+        <span class="def-label">Columns needed</span>
+        <span class="def-value">b063 (physical equity), b061 (physical assets), subjecttaxnoid, reportyear. Self-join on reportyear − 1.</span>
+      </div>
+      <div class="def-row">
+        <span class="def-label">Why this leads</span>
+        <span class="def-value">No interest data required. Computable from every form vintage 2002–2024. Captures balance-sheet insolvency rather than cash-flow distress. In Croatia, equity can remain negative for years without exit — exactly the zombie-spell mechanics being studied. Beriša (2023, CNB YES seminar) shows this definition yields a distinct population of smaller firms, complementing ICR-based findings.</span>
+      </div>
+      <div class="var-quirk var-quirk-green">b063 must be the physical column (from the audited debt build), not b067 (catalog). b067 < 0 returns near-zero by form design. Confirm physical b063 coverage before the spell analysis.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="def-hnb">
+  <div class="def-block">
+    <div class="def-header">
+      <span class="def-num">③</span>
+      <span class="def-name">HNB imputed-rate / Huljak-nod (HNB Financijska stabilnost 22, Box 4, May 2021)</span>
+      <span class="badge badge-blue">Croatia-tailored · recommended for duration headline</span>
+    </div>
+    <div class="def-body">
+      <div class="def-row">
+        <span class="def-label">Formula</span>
+        <span class="def-value">STEP 1 — weak: EBIT &lt; 0.06 × financial_debt for two consecutive years. STEP 2 — zombie: weak AND net_profit &lt; 0 AND age > 3 AND NOT in exit proceedings.</span>
+      </div>
+      <div class="formula-block">-- Step 1: weak firm
+EBIT = b125 − b131          (resolve vintage)
+fin_debt = (b086 + b087) + (b096 + b097)   -- physical, audited
+imputed_interest = 0.06 * fin_debt         -- benchmark rate
+weak_t = (EBIT < imputed_interest) for t AND t-1
+
+-- Step 2: zombie
+net_profit = COALESCE(NULLIF(b184,0), NULLIF(b197,0), 0)
+           - COALESCE(NULLIF(b185,0), NULLIF(b198,0), 0)
+zombie_t = weak_t AND (net_profit < 0) AND (age > 3)
+           AND NOT in_exit_proceedings</div>
+      <div class="def-row">
+        <span class="def-label">Why it works here</span>
+        <span class="def-value">Built to sidestep the exact data problem of b166+b168 unreliability. The 6% imputed rate is the Croatian median interest on creditor liabilities 2019 — consider updating to a time-varying median for the 2002–2024 panel given rate movements. The "exit proceedings" filter requires a merge with the court register (see Exit section).</span>
+      </div>
+      <div class="def-row">
+        <span class="def-label">Result in CNB data</span>
+        <span class="def-value">End-2019: ~6% of firms as zombies; ~22% as weak; concentrated in transport, agriculture, manufacturing — NOT primarily tourism. This baseline directly enables the COVID counterfactual: was tourism already drifting zombieward before 2020?</span>
+      </div>
+      <div class="var-quirk var-quirk-amber">Attribution: HNB FS 22 Box 4 is unsigned. Ivan Huljak's personal authorship is plausible (CNB corporate-sector researcher, confirmed mentor of Beriša 2023) but unverified. Do not cite as "Huljak (2021)" in a post — cite as HNB Financijska stabilnost 22, Okvir 4.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="def-storz">
+  <div class="def-block">
+    <div class="def-header">
+      <span class="def-num">④</span>
+      <span class="def-name">Storz et al. / ESRB WP 143 (Havemeister &amp; Horn 2023, adopting Storz ECB WP 2104)</span>
+      <span class="badge badge-amber">Depreciation coverage risk</span>
+    </div>
+    <div class="def-body">
+      <div class="def-row">
+        <span class="def-label">Formula</span>
+        <span class="def-value">All three simultaneously for 2 consecutive years: (i) ROA &lt; 0; (ii) Δfixed assets &lt; 0; (iii) EBITDA / financial debt &lt; 5%. No age filter — negative net investment is the anti-startup screen.</span>
+      </div>
+      <div class="formula-block">ROA       = net_result / b061         -- physical assets
+net_inv   = b002_t - b002_{t-1}      -- audited, published
+EBITDA    = EBIT + b141              -- depreciation coverage unknown
+fin_debt  = (b086+b087) + (b096+b097) -- physical, audited
+zombie_t  = (ROA < 0) AND (net_inv < 0) AND (EBITDA/fin_debt < 0.05)
+            for both t AND t-1</div>
+      <div class="def-row">
+        <span class="def-label">Key advantage</span>
+        <span class="def-value">Does not require interest expense at all — only EBITDA (which includes depreciation). The 5% threshold is calibrated to the euro-area median interest rate, similar to HNB's 6%. Lowest zombie share of the four definitions by design; identifies the most distressed subpopulation.</span>
+      </div>
+      <div class="var-quirk">EBITDA requires b141 (depreciation), which has never been queried and has unknown coverage. If coverage is low, restrict Storz to firms filing full P&amp;L forms (typically medium and large — NKD sectors with significant fixed assets). Report the restriction explicitly.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXIT MEASUREMENT ══ -->
+<section class="section" id="exit-measurement">
+  <div class="section-eyebrow">Absorbing state — confirmed free source</div>
+  <h2>Exit &amp; death measurement</h2>
+
+  <div class="callout callout-green">
+    <strong>Core principle</strong>
+    Do not code disappearance from GFI as death. Croatian filing compliance is imperfect; non-filing is a zombie state, not an exit state. Register status + deletion dates are the canonical death variable.
+  </div>
+
+  <div class="source-card">
+    <div class="source-title">
+      Sudski registar open data API
+      <span class="badge badge-green">Free · verified July 2026</span>
+    </div>
+    <div class="source-body">
+      <p style="font-size:13px;margin:4px 0 8px">Full machine-readable court register, daily snapshot. Covers <strong>deleted firms</strong> with deletion dates — <code>subjekti?only_active=0</code> returns brisani subjekti. Exit dates 2002–2024 are reconstructable from one current snapshot.</p>
+      <strong>Key fields:</strong>
+      <div class="table-wrap" style="margin:8px 0;">
+        <table>
+          <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><code>mbs</code></td><td>Court register ID — stable, never reused; primary join key</td></tr>
+            <tr><td><code>oib</code></td><td>OIB — maps to db_afs.subjecttaxnoid; absent on pre-2009 deletions</td></tr>
+            <tr><td><code>status</code></td><td>1 = active, 0 = deleted/inactive</td></tr>
+            <tr><td><code>datum_brisanja</code></td><td>Legal deletion date (end of legal existence)</td></tr>
+            <tr><td><code>postupak.datum_stecaja</code></td><td>Bankruptcy opening ruling date (empty for pre-OIB era cases)</td></tr>
+            <tr><td><code>sifra postupka</code></td><td>Exit mode: stečaj, likvidacija, brisanje po službEnoj dužnosti, skraćeni postupak</td></tr>
+            <tr><td><code>sjediste.sifra_zupanije</code></td><td>County at deletion — useful for geographic death analysis</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <strong>Access:</strong> Free registration at <a href="https://sudreg-data.gov.hr">sudreg-data.gov.hr</a> → OAuth2 client credentials → paginated REST API (JSON). License: Otvorena dozvola / Open Licence (EU High-Value Dataset). No per-row fee.<br><br>
+      <strong>Caveat:</strong> The public tier shows current state, not row-level history. Old bankruptcies (pre-introduction of datum_stecaja field) have the date empty. Supplement with e-Oglasna for stečaj opening dates from ~Sept 2015 onward.
+    </div>
+  </div>
+
+  <h3>Three-state model for the duration analysis</h3>
+
+  <div class="state-diagram">
+    <div>
+      <div class="state-node state-healthy">Healthy</div>
+      <div class="state-label">ICR ≥ 1 / equity ≥ 0</div>
+    </div>
+    <div class="state-arrow">⇄</div>
+    <div>
+      <div class="state-node state-zombie">Zombie</div>
+      <div class="state-label">Persistent distress, not exiting</div>
+    </div>
+    <div class="state-arrow">→</div>
+    <div>
+      <div class="state-node state-exit">Exit</div>
+      <div class="state-label">Stečaj / likvidacija / brisanje</div>
+    </div>
+  </div>
+
+  <p style="font-size:13px;color:var(--muted);margin-top:8px">Transitions: Healthy ↔ Zombie (recoverable); Zombie → Exit (absorbing, competing risk); Healthy → Exit (absorbing, direct). Banerjee &amp; Hofmann (BIS WP 882) find ~25% of zombies eventually exit via death and ~60% formally recover — but recovered zombies underperform and face high relapse probability, so the model should distinguish "recovered (at-risk)" from "never-zombie" if sample size allows.</p>
+
+  <div class="callout callout-amber">
+    <strong>Pre-2009 exit dates</strong>
+    Many firms deleted before 2009 have no OIB in the register (OIB was introduced after the register started). Key the exit merge on MBS and map to OIB where present. For 2002–2008 stečaj openings, datum_stecaja is often empty — supplement from e-Oglasna (XLSX export) where coverage begins ~Sept 2015, and from Narodne novine oglasni dio for anything earlier (not reliably machine-searchable pre-2014).
+  </div>
+</section>
+
+<!-- ══ BLOCKADE ══ -->
+<section class="section" id="blockade">
+  <div class="section-eyebrow">The Lider / Nama narrative — aggregate only</div>
+  <h2>Account blockade data</h2>
+
+  <div class="callout callout-red">
+    <strong>Verdict: firm-level blockade duration is not retrievable at panel scale from open sources</strong>
+    The official Očevidnik (JRR) is firm-level inside FINA but public access is per-firm transactional only: 1.66 EUR/SMS per current status query, 1.66 EUR/change for list monitoring (prospective, not historical), e-Blokade restricted to enforcement parties. Nothing on data.gov.hr.
+  </div>
+
+  <div class="source-card">
+    <div class="source-title">FINA monthly aggregate PDFs <span class="badge badge-navy">Macro context only</span></div>
+    <div class="source-body">
+      Monthly 2-page PDF (verified July 2026): counts of blocked poslovni subjekti + amounts (principal, interest, total). Verified July 2026 example: 13,076 blocked subjects, EUR 955.5m total. Periodic analyses add duration buckets: ~41.4% blocked > 1 year (~59% of debt), ~40% of those > 5 years. County/NKD splits appear in periodic analyses relayed by Lider/IUS-INFO but are not confirmed as machine-readable recurring tables.
+      <br><br>Use for: macro framing of the "konzervirana nelikvidnost" narrative (the ~12,500 blocked subjects storyline). Not usable for firm-level identification.
+    </div>
+  </div>
+
+  <div class="source-card">
+    <div class="source-title">Fininfo.hr <span class="badge badge-amber">Paid — firmographic blockade history</span></div>
+    <div class="source-body">
+      Fininfo explicitly sells blockade history per firm to subscribers (verified from their public pages). This is the closest ready-made firm-level blockade duration source. Bulk/API licensing by negotiation (info@fininfo.hr). If buying a panel extract from Fininfo is feasible, it would allow: days blocked by year per OIB, blockade entry/exit dates, enabling a proper blockade-spell duration analysis to sit alongside the GFI-based zombie-spell analysis.
+    </div>
+  </div>
+</section>
+
+<!-- ══ GEO & AUX ══ -->
+<section class="section" id="geo-aux">
+  <div class="section-eyebrow">Map and auxiliary denominators</div>
+  <h2>Geographic &amp; auxiliary sources</h2>
+
+  <div class="source-card">
+    <div class="source-title">County NUTS-3 boundaries — giscoR <span class="badge badge-green">Free · R snippet ready</span></div>
+    <div class="source-body">
+      <div class="formula-block" style="white-space:pre-wrap">library(giscoR); library(sf); library(dplyr); library(ggplot2)
+
+# 21 HR NUTS-3 features (verified: HR021–HR037, HR050, HR061–HR065)
+hr <- gisco_get_nuts(year = 2024, nuts_level = 3,
+                     resolution = "03", epsg = 4326, country = "HR")
+
+# countyid → NUTS_ID crosswalk (confirm mapping in DB session)
+xw <- tibble::tribble(~countyid, ~NUTS_ID,
+   1,"HR065",  2,"HR064",  3,"HR028",  4,"HR027",  5,"HR062",
+   6,"HR063",  7,"HR021",  8,"HR031",  9,"HR032", 10,"HR022",
+  11,"HR023", 12,"HR024", 13,"HR033", 14,"HR025", 15,"HR034",
+  16,"HR026", 17,"HR035", 18,"HR036", 19,"HR037", 20,"HR061",
+  21,"HR050")  # Grad Zagreb = countyid 21 = NUTS HR050
+
+map_df <- hr |>
+  left_join(xw, by = "NUTS_ID") |>
+  left_join(county_zombie_stats, by = "countyid")
+
+ggplot(map_df) +
+  geom_sf(aes(fill = zombie_emp_share), color = "white", linewidth = .2) +
+  scale_fill_viridis_c(option = "magma", direction = -1,
+                       labels = scales::label_percent()) +
+  labs(fill = "Zombi-zaposlenost\n(% ukupnih)") +
+  theme_void()</div>
+      Crosswalk is provisional — confirm countyid = DZS county codes 1–21 in the DB session.
+    </div>
+  </div>
+
+  <div class="source-card">
+    <div class="source-title">DZS county employment denominator <span class="badge badge-blue">Robustness only — scope caveat</span></div>
+    <div class="source-body">
+      Direct xlsx download: <a href="https://podaci.dzs.hr/media/xpkfrkth/zaposlenost-i-place-pregled-po-zupanijama.xlsx">Zaposlenost i place – pregled po zupanijama</a> (updated May 2026) and <a href="https://podaci.dzs.hr/media/syjnewxe/zaposleni-pregled-po-zupanijama.xlsx">Zaposleni – pregled po zupanijama</a> (June 2026). Series back to 1994.<br><br>
+      <strong>Critical caveat:</strong> DZS registered employment covers ALL legal entities including government, obrt, and agricultural insurees — a much broader base than the FINA GFI poduzetnici population. Using DZS total employment as denominator will understate zombie employment shares. Use the internal GFI <code>employeecounteop</code> sum by county as the headline denominator; DZS as robustness only. Also note a series break from 2025 (JOPPD-based vs. prior RAD-1G survey) — "nisu usporedivi."
+    </div>
+  </div>
+
+  <div class="source-card">
+    <div class="source-title">State ownership flags <span class="badge badge-amber">~100–150 firms · manual crosswalk</span></div>
+    <div class="source-body">
+      CERP portfolio xlsx (verified July 2026, updated monthly): <a href="https://www.cerp.hr/portfelj-cerp-a/dionice-i-poslovni-udjeli/114">cerp.hr/portfelj-cerp-a</a> — ~8 majority + ~80 minority holdings with OIB and % stake. Direct join to FINA panel. Supplement with NN 147/2021 special-interest SOEs list (~36 entities: HEP, INA, Croatia Airlines, Jadrolinija, etc.) for the strategic tier. Total manually joinable universe: ~150 firms, expandable to ~500 via MFIN annual subsidiary reports. <em>Not feasible at panel scale from open data</em> — the public sudreg API exposes no founder/member records, and there is no central open municipal-ownership register.
+    </div>
+  </div>
+</section>
+
+<!-- ══ SPELL MECHANICS ══ -->
+<section class="section" id="spell-mechanics">
+  <div class="section-eyebrow">Duration analysis foundations</div>
+  <h2>Zombie spell mechanics</h2>
+
+  <div class="callout callout-amber">
+    <strong>The persistence trap</strong>
+    A 3-year consecutive entry rule (OECD) creates a mechanical minimum spell length of 3 years and delays the dated entry by 2 years. Date the spell start at the FIRST year of the qualifying window — not at year 3. Treat the definition's built-in persistence as a measurement property, not as the hazard function itself. The 2-year Storz/HNB rules have a 2-year minimum spell and a 1-year entry lag.
+  </div>
+
+  <h3>Spell construction (Python window function pattern)</h3>
+  <div class="formula-block" style="white-space:pre-wrap">df = df.sort_values(["subjecttaxnoid","reportyear"])
+g  = df.groupby("subjecttaxnoid", sort=False)
+
+# --- OECD 3-year rolling ---
+df["z_l1"] = g["icr_lt1"].shift(1)
+df["z_l2"] = g["icr_lt1"].shift(2)
+df["yr_l1"] = g["reportyear"].shift(1)
+df["yr_l2"] = g["reportyear"].shift(2)
+consec = (df.reportyear - df.yr_l1 == 1) & (df.yr_l1 - df.yr_l2 == 1)
+df["zombie"] = df["icr_lt1"] & (df.z_l1 == True) & (df.z_l2 == True) & consec
+# Date spell start back to t-2:
+df["spell_start"] = np.where(df["zombie"], df["reportyear"] - 2, np.nan)
+
+# --- Spell ID and duration ---
+df["z_start"] = g["zombie"].transform(
+    lambda s: s.ne(s.shift()).cumsum()
+)  # group ID within firm; filter to zombie==True spells
+
+# Transition variable (requires register merge)
+# state: 0 = healthy, 1 = zombie, 2 = exit (absorbing)
+# event: 0 = censored, 1 = recovery, 2 = exit
+df["state"] = np.select(
+    [df["exit_confirmed"], df["zombie"], ~df["zombie"]],
+    [2, 1, 0], default=np.nan
+)</div>
+
+  <h3>Censoring rules</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Observation type</th><th>Censoring treatment</th></tr></thead>
+      <tbody>
+        <tr><td>Last year in panel (2024) still zombie</td><td>Right-censor at 2024 — do not assume death or recovery</td></tr>
+        <tr><td>Firm disappears from GFI, no register death</td><td>Right-censor at last GFI year — non-filing is not death</td></tr>
+        <tr><td>Firm confirmed deleted (datum_brisanja)</td><td>Event = exit; exit year = stečaj opening date if available, else datum_brisanja</td></tr>
+        <tr><td>Firm already zombie in 2002 (left-truncation)</td><td>Age covariate in Cox model; or restrict analysis to spells starting ≥ 2004 (first 3-year window possible from 2002 data)</td></tr>
+        <tr><td>Merger / acquisition</td><td>Censor at merger year or treat as a separate competing risk</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══ SURVIVAL SETUP ══ -->
+<section class="section" id="survival-setup">
+  <div class="section-eyebrow">R implementation</div>
+  <h2>Survival analysis setup</h2>
+
+  <div class="formula-block" style="white-space:pre-wrap">library(survival); library(survminer); library(mstate)
+
+# --- Kaplan-Meier zombie spell duration ---
+km <- survfit(
+  Surv(spell_length, event_recovery) ~ definition,
+  data = zombie_spells        # one row per zombie spell per firm
+)
+ggsurvplot(km, risk.table = TRUE, conf.int = TRUE,
+           palette = c("#2E5BA8","#8B1A1A","#3D7055","#8A5E00"),
+           break.time.by = 1, xlab = "Godina trajanja zombi-spelle")
+
+# --- Multi-state (healthy / zombie / exit) ---
+# tmat: transition matrix (3x3, NA for impossible transitions)
+tmat <- transMat(x = list(c(2,3), c(1,3), c()), names = c("Healthy","Zombie","Exit"))
+msdata <- msprep(time = c(NA,"t_zombie","t_exit"),
+                 status = c(NA,"zombie_event","exit_event"),
+                 data = firm_panel, id = "subjecttaxnoid",
+                 trans = tmat)
+fit_ms <- msfit(coxph(Surv(Tstart,Tstop,status) ~ strata(trans),
+                      data = msdata, method = "breslow"),
+                trans = tmat)
+# --- Annual transition probability matrix ---
+pt <- probtrans(fit_ms, predt = 0)   # P(state j at t | state i at t=0)</div>
+
+  <p>For the headline LinkedIn statistic — <em>prosječni zombi traje X godina</em> — use median spell length from Kaplan-Meier across all definitions. Report the range across definitions as the robustness bar. The KM curve itself, showing that recovery probability flattens near-zero after year 3–4, is the companion visual to the median.</p>
+
+  <div class="callout">
+    <span class="callout-label"><strong>Reporting the transition matrix</strong></span>
+    The annual transition probability table (Healthy → Zombie, Zombie → Zombie, Zombie → Exit, Zombie → Healthy) is the post's second headline finding. Banerjee &amp; Hofmann (2018) found the "stay zombie" probability rose from 60% in the late 1980s to 85% by 2016 for listed firms in 14 advanced economies. Croatia's probability for the same metric — on a mostly-unlisted, enforcement-weak system — is the number this post will own.
+  </div>
+</section>
+
+</main>
+</div>
