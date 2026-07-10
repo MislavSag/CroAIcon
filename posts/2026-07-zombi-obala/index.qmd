@@ -2,7 +2,9 @@
 title: "Zombi obala"
 subtitle: "Svaka četvrta u RH firma duguje više nego što ima imovine. Na Jadranu je skoro svaka treća takva. I takva situacija traje u prosjeku četiri godine."
 description: ""
-author: "Luka Šikić"
+author:
+  name: "Luka Šikić"
+  url: "https://www.lukasikic.info/"
 date: 2026-07-10
 categories: [gfi, zombi firme, insolventnost, financije]
 draft: false
