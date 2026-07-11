@@ -20,9 +20,39 @@ Ideas that cleared the playbook and are ready to draft.
   end with Maddison 2023 or PWT 10.01 (both already wired in via `R/get_maddison.R`,
   `R/get_pwt.R`). Angle: growth happened, convergence didn't.
 
+- **Gazela na jednu godinu.** Brzi rast se gotovo nikad ne ponavlja: repeat-rate gazela ~15 % prema
+  ~10 % slučaja, medijan spella 1 godina. Čisti povjereni stupci + `b110`. Kontrarno prema Gazele
+  nagradama i scale-up subvencijama. Effort mali. → `research/ideas/gazela-na-jednu-godinu.md`
+- **Giljotina iz 2015.** Obdukcija vala brisanja 2015-18 (sudreg API): ~80-90 % pobijenih bez
+  zaposlenih pri zadnjem GFI-ju, medijan 3-5 godina šutnje prije sječe. Presuda HOK vs ministarstvo.
+  Effort srednji. → `research/ideas/giljotina-2015.md`
+- **Tvrtka od jednog čovjeka.** ~Pola firmi osnovanih od 2012. nikad nikoga ne zaposli unutar 5
+  godina; time-to-first-hire po kohortama = prva duration evaluacija j.d.o.o. reforme. Effort
+  srednji (nosivi korak: audit 0-vs-NULL na `employeecounteop`). → `research/ideas/tvrtka-od-jednog-covjeka.md`
+- **Slavonija je izgubila ljude, a ne poslove.** Zaposlenost u firmama pet županija +10-20 % od
+  2013. uz ~−10 % stanovnika, a jaz prema nacionalnom rastu se ipak širi — dvostruka presuda
+  ("Slavonija umire" i "Projekt Slavonija"). Effort mali. → `research/ideas/slavonija-izgubila-ljude-ne-poslove.md`
+- **Sjedišta se sele.** Origin-destination matrica selidbi sjedišta 21×21, 2002-2024; headline
+  koridor Grad Zagreb ↔ prsten (prirez!). Static-to-flow reframe rasprave "Zagreb usisava".
+  Effort srednji. → `research/ideas/sjedista-se-sele.md`
+
 ## Parked
 
 Good ideas waiting on data, on a cleaner column, or on the right moment.
+
+- **Brainstorm 2026-07-11, near misses** (puni kontekst u kritičarevu izlazu; jedan redak po ideji):
+  - *Rođeni u krizi, kaljeni za život* (kohortno preživljenje) — treći survival objekt u istoj rundi; graditi kad sudreg harvest postoji.
+  - *Životni vijek hrvatske firme, pravno vs ekonomsko preživljenje* — najbolji sudreg follow-up, ali KM jezik kolidira s zombi-studijom ovog kvartala.
+  - *Kroz koja vrata umiru firme* — dugoročni door-mix; čeka enumeraciju šifri izlaska iz prvog harvesta (giljotina posjeduje 2015 event).
+  - *Mikro zauvijek / rođene male, ostale male* — druga tranzicijska matrica u rundi s gazelama; spojiti županijsku escape-rate kartu u nacionalni dizajn, iduća runda.
+  - *Uvezeni radnici, stara ekonomija* — blokirano na b110/b125 vintage rezoluciji; unpark čim DB sesija očisti prihod.
+  - *Minimalac je skočio 55 posto* — treba neauditirani division-level `nkd2007`; park do probe.
+  - *Euro je obećao investicijski val* — HRK→EUR restatement sjedi točno na 2023 breaku i može fakeati Δ`b002`; park do provjere revalorizacijskog šuma.
+  - *Obala rađa firme jedne vrste* — solidan kandidat iduće runde; obrt blind-spot najdublje reže baš ovdje.
+  - *IT zima na hrvatski način* — čisti IT rez treba `nkd2007` audit; paušalni kontraktori nevidljivi u GFI-ju.
+  - *Jedna firma, cijela županija* — najslabiji dinamički reframe; laki ljetni post ili fold u buduću koncentracijsku priču.
+  - *Kad div padne* — small-n anatomija slučajeva, editorial komad, ne mjereni broj.
+  - *Koliko se firmi stvarno rodilo* (coverage vs kreacija dekompozicija) — najvrjedniji metodološki komad; graditi nakon register harvesta kao infrastruktura-plus-post.
 
 - Anything resting on financial columns (revenue, profit, debt). Waiting on the GFI financial cleanup.
 - **Financije na razini firme. deset tema iz medija, sve Park dok GFI financijski stupci nisu pročišćeni.**
