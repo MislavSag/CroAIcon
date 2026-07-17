@@ -44,6 +44,12 @@ the site renders. There are three layers.
    `posts/_template.qmd`, which bakes the voice in: punchy, present tense, periods over
    colons, arrows over dashes, italics over quote marks, numbers lead.
 
+   Mislav-authored posts add one author-specific pass after the analytical draft and
+   before QA: the global `mislav-humanizer` skill. It preserves the house structure,
+   facts, numbers, sources, and `[KUT]` markers while adapting sentence rhythm and
+   register to Mislav Sagovac's public-facing analytical voice. Luka-authored posts do
+   not receive this pass unless Luka explicitly requests it.
+
 2. **Aesthetics (the look).** `assets/styles/styles.scss` is the entire visual identity
    — the "tihi podatkovni terminal otisnut na papiru": the Roboto Mono + Source Sans 3
    fonts, the paper/ink/accent palette, tables, the bracketed `[gfi]` category chips,

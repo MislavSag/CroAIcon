@@ -1,0 +1,123 @@
+---
+title: "Potpora za mnoge, novac za malobrojne"
+subtitle: "Provjereni iznos potpora izrazito je koncentriran među malim brojem primatelja"
+description: ""
+author:
+  name: "Mislav Sagovac"
+date: 2026-07-17
+categories: [državne potpore, firme, koncentracija, registar]
+draft: false
+jupyter: python3
+execute:
+  echo: false
+  warning: false
+---
+
+```{python}
+#| label: load-state-aid-facts
+from pathlib import Path
+import json
+import pandas as pd
+
+
+def project_root():
+    current = Path.cwd().resolve()
+    for candidate in [current, *current.parents]:
+        if (candidate / "_quarto.yml").exists() and (candidate / "outputs").exists():
+            return candidate
+    raise RuntimeError("Ne mogu pronaći korijen projekta.")
+
+
+def hr_number(value, digits=0):
+    raw = f"{float(value):,.{digits}f}"
+    return raw.replace(",", "X").replace(".", ",").replace("X", ".")
+
+
+def hr_pct(value, digits=1):
+    return f"{hr_number(value, digits)}%"
+
+
+def eur_billion(value, digits=2):
+    return f"{hr_number(float(value) / 1_000_000_000, digits)} mlrd. eura"
+
+
+def eur_million(value, digits=2):
+    return f"{hr_number(float(value) / 1_000_000, digits)} mil. eura"
+
+
+root = project_root()
+facts = json.loads(
+    (root / "outputs" / "facts" / "state_aid_concentration.json").read_text(
+        encoding="utf-8"
+    )
+)
+groups = pd.read_csv(root / "outputs" / "tables" / "state_aid_concentration_groups.csv")
+aid_types = pd.read_csv(root / "outputs" / "tables" / "state_aid_concentration_by_type.csv")
+sizes = pd.read_csv(root / "outputs" / "tables" / "state_aid_concentration_by_size.csv")
+
+
+def group(name):
+    return groups.loc[groups["group"] == name].iloc[0]
+
+
+def aid_type(starts_with):
+    return aid_types.loc[aid_types["aid_type"].str.startswith(starts_with)].iloc[0]
+
+
+top_one = group("Gornjih 1%")
+next_nine = group("Sljedećih 9%")
+bottom_ninety = group("Donjih 90%")
+de_minimis = aid_type("Program / pojedinačna potpora male vrijednosti")
+ec_notification = aid_type(
+    "Program / pojedinačna državne potpora za koju postoji obveza prijave"
+)
+sgei_exempt = aid_type(
+    "Program / pojedinačna državne potpora za obavljanje usluga od općeg gospodarskog interesa izuzetog"
+)
+unknown_size = sizes.loc[sizes["company_size"] == "Nepoznato"].iloc[0]
+```
+
+Hrvatski Registar državnih potpora i potpora male vrijednosti u razdoblju 2017. do 2025. bilježi `{python} hr_number(facts["included_awards_all"])` pozitivne i provjerene dodjele. Njihov registrirani iznos elementa potpore doseže `{python} eur_billion(facts["included_amount_all_eur"])`.
+
+To zvuči kao široka mreža. No broj dodjela i raspodjela iznosa nisu ista priča. Odgovorimo tko nosi ukupni iznos. Za to nam treba valjani OIB primatelja, pa u usporedbi ostaje `{python} hr_number(facts["award_count_oib"])` dodjela, `{python} hr_number(facts["recipient_count"])` primatelja i `{python} eur_billion(facts["amount_eur"])`.
+
+## Gornjih 1% primatelja dobiva gotovo tri četvrtine iznosa
+
+![Raspodjela provjerenog iznosa elementa potpore po skupinama primatelja.](images/state-aid-concentration-groups.png)
+
+Na vrhu je `{python} hr_number(facts["top_1_recipient_count"])` primatelja. Zajedno nose `{python} eur_billion(facts["top_1_amount_eur"])`, odnosno **`{python} hr_pct(facts["top_1_amount_share_pct"])`** ukupnog iznosa. Sljedećih 9% primatelja dobiva još **`{python} hr_pct(next_nine["amount_share_pct"])`**. Za donjih 90% ostaje **`{python} hr_pct(bottom_ninety["amount_share_pct"])`**, ili `{python} eur_million(bottom_ninety["amount_eur"])`.
+
+Vrh je uzak i unutar gornjeg postotka. Deset najvećih primatelja nosi **`{python} hr_pct(facts["top_10_entities_share_pct"])`** ukupnog iznosa. Istodobno, medijalni kumulativni iznos po primatelju tijekom devet godina iznosi `{python} hr_number(facts["median_recipient_amount_eur"])` eura.
+
+<!-- [KUT] Ovdje odabrati urednički smjer. Je li važnije otvoriti pitanje kriterija za velike dodjele ili ostati na deskriptivnoj poruci da broj korisnika skriva raspodjelu iznosa? -->
+
+## Veliki primatelji dobivaju više kroz mnogo manje dodjela
+
+![Registrirani iznos elementa potpore po veličini primatelja.](images/state-aid-concentration-size.png)
+
+Dodjele označene kategorijom *Veliki* nose `{python} eur_billion(facts["large_amount_eur"])`. Dodjele mikroprimateljima nose `{python} eur_billion(facts["micro_amount_eur"])`. Omjer iznosa je **`{python} hr_number(facts["large_amount_eur"] / facts["micro_amount_eur"], 1)` prema 1**, ali nastaje kroz `{python} hr_number(facts["large_award_count"])` dodjela. Mikroprimatelji ih imaju `{python} hr_number(facts["micro_award_count"])`, odnosno **`{python} hr_number(facts["micro_award_count"] / facts["large_award_count"], 1)` na svaku dodjelu velikom primatelju**.
+
+Razlika po jednoj dodjeli zato je mnogo veća. Prosječna dodjela velikom primatelju iznosi `{python} hr_number(facts["large_average_award_eur"] / 1_000, 0)` tisuća eura, a mikroprimatelju `{python} hr_number(facts["micro_average_award_eur"] / 1_000, 0)` tisuća. Omjer je **`{python} hr_number(facts["large_to_micro_average_award_ratio"], 1)` puta**.
+
+Kategorija *Nepoznato* na slici nije fusnota. Usporedba velikih i mikroprimatelja vrijedi samo za dodjele kojima je veličina označena, a puni obuhvat je u *Napomenama*.
+
+## Različite vrste potpora proizvode različite raspodjele
+
+Dio koncentracije dolazi iz same konstrukcije registra. U istoj tablici stoje mali i česti instrumenti te veliki programi s malim brojem dodjela. Opća potpora male vrijednosti broji `{python} hr_number(de_minimis["award_count"])` dodjela i `{python} eur_million(de_minimis["amount_eur"], 0)`. Državne potpore koje se prijavljuju Europskoj komisiji imaju samo `{python} hr_number(ec_notification["award_count"])` dodjela, ali nose `{python} eur_billion(ec_notification["amount_eur"])`.
+
+Još je izraženiji primjer potpora za usluge od općeg gospodarskog interesa koje su izuzete od prijave Komisiji. Njih je `{python} hr_number(sgei_exempt["award_count"])`, a iznos im je `{python} eur_billion(sgei_exempt["amount_eur"])`. Koncentracija zato ne govori sama po sebi jesu li dodjele opravdane, učinkovite ili pravedne. Govori da nekoliko vrsta programa i mali broj primatelja određuju ukupnu sliku.
+
+<!-- [KUT — glavna interpretacija] Želiš li završetak zaoštriti prema transparentnosti velikih shema ili ostaviti na metodološkoj poruci da broj korisnika i iznos mjere dvije različite stvari? -->
+
+Javna rasprava lako prebroji korisnike i zaključi da je sustav širok. Registar pokazuje precizniju sliku. Potpore jesu široke po broju dodjela, ali su uske po raspodjeli iznosa. Sljedeći korak zato nije još jedno prebrojavanje korisnika, nego zasebna analiza najvećih programa, njihovih ciljeva i rezultata.
+
+## Napomene
+
+- Izvor. [Registar državnih potpora i potpora male vrijednosti](https://rdp.gov.hr/javno), snimka dovršena `{python} facts["source_snapshot_completed_at"]`. Registar vodi Ministarstvo financija, a davatelji odgovaraju za pravodoban i točan unos podataka. Obuhvat od 2017. opisan je na [stranici Ministarstva financija](https://mfin.gov.hr/istaknute-teme/koncesije-i-drzavne-potpore/drzavne-potpore/objava-podataka-o-dodijeljenim-drzavnim-potporama-i-potporama-male-vrijednosti/3555).
+- Tablica. `odvjet12_znalac.state_aid_awards`, objavljena snimka izvora `croatian_state_aid_register`.
+- Stupci. `recipient_oib`, `awarded_at`, `gross_amount_eur`, `verification_status`, `company_size` i `aid_type`.
+- Obuhvat. Dodjele od 2017. do 2025. sa statusom `Ispravan` i pozitivnim `gross_amount_eur`. Koncentracija po primatelju i rezovi po veličini koriste samo valjane jedanaesteroznamenkaste OIB-e. Zato obuhvaćaju `{python} hr_number(facts["included_awards_valid_oib"])` od `{python} hr_number(facts["included_awards_all"])` uključenih dodjela.
+- Iznos. `gross_amount_eur` odgovara javnom polju *Iznos elementa potpore – EUR*. To nije nužno iznos isplaćenog proračunskog novca niti mjera učinka potpore.
+- Provjera. Retci sa statusom `Upozorenje` nisu uključeni. Među njima je najveći pozitivni zapis od `{python} eur_billion(facts["excluded_warning_max_eur"])`, pa bi njihovo uključivanje poništilo smisao usporedbe.
+- Veličina. Kategorija `company_size` odnosi se na pojedinu dodjelu. Primatelj kroz razdoblje može promijeniti kategoriju. Za `{python} hr_number(unknown_size["award_count"])` dodjela veličina nije poznata, a njihov iznos doseže `{python} eur_billion(unknown_size["amount_eur"])`.
+- Skripte. `python/state_aid_concentration_build.py` i `R/state_aid_concentration_charts.R`. Agregirani rezultati su u `outputs/facts/state_aid_concentration.json` i `outputs/tables/state_aid_concentration_*.csv`.

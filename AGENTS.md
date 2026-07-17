@@ -6,6 +6,7 @@ This is the shared brain for the blog. Codex reads it from the repo root. Claude
 **Mission.** Cut the distance from data to insight. Posts are short, purposeful, atractive and reproducible. Aimed to general public, even though hard core economics in the background.
 **Stack.** R and Python for analysis and charts. Quarto for the site and the posts. Git for everything.
 **Authors.** [Luka Sikic] on Claude Code. Mislav Sagovac on Codex.
+**Author voice.** For posts authored by Mislav Sagovac, run the finished analytical draft through the global `mislav-humanizer` skill before QA. It adapts the prose to Mislav's public-facing analytical voice without changing facts, numbers, citations, `[KUT]` markers, or house-style constraints. Do not apply it to Luka Sikic's posts unless Luka explicitly asks.
 
 **New here?** Read `_workflow/how-it-works.md` first. It maps the whole machine in one page. How a post gets its voice, its look, and its charts, how content flows from a topic to a published post, and how the two tools share one brain.
 
