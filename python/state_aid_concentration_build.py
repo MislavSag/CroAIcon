@@ -1,9 +1,11 @@
 """Build aggregate outputs for the Croatian state-aid concentration post.
 
 The script reads the published Croatian State Aid Register snapshot from
-`odvjet12_znalac`, keeps only verified positive awards in complete years
-2017 to 2025, and writes aggregate outputs. It never writes recipient names,
-OIBs, or other row-level identifiers.
+`odvjet12_znalac`, keeps only verified positive awards, and writes aggregate
+outputs for the 2017 to 2025 observed register universe, the 2021 to 2023
+official-total coverage audit, within-type concentration, and 2023 to 2024
+recipient recurrence. It never writes recipient names, OIBs, or other
+row-level identifiers.
 """
 
 from __future__ import annotations
@@ -39,6 +41,9 @@ def project_root() -> Path:
 ROOT = project_root()
 TABLE_DIR = ROOT / "outputs" / "tables"
 FACT_DIR = ROOT / "outputs" / "facts"
+OFFICIAL_TOTALS_PATH = (
+    ROOT / "data" / "reference" / "mfin_state_aid_official_totals_2021_2023.csv"
+)
 
 
 def load_env_file(path: Path) -> None:
@@ -133,17 +138,152 @@ def published_snapshot(conn: pymysql.connections.Connection) -> dict[str, Any]:
     )
 
 
-def base_filter(valid_oib: bool = False) -> str:
+def base_filter(
+    valid_oib: bool = False,
+    start_year: int = START_YEAR,
+    end_year: int = END_YEAR,
+) -> str:
     clauses = [
         "snapshot_id = %s",
         "verification_status = 'Ispravan'",
         "gross_amount_eur > 0",
-        f"LEFT(awarded_at, 4) BETWEEN '{START_YEAR}' AND '{END_YEAR}'",
+        f"LEFT(awarded_at, 4) BETWEEN '{start_year}' AND '{end_year}'",
         "awarded_at REGEXP '^[0-9]{4}-[0-9]{2}-[0-9]{2}'",
     ]
     if valid_oib:
         clauses.append("recipient_oib REGEXP '^[0-9]{11}$'")
     return " AND ".join(clauses)
+
+
+def coverage_output(
+    conn: pymysql.connections.Connection,
+    snapshot_id: int,
+) -> pd.DataFrame:
+    registry = query_frame(
+        conn,
+        f"""
+        SELECT CAST(LEFT(awarded_at, 4) AS UNSIGNED) AS year,
+               COUNT(*) AS registry_award_count_all,
+               SUM(gross_amount_eur) AS registry_amount_all_eur,
+               SUM(recipient_oib REGEXP '^[0-9]{{11}}$') AS registry_award_count_valid_oib,
+               SUM(CASE WHEN recipient_oib REGEXP '^[0-9]{{11}}$'
+                        THEN gross_amount_eur ELSE 0 END) AS registry_amount_valid_oib_eur
+        FROM {SOURCE_SCHEMA}.{SOURCE_TABLE}
+        WHERE {base_filter(valid_oib=False, start_year=2021, end_year=2023)}
+        GROUP BY CAST(LEFT(awarded_at, 4) AS UNSIGNED)
+        ORDER BY year
+        """,
+        (snapshot_id,),
+    )
+    official = pd.read_csv(OFFICIAL_TOTALS_PATH)
+    coverage = official.merge(registry, on="year", how="left", validate="one_to_one")
+    amount_columns = [
+        "official_total_amount_eur",
+        "registry_amount_all_eur",
+        "registry_amount_valid_oib_eur",
+    ]
+    for column in amount_columns:
+        coverage[column] = coverage[column].astype(float)
+    coverage["registry_to_official_pct"] = (
+        coverage["registry_amount_all_eur"]
+        / coverage["official_total_amount_eur"]
+        * 100
+    )
+    coverage["analytical_to_official_pct"] = (
+        coverage["registry_amount_valid_oib_eur"]
+        / coverage["official_total_amount_eur"]
+        * 100
+    )
+    return coverage
+
+
+def aid_type_concentration_output(
+    conn: pymysql.connections.Connection,
+    snapshot_id: int,
+) -> pd.DataFrame:
+    recipient_type = query_frame(
+        conn,
+        f"""
+        SELECT COALESCE(aid_type, 'Nepoznato') AS aid_type,
+               recipient_oib,
+               COUNT(*) AS award_count,
+               SUM(gross_amount_eur) AS amount_eur
+        FROM {SOURCE_SCHEMA}.{SOURCE_TABLE}
+        WHERE {base_filter(valid_oib=True)}
+        GROUP BY COALESCE(aid_type, 'Nepoznato'), recipient_oib
+        """,
+        (snapshot_id,),
+    )
+    recipient_type["amount_eur"] = recipient_type["amount_eur"].astype(float)
+
+    rows: list[dict[str, Any]] = []
+    total_amount = float(recipient_type["amount_eur"].sum())
+    for aid_type, group in recipient_type.groupby("aid_type", sort=False):
+        ranked = group.sort_values("amount_eur", ascending=False).reset_index(drop=True)
+        recipient_count = len(ranked)
+        top_1_count = math.ceil(recipient_count * 0.01)
+        amount_eur = float(ranked["amount_eur"].sum())
+        top_1_amount = float(ranked.head(top_1_count)["amount_eur"].sum())
+        rows.append(
+            {
+                "aid_type": aid_type,
+                "recipient_count": recipient_count,
+                "award_count": int(ranked["award_count"].sum()),
+                "amount_eur": amount_eur,
+                "amount_share_pct": amount_eur / total_amount * 100,
+                "top_1_recipient_count": top_1_count,
+                "top_1_amount_eur": top_1_amount,
+                "top_1_amount_share_pct": top_1_amount / amount_eur * 100,
+                "median_recipient_amount_eur": float(ranked["amount_eur"].median()),
+            }
+        )
+    output = pd.DataFrame(rows).sort_values("amount_eur", ascending=False).reset_index(drop=True)
+    output["display_order"] = np.arange(1, len(output) + 1)
+    return output
+
+
+def recurrence_output(
+    conn: pymysql.connections.Connection,
+    snapshot_id: int,
+) -> pd.DataFrame:
+    recipients = query_frame(
+        conn,
+        f"""
+        SELECT recipient_oib,
+               COUNT(DISTINCT CAST(LEFT(awarded_at, 4) AS UNSIGNED)) AS active_year_count,
+               COUNT(*) AS award_count,
+               SUM(gross_amount_eur) AS amount_eur
+        FROM {SOURCE_SCHEMA}.{SOURCE_TABLE}
+        WHERE {base_filter(valid_oib=True, start_year=2023, end_year=2024)}
+        GROUP BY recipient_oib
+        """,
+        (snapshot_id,),
+    )
+    recipients["amount_eur"] = recipients["amount_eur"].astype(float)
+    recipients["recurrence_group"] = np.where(
+        recipients["active_year_count"] >= 2,
+        "Obje godine",
+        "Jedna godina",
+    )
+    output = (
+        recipients.groupby("recurrence_group", as_index=False)
+        .agg(
+            recipient_count=("recipient_oib", "size"),
+            award_count=("award_count", "sum"),
+            amount_eur=("amount_eur", "sum"),
+        )
+    )
+    output["recipient_share_pct"] = (
+        output["recipient_count"] / output["recipient_count"].sum() * 100
+    )
+    output["amount_share_pct"] = output["amount_eur"] / output["amount_eur"].sum() * 100
+    output["average_amount_per_recipient_eur"] = (
+        output["amount_eur"] / output["recipient_count"]
+    )
+    output["display_order"] = output["recurrence_group"].map(
+        {"Jedna godina": 1, "Obje godine": 2}
+    )
+    return output.sort_values("display_order")
 
 
 def gini(values: np.ndarray) -> float:
@@ -352,8 +492,13 @@ def write_facts(
     concentration: dict[str, Any],
     validation: dict[str, Any],
     categories: dict[str, pd.DataFrame],
+    coverage: pd.DataFrame,
+    aid_type_concentration: pd.DataFrame,
+    recurrence: pd.DataFrame,
 ) -> dict[str, Any]:
     size = categories["size"].set_index("company_size")
+    coverage_by_year = coverage.set_index("year")
+    recurrence_by_group = recurrence.set_index("recurrence_group")
     facts: dict[str, Any] = {
         "period_start": START_YEAR,
         "period_end": END_YEAR,
@@ -366,6 +511,45 @@ def write_facts(
         "source_snapshot_completed_at": validation["snapshot_completed_at"],
         "source_uri": validation["source_uri"],
     }
+    for year in [2021, 2022, 2023]:
+        if year not in coverage_by_year.index:
+            raise RuntimeError(f"Missing coverage year: {year}")
+        row = coverage_by_year.loc[year]
+        facts[f"coverage_{year}_official_amount_eur"] = float(
+            row["official_total_amount_eur"]
+        )
+        facts[f"coverage_{year}_registry_amount_all_eur"] = float(
+            row["registry_amount_all_eur"]
+        )
+        facts[f"coverage_{year}_analytical_amount_eur"] = float(
+            row["registry_amount_valid_oib_eur"]
+        )
+        facts[f"coverage_{year}_registry_to_official_pct"] = float(
+            row["registry_to_official_pct"]
+        )
+        facts[f"coverage_{year}_analytical_to_official_pct"] = float(
+            row["analytical_to_official_pct"]
+        )
+
+    for group, prefix in [("Jedna godina", "one_year"), ("Obje godine", "both_years")]:
+        if group not in recurrence_by_group.index:
+            raise RuntimeError(f"Missing recurrence group: {group}")
+        row = recurrence_by_group.loc[group]
+        facts[f"{prefix}_recipient_count"] = int(row["recipient_count"])
+        facts[f"{prefix}_recipient_share_pct"] = float(row["recipient_share_pct"])
+        facts[f"{prefix}_amount_eur"] = float(row["amount_eur"])
+        facts[f"{prefix}_amount_share_pct"] = float(row["amount_share_pct"])
+
+    major_types = aid_type_concentration.loc[
+        aid_type_concentration["amount_share_pct"] >= 10
+    ].copy()
+    facts["major_aid_type_count"] = int(len(major_types))
+    facts["major_aid_type_top_1_share_min_pct"] = float(
+        major_types["top_1_amount_share_pct"].min()
+    )
+    facts["major_aid_type_top_1_share_max_pct"] = float(
+        major_types["top_1_amount_share_pct"].max()
+    )
     for label, prefix in [("Veliki", "large"), ("Mikro", "micro")]:
         if label not in size.index:
             raise RuntimeError(f"Missing company-size category: {label}")
@@ -394,6 +578,9 @@ def main() -> None:
         snapshot_id = int(snapshot["snapshot_id"])
         groups, concentration = concentration_outputs(conn, snapshot_id)
         categories = category_outputs(conn, snapshot_id)
+        coverage = coverage_output(conn, snapshot_id)
+        aid_type_concentration = aid_type_concentration_output(conn, snapshot_id)
+        recurrence = recurrence_output(conn, snapshot_id)
         validation_frame, validation = validation_output(conn, snapshot)
     finally:
         conn.close()
@@ -428,7 +615,29 @@ def main() -> None:
         index=False,
         encoding="utf-8-sig",
     )
-    facts = write_facts(concentration, validation, categories)
+    coverage.to_csv(
+        TABLE_DIR / "state_aid_coverage_comparison.csv",
+        index=False,
+        encoding="utf-8-sig",
+    )
+    aid_type_concentration.to_csv(
+        TABLE_DIR / "state_aid_concentration_within_type.csv",
+        index=False,
+        encoding="utf-8-sig",
+    )
+    recurrence.to_csv(
+        TABLE_DIR / "state_aid_recipient_recurrence_2023_2024.csv",
+        index=False,
+        encoding="utf-8-sig",
+    )
+    facts = write_facts(
+        concentration,
+        validation,
+        categories,
+        coverage,
+        aid_type_concentration,
+        recurrence,
+    )
 
     print(
         "OK - state aid concentration outputs saved | "

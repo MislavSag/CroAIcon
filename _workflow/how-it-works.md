@@ -44,11 +44,14 @@ the site renders. There are three layers.
    `posts/_template.qmd`, which bakes the voice in: punchy, present tense, periods over
    colons, arrows over dashes, italics over quote marks, numbers lead.
 
-   Mislav-authored posts add one author-specific pass after the analytical draft and
-   before QA: the global `mislav-humanizer` skill. It preserves the house structure,
-   facts, numbers, sources, and `[KUT]` markers while adapting sentence rhythm and
-   register to Mislav Sagovac's public-facing analytical voice. Luka-authored posts do
-   not receive this pass unless Luka explicitly requests it.
+   Mislav-authored posts add one author-specific pass after the analytical draft: the
+   global `mislav-humanizer` skill. It preserves facts, numbers, sources, limits, and
+   `[KUT]` markers while adapting sentence rhythm and register to Mislav Sagovac's
+   public-facing analytical voice. House style still governs evidence and chart quality,
+   but does not force a short format or a fixed number of figures. `qa-post` does not run
+   on Mislav-authored posts unless Mislav explicitly requests it. Script reruns, chart
+   inspection, provenance checks, and Quarto rendering remain mandatory. Luka-authored
+   posts do not receive this workflow unless Luka explicitly requests it.
 
 2. **Aesthetics (the look).** `assets/styles/styles.scss` is the entire visual identity
    — the "tihi podatkovni terminal otisnut na papiru": the Roboto Mono + Source Sans 3
