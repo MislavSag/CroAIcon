@@ -1,11 +1,12 @@
 ---
 title: "Potpora za mnoge, novac za malobrojne"
-subtitle: "Koncentracija ostaje visoka i kada se primatelji usporede unutar glavnih vrsta potpora"
-description: ""
+subtitle: "Raspodjela po primateljima kao dimenzija koju godišnja izvješća o potporama ne prikazuju"
+description: "Godišnja izvješća pokazuju koliko je potpora dodijeljeno i kroz koje vrste. Ovdje mjerimo dimenziju koju ne prikazuju, kako se iznosi dijele među primateljima."
 author:
   name: "Mislav Sagovac"
 date: 2026-07-17
-categories: [državne potpore, firme, koncentracija, registar]
+date-modified: 2026-07-21
+categories: [državne potpore, firme, koncentracija, registar, transparentnost, NPOO, EU pravila]
 draft: false
 jupyter: python3
 execute:
@@ -96,17 +97,25 @@ major_within_types = within_types.loc[within_types["amount_share_pct"] >= 10]
 major_type_amount_share = major_within_types["amount_share_pct"].sum()
 ```
 
-Koliko su državne potpore u Hrvatskoj doista raspršene među primateljima? Naizgled jednostavno pitanje prvo traži provjeru podataka. [Godišnje izvješće Ministarstva financija za 2023.](https://mfin.gov.hr/UserDocsImages/dokumenti/koncesije-dp/izvjesca/Godi%C5%A1nje%20izvje%C5%A1%C4%87e%20o%20dr%C5%BEavnim%20potporama%202023.pdf) navodi `{python} eur_billion(facts["coverage_2023_official_amount_eur"])` potpora. Današnja snimka javnog registra za istu godinu sadrži `{python} eur_billion(facts["coverage_2023_registry_amount_all_eur"])`, odnosno `{python} hr_pct(facts["coverage_2023_registry_to_official_pct"])` službenog iznosa.
+Tri datuma iz ove godine. Registar državnih potpora dobio je 7. siječnja [novu javnu e-uslugu](https://gov.hr/hr/nova-usluga-registar-drzavnih-potpora-i-potpora-male-vrijednosti/2799?lang=hr) na platformi e-Građani, uz službeni opis koji govori o *centraliziranom evidentiranju i praćenju* dodijeljenih potpora. Trinaest dana kasnije saborski Odbor za financije i državni proračun [raspravio je](https://www.sabor.hr/hr/radna-tijela/odbori-i-povjerenstva/izvjesce-odbora-za-financije-i-drzavni-proracun-s-rasprave-o-282) Godišnje izvješće o državnim potporama za 2024., a Sabor ga je prihvatio 20. veljače. Komisija je 3. lipnja objavila [Izvješće o Hrvatskoj za 2026.](https://economy-finance.ec.europa.eu/economic-surveillance-eu-member-states/country-pages-including-country-reports/country-report-croatia_en) u sklopu Europskog semestra.
+
+Sva ta izvješća odgovaraju na pitanja koliko je potpora dodijeljeno i kroz koje vrste. Nijedno ne prikazuje kako se iznosi dijele među primateljima. Ovaj tekst mjeri upravo tu dimenziju.
+
+Koliko su, dakle, državne potpore u Hrvatskoj doista raspršene među primateljima? Naizgled jednostavno pitanje prvo traži provjeru podataka. [Godišnje izvješće Ministarstva financija za 2023.](https://mfin.gov.hr/UserDocsImages/dokumenti/koncesije-dp/izvjesca/Godi%C5%A1nje%20izvje%C5%A1%C4%87e%20o%20dr%C5%BEavnim%20potporama%202023.pdf) navodi `{python} eur_billion(facts["coverage_2023_official_amount_eur"])` potpora. Današnja snimka javnog registra za istu godinu sadrži `{python} eur_billion(facts["coverage_2023_registry_amount_all_eur"])`, odnosno `{python} hr_pct(facts["coverage_2023_registry_to_official_pct"])` službenog iznosa.
 
 Za raspodjelu po primateljima potreban je valjani OIB. U tom užem analitičkom obuhvatu za 2023. ostaje `{python} eur_billion(facts["coverage_2023_analytical_amount_eur"])`, ili `{python} hr_pct(facts["coverage_2023_analytical_to_official_pct"])` službenog iznosa. Odgovorimo stoga na preciznije pitanje. Kako je raspoređen novac u zapisima koje današnji registar omogućuje pouzdano povezati s primateljima, koliko rezultat ovisi o vrsti potpore i ponavljaju li se isti primatelji?
 
-## Prije raspodjele treba provjeriti obuhvat
+## Obuhvat javne snimke je mjerljiv, pa se napredak može pratiti
 
 ![Udio službenog godišnjeg iznosa koji se može reproducirati iz današnje snimke registra.](images/state-aid-coverage-audit.png)
 
-Za 2023. javni registar reproducira gotovo cijeli službeni iznos. Za 2022. reproducira `{python} hr_pct(facts["coverage_2022_registry_to_official_pct"])`, a za 2021. samo `{python} hr_pct(facts["coverage_2021_registry_to_official_pct"])`. Razlika nije mala statistička pogreška, nego promjena obuhvata za dva reda veličine.
+Registar sadrži podatke o potporama dodijeljenima od 1. siječnja 2017., a u siječnju 2026. dobio je novu javnu e-uslugu, uz opis koji obuhvaća centralizirano evidentiranje potpora triju davatelja. To je dobar trenutak da se obuhvat izmjeri i da mjerenje postane redovito.
+
+Za 2023. javni registar reproducira gotovo cijeli službeni iznos. Za 2022. reproducira `{python} hr_pct(facts["coverage_2022_registry_to_official_pct"])`, a za 2021. `{python} hr_pct(facts["coverage_2021_registry_to_official_pct"])`. Riječ je o razlici od dva reda veličine.
 
 Iz toga ne slijedi da starije potpore nikada nisu bile unesene. Slijedi samo da ih današnja javna snimka ne sadrži u opsegu na kojem je Ministarstvo temeljilo službeno izvješće. Zbroj zapisa od 2017. do 2025. zato nije hrvatski ukupni račun potpora za devet godina. On je analitički uzorak za proučavanje raspodjele unutar danas vidljivog dijela registra.
+
+Mjerenje obuhvata zato ne čitamo kao prigovor, nego kao polaznu točku prema kojoj se napredak registra može pratiti iz godine u godinu. Objava ranijih godina u istoj javnoj snimci prirodan je nastavak siječanjskog osvježenja usluge i jedini korak potreban da usporedba postane rutinska.
 
 ## Gornjih 1% primatelja nosi gotovo tri četvrtine iznosa
 
@@ -118,15 +127,17 @@ Sljedećih 9% primatelja dobiva još **`{python} hr_pct(next_nine["amount_share_
 
 Koncentracija postoji i unutar samog vrha. Deset najvećih primatelja nosi **`{python} hr_pct(facts["top_10_entities_share_pct"])`**, dok medijalni kumulativni iznos po primatelju iznosi `{python} hr_number(facts["median_recipient_amount_eur"])` eura. Ginijev koeficijent raspodjele iznosi `{python} hr_number(facts["gini"], 3)`, vrlo blizu gornjoj granici od 1. Ovdje nije riječ o maloj asimetriji, nego o raspodjeli u kojoj ukupni iznos određuje relativno uzak vrh.
 
-<!-- [KUT] Treba li glavnu interpretaciju usmjeriti prema transparentnosti najvećih shema ili prema razlici između broja korisnika i raspodjele iznosa? -->
+Takva raspodjela ima nekoliko uobičajenih izvora. Dio iznosa nose velike pojedinačne mjere, dio redovite godišnje naknade za javne usluge, a dio krizni programi u kojima nekoliko velikih poduzeća po prirodi mjere nosi glavninu iznosa. Odjeljci koji slijede razdvajaju te mehanizme.
 
 ## Broj dodjela i iznos mjere različite dijelove sustava
 
 ![Udio pojedinih vrsta potpora u broju dodjela i promatranom iznosu.](images/state-aid-type-count-versus-amount.png)
 
-Potpore male vrijednosti čine `{python} hr_pct(de_minimis["award_share_pct"])` svih promatranih dodjela, ali `{python} hr_pct(de_minimis["amount_share_pct"])` iznosa. Nasuprot tome, potpore za koje postoji obveza prijave Europskoj komisiji čine samo `{python} hr_pct(ec_notification["award_share_pct"])` dodjela i čak `{python} hr_pct(ec_notification["amount_share_pct"])` iznosa.
+Potpore male vrijednosti čine `{python} hr_pct(de_minimis["award_share_pct"])` svih promatranih dodjela, ali `{python} hr_pct(de_minimis["amount_share_pct"])` iznosa. Nasuprot tome, potpore za koje postoji obveza prijave Europskoj komisiji čine samo `{python} hr_pct(ec_notification["award_share_pct"])` dodjela i `{python} hr_pct(ec_notification["amount_share_pct"])` iznosa.
 
 Razlika je još izraženija kod usluga od općeg gospodarskog interesa izuzetih od prijave Komisiji. Njihovih `{python} hr_number(sgei_exempt["award_count"])` dodjela predstavlja `{python} hr_pct(sgei_exempt["award_share_pct"])` broja, ali `{python} hr_pct(sgei_exempt["amount_share_pct"])` iznosa. Sam broj dodjela zato sustav prikazuje kao mnoštvo malih intervencija. Iznos pokazuje da nekoliko regulatornih kategorija nosi najveći dio novca.
+
+Promatrani prozor uključuje godine energetske krize, što taj raspored dijelom objašnjava. Komisija je u ožujku 2022. donijela privremeni krizni okvir, a u ožujku 2023. [privremeni krizni i tranzicijski okvir](https://competition-policy.ec.europa.eu/state-aid/legislation/temporary-crisis-and-transition-framework_en), pod kojima su države članice odobravale velike iznose kroz razmjerno mali broj mjera. Taj je obrazac u ostatku Unije izraženiji nego u Hrvatskoj. Prema [pregledu Komisije](https://competition-policy.ec.europa.eu/system/files/2023-07/state_aid_brief_1_2023_kdam23001enn_TCTF_survey_0.pdf), u 2022. su dva njemačka energetska poduzeća nosila 75% svih kriznih potpora stvarno dodijeljenih u EU-u, dok su Hrvatska i Rumunjska više od 80% svojih kriznih potpora dale kroz jamstva za kredite.
 
 ## Koncentracija nije samo posljedica miješanja različitih programa
 
@@ -136,6 +147,8 @@ Razlika je još izraženija kod usluga od općeg gospodarskog interesa izuzetih 
 
 To je važan test. Ukupna koncentracija nije samo statistička posljedica toga što su u istoj tablici spojene sitne *de minimis* potpore i veliki pojedinačni programi. Visoka koncentracija ostaje vidljiva i kada se primatelji usporede unutar iste vrste potpore. Za kategoriju usluga od općeg gospodarskog interesa pritom postoji samo `{python} hr_number(sgei_exempt["recipient_count"])` primatelja, pa se gornjih 1% nužno zaokružuje na jednog primatelja.
 
+Ovaj rez brojčano opisuje ono što OECD u [Ekonomskom pregledu Hrvatske za 2026.](https://www.oecd.org/en/publications/oecd-economic-surveys-croatia-2026_b52e3ac0-en.html) iznosi kao strukturnu činjenicu. Poduzeća u državnom vlasništvu drže imovinu vrijednu oko 45% BDP-a i oko 4% zaposlenosti, udjele znatno više nego u većini zemalja OECD-a i usporedivih ekonomija. Gdje je državni sektor poduzeća velik, koncentracija primatelja unutar pojedine vrste potpore očekivana je posljedica strukture vlasništva, a ne iznenađenje.
+
 ## Veliki primatelji dobivaju više kroz mnogo manje dodjela
 
 ![Registrirani iznos elementa potpore po veličini primatelja.](images/state-aid-concentration-size.png)
@@ -143,6 +156,10 @@ To je važan test. Ukupna koncentracija nije samo statistička posljedica toga �
 Dodjele označene kategorijom *Veliki* nose `{python} eur_billion(facts["large_amount_eur"])`, a dodjele mikroprimateljima `{python} eur_billion(facts["micro_amount_eur"])`. Veliki primatelji taj iznos ostvaruju kroz `{python} hr_number(facts["large_award_count"])` dodjela. Mikroprimatelji ih imaju `{python} hr_number(facts["micro_award_count"])`, odnosno `{python} hr_number(facts["micro_award_count"] / facts["large_award_count"], 1)` na svaku dodjelu velikom primatelju.
 
 Prosječna dodjela u kategoriji *Veliki* iznosi `{python} hr_number(facts["large_average_award_eur"] / 1_000, 0)` tisuća eura. U kategoriji *Mikro* iznosi `{python} hr_number(facts["micro_average_award_eur"] / 1_000, 0)` tisuća. Omjer je **`{python} hr_number(facts["large_to_micro_average_award_ratio"], 1)` puta**. Međutim, kategorija veličine nije poznata za sve dodjele, pa ovaj rez treba čitati zajedno s ograničenjem u *Napomenama*.
+
+Dio tog omjera ugrađen je u dizajn programa. [Zakon o poticanju ulaganja](https://www.zakon.hr/z/829/zakon-o-poticanju-ulaganja) potporu za kapitalne troškove veže uz ulaganje od najmanje 5 milijuna eura i 50 novih radnih mjesta, a *velikim projektom ulaganja* smatra ulaganje iznad 50 milijuna eura. [NPOO poziv za tranziciju na energetski i resursno učinkovito gospodarstvo](https://fondovieu.gov.hr/pozivi/108) ide od 70 tisuća do 4,6 milijuna eura po projektu. [Javni poziv Ministarstva turizma i sporta](https://mint.gov.hr/javni-pozivi-i-natjecaji-11414/t-u-r-i-z-a-m/22181) od 3. srpnja 2026. postavljen je obrnuto, s gornjom granicom od 2 do 40 tisuća eura po projektu. Prosječna dodjela zato dijelom mjeri kome je program namijenjen, a ne samo tko mu je uspio pristupiti.
+
+Objava očekivane strukture primatelja uz svaki novi poziv, primjerice raspona iznosa i ciljane veličine korisnika, omogućila bi čitatelju da dizajn od pristupa razdvoji unaprijed.
 
 ## Primatelji koji se ponavljaju nose dvije trećine iznosa
 
@@ -152,6 +169,16 @@ Za provjeru ponavljanja koristimo uži prozor 2023. i 2024. Među primateljima v
 
 Primatelji prisutni samo u jednoj godini prosječno nose `{python} hr_number(one_year["average_amount_per_recipient_eur"] / 1_000, 0)` tisuća eura. Oni prisutni u obje godine nose `{python} hr_number(both_years["average_amount_per_recipient_eur"] / 1_000, 0)` tisuća, ili `{python} hr_number(both_years["average_amount_per_recipient_eur"] / one_year["average_amount_per_recipient_eur"], 1)` puta više po primatelju. Ponavljanje može nastati zbog višegodišnjih programa, redovitih naknada za javne usluge ili novih dodjela istim poduzećima. Bez povezivanja s konkretnim programom ne može se utvrditi koji mehanizam prevladava.
 
+Jedan dio ponavljanja pritom nije nalaz. Naknada za obavljanje usluga od općeg gospodarskog interesa godišnja je po svojoj prirodi, pa je pojavljivanje istih primatelja na samom vrhu očekivano. Zanimljivije je ponavljanje u sredini raspodjele, među običnim firmama, gdje nije riječ o naknadi za javnu uslugu.
+
+## Gdje se nalaz uklapa u širu raspravu
+
+Europska pravila o potporama namjerno se popuštaju u korist industrijske politike. Privremeni krizni i tranzicijski okvir iz 2023. Komisija je 25. lipnja 2025. zamijenila [Okvirom za državne potpore za plan za čistu industriju](https://competition-policy.ec.europa.eu/about/contribution-clean-just-and-competitive-transition/clean-industrial-deal-state-aid-framework-cisaf_en), koji vrijedi do kraja 2030., a nacrt posve nove uredbe o skupnim izuzećima bio je na javnom savjetovanju u proljeće 2026., s primjenom od 2027. Draghijev izvještaj i Kompas konkurentnosti pretvorili su kriznu iznimku u trajan instrument. Pritom [Pregled državnih potpora](https://competition-policy.ec.europa.eu/state-aid/scoreboard_en) Komisije prati iznose po državama članicama, ciljevima i instrumentima, ali ne i po pojedinačnim primateljima. Mjerenje raspodjele među primateljima na jednoj članici zato popunjava dimenziju koje u standardnoj statistici nema.
+
+Potpora sve više teče i kroz razvojne institucije. Komisija je 20. travnja 2026. odobrila [dokapitalizaciju HBOR-a od 411 milijuna eura](https://www.hbor.hr/europska-komisija-odobrila-dokapitalizaciju-hbor-a/2522), a [novi Zakon o HBOR-u](https://narodne-novine.nn.hr/clanci/sluzbeni/2026_05_55_690.html) na snazi je od 4. lipnja 2026. Temeljni kapital banke povećan je za 980,7 milijuna eura, od čega je 410,6 milijuna nov novac iz NPOO-a, a ostatak prijenos zadržane dobiti i rezervi. Kad država podupire gospodarstvo kroz kreditne programe razvojne banke, evidencija u registru potpora postaje posrednija, a krajnji korisnik manje vidljiv. To je razlog više da se mjerenje raspodjele uspostavi sada, dok je registar izravan izvor.
+
+Izvještavanje o NPOO-u pritom prati etape i apsorpciju. [Izvješće o napretku](https://vlada.gov.hr/167-sjednica-vlade-republike-hrvatske-46632/46632) koje je Vlada usvojila 7. svibnja 2026. navodi 327 ispunjenih od 407 pokazatelja i 7,3 milijarde eura isplaćenih sredstava, uz cilj maksimalne apsorpcije. Učinci se u tom poglavlju tvrde, ali se ne procjenjuju. Istodobno je [Zakon o pravnim osobama u vlasništvu Republike Hrvatske](https://narodne-novine.nn.hr/clanci/sluzbeni/2025_07_102_1403.html) iz srpnja 2025. donesen kao reforma usklađena sa smjernicama OECD-a. Evaluacija učinaka potpora zato ide uz deklarirani reformski smjer, ne protiv njega.
+
 ## Koncentracija potpore nije isto što i učinak potpore
 
 Dobiveni rezultat opisuje raspodjelu javne intervencije. Ne mjeri tržišnu moć primatelja, produktivnost ni opravdanost programa. To su odvojena pitanja. Buts i Jegers na uzorku belgijskih industrija nalaze da su veće subvencije povezane s višom industrijskom koncentracijom, ali njihov [rad](https://researchportal.vub.be/en/publications/a-note-on-state-aid-and-concentration/) koristi tržišni HHI, a ne koncentraciju iznosa potpora među primateljima kao ovdje.
@@ -160,7 +187,13 @@ Noviji [rad MMF-a o europskim poduzećima](https://www.imf.org/-/media/files/pub
 
 Ova analiza zato ne završava tvrdnjom da je koncentracija sama po sebi loša. Zaključak je uži i operativniji. Broj korisnika prikriva raspodjelu iznosa, a ista se koncentracija pojavljuje unutar glavnih vrsta potpora i među primateljima koji se ponavljaju. Sljedeći korak treba biti analiza najvećih programa prema cilju, pravnoj osnovi i rezultatu primatelja. Tek tada se može prijeći s pitanja *tko dobiva* na pitanje *što je potpora proizvela*.
 
-<!-- [KUT] Završetak se može dodatno usmjeriti prema evaluaciji učinka ili prema transparentnosti najvećih programa. -->
+Iz toga slijede dva jeftina koraka. Decilna tablica primatelja u godišnjem izvješću stala bi na jednu stranicu. Godišnja usporedba obuhvata registra sa službenim ukupnim iznosima stala bi u jedan grafikon. Oboje bi ovu dimenziju učinilo redovitom, a ne povremenom.
+
+Podaci, kod i izračuni su javni, a ispravci i dopune su dobrodošli.
+
+## Dopuna, 21. srpnja 2026.
+
+Prozor je i dalje otvoren. Komisija je 29. travnja 2026. donijela [privremeni okvir za potpore vezan uz krizu na Bliskom istoku](https://competition-policy.ec.europa.eu/state-aid/legislation/metsaf_en), a 15. lipnja 2026. odobrila hrvatsku shemu od 8 milijuna eura za ribarska poduzeća suočena s višim cijenama goriva. Popis odobrenih mjera pod tim okvirom, u verziji od 17. srpnja 2026., tu shemu vodi među odobrenima. Novi krizni okviri i dalje pristižu, pa se sastav vrha raspodjele mijenja i nakon razdoblja koje ovaj tekst pokriva.
 
 ## Napomene
 
@@ -172,4 +205,5 @@ Ova analiza zato ne završava tvrdnjom da je koncentracija sama po sebi loša. Z
 - Koncentracija po vrsti. Gornjih 1% zaokružuje se na najmanje jednog primatelja. Četiri prikazane vrste pojedinačno nose najmanje 10% promatranog iznosa.
 - Ponavljanje. Primatelj je *prisutan obje godine* ako ima barem jednu uključenu dodjelu i 2023. i 2024. Rezultat opisuje kontinuitet u današnjoj snimci, ne trajanje pojedinog programa.
 - Veličina. `company_size` se odnosi na pojedinu dodjelu i može se mijenjati kroz vrijeme. Za `{python} hr_number(unknown_size["award_count"])` dodjela veličina nije poznata, a njihov iznos doseže `{python} eur_billion(unknown_size["amount_eur"])`.
+- Usporedivost izvješća. [Godišnje izvješće o državnim potporama za 2024.](https://www.sabor.hr/sites/default/files/uploads/sabor/2025-12-29/132202/IZVJESCE_DRZAVNE_POTPORE_2024.pdf) prvi put odvojeno prikazuje poljoprivredu i ribarstvo, pa njegov naslovni iznos nije izravno usporediv s naslovnim iznosom ranijih izvješća. Isto izvješće zato 2023. iskazuje ponovno, na blizu 2,1 milijarde eura, i pad u 2024. mjeri na 30,4%. Provjera obuhvata u ovom tekstu koristi službeni iznos za 2023. iz izvješća za 2023., jer se uspoređuje s onodobnom snimkom registra.
 - Reproducibilnost. Izračuni su u `python/state_aid_concentration_build.py`, grafikoni u `R/state_aid_concentration_charts.R`, a službeni referentni niz u `data/reference/mfin_state_aid_official_totals_2021_2023.csv`. Agregati su spremljeni u `outputs/facts/` i `outputs/tables/`.
