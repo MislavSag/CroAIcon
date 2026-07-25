@@ -235,22 +235,41 @@ build_gdp_uncertainty <- function(long = build_gdp_long()) {
   do.call(rbind, Filter(Negate(is.null), rows))
 }
 
-# The five plotted eras (boom/crisis spans), for the growth-bar chart.
+# The plotted eras (boom/crisis spans), for the growth-bar chart. The cuts at
+# 1980 and 1990 are not eyeballed: on the 1952-2015 run Bai-Perron finds
+# growth-regime breaks at 1980, 1994 and 2009 (Bicanic, Deskar-Skrbic & Zrnc,
+# HUB analiza); 1990 is the change of system, 1993 the series trough. Ending
+# socialism at 1986 instead folds the 1980s stall into the boom and manufactures
+# a false 5%-vs-5% symmetry with the 1993-2008 recovery.
 build_gdp_growth <- function(long = build_gdp_long()) {
   .gdp_cagr_rows(long, list(
-    c("Socijalizam", 1952, 1986),
-    c("Prva kriza", 1986, 1993),
+    c("Uspon socijalizma", 1952, 1980),
+    c("Zastoj 1980-ih", 1980, 1990),
+    c("Slom devedesetih", 1990, 1993),
     c("Oporavak", 1993, 2008),
-    c("Druga kriza", 2008, 2014),
+    c("Letargija", 2008, 2014),
     c("Novije", 2014, 2025)
   ))
 }
 
 # Summary rates quoted in prose but not plotted (pre-war pace, whole annual run).
 build_gdp_growth_summary <- function(long = build_gdp_long()) {
-  .gdp_cagr_rows(long, list(
+  rows <- .gdp_cagr_rows(long, list(
     c("Habsbursko 1870-1900", 1870, 1900),
     c("Medjuratno 1920-1939", 1920, 1939),
+    # The rejected era cut (socialism stretched to the 1986 level peak), kept so
+    # the prose counterfactual "oba naleta po 5%" stays anchored to an output.
+    c("Socijalizam do vrha 1986 (odbaceni rez)", 1952, 1986),
     c("Cijeli niz 1952-2025", 1952, 2025)
+  ))
+  # Endpoint averages overstate the secular rate when the start year sits below
+  # trend (1952 does), so publish the log-linear trend rate next to the CAGR.
+  ann <- long[long$granularity == "annual" & long$year >= 1952 & !is.na(long$index), ]
+  fit <- stats::lm(log(index) ~ year, data = ann)
+  trend <- 100 * (exp(stats::coef(fit)[["year"]]) - 1)
+  rbind(rows, data.frame(
+    era = "Cijeli niz 1952-2025 (trend)", year0 = 1952L, year1 = 2025L,
+    cagr = round(trend, 1), total = NA_real_,
+    positive = trend >= 0, stringsAsFactors = FALSE
   ))
 }

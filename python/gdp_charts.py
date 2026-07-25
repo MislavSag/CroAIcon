@@ -91,6 +91,15 @@ def annual_grid(y0, y1):
     return grid.merge(a, on="year", how="left")
 
 
+def ribbon_grid(y0=None, y1=None):
+    """Ribbon on a complete year grid so the fill breaks at the war gaps too."""
+    r = ribbon
+    if y0 is not None:
+        r = r[(r.year >= y0) & (r.year <= y1)]
+    grid = pd.DataFrame({"year": range(int(r.year.min()), int(r.year.max()) + 1)})
+    return grid.merge(r, on="year", how="left")
+
+
 def idx_at(y):
     s = long[long.year == y]["index"]
     return float(s.iloc[0]) if len(s) else np.nan
@@ -111,7 +120,8 @@ def hero():
         ax.axvspan(a, b, color=SURFACE, zorder=0)
 
     if ribbon is not None and len(ribbon):
-        ax.fill_between(ribbon.year, ribbon.lo, ribbon.hi, color=ACCENT, alpha=0.18, zorder=1)
+        rg = ribbon_grid()
+        ax.fill_between(rg.year, rg.lo, rg.hi, color=ACCENT, alpha=0.18, zorder=1)
 
     ax.axhline(100, color=HAIR, lw=1, zorder=1)
 
@@ -123,10 +133,10 @@ def hero():
                linewidths=1.2, zorder=4)
 
     ann = annual_grid(int(ann_all.year.min()), YR_MAX)
-    soft = ann[ann.year <= 1951]
+    soft = ann[ann.year <= 1952]
     firm = ann[ann.year >= 1952].copy()
-    firm.loc[firm.year.between(*RECON), "index"] = np.nan
-    recon = long[(long.year >= RECON[0]) & (long.year <= RECON[1])][["year", "index"]]
+    firm.loc[firm.year.between(RECON[0] + 1, RECON[1]), "index"] = np.nan
+    recon = long[(long.year >= RECON[0]) & (long.year <= RECON[1] + 1)][["year", "index"]]
 
     ax.plot(soft.year, soft["index"], color=ACCENT, lw=1.6, zorder=3)
     ax.plot(firm.year, firm["index"], color=ACCENT, lw=2.4, zorder=3)
@@ -143,7 +153,7 @@ def hero():
         lab((a + b) / 2, 0.96, "rat\n(rupa)", MUTED)
     lab(1948.5, 0.235, "samo\nTica", AMBER, ha="right")
     ax.plot([1950, 1950], [0.165 * YMAX, 0.135 * YMAX], color=AMBER, lw=0.6, zorder=2)
-    lab(1997, 0.30, "rekonstruirano\n1991.–1995.", AMBER, ha="left")
+    lab(1997, 0.30, "rekonstruirano\n1991. do 1995.", AMBER, ha="left")
 
     spines(ax)
     ax.set_xlim(1866, 2028)
@@ -158,8 +168,8 @@ def hero():
     ax.grid(axis="x", which="minor", color=HAIR, lw=0.4, alpha=0.55, zorder=0)
     ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:.0f}"))
     titles(fig, ax,
-           "Hrvatski BDP po stanovniku, 1870. do 2025.",
-           "spojeni indeks, 2015. = 100  ·  oblik je siguran, dubine nisu  ·  nesigurnost je ucrtana u graf",
+           "Sedam padova i sedam povrataka u 155 godina",
+           "hrvatski BDP po stanovniku, spojeni indeks 2015. = 100  ·  oblik je siguran, dubine nisu",
            "Izvor: Eurostat, Maddison 2023, Tica (2004) / Good 1994  ·  pojas = raspon ranih procjena, sive rupe = ratne godine bez podataka")
     save(fig, "gdp_long_index.png", "gdp_1_long_index.png")
 
@@ -169,8 +179,9 @@ def hero():
 # ============================================================================ #
 def growth_bars():
     d = bars.iloc[::-1].reset_index(drop=True)  # chronological order top-to-bottom
+    d["era"] = [f"{e}\n{int(a)}. do {int(b)}." for e, a, b in zip(d.era, d.year0, d.year1)]
     colors = [RISE if p else FALL for p in d.positive]
-    fig, ax = plt.subplots(figsize=(8.0, 4.4))
+    fig, ax = plt.subplots(figsize=(8.0, 4.8))
     ax.barh(d.era, d.cagr, color=colors, height=0.62, zorder=3)
     for y, v in enumerate(d.cagr):
         ax.text(v + (0.25 if v >= 0 else -0.25), y, pct_hr(v, 1),
@@ -182,14 +193,15 @@ def growth_bars():
     ax.axvline(0, color=INK, lw=1)
     ax.grid(axis="x", color=HAIR, lw=0.8, zorder=0)
     ax.set_axisbelow(True)
-    ax.set_xlim(-9.5, 7.5)
+    ax.set_xlim(float(d.cagr.min()) - 4.0, max(7.5, float(d.cagr.max()) + 2.4))
     ax.set_xticks([])
     titles(fig, ax,
-           "Najbrži rast pod socijalizmom, dva razdoblja pada",
+           "Rast u dva naleta, prvi jači",
            "prosječni godišnji realni rast BDP-a po stanovniku, po razdoblju",
-           "Izvor: spojeni niz (Eurostat, Maddison, Tica)  ·  zeleno rast, crveno pad",
+           "Izvor: spojeni niz (Eurostat, Maddison, Tica)  ·  rez 1980. prati lom rasta "
+           "(Bai-Perron; Bićanić, Deskar-Škrbić i Zrnc), 1990. promjenu sustava, 1993. dno",
            tfs=12)
-    fig.subplots_adjust(left=0.16)
+    fig.subplots_adjust(left=0.20)
     save(fig, "gdp_growth_eras.png", "gdp_2_growth_eras.png")
 
 
@@ -208,8 +220,8 @@ def zoom(y0, y1, canonical, numbered, title, sub, src, bands=(),
                 fontsize=7.6, color=MUTED, linespacing=0.95)
 
     if with_ribbon and ribbon is not None:
-        r = ribbon[(ribbon.year >= y0) & (ribbon.year <= y1)]
-        ax.fill_between(r.year, r.lo, r.hi, color=ACCENT, alpha=0.18, zorder=1)
+        rg = ribbon_grid(y0, y1)
+        ax.fill_between(rg.year, rg.lo, rg.hi, color=ACCENT, alpha=0.18, zorder=1)
 
     if benchmarks:
         b = bench[(bench.year >= y0) & (bench.year <= y1)]
@@ -220,7 +232,7 @@ def zoom(y0, y1, canonical, numbered, title, sub, src, bands=(),
                    linewidths=1.1, zorder=4)
 
     ann = annual_grid(y0, y1)
-    soft = ann[ann.year <= 1951]
+    soft = ann[ann.year <= 1952]
     firm = ann[ann.year >= 1952]
     if len(soft):
         ax.plot(soft.year, soft["index"], color=ACCENT, lw=1.7, zorder=3)
@@ -253,8 +265,8 @@ def crisis1():
 
     ann = annual_grid(y0, y1)
     firm = ann.copy()
-    firm.loc[firm.year.between(*RECON), "index"] = np.nan
-    recon = long[(long.year >= RECON[0]) & (long.year <= RECON[1])][["year", "index"]]
+    firm.loc[firm.year.between(RECON[0] + 1, RECON[1]), "index"] = np.nan
+    recon = long[(long.year >= RECON[0]) & (long.year <= RECON[1] + 1)][["year", "index"]]
     ax.plot(firm.year, firm["index"], color=ACCENT, lw=2.4, zorder=3)
     ax.plot(recon.year, recon["index"], color=AMBER, lw=2.3, ls=(0, (4, 2)), zorder=3)
 
@@ -270,18 +282,19 @@ def crisis1():
     # depth stack in the open lower-left: the fall depends on the peak you pick
     A = {int(r.peak_year): r.fall_pct for _, r in anchors.iterrows()}
     ax.text(y0 + 0.3, 73.5, "pad od vrha do dna 1993.", fontsize=7.8, color=INK, weight="bold")
-    ax.text(y0 + 0.3, 69.0, f"vrh 1986   {pct_hr(A[1986])}", fontsize=8.2, color=INK)
-    ax.text(y0 + 0.3, 64.5, f"vrh 1989   {pct_hr(A[1989])}   (Miljković)", fontsize=8.2, color=INK)
-    ax.text(y0 + 0.3, 60.0, f"vrh 1990   {pct_hr(A[1990])}", fontsize=8.2, color=INK)
+    ax.text(y0 + 0.3, 69.0, f"vrh 1986   {pct_hr(A[1986], 1)}", fontsize=8.2, color=INK)
+    ax.text(y0 + 0.3, 64.5, f"vrh 1989   {pct_hr(A[1989], 1)}   (Miljković)", fontsize=8.2, color=INK)
+    ax.text(y0 + 0.3, 60.0, f"vrh 1990   {pct_hr(A[1990], 1)}", fontsize=8.2, color=INK)
 
     spines(ax)
     ax.set_xlim(y0 - 0.6, y1 + 0.6)
+    ax.set_xticks(range(1985, 2004, 5))
     ax.set_ylim(48, 92)
     ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:.0f}"))
     titles(fig, ax,
-           "Prva kriza, smjer siguran a dubina nije",
-           "indeks BDP-a po stanovniku  ·  pad ovisi o tome gdje stavite vrh",
-           "Spojeni indeks, 2015. = 100. Maddison, PWT i Svjetska banka dijele isti izvor, pa potvrđuju smjer, ne dubinu.")
+           "Slom devedesetih, smjer siguran a dubina nije",
+           "indeks BDP-a po stanovniku  ·  pad ovisi o vrhu s kojeg se mjeri i o razini uzetoj za 1990.",
+           "Spojeni indeks, 2015. = 100. Izvor: Maddison 2023 i Eurostat. PWT i Svjetska banka dijele isti izvor kao Maddison.")
     save(fig, "gdp_zoom_crisis1.png", "gdp_5_zoom_crisis1.png")
 
 
@@ -301,7 +314,12 @@ def raw_panels():
     axes = axes.ravel()
     for ax, src in zip(axes, present):
         d = raw_long[raw_long.source == src].sort_values("year")
-        ax.axvspan(1991, 1995, color=SURFACE, zorder=0)
+        # Complete per-source year grid: NaN breaks the line at real gaps
+        # (Tica's war years 1914-1919 / 1940-1946) instead of interpolating.
+        grid = pd.DataFrame({"year": range(int(d.year.min()), int(d.year.max()) + 1)})
+        d = grid.merge(d[["year", "value"]], on="year", how="left")
+        if d.year.min() <= 1991 and d.year.max() >= 1995:
+            ax.axvspan(1991, 1995, color=SURFACE, zorder=0)
         ax.plot(d.year, d.value, color=ACCENT, lw=1.9, zorder=3)
         for s in ["top", "right"]:
             ax.spines[s].set_visible(False)
@@ -316,9 +334,9 @@ def raw_panels():
         ax.set_visible(False)
     fig.suptitle("Isti oblik, više izvora", x=0.06, y=1.005, ha="left",
                  fontsize=12.5, weight="bold", color=INK)
-    fig.text(0.06, 0.965, "svaki sirovi niz u vlastitoj jedinici i baznoj godini  ·  pad 1990-ih u svima",
+    fig.text(0.06, 0.965, "svaki sirovi niz u vlastitoj jedinici i baznoj godini  ·  pad 1990-ih u tri niza koji ga pokrivaju",
              ha="left", fontsize=9, color=MUTED)
-    fig.text(0.06, 0.01, "Izvor: Eurostat, Maddison 2023, PWT 10.01, Svjetska banka  ·  siva traka = 1991.–1995.",
+    fig.text(0.06, 0.01, "Izvor: Eurostat, Maddison 2023, PWT 10.01, Svjetska banka, Tica (2004)  ·  siva traka = 1991. do 1995.",
              ha="left", fontsize=8, color=MUTED)
     fig.subplots_adjust(top=0.90, bottom=0.06, hspace=0.45, wspace=0.12)
     save(fig, "gdp_raw_panels.png", "gdp_7_raw_panels.png")
@@ -328,22 +346,24 @@ def raw_panels():
 hero()
 growth_bars()
 zoom(1870, 1952, "gdp_zoom_prewar.png", "gdp_3_zoom_prewar.png",
-     "Prije 1952. nisko, ravno, isprekidano",
-     "indeks BDP-a po stanovniku  ·  desetljetne točke do 1910., ratne rupe",
-     "Spojeni indeks, 2015. = 100. Pojas = raspon ranih procjena.",
-     bands=WAR_GAPS, band_labels=[(1916.5, "rat\n(rupa)"), (1943, "rat\n(rupa)")],
+     "Prije 1952. nisko, isprekidano, s depresijom u sredini",
+     "indeks BDP-a po stanovniku  ·  desetljetne točke do 1910., ratne rupe, depresija",
+     "Spojeni indeks, 2015. = 100. Pojas = raspon ranih procjena. Izvor: Tica (2004) i Good (1994).",
+     bands=WAR_GAPS + [(1929, 1932)],
+     band_labels=[(1916.5, "rat\n(rupa)"), (1943, "rat\n(rupa)"),
+                  (1930.5, "depresija\n1929. do 1932.")],
      benchmarks=True, with_ribbon=True)
 zoom(1949, 1986, "gdp_zoom_socialism.png", "gdp_4_zoom_socialism.png",
-     "Socijalizam diže liniju, pa zastoj 1980-ih",
-     "indeks BDP-a po stanovniku, 1949. do 1986.",
-     "Spojeni indeks, 2015. = 100.",
+     "Socijalizam diže liniju do 1980., pa zastoj",
+     "indeks BDP-a po stanovniku, 1949. do 1986.  ·  rast stane s dužničkom krizom 1980.",
+     "Spojeni indeks, 2015. = 100. Izvor: Tica (2004) i Maddison 2023 (Milanovićeva rekonstrukcija).",
      bands=[(1949, 1952), (1980, 1986)],
-     band_labels=[(1950.5, "Informbiro"), (1983, "zastoj\n1980-ih", 0.42)])
+     band_labels=[(1950.5, "Informbiro"), (1983, "zastoj\nod 1980.", 0.42)])
 crisis1()
 zoom(2008, 2025, "gdp_zoom_crisis2.png", "gdp_6_zoom_crisis2.png",
-     "Druga kriza pa COVID, plitko, dugo, pa uzlet",
+     "Letargija pa COVID, plitko, dugo, pa uzlet",
      "indeks BDP-a po stanovniku, 2008. do 2025.",
-     "Spojeni indeks, 2015. = 100.",
+     "Spojeni indeks, 2015. = 100. Izvor: Eurostat.",
      bands=[(2009, 2014), (2019.5, 2020.5)],
      band_labels=[(2011.5, "financijska\nkriza"), (2020, "COVID")])
 raw_panels()
