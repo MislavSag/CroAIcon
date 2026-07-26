@@ -38,7 +38,7 @@ koliko je linija svaki put trebala da se vrati.
 Stope rasta su sigurnije od razina, pa krenimo od njih. Rast dolazi u dva
 naleta, ali ne jednaka. Uspon socijalizma nosi **plus 6,1% godišnje** (1952. do
 1980.), poslijeratni oporavak **plus 5,0%** (1993. do 2008.), novije razdoblje
-**plus 4,0%** (2014. do 2025.). Svaka je epizoda rasta sporija od prethodnoa, a tempo
+**plus 4,0%** (2014. do 2025.). Svaka je epizoda rasta sporija od prethodne, a tempo
 prve se nakon 1980. više nikada ne postigne.
 
 Granice ne stavljamo od oka. Formalni testovi na nizu od 1952. do 2015. nalaze
@@ -93,7 +93,7 @@ Dubinu treba uzeti kao grubu (procjenu). Zato na glavnom grafu i nosi oznaku *sa
 Nakon blokade slijedi najstrmiji uspon u nizu. **Indeks 16 (1952.) → indeks 83
 (1980.)**. Otprilike peterostruko u jednoj generaciji, ali na sintetskoj razini
 (kartu pouzdanosti donosimo niže). Onda, 1980., rast stane. Iste godine umre
-Tito. Nije teško zamisliti kako bi se oko ovoga dao graditi politički argument, zar ne!? Ipak, iako je sa Titom otišao rast, nije to bilo zbog njega :-) Jeftini strani krediti koji su uspon
+Tito, ali objašnjenje nije u tome. Jeftini strani krediti koji su uspon
 financirali nestaju u svjetskoj dužničkoj krizi 1979. i 1980. Zemlja potpisuje
 prvi uvjetovani aranžman s MMF-om. Kreće stabilizacija s devalvacijom
 (Bićanić, Deskar-Škrbić i Zrnc, 2016.). Sljedećih šest godina linija se jedva
@@ -155,7 +155,7 @@ pa su Hrvatskoj pripisane.
 
 U devedesetima brojkama nije za vjerovati.
 Pad je velik, to nitko ne spori. Ali koliko točno, ovisi o tome gdje stavite
-vrh...gdje ubodete prstom?!
+vrh. Odnosno, gdje ubodete prstom.
 
 Od 1986. (indeks 84) pad je **minus 39%**, od 1990. (indeks 76) **minus 33%**.
 Razlika je u izboru početne godine. Procjena koju Bićanić i Tuđa (2014.)
@@ -184,11 +184,11 @@ Smjer je siguran. Dubina nije.
 Pa ipak, linija se vrati, i to prije mira. Formalni lom na bolje je u 1994.,
 godinu poslije stabilizacije koja obara hiperinflaciju, a ne u 1995. s krajem
 rata (Bićanić, Deskar-Škrbić i Zrnc, 2016.). A promjena sustava 1990. u stopama
-rasta uopće nije lom. Zanimljivo, ovo su dvije jake stvari, dosta jake! Naime, točno vrijeme lomova (promjene režima) ne biste zaključili bez znanosti, ekonometrije, poznavanja tematike... Tu ni najjači AI ne može pomoći. Uglavnom, vrh iz 1986. linija prijeđe tek 2003. Ovisno o izboru
+rasta uopće nije lom. Vrh iz 1986. linija prijeđe tek 2003. Ovisno o izboru
 vrha, povratak traje od jedanaest do sedamnaest godina. Toooliko dugih godina da bi se linija
 vratila tamo gdje je već bila.
 
-## Sigurna je raznolikost padova, dubina nije!
+## Sigurna je raznolikost padova, dubina nije
 
 Ogradimo zaključak pošteno.
 
@@ -202,7 +202,7 @@ i Zrnca (2016.).
 Ono što ova linija pouzdano govori je nešto drugo. Ne kolika je svaka kriza bila,
 nego koliko su bile različite. Koliko se svaki put čekao povratak? Od dvije
 godine do sedamnaest, ondje gdje se uopće da izmjeriti. Ista vrsta sigurnosti
-vrijedi i za uspone. Ne koliko smo točno rasli, nego da je svaka epizoda raasta bila
+vrijedi i za uspone. Ne koliko smo točno rasli, nego da je svaka epizoda rasta bila
 sporija od prethodne. Sljedeći pad neće biti kao prošli, i o dubini ćemo se
 opet sporiti. Broj koji vrijedi gledati je koliko traje povratak.
 
