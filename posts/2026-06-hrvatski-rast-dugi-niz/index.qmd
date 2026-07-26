@@ -16,13 +16,13 @@ sedam puta se vrati.
 
 Odmah razjasnimo dvije stvari. *Smjer* linije je siguran, a točne brojke puno manje. Da
 je do svakog pada došlo, i kad otprilike, znamo pouzdano. Koliko je dubok bio,
-puno manje. Zato nesigurnost ne guramo u napomene na dnu. Ucrtali smo je u prvi
-graf, da je vidi i onaj čitatelj koji do napomena uopće ne stigne.
+puno manje. Zato nesigurnost ne guramo u napomene na dnu. Ugradili smo je u prvi (i najvažniji)
+graf. Tako je vidi i onaj koji do napomena uopće ne stigne. 
 
 ![BDP po stanovniku, spojeni indeks (2015. = 100), od 1870. do 2025. Nesigurnost je ucrtana u liniju.](gdp_1_long_index.png)
 
 Pogledajte što je nesigurno. Pojas oko linije pri početku je raspon procjena. Tu se izvori razilaze. Kružići prije 1910. desetljetne su procjene, ne godišnji
-podatci. Sive rupe su ratne godine bez ijednog broja. Narančasta isprekidana dionica
+podatci. Sive rupe su ratne godine bez službenih podataka. Narančasta isprekidana dionica
 devedesetih je rekonstrukcija. A za dio oko 1950. postoji samo jedan
 provjerljiv izvor.
 
@@ -38,16 +38,16 @@ koliko je linija svaki put trebala da se vrati.
 Stope rasta su sigurnije od razina, pa krenimo od njih. Rast dolazi u dva
 naleta, ali ne jednaka. Uspon socijalizma nosi **plus 6,1% godišnje** (1952. do
 1980.), poslijeratni oporavak **plus 5,0%** (1993. do 2008.), novije razdoblje
-**plus 4,0%** (2014. do 2025.). Svaki je nalet sporiji od prethodnog, a tempo
-prvog se poslije 1980. više ne vrati.
+**plus 4,0%** (2014. do 2025.). Svaka je epizoda rasta sporija od prethodnoa, a tempo
+prve se nakon 1980. više nikada ne postigne.
 
 Granice ne stavljamo od oka. Formalni testovi na nizu od 1952. do 2015. nalaze
 lomove rasta 1980., 1994. i 2009. (Bićanić, Deskar-Škrbić i Zrnc, 2016.), pa
 uspon režemo na 1980. Da smo rezali na vrhu razine, 1986., zastoj osamdesetih
-ušao bi u prosjek uspona i oba bi naleta izgledala jednako, po 5,0% godišnje.
-Ta jednakost ne bi bila nalaz, nego posljedica izbora granice.
+ušao bi u prosjek uspona i obje bi epizode rasta izgledale jednako, po 5,0% godišnje.
+Ta jednakost bi bila posljedica izbora granice.
 
-Između naleta linija stoji ili pada. Zastoj **minus 0,9% godišnje** (1980. do
+Između epizoda rasta linija stoji ili pada. Zastoj **minus 0,9% godišnje** (1980. do
 1990.), slom **minus 12,3%** (1990. do 1993.), letargija **minus 1,4%** (2008.
 do 2014.). Do 1939. sporije i od niske baze. Habsburško **plus 1,6%** (1870. do
 1900.), međuratno **plus 1,8%** (1920. do 1939.). Taj prosjek izglađuje cijelu
@@ -68,12 +68,12 @@ linija stoji prekinuta. Sigurno je da je bilo loše. Koliko?
 
 **Depresija 1929. do 1932.** Siva traka između dvaju ratova. **Indeks 16
 (1929.) → indeks 13 (1932.)** (oko **minus 18%**), s dvostrukim dnom, 1932. pa
-loša žetva 1935. U agrarnu zemlju svjetska kriza ne uđe kroz tvornice nego kroz
+loša žetva 1935. U tada agrarnu RH svjetska kriza ne ulazi kroz tvornice, nego kroz
 cijene. Cijene poljoprivrednih proizvoda gotovo se prepolove, nominalni dohodak
 padne oko 40%, a realni proizvod, ovaj na grafu, oko 18% (Gnjatović, 2017.).
 Isti dug seljak zato vraća s dvostruko više robe (Gnjatović i Aleksić, 2011.).
-Razinu iz 1929. linija vrati tek 1938. Devet godina. Jedini pad u nizu koji
-nije došao ni iz rata ni iz domaće politike, nego uvezen izvana. Hrvatskih
+Razinu iz 1929. linija opet dosegne tek 1938. Devet godina. Jedini pad u nizu koji
+nije došao ni iz rata ni iz domaće politike, nego uvezen izvana. Inače, Hrvatskih
 procjena za tridesete nema, međuraće nosi jugoslavenske stope (više u
 *Napomenama*).
 
@@ -85,15 +85,15 @@ preuzme Maddison (u podlozi je Milanovićeva rekonstrukcija hrvatske serije).
 Drugih procjena ima, Stipetić i Vinski, ali bez objavljenog računa, pa su za
 provjeru neupotrebljive (Bićanić, 2012.). A autori jedine novije rekonstrukcije
 vlastiti niz počinju tek 1952., prvom godinom koju drže dovoljno pouzdanom
-(Bićanić, Deskar-Škrbić i Zrnc, 2016.). Smjer je unutar dionice dosljedan,
-dubinu uzmite kao grubu. Zato na glavnom grafu i nosi oznaku *samo Tica*.
+(Bićanić, Deskar-Škrbić i Zrnc, 2016.). Smjer je unutar razdoblja dosljedan.
+Dubinu treba uzeti kao grubu (procjenu). Zato na glavnom grafu i nosi oznaku *samo Tica*.
 
 ![BDP po stanovniku, 1949. do 1986. Sive trake, blokada Informbiroa i zastoj od 1980.](gdp_4_zoom_socialism.png)
 
 Nakon blokade slijedi najstrmiji uspon u nizu. **Indeks 16 (1952.) → indeks 83
 (1980.)**. Otprilike peterostruko u jednoj generaciji, ali na sintetskoj razini
 (kartu pouzdanosti donosimo niže). Onda, 1980., rast stane. Iste godine umre
-Tito, ali objašnjenje nije u tome. Jeftini strani krediti koji su uspon
+Tito. Nije teško zamisliti kako bi se oko ovoga dao graditi politički argument, zar ne!? Ipak, iako je sa Titom otišao rast, nije to bilo zbog njega :-) Jeftini strani krediti koji su uspon
 financirali nestaju u svjetskoj dužničkoj krizi 1979. i 1980. Zemlja potpisuje
 prvi uvjetovani aranžman s MMF-om. Kreće stabilizacija s devalvacijom
 (Bićanić, Deskar-Škrbić i Zrnc, 2016.). Sljedećih šest godina linija se jedva
@@ -105,18 +105,17 @@ za poseban odjeljak. Prije njega dva novija pada, izmjerena najpouzdanije.
 **minus 9%**), plitko. Ali dugo. Financijska kriza pa duga domaća recesija drže
 liniju u mjestu šest godina. Dno je 2012., stajanje traje do 2014., a vrh iz
 2008. linija prijeđe tek 2017. Ovo je
-najpouzdanije izmjeren pad u nizu, jer se računa na modernim Eurostatovim
+najpouzdanije izmjeren pad u nizu, jer se računa na Eurostatovim
 podatcima. I baš trajanje, ne dubina, ostavlja
-[sektorski trag](https://mislavsag.github.io/CroAIcon/posts/2026-06-firme-i-zaposlenost-po-sektorima/).
+[sektorski trag](https://mislavsag.github.io/CroAIcon/posts/2026-06-firme-i-zaposlenost-po-sektorima/). O njemu smo također nešto pisali na ovome blogu.
 
 ![BDP po stanovniku, 2008. do 2025. Sive trake, financijska kriza i COVID.](gdp_6_zoom_crisis2.png)
 
 **Pandemija 2020.** **Indeks 119 (2019.) → indeks 110 (2020.) → indeks 125
-(2021.)**. Pad pa skok u dvije godine, najbrži povratak u nizu. U ovo čvrsto
-vjerujemo, jer je na Eurostatovim podatcima. Linija nastavi do **indeksa 150
+(2021.)**. Pad pa skok u dvije godine, najbrži povratak u nizu. U ovo nije teško povjerovati, jer je na Eurostatovim podatcima. Linija nastavi do **indeksa 150
 (2025.)**.
 
-Ispod ovih sedam ostaju trzaji, 1927., 1956., zastoj 1980-ih, 1999. Nijedan ne
+Ispod ovih sedam postoje i neki "trzaji", 1927., 1956., zastoj 1980-ih, 1999. Nijedan ne
 prijeđe minus 5%, dobro ispod praga od oko 7% iz *Napomena*, pa ih ne brojimo.
 
 I tu se dubina razdvoji od trajanja. Depresija i blokada podjednako duboke,
@@ -134,7 +133,7 @@ Stope od 1952. su hrvatske, republičke, iz Milanovićeve rekonstrukcije za
 Maddisonov projekt. Provjerili smo, razlikuju se od stopa svake druge republike
 u svakoj godini, dakle nisu jugoslavenski prosjek pripisan Hrvatskoj. Slabosti
 su druge dvije. Socijalizam je mjerio *društveni proizvod*, uži pojam bez
-dijela usluga, pa se ovdje stope tog agregata lančaju na BDP (više u
+dijela usluga, pa se ovdje stope tog agregata ulančavaju na BDP (više u
 *Napomenama*). I cijela dionica ovisi o razini izabranoj za 1990., o *sidru*
 na koje je vezana.
 
@@ -148,25 +147,25 @@ pa su Hrvatskoj pripisane.
 
 **Ratne rupe (1914. do 1919., 1940. do 1946.).** Nema podataka.
 
-**Tranzicija (devedesete).** Najspornija od svih. Njoj sad.
+**Tranzicija (devedesete).** Najspornija od svih. O njoj sad.
 
 ## Devedesete, najveći i najnesigurniji pad u nizu
 
 ![BDP po stanovniku oko sloma devedesetih. Pad ovisi o vrhu s kojeg se mjeri i o razini uzetoj za 1990.](gdp_5_zoom_crisis1.png)
 
-U devedesetima brojkama ne vjerujte.
-Pad je golem, to nitko ne spori. Ali koliko točno, ovisi o tome gdje stavite
-vrh. Odnosno, gdje ubodete prstom.
+U devedesetima brojkama nije za vjerovati.
+Pad je velik, to nitko ne spori. Ali koliko točno, ovisi o tome gdje stavite
+vrh...gdje ubodete prstom?!
 
 Od 1986. (indeks 84) pad je **minus 39%**, od 1990. (indeks 76) **minus 33%**.
-Razlika je samo u izboru početne godine. Procjena koju Bićanić i Tuđa (2014.)
+Razlika je u izboru početne godine. Procjena koju Bićanić i Tuđa (2014.)
 drže najpouzdanijom za to razdoblje (Miljković, 1992.) vrh stavlja na 1989., ne
 na 1990., što daje pad od oko **minus 37%**.
 
-Vrh nije jedini izbor koji mijenja brojku. Kroz devedesete naša linija nosi
+Vrh nije jedini izbor koji mijenja brojku. Kroz devedesete linija nosi
 Milanovićevu rekonstrukciju. Bićanić, Deskar-Škrbić i Zrnc (2016.) izveli su
 vlastitu, iz hrvatskih statističkih godišnjaka, i njihova početkom devedesetih
-pada pliće. Dvije ozbiljne rekonstrukcije razilaze se točno ondje gdje je
+pada manje. Dvije ozbiljne rekonstrukcije razilaze se točno ondje gdje je
 nesigurnost najveća. Razloga su dva, drukčije *sidro* i drukčije stope kroz
 ratne godine (više u *Napomenama*).
 
@@ -180,16 +179,16 @@ Maddison, Penn World Table i Svjetska banka svi pokazuju sličan pad, **između
 minus 33 i minus 35%** od 1990., u skladu s našom procjenom. Zvuči kao potvrda? Nije. Sva tri u
 konačnici crpe iz istog izvora, Milanovićeve rekonstrukcije, i zato dijele istu
 pristranost. Njihovo slaganje utvrđuje *smjer* i grubo *vrijeme*, ne *dubinu*.
-Smjer je siguran. Dubini vjerujemo najmanje.
+Smjer je siguran. Dubina nije.
 
-Pa ipak, linija se vrati, i to prije mira. Formalni lom na bolje pada u 1994.,
+Pa ipak, linija se vrati, i to prije mira. Formalni lom na bolje je u 1994.,
 godinu poslije stabilizacije koja obara hiperinflaciju, a ne u 1995. s krajem
 rata (Bićanić, Deskar-Škrbić i Zrnc, 2016.). A promjena sustava 1990. u stopama
-rasta uopće nije lom. Vrh iz 1986. linija prijeđe tek 2003. Ovisno o izboru
-vrha, povratak traje od jedanaest do sedamnaest godina. Toliko da bi se linija
+rasta uopće nije lom. Zanimljivo, ovo su dvije jake stvari, dosta jake! Naime, točno vrijeme lomova (promjene režima) ne biste zaključili bez znanosti, ekonometrije, poznavanja tematike... Tu ni najjači AI ne može pomoći. Uglavnom, vrh iz 1986. linija prijeđe tek 2003. Ovisno o izboru
+vrha, povratak traje od jedanaest do sedamnaest godina. Toooliko dugih godina da bi se linija
 vratila tamo gdje je već bila.
 
-## Sigurna je raznolikost padova, ne njihova dubina
+## Sigurna je raznolikost padova, dubina nije!
 
 Ogradimo zaključak pošteno.
 
@@ -200,11 +199,11 @@ prema EU ili o konvergenciji iz ovog niza ne govorimo. Za to bi trebao usporedni
 niz, a njega ovdje nemamo. Tko ga traži, naći će ga kod Bićanića, Deskar-Škrbića
 i Zrnca (2016.).
 
-Ono što ovaj niz pouzdano govori je nešto drugo. Ne kolika je svaka kriza bila,
-nego koliko su bile različite, i koliko se svaki put čekao povratak, od dvije
+Ono što ova linija pouzdano govori je nešto drugo. Ne kolika je svaka kriza bila,
+nego koliko su bile različite. Koliko se svaki put čekao povratak? Od dvije
 godine do sedamnaest, ondje gdje se uopće da izmjeriti. Ista vrsta sigurnosti
-vrijedi i za uspone. Ne koliko smo točno rasli, nego da je svaki nalet bio
-sporiji od prethodnog. Sljedeći pad neće biti kao prošli, i o dubini ćemo se
+vrijedi i za uspone. Ne koliko smo točno rasli, nego da je svaka epizoda raasta bila
+sporija od prethodne. Sljedeći pad neće biti kao prošli, i o dubini ćemo se
 opet sporiti. Broj koji vrijedi gledati je koliko traje povratak.
 
 ## Napomene
