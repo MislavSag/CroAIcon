@@ -58,6 +58,10 @@ execute:
 website:
   title: "AI.econ"
   description: "ekonomski blog"
+  # Quarto's default for `draft: true` is draft-mode: gone, which strips the body and
+  # renders a blank page, so a draft cannot be read before it is published. `unlinked`
+  # renders the post in full but keeps it out of listings, search and the feed.
+  draft-mode: unlinked
   site-url: "https://MislavSag.github.io/CroAIcon"
   repo-url: "https://github.com/MislavSag/CroAIcon"
   repo-actions: [source, issue]

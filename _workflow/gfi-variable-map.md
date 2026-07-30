@@ -67,8 +67,54 @@ schemes; only the physical one matches the bytes in `db_afs`.
 
 ### Non-financial dimensions (trusted, all years, do not need the codebook)
 `subjecttaxnoid` (OIB), `reportyear`, `nacerev21` (NKD section A–U), `countyid` (1–21),
-`subjectsizeeurev2` (size 0–4), `ownershiptypeid` / `foreigncontrol`, `employeecounteop`
-(employees, ~71% cov — the trusted headcount), `price_deflator`.
+`municipalityid` (556 JLS, 0 nulls all years, joins `ref_municipality` for names; 449 distinct
+in 1995 → all 556 from ~2015 — fewer firms early, not missing geography) with
+`municipalitytypeid` (1 = Općina, 2 = Grad), `subjectsizeeurev2` (size 0–4),
+`ownershiptypeid` / `foreigncontrol`, `employeecounteop` (employees, ~71% cov — the trusted
+headcount), `price_deflator`. Geography is the registered seat (sjedište), not the place of work.
+Verified against the live DB 2026-07-30.
+
+**`price_deflator` is NULL for the most recent year** (2024 as of this writing), so any real-terms
+series ends one year short of the nominal one.
+
+**The seat effect bites at municipality level, not county level.** Big groups book a whole
+neighbourhood at their own address. Vrsar reads 0,59 EUR of revenue per tourist night on 1,75M
+nights because Maistra books its Vrsar camps in Rovinj. Inside a county this nets out. Use county
+for anything measuring money per place, municipality only for counts. Checking the top of a ranking
+will not reveal this — the distortion shows at the bottom.
+
+### Activity: five NACE levels, not one (all 100% covered, all per firm-year)
+
+`nacerev21` is only the section letter. The detail exists and is trusted:
+
+| Column | Level | Example | Type |
+|---|---|---|---|
+| `nacerev21` | section | `I` | `varchar(1)` |
+| `nacerev22` | division | `55` | `int` |
+| `nacerev23` | group | `551` | `int` |
+| `nacerev24` | class | `5510` | `int` |
+
+Genuine per-year values, not a backfilled snapshot (3% of section I firms change `nacerev24` across
+a decade). The snapshot lives in `subjekti_current.nkd2007`, a different table. Labels join from
+`codes_nkd2007` on `RAZINA` + `SIFRA`, with `LPAD(col, digits, '0')` because `nacerev2x` are `int`
+while `SIFRA` is zero-padded `varchar`.
+
+- **NKD 79 (travel agencies) sits in section N, not I.** A `nacerev21='I'` filter silently drops it.
+- **`nacerev22`/`nacerev23` are NOT indexed.** Lead every query with `nacerev21` + `reportyear`
+  (composite index exists) or it full-scans ~2,3M rows and times out. `nacerev24` is indexed.
+
+### Encoding: the label tables are latin2
+
+`codes_municipal.naziv` and `codes_nkd2007.OPIS_DJEL` are stored **latin2**. Connect with
+`charset="latin2"` or every Croatian name returns mojibake (`Andrija?evci`, `Smje?taj`). Numeric
+columns are unaffected by the choice.
+
+### Seasonality is not in this base
+
+`employeecounthw` tracks `employeecounteop` almost exactly (ratio ~1,0 for coastal hotels, the same
+as manufacturing) and `monthofoperation` is 12 for 92% of firms. Neither carries a summer signal.
+Do not estimate a seasonal workforce from the financial statements. Take it from an external
+monthly source.
 
 ### Do NOT use (wrong-map columns that look plausible but are not what their catalog label says)
 `b125` (not revenue), `b065` (not assets), `b067` (not equity — floored at 0). Any label pulled from
