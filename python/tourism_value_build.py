@@ -67,10 +67,11 @@ ROOT = project_root()
 TABLE_DIR = ROOT / "outputs" / "tables"
 FACT_DIR = ROOT / "outputs" / "facts"
 
-# Two numbers this post needs are not in the DZS tourism dump and not in GFI. Balance of
-# payments travel receipts belong to HNB, and wages by activity to the DZS labour release.
-# They live in one small hand-entered file where every row carries its own source and URL,
-# rather than being typed into the prose. See the Napomene box in the post.
+# Several numbers this post needs are not in the DZS tourism dump and not in GFI. Balance
+# of payments travel receipts belong to HNB, wages by activity to the DZS labour release,
+# and the operator-level household split to HTZ. They live in one small hand-entered file
+# where every row carries its own source and URL, rather than being typed into the prose.
+# See the Napomene box in the post.
 EXTERNAL_PATH = ROOT / "data" / "external" / "tourism_external.csv"
 
 
@@ -912,9 +913,11 @@ def main() -> None:
     # segment of 732.000 beds that households overwhelmingly operate.
     #
     # So 55.2 gets NO per-night figure in the post. The quotient is not a cheap price, and it
-    # is not a capture rate either, because DZS never splits nights by operator. How many of
-    # those 46,6 million nights belong to the 1.691 companies is unknown and cannot be
-    # recovered from this dump. The column stays here as a diagnostic and is deliberately
+    # is not a capture rate either, because this DZS table never splits 55.2 nights by
+    # operator. How many of those 46,6 million nights belong to the 1.691 companies is
+    # unknown and cannot be recovered from this dump. HTZ publishes household nights as a
+    # separate operator aggregate, but not the cross-tab needed to assign the remaining
+    # 55.2 nights to companies. The column stays here as a diagnostic and is deliberately
     # withheld from the facts file, so the prose cannot reach for it. See `facts` below.
     #
     # 40 EUR is a capture rate for the whole country. 75 EUR is what a night earns where the
@@ -939,9 +942,9 @@ def main() -> None:
 
     # --------------------------- 3a2. what group 55.2 actually holds, one level deeper
     # Calling the whole of 55.2 `apartmani` is what let the earlier draft slide from a type
-    # share to an ownership share. The sub-types name the denominator exactly: rooms,
+    # share to an ownership share. The sub-types name the DZS denominator exactly: rooms,
     # apartments and holiday homes on one side, hostels and institutional accommodation on
-    # the other. Still no operator split, which is the point.
+    # the other. This table still has no operator split, which is the point.
     subtypes = read_accommodation_subtypes(LAST_YEAR)
     sub_552 = subtypes[subtypes["nkd_group"] == 552]
     nights_552 = float(model_value.loc[model_value["nkd_group"] == 552, "nights"].iloc[0])
@@ -1131,12 +1134,42 @@ def main() -> None:
     spend["abroad_share_pct"] = spend["Inozemstvo"] / (spend["Inozemstvo"] + spend["Hrvatska"]) * 100
     spend = spend.reset_index()
 
+    # ---------------------------------------------- household nights, operator aggregate
+    # HTZ publishes household accommodation separately from hotels, camps and other
+    # commercial operators. This is the clean ownership-side fact that the DZS object-type
+    # table does not contain. It describes the scale of household accommodation, but still
+    # cannot be joined to the 55.2 company revenue because the classifications are not
+    # cross-tabulated.
+    household_nights = external("htz_household_nights", LAST_YEAR)
+    htz_commercial_nights = external("htz_commercial_nights", LAST_YEAR)
+    household_commercial_share_pct = household_nights / htz_commercial_nights * 100
+    household_split = pd.DataFrame([{
+        "year": LAST_YEAR,
+        "segment": "Objekti u domaćinstvu",
+        "nights": household_nights,
+        "commercial_nights": htz_commercial_nights,
+        "commercial_share_pct": household_commercial_share_pct,
+    }])
+    check(
+        "htz_commercial_nights_match_dzs",
+        abs(htz_commercial_nights / nights_nat[LAST_YEAR] - 1) < 0.02,
+        f"HTZ commercial nights {htz_commercial_nights:,.0f} vs DZS "
+        f"{nights_nat[LAST_YEAR]:,.0f}",
+    )
+    check(
+        "htz_household_nights_sane",
+        35 <= household_commercial_share_pct <= 50 and household_nights < rooms_nights,
+        f"households hold {household_nights:,.0f} nights, "
+        f"{household_commercial_share_pct:.1f}% of HTZ commercial nights",
+    )
+
     # ------------------------------------------------------------------- go / no go
     critical = {"dzs_national_vs_county", "dzs_national_vs_municipality_table",
                 "revenue_coverage", "macro_anchor_eur_per_night", "municipality_match_rate",
                 "concentration_matches_eiz", "hnb_gap_sane",
                 "platform_nights_within_segment",
-                "subtypes_sum_to_552", "rooms_dominate_552"}
+                "subtypes_sum_to_552", "rooms_dominate_552",
+                "htz_commercial_nights_match_dzs", "htz_household_nights_sane"}
     failed = [c["rule"] for c in checks if not c["passed"] and c["rule"] in critical]
     go = not failed
     checks.append({
@@ -1186,6 +1219,7 @@ def main() -> None:
         "tourism_marina_per_berth.csv": marina_last,
         "tourism_marina_panel.csv": marina,
         "tourism_model_split.csv": models,
+        "tourism_household_split.csv": household_split,
         "tourism_validation.csv": pd.DataFrame(checks),
     }
     for name, frame in out.items():
@@ -1288,6 +1322,9 @@ def main() -> None:
         "subtype_rooms_share_of_552_pct": rooms_nights / nights_552 * 100,
         "subtype_rooms_share_of_national_pct": rooms_nights / type_total * 100,
         "subtype_hostels_nights": hostel_nights,
+        "household_nights_htz": household_nights,
+        "commercial_nights_htz": htz_commercial_nights,
+        "household_commercial_share_pct": household_commercial_share_pct,
         # the one real price series, hotels only, populations identical
         "hotel_price_first_year": int(hp_first["year"]),
         "hotel_eur_per_night_first": float(hp_first["eur_per_night"]),

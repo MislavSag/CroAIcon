@@ -64,7 +64,7 @@ def project_root() -> Path:
 ROOT = project_root()
 TABLE_DIR = ROOT / "outputs" / "tables"
 FIG_DIR = ROOT / "outputs" / "figures"
-POST_DIR = ROOT / "posts" / "2026-07-noc-bez-cijene"
+POST_DIR = ROOT / "posts" / "2026-07-turizam-bez-nazivnika"
 
 
 def hr(value: float, digits: int = 0) -> str:
@@ -370,55 +370,44 @@ def fig_marina() -> None:
 
 
 def fig_hnb_gap() -> None:
-    """Where the money a foreign guest leaves actually lands. The accommodation company
-    books a quarter of it, and that quarter has not moved since 2019."""
+    """Compare total foreign-tourist receipts with the upper bound booked by
+    accommodation companies. The remainder cannot be allocated by sector."""
     d = read("tourism_hnb_gap.csv").sort_values("year")
 
-    fig, ax = plt.subplots(figsize=(8.4, 3.9))
-    labels = [f"{int(y)}." for y in d["year"]]
-    # "Sve ostalo" is the biggest slice and the point of the chart, so it cannot be drawn
-    # in SURFACE, which the playbook reserves for bands behind the data and which sits a
-    # few RGB points off the page colour. MUTED is the role for a context series.
-    parts = [
-        ("accommodation_per_foreign_night", "Smještajne firme", ACCENT),
-        ("food_per_foreign_night", "Ugostiteljstvo", AMBER),
-        ("rest_per_foreign_night", "Sve ostalo", MUTED),
-    ]
-
+    fig, ax = plt.subplots(figsize=(8.4, 4.2))
+    years = [f"{int(y)}." for y in d["year"]]
+    y_positions = list(range(len(d)))
+    offset = 0.16
+    total = d["eur_per_foreign_night"].tolist()
+    accommodation = d["accommodation_per_foreign_night"].tolist()
     shares = d["accommodation_share_pct"].tolist()
-    left = [0.0] * len(d)
-    for column, name, color in parts:
-        values = d[column].tolist()
-        ax.barh(labels, values, left=left, color=color, height=0.5, label=name)
-        for i, (value, start) in enumerate(zip(values, left)):
-            # the thin segments cannot hold a label; only annotate what fits
-            if value <= 12:
-                continue
-            # The share is the finding in the title, so it rides inside the accommodation
-            # segment rather than being left for the reader to divide 44 by 176. Outside
-            # the bar it would collide with the subtitle.
-            text = (f"{hr(value, 0)}\n{hr(shares[i], 0)}%"
-                    if column == "accommodation_per_foreign_night" else f"{hr(value, 0)}")
-            ax.text(start + value / 2, i, text, va="center", ha="center",
-                    fontsize=10, fontweight="bold", color=PAPER, linespacing=1.35)
-        left = [a + b for a, b in zip(left, values)]
 
-    for i, total in enumerate(left):
-        ax.text(total + 3, i, f"ukupno {hr(total, 0)} EUR", va="center",
+    ax.barh([y + offset for y in y_positions], total, height=0.28,
+            color=MUTED, label="Ukupna devizna potrošnja")
+    ax.barh([y - offset for y in y_positions], accommodation, height=0.28,
+            color=ACCENT, label="Prihod smještajnih društava (gornja granica)")
+
+    for y, value in zip(y_positions, total):
+        ax.text(value + 3, y + offset, f"{hr(value)} EUR", va="center",
                 fontsize=9.5, fontweight="bold", color=INK)
+    for y, value, share in zip(y_positions, accommodation, shares):
+        ax.text(value + 3, y - offset, f"{hr(value)} EUR ({hr(share)}%)",
+                va="center", fontsize=9.5, fontweight="bold", color=ACCENT)
 
-    ax.set_xlim(0, max(left) * 1.24)
+    ax.set_yticks(y_positions)
+    ax.set_yticklabels(years)
+    ax.set_xlim(0, max(total) * 1.30)
     ax.xaxis.set_major_formatter(lambda v, _: hr(v))
     spines(ax, which="x")
     ax.tick_params(axis="y", labelsize=10)
     leg = ax.legend(frameon=False, fontsize=8.5, loc="lower right",
-                    ncol=3, bbox_to_anchor=(1.0, -0.30))
+                    ncol=2, bbox_to_anchor=(1.0, -0.30))
     for text in leg.get_texts():
         text.set_color(MUTED)
     titles(fig, ax,
-           "Gost ostavi 176 eura po noći. Smještaju pripadne četvrtina.",
-           "Devizni prihodi od stranih gostiju po stranom noćenju, eura, prema tome tko ih "
-           "naplati.\nUdio smještaja je gornja granica jer prihod firmi uključuje i domaće goste.",
+           "Gost ostavi 176 eura po noći. Smještajna društva vide najviše četvrtinu.",
+           "Ukupni devizni prihodi i prihod smještajnih društava po stranom noćenju, eura.\n"
+           "Smještaj je gornja granica jer prihod društava uključuje i domaće goste.",
            "Izvor: HNB (devizni prihodi), DZS (noćenja) i FINA GFI. Izračun AI.econ")
     save_and_copy(fig, "tourism_7_hnb_jaz.png")
 
