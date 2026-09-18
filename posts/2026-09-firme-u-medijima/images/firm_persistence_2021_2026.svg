@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1023.84pt" height="576pt" viewBox="0 0 1023.84 576" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-18T13:15:48.808764</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 576 
+L 1023.84 576 
+L 1023.84 0 
+L 0 0 
+z
+" style="fill: #f7f7f4"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 225.2448 443.52 
+L 941.9328 443.52 
+L 941.9328 126.72 
+L 225.2448 126.72 
+z
+" style="fill: #f7f7f4"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 225.2448 443.52 
+L 225.2448 126.72 
+" clip-path="url(#pcf2b7c4bee)" style="fill: none; stroke: #e6e6e1; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: middle; fill: #71717a" x="225.2448" y="454.997539" transform="rotate(-0 225.2448 454.997539)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 359.338516 443.52 
+L 359.338516 126.72 
+" clip-path="url(#pcf2b7c4bee)" style="fill: none; stroke: #e6e6e1; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: middle; fill: #71717a" x="359.338516" y="454.997539" transform="rotate(-0 359.338516 454.997539)">2.000</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 493.432231 443.52 
+L 493.432231 126.72 
+" clip-path="url(#pcf2b7c4bee)" style="fill: none; stroke: #e6e6e1; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: middle; fill: #71717a" x="493.432231" y="454.997539" transform="rotate(-0 493.432231 454.997539)">4.000</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 627.525947 443.52 
+L 627.525947 126.72 
+" clip-path="url(#pcf2b7c4bee)" style="fill: none; stroke: #e6e6e1; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_4">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: middle; fill: #71717a" x="627.525947" y="454.997539" transform="rotate(-0 627.525947 454.997539)">6.000</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 761.619662 443.52 
+L 761.619662 126.72 
+" clip-path="url(#pcf2b7c4bee)" style="fill: none; stroke: #e6e6e1; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_5">
+      <text style="font-size: 10.5px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: middle; fill: #71717a" x="761.619662" y="454.997539" transform="rotate(-0 761.619662 454.997539)">8.000</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 11px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: middle; fill: #71717a" x="583.5888" y="477.878281" transform="rotate(-0 583.5888 477.878281)">Broj firmi</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_11"/>
+     <g id="text_7">
+      <text style="font-size: 12.5px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: end; fill: #71717a" x="221.7448" y="164.378827" transform="rotate(-0 221.7448 164.378827)">1 mjesec</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_12"/>
+     <g id="text_8">
+      <text style="font-size: 12.5px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: end; fill: #71717a" x="221.7448" y="227.123925" transform="rotate(-0 221.7448 227.123925)">2–3 mjeseca</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_13"/>
+     <g id="text_9">
+      <text style="font-size: 12.5px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: end; fill: #71717a" x="221.7448" y="289.869023" transform="rotate(-0 221.7448 289.869023)">4–11 mjeseci</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_14"/>
+     <g id="text_10">
+      <text style="font-size: 12.5px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: end; fill: #71717a" x="221.7448" y="352.614121" transform="rotate(-0 221.7448 352.614121)">12–35 mjeseci</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_15"/>
+     <g id="text_11">
+      <text style="font-size: 12.5px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: end; fill: #71717a" x="221.7448" y="415.35922" transform="rotate(-0 221.7448 415.35922)">36–66 mjeseci</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 225.2448 141.12 
+L 768.190255 141.12 
+L 768.190255 178.139608 
+L 225.2448 178.139608 
+z
+" clip-path="url(#pcf2b7c4bee)" style="fill: #2348e5"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 225.2448 203.865098 
+L 518.708897 203.865098 
+L 518.708897 240.884706 
+L 225.2448 240.884706 
+z
+" clip-path="url(#pcf2b7c4bee)" style="fill: #2348e5"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 225.2448 266.610196 
+L 426.787655 266.610196 
+L 426.787655 303.629804 
+L 225.2448 303.629804 
+z
+" clip-path="url(#pcf2b7c4bee)" style="fill: #71717a"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 225.2448 329.355294 
+L 290.414346 329.355294 
+L 290.414346 366.374902 
+L 225.2448 366.374902 
+z
+" clip-path="url(#pcf2b7c4bee)" style="fill: #71717a"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 225.2448 392.100392 
+L 235.771157 392.100392 
+L 235.771157 429.12 
+L 225.2448 429.12 
+z
+" clip-path="url(#pcf2b7c4bee)" style="fill: #71717a"/>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: start; fill: #18181b" x="777.576815" y="162.746991" transform="rotate(-0 777.576815 162.746991)">8.098  (48,8 %)</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: start; fill: #18181b" x="528.095457" y="225.492089" transform="rotate(-0 528.095457 225.492089)">4.377  (26,4 %)</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: start; fill: #18181b" x="436.174215" y="288.237188" transform="rotate(-0 436.174215 288.237188)">3.006  (18,1 %)</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: start; fill: #18181b" x="299.800906" y="350.982286" transform="rotate(-0 299.800906 350.982286)">972  (5,9 %)</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: start; fill: #18181b" x="245.157717" y="413.727384" transform="rotate(-0 245.157717 413.727384)">157  (0,9 %)</text>
+   </g>
+  </g>
+  <g id="text_17">
+   <text style="font-weight: 700; font-size: 16.5px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: start; fill: #18181b" x="40.9536" y="37.029984" transform="rotate(-0 40.9536 37.029984)">Tri od četiri prepoznate firme nalazimo u najviše tri mjeseca.</text>
+  </g>
+  <g id="text_18">
+   <text style="font-size: 11px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: start; fill: #71717a" x="40.9536" y="61.984719" transform="rotate(-0 40.9536 61.984719)">2021. → lipanj 2026. · 16.610 firmi s barem jednim prepoznatim spominjanjem</text>
+  </g>
+  <g id="text_19">
+   <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: start; fill: #71717a" x="40.9536" y="498.24" transform="rotate(-0 40.9536 498.24)">Skupine mjeseci nejednake su duljine. Jedan mjesec znači barem jedan prepoznat članak u tom mjesecu.</text>
+  </g>
+  <g id="text_20">
+   <text style="font-size: 9.5px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: start; fill: #71717a" x="40.9536" y="520.704" transform="rotate(-0 40.9536 520.704)">Brojimo različite mjesece sa spominjanjem. Ti mjeseci ne moraju biti uzastopni.</text>
+  </g>
+  <g id="text_21">
+   <text style="font-size: 9px; font-family: 'DejaVu Sans Mono', monospace; text-anchor: start; fill: #71717a" x="40.9536" y="550.08" transform="rotate(-0 40.9536 550.08)">Izvor. GFI, medijski arhiv i AEM-ov popis elektroničkih publikacija. Izračun AI.econ.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pcf2b7c4bee">
+   <rect x="225.2448" y="126.72" width="716.688" height="316.8"/>
+  </clipPath>
+ </defs>
+</svg>
