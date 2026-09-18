@@ -59,3 +59,7 @@ editorial/
 .claude/settings.local.json
 .claude/state/personal-memory.md
 AGENTS.override.md
+
+# Scratch and QA browser profiles, large regenerable diagnostics
+tmp/
+outputs/diagnostics/
