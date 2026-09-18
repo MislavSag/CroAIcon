@@ -2,7 +2,9 @@
 title: "Firme na portalima, mjesec po mjesec"
 subtitle: "INA vodi 2021. i 2022., ACI preuzima vrh 2023. Tri četvrtine prepoznatih firmi nalazimo u najviše tri mjeseca"
 description: ""
-author: []
+author:
+  name: "Luka Šikić"
+  url: "https://www.lukasikic.info/"
 date: 2026-09-18
 categories: [mediji, firme, Hrvatska, podaci]
 draft: false
