@@ -1,0 +1,10 @@
+numpy
+pandas
+duckdb>=1.5.0
+matplotlib
+regex
+pyahocorasick
+openpyxl
+xlrd
+scipy
+statsmodels
