@@ -42,7 +42,7 @@ Profil spaja `companies.csv`, `company_monthly.csv` i `company_outlet_types.csv`
 
 ## Izvor i konstrukcija uzorka
 
-Izvor je lokalni `determDB_merged.duckdb`, tablica `media_data_all`, otvorena isključivo s `read_only=True`. Koriste se `DATE` za datum objave, `SOURCE_TYPE` za ograničenje na `web`, `TITLE` za naziv proizvođača i leksičke oznake, `URL` za domenu i identitet članka, `ITEM_ID` za razrješenje preklapanja u obuhvatu portala te `FULL_TEXT` za kontekst i sličnost teksta. `LANGUAGES` i `LOCATIONS` zadržani su u lokalnom izvodu, ali se ne koriste za klasifikaciju, geografski filtar ili nalaze. Autor, doseg, sentiment i interakcije nisu korišteni.
+Izvor je lokalni arhiv članaka s odabranih web portala, tablica `media_data_all`, otvorena isključivo s `read_only=True`. Koriste se `DATE` za datum objave, `SOURCE_TYPE` za ograničenje na `web`, `TITLE` za naziv proizvođača i leksičke oznake, `URL` za domenu i identitet članka, `ITEM_ID` za razrješenje preklapanja u obuhvatu portala te `FULL_TEXT` za kontekst i sličnost teksta. `LANGUAGES` i `LOCATIONS` zadržani su u lokalnom izvodu, ali se ne koriste za klasifikaciju, geografski filtar ili nalaze. Autor, doseg, sentiment i interakcije nisu korišteni.
 
 Okvir proizvođača dolazi iz EIZ-ovih tablica 6 i 8, vodeća društva prema prihodima za 2024. Obuhvaća 20 imena. Nije iscrpan popis industrije i ne pretražuje sve njihove robne marke. Strane vijesti o globalnim grupama bez relevantnog domaćeg konteksta uklanjaju se. Domaće objave o brendu, grupi, vlasnicima, prodajnim mjestima i sponzorstvima mogu ostati; ne predstavljaju nužno proizvodnju pravne osobe iz EIZ-ove tablice.
 

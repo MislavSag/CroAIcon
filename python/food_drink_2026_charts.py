@@ -51,7 +51,7 @@ def calendar_chart():
  fig.legend(handles,labels,loc='upper left',bbox_to_anchor=(.055,.84),ncol=3,frameon=False,fontsize=8)
  fig.text(.055,.14,'Rujan 2025. → kolovoz 2026. · isti panel odabranih portala.',fontsize=8,color=PAL['muted'])
  fig.text(.055,.09,'Članak se broji jednom, i kada u naslovu imenuje više proizvođača.',fontsize=8,color=PAL['muted'])
- fig.text(.055,.045,'Izvor · Determ; odabrani proizvođači i portali; vlastiti izračun.',fontsize=8,color=PAL['muted'])
+ fig.text(.055,.045,'Izvor · Odabrani web portali; vlastiti izračun.',fontsize=8,color=PAL['muted'])
  save(fig,'01_kalendari.png')
 
 def topics_chart():
@@ -73,7 +73,7 @@ def topics_chart():
  fig.text(.055,.919,'Udio naslova s riječima povezanima s temom · isti panel portala',fontsize=10,color=PAL['muted'])
  fig.text(.055,.103,'Jedan naslov može sadržavati više tema. Udio se računa među svim odabranim naslovima.',fontsize=8,color=PAL['muted'])
  fig.text(.055,.07,'Riječ je o preliminarnim leksičkim oznakama, bez ocjenjivanja tona teksta.',fontsize=8,color=PAL['muted'])
- fig.text(.055,.035,'Izvor · Determ; rujan 2025. → kolovoz 2026.; vlastiti izračun.',fontsize=8,color=PAL['muted'])
+ fig.text(.055,.035,'Izvor · Odabrani web portali; rujan 2025. → kolovoz 2026.; vlastiti izračun.',fontsize=8,color=PAL['muted'])
  save(fig,'02_teme.png')
 
 def companies_chart():
@@ -93,7 +93,7 @@ def companies_chart():
  handles,labels=ax.get_legend_handles_labels();fig.legend(handles,labels,loc='upper left',bbox_to_anchor=(.055,.855),ncol=3,frameon=False,fontsize=8)
  fig.text(.055,.135,'Jedno spominjanje po proizvođaču i članku. Članak može imenovati više proizvođača.',fontsize=8,color=PAL['muted'])
  fig.text(.055,.095,'Nazivi obuhvaćaju i grupu ili brend; ovo nisu tržišni udjeli ni rang ekonomskog značaja.',fontsize=8,color=PAL['muted'])
- fig.text(.055,.05,'Izvori · Determ; okvir proizvođača prema EIZ-u, Sektorske analize 130, tablice 6 i 8.',fontsize=8,color=PAL['muted'])
+ fig.text(.055,.05,'Izvori · Odabrani web portali; okvir proizvođača prema EIZ-u, Sektorske analize 130, tablice 6 i 8.',fontsize=8,color=PAL['muted'])
  save(fig,'03_proizvodaci.png')
 
 def main():

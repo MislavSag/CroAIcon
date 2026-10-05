@@ -101,7 +101,7 @@ Na kraju godine pred nama je raznolika slika sektora. Velika i redovito praćena
 
 ## Napomene
 
-Mediji. Determ, odabrani web portali, rujan 2025. do kolovoza 2026. Okvir su proizvođači iz EIZ-ovih tablica vodećih društava za 2024. i isti panel od `{python} n("panel_outlets")` portala. Brojimo ime proizvođača u naslovu nakon provjere konteksta i uklanjanja ponovljenih zapisa istog članka. Nazivi mogu obuhvatiti grupu i brend. Izbor ne obuhvaća sve proizvođače, robne marke ni sve objave o hrani i piću. Udio spominjanja nije tržišni udio ni doseg. Tematske oznake temelje se na riječima i ostaju preliminarne.
+Mediji. Odabrani web portali, rujan 2025. do kolovoza 2026. Okvir su proizvođači iz EIZ-ovih tablica vodećih društava za 2024. i isti panel od `{python} n("panel_outlets")` portala. Brojimo ime proizvođača u naslovu nakon provjere konteksta i uklanjanja ponovljenih zapisa istog članka. Nazivi mogu obuhvatiti grupu i brend. Izbor ne obuhvaća sve proizvođače, robne marke ni sve objave o hrani i piću. Udio spominjanja nije tržišni udio ni doseg. Tematske oznake temelje se na riječima i ostaju preliminarne.
 
 Gospodarstvo. Petra Palić, *Hrana i piće*, Ekonomski institut, Zagreb, Sektorske analize 130, travanj 2026. DZS-ovi izvorni godišnji indeksi obujma proizvodnje. Krašev rezultat preuzet je iz tadašnje nerevidirane konsolidirane objave. Mlinarov iznos odnosi se na najavljeni financijski krug.
 
