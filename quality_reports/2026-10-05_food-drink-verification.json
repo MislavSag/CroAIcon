@@ -1,0 +1,31 @@
+{
+  "invariants_passed": true,
+  "source_database_unchanged": true,
+  "articles": 1236,
+  "unique_article_identifiers": true,
+  "monthly_and_company_totals_reconcile": true,
+  "macro_dates_and_adjustments_recorded": true,
+  "output_hashes": {
+    "agrolaguna_case.csv": "5b760379e33fd7eec14ad592de9717996afd907c675fc2f58b7cc0541d8029c7",
+    "claim_ledger.csv": "eee735590f5c8923b961c6ee738f27b85bfce55ec24c750eedb6739484e18510",
+    "cluster_sensitivity.csv": "20cd7782e3c293fb7a5a2daee9be08fd14f7d08cb484804b18d998d6a8bbbb79",
+    "companies.csv": "247925b623db5acea0ec77d3257d5a268abf21a1e0c172730c1d476f0f8bc8c8",
+    "company_facts.csv": "7a22593a77038e2711592e4263ee40af6a6fe587a97102c7275244f8c8735297",
+    "company_monthly.csv": "ec1ee0172ca336099fa57e6d2cca7e2f042f756695f0ae960e161ca328ccb1e3",
+    "company_outlet_types.csv": "2e8a4a81fea7bd154cf079043517c9c6c154b31d5f3702f173c56640b15ce537",
+    "company_profiles.csv": "fa8bed826b465351a68ef907c70caeb397e1018abb2e9b8621aa8d20270d4ce4",
+    "kras_case.csv": "54d220e2a7a5fee915d1b12567238d015ac555763682cd57083572f70b61e046",
+    "macro_facts.csv": "5a74b51c823e4c607d4ac26270059a6098bffdef3c2b51723d81cb6d6e670d61",
+    "monthly.csv": "33bed7f6ebba8555bca008c7b19bfa39f7a857e24b922849d9f7d90f70f05919",
+    "outlet_coverage.csv": "3f1b5419d49ce9b32749257ffcd4a3f680942dbe5d84707a4af6ccda1db1849f",
+    "outlet_monthly.csv": "bf72104d6172e70c65a4621ca5f96ff00c963b2fbdd4ade73f9f8ebd3582cc0d",
+    "outlet_types.csv": "e4b72e93cd9024722b23ffb3855b9b5a77679ec1c969bf82e46230c925977683",
+    "panel.csv": "e7ce51aa53208d3ba74d9be23af53cdbbab14334dd56fbddffb7dee4125403ff",
+    "production_monthly.csv": "a24c665f04186ea39ca28998a4a977a2645027a8151e65e2bbfaa43b7954e39f",
+    "repetition.csv": "553c4d53073896916e52ec24868c4a97cd676d9f8f63d68b47dff94a69b68a56",
+    "sector_monthly.csv": "977a617cb70b09ffb65c0ed36c03e853c010b1257446736d5820c8808decd721",
+    "selection_sensitivity.csv": "1b181841061ae8a880cae5fead7555b13a89942ebd20fda463678e30a700e783",
+    "topics_monthly.csv": "00f76fb3685d27e74efbc2f4119a87c9b9358717102eca79d166f3ca44d45af1"
+  },
+  "scope": "Preliminary deterministic analysis; not a representative census and no recall estimate."
+}

@@ -1,0 +1,98 @@
+{
+  "checked_local_navigation_and_asset_links": 23,
+  "all_exist": true,
+  "targets": [
+    {
+      "target": "../../site_libs/quarto-nav/quarto-nav.js",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/quarto-nav/headroom.min.js",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/clipboard/clipboard.min.js",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/quarto-search/autocomplete.umd.js",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/quarto-search/fuse.min.js",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/quarto-search/quarto-search.js",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/quarto-html/quarto.js",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/quarto-html/tabsets/tabsets.js",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/quarto-html/popper.min.js",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/quarto-html/tippy.umd.min.js",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/quarto-html/anchor.min.js",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/quarto-html/tippy.css",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/quarto-html/quarto-syntax-highlighting-6c83761d507935a1aca707489e472e38.css",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/bootstrap/bootstrap.min.js",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/bootstrap/bootstrap-icons.css",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/bootstrap/bootstrap-15b816f570fa85ac7db7edb19a1d9e57.min.css",
+      "exists": true
+    },
+    {
+      "target": "../../index.html",
+      "exists": true
+    },
+    {
+      "target": "../../index.html",
+      "exists": true
+    },
+    {
+      "target": "../../about.html",
+      "exists": true
+    },
+    {
+      "target": "../../podaci.html",
+      "exists": true
+    },
+    {
+      "target": "../../index.xml",
+      "exists": true
+    },
+    {
+      "target": "../../index.xml",
+      "exists": true
+    },
+    {
+      "target": "../../site_libs/quarto-html/zenscroll-min.js",
+      "exists": true
+    }
+  ]
+}

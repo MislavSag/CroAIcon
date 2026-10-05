@@ -1,0 +1,18 @@
+{
+  "render_passed": true,
+  "canonical_post_matches": true,
+  "figures": 3,
+  "inline_numeric_expressions_checked": 34,
+  "kut_markers": 0,
+  "inherited_author": false,
+  "browser_visual_check": false,
+  "browser_limitation": "CUA returned no available browsers; charts inspected as images.",
+  "html_sha256": "f52913a478aaa5abf4a63f84a5e941fbbbab9befcff8fc88c1622c11cb4da06d",
+  "draft_sha256": "5dd8807c8b1e3d49c39d977c21ef974284be55bd4248e69f6700aefc8baa6a07",
+  "published": true,
+  "site_dir": "C:\\Users\\lsikic\\projects\\CroAIcon\\tmp\\publish-food-drink\\_site",
+  "toc_links": 7,
+  "navigation_targets_valid": true,
+  "homepage_search_feed_verified": true,
+  "analysis_status": "Preliminary; development sample reviewed, no independent recall or precision estimate."
+}
